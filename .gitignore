@@ -1,0 +1,12 @@
+# lock files
+yarn.lock
+package-lock.json
+
+# secrets
+.env
+.npmrc
+
+# editors
+.vscode/*
+
+node_modules/*

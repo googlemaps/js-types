@@ -1,0 +1,26 @@
+{
+  "name": "@googlemaps/types",
+  "version": "0.0.0",
+  "keywords": [
+    "google",
+    "maps",
+    "typescript"
+  ],
+  "description": "Automatically generated types for the Google Maps Platform JavaScript API.",
+  "homepage": "https://github.com/googlemaps/js-types",
+  "bugs": {
+    "url": "https://github.com/googlemaps/js-types/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/googlemaps/js-types.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Justin Poehnelt",
+  "types": "index.d.ts",
+  "scripts": {},
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://wombat-dressing-room.appspot.com"
+  }
+}
