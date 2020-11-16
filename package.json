@@ -23,7 +23,7 @@
   ],
   "scripts": {},
   "publishConfig": {
-    "access": "restricted",
+    "access": "public",
     "registry": "https://wombat-dressing-room.appspot.com"
   }
 }
