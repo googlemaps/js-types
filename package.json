@@ -18,6 +18,9 @@
   "license": "Apache-2.0",
   "author": "Justin Poehnelt",
   "types": "index.d.ts",
+  "files": [
+    "index.d.ts"
+  ],
   "scripts": {},
   "publishConfig": {
     "access": "restricted",
