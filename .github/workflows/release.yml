@@ -25,6 +25,5 @@ jobs:
       - name: Publish
         run: |
           npm i
-          npm test
         env:
           NPM_TOKEN: ${{ secrets.NPM_WOMBAT_TOKEN }}
