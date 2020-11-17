@@ -19,11 +19,14 @@ on:
       - main
 jobs:
   build:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Publish
         run: |
           npm i
+          npm run release -- --ci
         env:
           NPM_TOKEN: ${{ secrets.NPM_WOMBAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
