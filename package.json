@@ -21,9 +21,15 @@
   "files": [
     "index.d.ts"
   ],
-  "scripts": {},
+  "scripts": {
+    "release": "release-it"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://wombat-dressing-room.appspot.com"
+  },
+  "devDependencies": {
+    "@release-it/bumper": "^2.0.0",
+    "release-it": "^14.2.1"
   }
 }

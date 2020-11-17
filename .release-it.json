@@ -1,0 +1,23 @@
+{
+  "git": {
+    "commitMessage": "chore: release v${version} [skip ci]"
+  },
+  "github": {
+    "release": true
+  },
+  "npm": {
+    "publish": false
+  },
+  "plugins": {
+    "@release-it/bumper": {
+      "in": {
+        "file": "VERSION",
+        "type": "text/plain"
+      },
+      "out": {
+        "file": "VERSION",
+        "type": "text/plain"
+      }
+    }
+  }
+}
