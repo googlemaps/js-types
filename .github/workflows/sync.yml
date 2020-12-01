@@ -23,7 +23,8 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.SYNCED_GITHUB_TOKEN_REPO }}
     steps:
       - uses: actions/checkout@v2
-        path: js-types       
+        with:
+          path: js-types
       - name: Setup Bazel
         uses: jpoehnelt/setup-bazel@74990a5bf57cb8275729e56a1ba1d85240d7e5f7
       - run: bazel build :definitelytyped.d.ts
@@ -41,10 +42,8 @@ jobs:
           path: dt
           token: ${{ env.GITHUB_TOKEN}}
           push-to-fork: googlemaps/DefinitelyTyped
-          title: 'chore: sync google-maps-web'
-          body: 'This is a automatic pull request to update the google-maps-web dest.'
-          commit-message: 'chore: sync google-maps-web'
+          title: "chore: sync google-maps-web"
+          body: "This is a automatic pull request to update the google-maps-web dest."
+          commit-message: "chore: sync google-maps-web"
           branch: "chore/sync-google-maps-web"
           delete-branch: true
-
-        
