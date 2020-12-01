@@ -9,3 +9,6 @@ yarn.lock
 .vscode/*
 
 node_modules/*
+bazel-*
+
+DefinitelyTyped/

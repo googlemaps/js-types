@@ -12,4 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from_owner: []
+set -e
+types="types/google-maps-web/index.d.ts"
+
+rm -rf DefinitelyTyped
+gh repo fork DefinitelyTyped/DefinitelyTyped --clone=true
+mkdir -p DefinitelyTyped/types/google-maps-web
+cp bazel-bin/definitelytyped.d.ts "DefinitelyTyped/${types}"
+cd DefinitelyTyped
+git switch -c chore/sync-google-maps-web
+git reset --hard upstream/master
+
+git add "${types}"
+git commit -am 'chore: sync google-maps-web'
+# gh pr create --title 'chore: sync google-maps-web' --body 'This is a automatic pull request to update the google-maps-web types.' -w
