@@ -12,6 +12,6 @@ genrule(
     ],
     outs = ["definitelytyped.d.ts"],
     cmd = "version=`cut -d '.' -f 1,2 <$(location :VERSION)`;" +
-          "sed \"s/VERSION/$$version/g\" $(location :header.d.ts) > $@; " +
+          "tail -n +17 $(location :header.d.ts) | sed \"s/VERSION/$$version/g\" > $@; " +
           "cat $(location :index.d.ts) >> $@; ",
 )
