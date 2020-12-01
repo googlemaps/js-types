@@ -13,16 +13,35 @@
 # limitations under the License.
 
 set -e
-types="types/google-maps-web/index.d.ts"
 
-rm -rf DefinitelyTyped
-gh repo fork DefinitelyTyped/DefinitelyTyped --clone=true
-mkdir -p DefinitelyTyped/types/google-maps-web
-cp bazel-bin/definitelytyped.d.ts "DefinitelyTyped/${types}"
-cd DefinitelyTyped
-git switch -c chore/sync-google-maps-web
-git reset --hard upstream/master
+src="$(pwd)/bazel-bin/definitelytyped.d.ts"
+dest="types/google-maps-web/index.d.ts"
+branch="chore/sync-google-maps-web"
 
-git add "${types}"
+pushd $(mktemp -d)
+
+# Setup git
+git clone git@github.com:DefinitelyTyped/DefinitelyTyped.git .
+git remote add fork git@github.com:googlemaps/DefinitelyTyped.git
+
+# update default branch of fork
+git push fork -f
+
+# Get a branch
+git checkout -b "${branch}"
+
+# Make changes
+mkdir -p $(dirname "${dest}")
+cp "${src}" "${dest}"
+
+# Commit and push to fork
+git add "${dest}"
 git commit -am 'chore: sync google-maps-web'
-# gh pr create --title 'chore: sync google-maps-web' --body 'This is a automatic pull request to update the google-maps-web types.' -w
+git push fork -f
+
+# Open pull request
+gh pr create --title 'chore: sync google-maps-web' \
+  --body 'This is a automatic pull request to update the google-maps-web dest.' \
+  --head "googlemaps:${branch}"
+
+popd
