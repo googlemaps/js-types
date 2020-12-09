@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-// Google Maps JS API Version: 3.42
+// Google Maps JS API Version: 3.43
 // tslint:disable:enforce-name-casing
 // tslint:disable:no-any
 // tslint:disable:interface-over-type-literal
@@ -29,7 +29,7 @@ declare namespace google.maps {
    * <code>setAnimation</code> method on Marker or the <code>animation</code>
    * option to play an animation.
    */
-  export enum Animation {
+  enum Animation {
     BOUNCE = 0.0,
     DROP = 1.0,
   }
@@ -38,7 +38,7 @@ declare namespace google.maps {
   /**
    * A layer showing bike lanes and paths.
    */
-  export class BicyclingLayer extends google.maps.MVCObject {
+  class BicyclingLayer extends google.maps.MVCObject {
     /**
      * Returns the map on which this layer is displayed.
      */
@@ -55,7 +55,7 @@ declare namespace google.maps {
    * A circle on the Earth&#39;s surface; also known as a &quot;spherical
    * cap&quot;.
    */
-  export class Circle extends google.maps.MVCObject {
+  class Circle extends google.maps.MVCObject {
     /**
      * A circle on the Earth&#39;s surface; also known as a &quot;spherical
      * cap&quot;.
@@ -122,7 +122,7 @@ declare namespace google.maps {
   /**
    * Object literal which represents a circle.
    */
-  export interface CircleLiteral extends google.maps.CircleOptions {
+  interface CircleLiteral extends google.maps.CircleOptions {
     /**
      * The center of the Circle.
      */
@@ -138,7 +138,7 @@ declare namespace google.maps {
    * CircleOptions object used to define the properties that can be set on a
    * Circle.
    */
-  export interface CircleOptions {
+  interface CircleOptions {
     /**
      * The center of the Circle.
      */
@@ -225,7 +225,7 @@ declare namespace google.maps {
    * bottom row flow towards the middle of the row. Elements in the left or
    * right column flow towards the middle of the column.
    */
-  export enum ControlPosition {
+  enum ControlPosition {
     BOTTOM_CENTER = 0.0,
     BOTTOM_LEFT = 1.0,
     BOTTOM_RIGHT = 2.0,
@@ -250,7 +250,7 @@ declare namespace google.maps {
    * <code>Data</code> object is a collection of <a
    * href="#Data.Feature"><code>Features</code></a>.
    */
-  export class Data extends google.maps.MVCObject {
+  class Data extends google.maps.MVCObject {
     /**
      * A layer for displaying geospatial data. Points, line-strings and polygons
      * can be displayed. <p> Every <code>Map</code> has a <code>Data</code>
@@ -399,7 +399,7 @@ declare namespace google.maps.Data {
   /**
    * The properties of a <code>addfeature</code> event.
    */
-  export interface AddFeatureEvent {
+  interface AddFeatureEvent {
     /**
      * The feature that was added to the <code>FeatureCollection</code>.
      */
@@ -411,7 +411,7 @@ declare namespace google.maps.Data {
    * DataOptions object used to define the properties that a developer can set
    * on a <code>Data</code> object.
    */
-  export interface DataOptions {
+  interface DataOptions {
     /**
      * The position of the drawing controls on the map. The default position is
      * TOP_LEFT.
@@ -458,7 +458,7 @@ declare namespace google.maps.Data {
   /**
    * A feature has a geometry, an id, and a set of properties.
    */
-  export class Feature {
+  class Feature {
     /**
      * A feature has a geometry, an id, and a set of properties.
      */
@@ -507,7 +507,7 @@ declare namespace google.maps.Data {
   /**
    * Optional parameters for creating <code>Data.Feature</code> objects.
    */
-  export interface FeatureOptions {
+  interface FeatureOptions {
     /**
      * The feature geometry. If none is specified when a feature is constructed,
      * the feature&#39;s geometry will be null. If a <code>LatLng</code> object
@@ -534,7 +534,7 @@ declare namespace google.maps.Data {
   /**
    * Optional parameters for importing GeoJSON.
    */
-  export interface GeoJsonOptions {
+  interface GeoJsonOptions {
     /**
      * The name of the Feature property to use as the feature ID. If not
      * specified, the GeoJSON Feature id will be used.
@@ -546,7 +546,7 @@ declare namespace google.maps.Data {
   /**
    * A superclass for the various geometry objects.
    */
-  export interface Geometry {
+  interface Geometry {
     /**
      * Repeatedly invokes the given function, passing a point from the geometry
      * to the function on each invocation.
@@ -568,7 +568,7 @@ declare namespace google.maps.Data {
    * <code>LatLng</code> or <code>LatLngLiteral</code> objects are automatically
    * converted to <code>Data.Point</code> geometry objects.
    */
-  export class GeometryCollection implements google.maps.Data.Geometry {
+  class GeometryCollection implements google.maps.Data.Geometry {
     /**
      * A GeometryCollection contains a number of geometry objects. Any
      * <code>LatLng</code> or <code>LatLngLiteral</code> objects are
@@ -600,7 +600,7 @@ declare namespace google.maps.Data {
   /**
    * A LineString geometry contains a number of <code>LatLng</code>s.
    */
-  export class LineString implements google.maps.Data.Geometry {
+  class LineString implements google.maps.Data.Geometry {
     /**
      * A LineString geometry contains a number of <code>LatLng</code>s.
      */
@@ -632,7 +632,7 @@ declare namespace google.maps.Data {
    * <code>LatLng</code> equal to the last <code>LatLng</code>. The LinearRing
    * is closed implicitly.
    */
-  export class LinearRing implements google.maps.Data.Geometry {
+  class LinearRing implements google.maps.Data.Geometry {
     /**
      * A LinearRing geometry contains a number of <code>LatLng</code>s,
      * representing a closed LineString. There is no need to make the first
@@ -665,7 +665,7 @@ declare namespace google.maps.Data {
    * This object is passed to mouse event handlers on a <code>Data</code>
    * object.
    */
-  export interface MouseEvent extends google.maps.MouseEvent {
+  interface MouseEvent extends google.maps.MapMouseEvent {
     /**
      * The feature which generated the mouse event.
      */
@@ -676,7 +676,7 @@ declare namespace google.maps.Data {
   /**
    * A MultiLineString geometry contains a number of <code>LineString</code>s.
    */
-  export class MultiLineString implements google.maps.Data.Geometry {
+  class MultiLineString implements google.maps.Data.Geometry {
     /**
      * A MultiLineString geometry contains a number of <code>LineString</code>s.
      */
@@ -706,7 +706,7 @@ declare namespace google.maps.Data {
   /**
    * A MultiPoint geometry contains a number of <code>LatLng</code>s.
    */
-  export class MultiPoint implements google.maps.Data.Geometry {
+  class MultiPoint implements google.maps.Data.Geometry {
     /**
      * A MultiPoint geometry contains a number of <code>LatLng</code>s.
      */
@@ -735,7 +735,7 @@ declare namespace google.maps.Data {
   /**
    * A MultiPolygon geometry contains a number of <code>Data.Polygon</code>s.
    */
-  export class MultiPolygon implements google.maps.Data.Geometry {
+  class MultiPolygon implements google.maps.Data.Geometry {
     /**
      * A MultiPolygon geometry contains a number of <code>Data.Polygon</code>s.
      */
@@ -767,7 +767,7 @@ declare namespace google.maps.Data {
   /**
    * A Point geometry contains a single <code>LatLng</code>.
    */
-  export class Point implements google.maps.Data.Geometry {
+  class Point implements google.maps.Data.Geometry {
     /**
      * A Point geometry contains a single <code>LatLng</code>.
      */
@@ -791,7 +791,7 @@ declare namespace google.maps.Data {
    * href="/maps/documentation/javascript/examples/layer-data-polygon">sample
    * polygon with a hole</a>.
    */
-  export class Polygon implements google.maps.Data.Geometry {
+  class Polygon implements google.maps.Data.Geometry {
     /**
      * A Polygon geometry contains a number of <code>Data.LinearRing</code>s.
      * The first linear-ring must be the polygon exterior boundary and
@@ -826,7 +826,7 @@ declare namespace google.maps.Data {
   /**
    * The properties of a <code>removefeature</code> event.
    */
-  export interface RemoveFeatureEvent {
+  interface RemoveFeatureEvent {
     /**
      * The feature that was removed from the <code>FeatureCollection</code>.
      */
@@ -837,7 +837,7 @@ declare namespace google.maps.Data {
   /**
    * The properties of a <code>removeproperty</code> event.
    */
-  export interface RemovePropertyEvent {
+  interface RemovePropertyEvent {
     /**
      * The feature whose property was removed.
      */
@@ -856,7 +856,7 @@ declare namespace google.maps.Data {
   /**
    * The properties of a <code>setgeometry</code> event.
    */
-  export interface SetGeometryEvent {
+  interface SetGeometryEvent {
     /**
      * The feature whose geometry was set.
      */
@@ -875,7 +875,7 @@ declare namespace google.maps.Data {
   /**
    * The properties of a <code>setproperty</code> event.
    */
-  export interface SetPropertyEvent {
+  interface SetPropertyEvent {
     /**
      * The feature whose property was set.
      */
@@ -900,7 +900,7 @@ declare namespace google.maps.Data {
    * These options specify the way a Feature should appear when displayed on a
    * map.
    */
-  export interface StyleOptions {
+  interface StyleOptions {
     /**
      * If <code>true</code>, the marker receives mouse and touch events. Default
      * value is <code>true</code>.
@@ -974,14 +974,14 @@ declare namespace google.maps.Data {
   }
 }
 declare namespace google.maps.Data {
-  export type StylingFunction = (a: google.maps.Data.Feature) =>
+  type StylingFunction = (a: google.maps.Data.Feature) =>
       google.maps.Data.StyleOptions;
 }
 declare namespace google.maps {
   /**
    * A single geocoded waypoint.
    */
-  export interface DirectionsGeocodedWaypoint {
+  interface DirectionsGeocodedWaypoint {
     /**
      * Whether the geocoder did not return an exact match for the original
      * waypoint, though it was able to match part of the requested address.
@@ -1011,7 +1011,7 @@ declare namespace google.maps {
    * &quot;JSON-like,&quot; it is not strictly JSON, as it directly and
    * indirectly includes <code>LatLng</code> objects.
    */
-  export interface DirectionsLeg {
+  interface DirectionsLeg {
     /**
      * An estimated arrival time for this leg. Only applicable for TRANSIT
      * requests.
@@ -1089,7 +1089,7 @@ declare namespace google.maps {
    * Renders directions obtained from the <code><a
    * href="#DirectionsService">DirectionsService</a></code>.
    */
-  export class DirectionsRenderer extends google.maps.MVCObject {
+  class DirectionsRenderer extends google.maps.MVCObject {
     /**
      * Renders directions obtained from the <code><a
      * href="#DirectionsService">DirectionsService</a></code>.
@@ -1148,7 +1148,7 @@ declare namespace google.maps {
    * This object defines the properties that can be set on a
    * <code>DirectionsRenderer</code> object.
    */
-  export interface DirectionsRendererOptions {
+  interface DirectionsRendererOptions {
     /**
      * The directions to display on the map and/or in a <code>&lt;div&gt;</code>
      * panel, retrieved as a <code>DirectionsResult</code> object from
@@ -1231,7 +1231,7 @@ declare namespace google.maps {
    * A directions query to be sent to the <code><a
    * href="#DirectionsService">DirectionsService</a></code>.
    */
-  export interface DirectionsRequest {
+  interface DirectionsRequest {
     /**
      * If true, instructs the Directions service to avoid ferries where
      * possible. Optional.
@@ -1315,7 +1315,7 @@ declare namespace google.maps {
    * though this result is &quot;JSON-like,&quot; it is not strictly JSON, as it
    * indirectly includes <code>LatLng</code> objects.
    */
-  export interface DirectionsResult {
+  interface DirectionsResult {
     /**
      * An array of <code>DirectionsGeocodedWaypoint</code>s, each of which
      * contains information about the geocoding of origin, destination and
@@ -1338,7 +1338,7 @@ declare namespace google.maps {
    * object is &quot;JSON-like,&quot; it is not strictly JSON, as it directly
    * and indirectly includes <code>LatLng</code> objects.
    */
-  export interface DirectionsRoute {
+  interface DirectionsRoute {
     /**
      * The bounds for this route.
      */
@@ -1398,7 +1398,7 @@ declare namespace google.maps {
   /**
    * A service for computing directions between two or more places.
    */
-  export class DirectionsService {
+  class DirectionsService {
     /**
      * Issue a directions search request. <aside class="note">Note: <strong>For
      * the beta release, <code>v=beta</code>, the callback is optional and a
@@ -1421,7 +1421,7 @@ declare namespace google.maps {
    * constant&#39;s name. For example, <code>'OK'</code> or
    * <code>google.maps.DirectionsStatus.OK</code>.
    */
-  export enum DirectionsStatus {
+  enum DirectionsStatus {
     INVALID_REQUEST = 'INVALID_REQUEST',
     MAX_WAYPOINTS_EXCEEDED = 'MAX_WAYPOINTS_EXCEEDED',
     NOT_FOUND = 'NOT_FOUND',
@@ -1439,7 +1439,7 @@ declare namespace google.maps {
    * &quot;JSON-like,&quot; it is not strictly JSON, as it directly includes
    * <code>LatLng</code> objects.
    */
-  export interface DirectionsStep {
+  interface DirectionsStep {
     /**
      * The distance covered by this step. This property may be undefined as the
      * distance may be unknown.
@@ -1487,7 +1487,7 @@ declare namespace google.maps {
    * A <code>DirectionsWaypoint</code> represents a location between origin and
    * destination through which the trip should be routed.
    */
-  export interface DirectionsWaypoint {
+  interface DirectionsWaypoint {
     /**
      * Waypoint location. Can be an address string, a <code>LatLng</code>, or a
      * <code>Place</code>. Optional.
@@ -1508,7 +1508,7 @@ declare namespace google.maps {
   /**
    * A representation of distance as a numeric value and a display string.
    */
-  export interface Distance {
+  interface Distance {
     /**
      * A string representation of the distance value, using the
      * <code>UnitSystem</code> specified in the request.
@@ -1527,7 +1527,7 @@ declare namespace google.maps {
    * distance matrix request. These values are specified as strings, for
    * example, <code>'OK'</code>.
    */
-  export enum DistanceMatrixElementStatus {
+  enum DistanceMatrixElementStatus {
     NOT_FOUND = 'NOT_FOUND',
     OK = 'OK',
     ZERO_RESULTS = 'ZERO_RESULTS',
@@ -1539,7 +1539,7 @@ declare namespace google.maps {
    * containing arrays of origin and destination locations, and various options
    * for computing metrics.
    */
-  export interface DistanceMatrixRequest {
+  interface DistanceMatrixRequest {
     /**
      * If true, instructs the Distance Matrix service to avoid ferries where
      * possible. Optional.
@@ -1600,7 +1600,7 @@ declare namespace google.maps {
    * <code>DistanceMatrixResponseRow</code>s, one for each corresponding origin
    * address.
    */
-  export interface DistanceMatrixResponse {
+  interface DistanceMatrixResponse {
     /**
      * The formatted destination addresses.
      */
@@ -1621,7 +1621,7 @@ declare namespace google.maps {
    * request, which contains the duration and distance from one origin to one
    * destination.
    */
-  export interface DistanceMatrixResponseElement {
+  interface DistanceMatrixResponseElement {
     /**
      * The distance for this origin-destination pairing. This property may be
      * undefined as the distance may be unknown.
@@ -1657,7 +1657,7 @@ declare namespace google.maps {
    * consisting of a sequence of <code>DistanceMatrixResponseElement</code>s,
    * one for each corresponding destination address.
    */
-  export interface DistanceMatrixResponseRow {
+  interface DistanceMatrixResponseRow {
     /**
      * The row&#39;s elements, corresponding to the destination addresses.
      */
@@ -1669,7 +1669,7 @@ declare namespace google.maps {
    * A service for computing distances between multiple origins and
    * destinations.
    */
-  export class DistanceMatrixService {
+  class DistanceMatrixService {
     /**
      * Issues a distance matrix request. <aside class="note">Note: <strong>For
      * the beta release, <code>v=beta</code>, the callback is optional and a
@@ -1693,7 +1693,7 @@ declare namespace google.maps {
    * example, <code>'OK'</code> or
    * <code>google.maps.DistanceMatrixStatus.OK</code>.
    */
-  export enum DistanceMatrixStatus {
+  enum DistanceMatrixStatus {
     INVALID_REQUEST = 'INVALID_REQUEST',
     MAX_DIMENSIONS_EXCEEDED = 'MAX_DIMENSIONS_EXCEEDED',
     MAX_ELEMENTS_EXCEEDED = 'MAX_ELEMENTS_EXCEEDED',
@@ -1709,7 +1709,7 @@ declare namespace google.maps {
    * href="#DirectionsRequest">DirectionsRequest</a></code> when the travel mode
    * is set to <code>DRIVING</code>.
    */
-  export interface DrivingOptions {
+  interface DrivingOptions {
     /**
      * The desired departure time for the route, specified as a
      * <code>Date</code> object. The <code>Date</code> object measures time in
@@ -1729,7 +1729,7 @@ declare namespace google.maps {
   /**
    * A representation of duration as a numeric value and a display string.
    */
-  export interface Duration {
+  interface Duration {
     /**
      * A string representation of the duration value.
      */
@@ -1746,7 +1746,7 @@ declare namespace google.maps {
    * set of elevation coordinates and their elevation values. Note that a single
    * request may produce multiple <code>ElevationResult</code>s.
    */
-  export interface ElevationResult {
+  interface ElevationResult {
     /**
      * The elevation of this point on Earth, in meters above sea level.
      */
@@ -1771,7 +1771,7 @@ declare namespace google.maps {
    * Defines a service class that talks directly to Google servers for
    * requesting elevation data.
    */
-  export class ElevationService {
+  class ElevationService {
     /**
      * Makes an elevation request along a path, where the elevation data are
      * returned as distance-based samples along that path. <aside
@@ -1809,7 +1809,7 @@ declare namespace google.maps {
    * constant&#39;s name. For example, <code>'OK'</code> or
    * <code>google.maps.ElevationStatus.OK</code>.
    */
-  export enum ElevationStatus {
+  enum ElevationStatus {
     INVALID_REQUEST = 'INVALID_REQUEST',
     OK = 'OK',
     OVER_QUERY_LIMIT = 'OVER_QUERY_LIMIT',
@@ -1821,7 +1821,7 @@ declare namespace google.maps {
   /**
    * An event with an associated Error.
    */
-  export interface ErrorEvent {
+  interface ErrorEvent {
     /**
      * The Error related to the event.
      */
@@ -1832,7 +1832,7 @@ declare namespace google.maps {
   /**
    * Options for the rendering of the fullscreen control.
    */
-  export interface FullscreenControlOptions {
+  interface FullscreenControlOptions {
     /**
      * Position id. Used to specify the position of the control on the map. The
      * default position is <code>RIGHT_TOP</code>.
@@ -1844,7 +1844,7 @@ declare namespace google.maps {
   /**
    * A service for converting between an address and a <code>LatLng</code>.
    */
-  export class Geocoder {
+  class Geocoder {
     /**
      * Geocode a request. <aside class="note">Note: <strong>A Promise is only
      * returned for the beta release, <code>v=beta</code></strong>. More
@@ -1865,7 +1865,7 @@ declare namespace google.maps {
    * A single address component within a <code>GeocoderResult</code>. A full
    * address may consist of multiple address components.
    */
-  export interface GeocoderAddressComponent {
+  interface GeocoderAddressComponent {
     /**
      * The full text of the address component
      */
@@ -1889,7 +1889,7 @@ declare namespace google.maps {
    * href="/maps/documentation/javascript/geocoding#ComponentFiltering">
    * Geocoding Component Filtering</a>.
    */
-  export interface GeocoderComponentRestrictions {
+  interface GeocoderComponentRestrictions {
     /**
      * Matches all the <code>administrative_area levels</code>. Optional.
      */
@@ -1918,7 +1918,7 @@ declare namespace google.maps {
   /**
    * Geometry information about this <code>GeocoderResult</code>
    */
-  export interface GeocoderGeometry {
+  interface GeocoderGeometry {
     /**
      * The precise bounds of this <code>GeocoderResult</code>, if applicable
      */
@@ -1945,7 +1945,7 @@ declare namespace google.maps {
    * <code>'ROOFTOP'</code> or
    * <code>google.maps.GeocoderLocationType.ROOFTOP</code>.
    */
-  export enum GeocoderLocationType {
+  enum GeocoderLocationType {
     APPROXIMATE = 'APPROXIMATE',
     GEOMETRIC_CENTER = 'GEOMETRIC_CENTER',
     RANGE_INTERPOLATED = 'RANGE_INTERPOLATED',
@@ -1957,7 +1957,7 @@ declare namespace google.maps {
    * The specification for a geocoding request to be sent to the
    * <code>Geocoder</code>.
    */
-  export interface GeocoderRequest {
+  interface GeocoderRequest {
     /**
      * Address to geocode. One, and only one, of <code>address</code>,
      * <code>location</code> and <code>placeId</code> must be supplied.
@@ -2008,7 +2008,7 @@ declare namespace google.maps {
    * An Geocoder response returned by the {@link google.maps.Geocoder}
    * containing the list of {@link google.maps.GeocoderResult}s.
    */
-  export interface GeocoderResponse {
+  interface GeocoderResponse {
     /**
      * The list of {@link google.maps.GeocoderResult}s.
      */
@@ -2022,7 +2022,7 @@ declare namespace google.maps {
    * &quot;JSON-like,&quot; it is not strictly JSON, as it indirectly includes a
    * <code>LatLng</code> object.
    */
-  export interface GeocoderResult {
+  interface GeocoderResult {
     /**
      * An array of <code>GeocoderAddressComponent</code>s
      */
@@ -2069,7 +2069,7 @@ declare namespace google.maps {
    * constant&#39;s name. For example, <code>'OK'</code> or
    * <code>google.maps.GeocoderStatus.OK</code>.
    */
-  export enum GeocoderStatus {
+  enum GeocoderStatus {
     ERROR = 'ERROR',
     INVALID_REQUEST = 'INVALID_REQUEST',
     OK = 'OK',
@@ -2083,7 +2083,7 @@ declare namespace google.maps {
   /**
    * A rectangular image overlay on the map.
    */
-  export class GroundOverlay extends google.maps.MVCObject {
+  class GroundOverlay extends google.maps.MVCObject {
     /**
      * A rectangular image overlay on the map.
      */
@@ -2123,7 +2123,7 @@ declare namespace google.maps {
    * This object defines the properties that can be set on a
    * <code>GroundOverlay</code> object.
    */
-  export interface GroundOverlayOptions {
+  interface GroundOverlayOptions {
     /**
      * If <code>true</code>, the ground overlay can receive mouse events.
      */
@@ -2143,7 +2143,7 @@ declare namespace google.maps {
   /**
    * A structure representing a Marker icon image.
    */
-  export interface Icon {
+  interface Icon {
     /**
      * The position at which to anchor an image in correspondence to the
      * location of the marker on the map. By default, the anchor is located
@@ -2186,7 +2186,7 @@ declare namespace google.maps {
    * to prevent it being propagated. Learn more about <a
    * href="/places/place-id">place IDs</a> in the Places API developer guide.
    */
-  export interface IconMouseEvent extends google.maps.MouseEvent {
+  interface IconMouseEvent extends google.maps.MapMouseEvent {
     /**
      * The place ID of the place that was clicked. This place ID can be used to
      * query more information about the feature that was clicked. <p> Learn more
@@ -2203,7 +2203,7 @@ declare namespace google.maps {
    * calculated in meters by default. Setting either offset or repeat to a pixel
    * value will cause the distances to be calculated in pixels on the screen.
    */
-  export interface IconSequence {
+  interface IconSequence {
     /**
      * If <code>true</code>, each icon in the sequence has the same fixed
      * rotation regardless of the angle of the edge on which it lies. Defaults
@@ -2238,7 +2238,7 @@ declare namespace google.maps {
    * This class implements the MapType interface and is provided for rendering
    * image tiles.
    */
-  export class ImageMapType extends google.maps.MVCObject implements
+  class ImageMapType extends google.maps.MVCObject implements
       google.maps.MapType {
     /**
      * This class implements the MapType interface and is provided for rendering
@@ -2272,7 +2272,7 @@ declare namespace google.maps {
   /**
    * This class is used to create a MapType that renders image tiles.
    */
-  export interface ImageMapTypeOptions {
+  interface ImageMapTypeOptions {
     /**
      * Alt text to display when this MapType&#39;s button is hovered over in the
      * MapTypeControl.
@@ -2311,7 +2311,7 @@ declare namespace google.maps {
   /**
    * An overlay that looks like a bubble and is often connected to a marker.
    */
-  export class InfoWindow extends google.maps.MVCObject {
+  class InfoWindow extends google.maps.MVCObject {
     /**
      * An overlay that looks like a bubble and is often connected to a marker.
      */
@@ -2348,7 +2348,7 @@ declare namespace google.maps {
    * InfoWindowOptions object used to define the properties that can be set on a
    * InfoWindow.
    */
-  export interface InfoWindowOptions {
+  interface InfoWindowOptions {
     /**
      * Content to display in the InfoWindow. This can be an HTML element, a
      * plain-text string, or a string containing HTML. The InfoWindow will be
@@ -2405,7 +2405,7 @@ declare namespace google.maps {
   /**
    * Contains details of the author of a KML document or feature.
    */
-  export interface KmlAuthor {
+  interface KmlAuthor {
     /**
      * The author&#39;s e-mail address, or an empty string if not specified.
      */
@@ -2426,7 +2426,7 @@ declare namespace google.maps {
    * is clicked. The data contained in this object mirrors that associated with
    * the feature in the KML or GeoRSS markup in which it is declared.
    */
-  export interface KmlFeatureData {
+  interface KmlFeatureData {
     /**
      * The feature&#39;s <code>&lt;atom:author&gt;</code>, extracted from the
      * layer markup (if specified).
@@ -2466,7 +2466,7 @@ declare namespace google.maps {
    * <code>KmlFeatureData</code> object is provided for each feature when
    * clicked.
    */
-  export class KmlLayer extends google.maps.MVCObject {
+  class KmlLayer extends google.maps.MVCObject {
     /**
      * A <code>KmlLayer</code> adds geographic markup to the map from a KML, KMZ
      * or GeoRSS file that is hosted on a publicly accessible web server. A
@@ -2519,7 +2519,7 @@ declare namespace google.maps {
   /**
    * Metadata for a single KML layer, in JSON format.
    */
-  export interface KmlLayerMetadata {
+  interface KmlLayerMetadata {
     /**
      * The layer&#39;s <code>&lt;atom:author&gt;</code>, extracted from the
      * layer markup.
@@ -2551,7 +2551,7 @@ declare namespace google.maps {
    * This object defines the properties that can be set on a
    * <code>KmlLayer</code> object.
    */
-  export interface KmlLayerOptions {
+  interface KmlLayerOptions {
     /**
      * If true, the layer receives mouse events. Default value is true.
      */
@@ -2591,7 +2591,7 @@ declare namespace google.maps {
    * document. Specify these by value, or by using the constant&#39;s name. For
    * example, <code>'OK'</code> or <code>google.maps.KmlLayerStatus.OK</code>.
    */
-  export enum KmlLayerStatus {
+  enum KmlLayerStatus {
     DOCUMENT_NOT_FOUND = 'DOCUMENT_NOT_FOUND',
     DOCUMENT_TOO_LARGE = 'DOCUMENT_TOO_LARGE',
     FETCH_ERROR = 'FETCH_ERROR',
@@ -2607,7 +2607,7 @@ declare namespace google.maps {
   /**
    * The properties of a click event on a KML/KMZ or GeoRSS document.
    */
-  export interface KmlMouseEvent {
+  interface KmlMouseEvent {
     /**
      * A <code>KmlFeatureData</code> object, containing information about the
      * clicked feature.
@@ -2651,7 +2651,7 @@ declare namespace google.maps {
    * lng: 151});<br> new google.maps.LatLng({lat: -34, lng: 151}, true);<br> new
    * google.maps.LatLng({lat: -34, lng: 151}, null, true); </pre>
    */
-  export class LatLng {
+  class LatLng {
     /**
      * A <code>LatLng</code> is a point in geographical coordinates: latitude
      * and longitude.<br> <ul> <li>Latitude ranges between -90 and 90 degrees,
@@ -2716,7 +2716,7 @@ declare namespace google.maps {
    * a rectangle in geographical coordinates, including one that crosses the 180
    * degrees longitudinal meridian.
    */
-  export class LatLngBounds {
+  class LatLngBounds {
     /**
      * A <code><a href="#LatLngBounds">LatLngBounds</a></code> instance
      * represents a rectangle in geographical coordinates, including one that
@@ -2798,7 +2798,7 @@ declare namespace google.maps {
    * <code>west</code>, <code>north</code> and <code>east</code> must be set,
    * otherwise an exception is thrown.
    */
-  export interface LatLngBoundsLiteral {
+  interface LatLngBoundsLiteral {
     /**
      * East longitude in degrees. Values outside the range [-180, 180] will be
      * wrapped to the range [-180, 180). For example, a value of -190 will be
@@ -2837,7 +2837,7 @@ declare namespace google.maps {
    * class="note">LatLng object literals are not supported in the Geometry
    * library.</p>
    */
-  export interface LatLngLiteral {
+  interface LatLngLiteral {
     /**
      * Latitude in degrees. Values will be clamped to the range [-90, 90]. This
      * means that if the value specified is less than -90, it will be set to
@@ -2859,7 +2859,7 @@ declare namespace google.maps {
    * the list of discrete coordinates (<code>LatLng</code>s) for which to return
    * elevation data.
    */
-  export interface LocationElevationRequest {
+  interface LocationElevationRequest {
     /**
      * The discrete locations for which to retrieve elevations.
      */
@@ -2872,7 +2872,7 @@ declare namespace google.maps {
    * containing the list of {@link google.maps.ElevationResult}s matching the
    * locations of the {@link google.maps.LocationElevationRequest}.
    */
-  export interface LocationElevationResponse {
+  interface LocationElevationResponse {
     /**
      * The list of {@link google.maps.ElevationResult}s matching the locations
      * of the {@link google.maps.LocationElevationRequest}.
@@ -2881,7 +2881,7 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  export class MVCArray<T = any> extends google.maps.MVCObject {
+  class MVCArray<T = any> extends google.maps.MVCObject {
     constructor(array?: T[]|null);
     /**
      * Removes all elements from the array.
@@ -2937,7 +2937,7 @@ declare namespace google.maps {
    * of other classes in the API, and inheriting from other classes in the API
    * is not supported.
    */
-  export class MVCObject {
+  class MVCObject {
     /**
      * Adds the given listener function to the given event name. Returns an
      * identifier for this listener that can be used with
@@ -2981,7 +2981,7 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  export class Map extends google.maps.MVCObject {
+  class Map extends google.maps.MVCObject {
     constructor(mapDiv: Element, opts?: google.maps.MapOptions);
     /**
      * Additional controls to attach to the map. To add a control to the map,
@@ -3142,7 +3142,7 @@ declare namespace google.maps {
    * the draw method. It is not guaranteed to be initialized until draw is
    * called.
    */
-  export interface MapCanvasProjection {
+  interface MapCanvasProjection {
     /**
      * Computes the geographical coordinates from pixel coordinates in the
      * map&#39;s container.
@@ -3177,9 +3177,33 @@ declare namespace google.maps {
 }
 declare namespace google.maps {
   /**
+   * This object is returned from various mouse events on the map and overlays,
+   * and contains all the fields shown below.
+   */
+  interface MapMouseEvent {
+    /**
+     * The corresponding native DOM event. Developers should not rely on
+     * <code>target</code>, <code>currentTarget</code>,
+     * <code>relatedTarget</code> and <code>path</code> properties being defined
+     * and consistent. Developers should not also rely on the DOM structure of
+     * the internal implementation of the Maps API.
+     */
+    domEvent: MouseEvent|TouchEvent|PointerEvent|Event;
+    /**
+     * The latitude/longitude that was below the cursor when the event occurred.
+     */
+    latLng: google.maps.LatLng|null;
+    /**
+     * Prevents this event from propagating further.
+     */
+    stop(): void;
+  }
+}
+declare namespace google.maps {
+  /**
    * MapOptions object used to define the properties that can be set on a Map.
    */
-  export interface MapOptions {
+  interface MapOptions {
     /**
      * Color used for the background of the Map div. This color will be visible
      * when tiles have not yet loaded as the user pans. This option can only be
@@ -3417,7 +3441,7 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  export interface MapPanes {
+  interface MapPanes {
     /**
      * This pane contains the info window. It is above all map overlays. (Pane
      * 4).
@@ -3448,7 +3472,7 @@ declare namespace google.maps {
    * A restriction that can be applied to the Map. The map&#39;s viewport will
    * not exceed these restrictions.
    */
-  export interface MapRestriction {
+  interface MapRestriction {
     /**
      * When set, a user can only pan and zoom inside the given bounds. Bounds
      * can restrict both longitude and latitude, or can restrict latitude only.
@@ -3473,7 +3497,7 @@ declare namespace google.maps {
    * This interface defines the map type, and is typically used for custom map
    * types. Immutable.
    */
-  export interface MapType {
+  interface MapType {
     /**
      * Alt text to display when this MapType&#39;s button is hovered over in the
      * MapTypeControl. Optional.
@@ -3526,7 +3550,7 @@ declare namespace google.maps {
   /**
    * Options for the rendering of the map type control.
    */
-  export interface MapTypeControlOptions {
+  interface MapTypeControlOptions {
     /**
      * IDs of map types to show in the control.
      */
@@ -3546,7 +3570,7 @@ declare namespace google.maps {
   /**
    * Identifiers for common MapTypesControls.
    */
-  export enum MapTypeControlStyle {
+  enum MapTypeControlStyle {
     DEFAULT = 0.0,
     DROPDOWN_MENU = 1.0,
     HORIZONTAL_BAR = 2.0,
@@ -3558,7 +3582,7 @@ declare namespace google.maps {
    * constant&#39;s name. For example, <code>'satellite'</code> or
    * <code>google.maps.MapTypeId.SATELLITE</code>.
    */
-  export enum MapTypeId {
+  enum MapTypeId {
     HYBRID = 'HYBRID',
     ROADMAP = 'ROADMAP',
     SATELLITE = 'SATELLITE',
@@ -3569,7 +3593,7 @@ declare namespace google.maps {
   /**
    * A registry for MapType instances, keyed by MapType id.
    */
-  export class MapTypeRegistry extends google.maps.MVCObject {
+  class MapTypeRegistry extends google.maps.MVCObject {
     /**
      * Sets the registry to associate the passed string identifier with the
      * passed MapType.
@@ -3585,7 +3609,7 @@ declare namespace google.maps {
    * features and elements should be modified. For details, see the <a
    * href="/maps/documentation/javascript/style-reference">style reference</a>.
    */
-  export interface MapTypeStyle {
+  interface MapTypeStyle {
     /**
      * The element to which a styler should be applied. An element is a visual
      * aspect of a feature on the map. Example: a label, an icon, the stroke or
@@ -3620,7 +3644,7 @@ declare namespace google.maps {
    * An event listener, created by <code><a
    * href="#event">google.maps.event.addListener</a>()</code> and friends.
    */
-  export interface MapsEventListener {
+  interface MapsEventListener {
     /**
      * Removes the listener. <p>Calling <code>listener.remove()</code> is
      * equivalent to <code>google.maps.event.removeListener(listener)</code>.
@@ -3629,7 +3653,7 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  export class Marker extends google.maps.MVCObject {
+  class Marker extends google.maps.MVCObject {
     constructor(opts?: google.maps.MarkerOptions|null);
     getAnimation(): google.maps.Animation|null;
     getClickable(): boolean;
@@ -3682,7 +3706,7 @@ declare namespace google.maps {
    * you are using it with a custom marker, you can reposition it with the
    * <code>labelOrigin</code> property in the <code>Icon</code> class.
    */
-  export interface MarkerLabel {
+  interface MarkerLabel {
     /**
      * The className property of the label&#39;s element (equivalent to the
      * element&#39;s class attribute). Multiple space-separated CSS classes can
@@ -3725,7 +3749,7 @@ declare namespace google.maps {
    * MarkerOptions object used to define the properties that can be set on a
    * Marker.
    */
-  export interface MarkerOptions {
+  interface MarkerOptions {
     /**
      * The offset from the marker&#39;s position to the tip of an InfoWindow
      * that has been opened with the marker as anchor.
@@ -3817,7 +3841,7 @@ declare namespace google.maps {
    * consists of two properties &mdash; <code>type</code> and <code>coord</code>
    * &mdash; which define the non-transparent region of an image.
    */
-  export interface MarkerShape {
+  interface MarkerShape {
     /**
      * The format of this attribute depends on the value of the
      * <code>type</code> and follows the w3 AREA <code>coords</code>
@@ -3849,7 +3873,7 @@ declare namespace google.maps {
   /**
    * A MaxZoom result in JSON format retrieved from the MaxZoomService.
    */
-  export interface MaxZoomResult {
+  interface MaxZoomResult {
     /**
      * Status of the request. This property is only defined when using callbacks
      * with {@link google.maps.MaxZoomService.getMaxZoomAtLatLng} (it is not
@@ -3867,7 +3891,7 @@ declare namespace google.maps {
    * A service for obtaining the highest zoom level at which satellite imagery
    * is available for a given location.
    */
-  export class MaxZoomService {
+  class MaxZoomService {
     /**
      * Returns the maximum zoom level for which detailed imagery is available at
      * a particular <code>LatLng</code> for the <code>satellite</code> map type.
@@ -3892,7 +3916,7 @@ declare namespace google.maps {
    * using the constant&#39;s name. For example, <code>'OK'</code> or
    * <code>google.maps.MaxZoomStatus.OK</code>.
    */
-  export enum MaxZoomStatus {
+  enum MaxZoomStatus {
     ERROR = 'ERROR',
     OK = 'OK',
   }
@@ -3901,28 +3925,12 @@ declare namespace google.maps {
   /**
    * Options for the rendering of the motion tracking control.
    */
-  export interface MotionTrackingControlOptions {
+  interface MotionTrackingControlOptions {
     /**
      * Position id. This is used to specify the position of this control on the
      * panorama. The default position is <code>RIGHT_BOTTOM</code>.
      */
     position?: google.maps.ControlPosition|null;
-  }
-}
-declare namespace google.maps {
-  /**
-   * This object is returned from various mouse events on the map and overlays,
-   * and contains all the fields shown below.
-   */
-  export interface MouseEvent {
-    /**
-     * The latitude/longitude that was below the cursor when the event occurred.
-     */
-    latLng: google.maps.LatLng|null;
-    /**
-     * Prevents this event from propagating further.
-     */
-    stop(): void;
   }
 }
 declare namespace google.maps {
@@ -3946,7 +3954,7 @@ declare namespace google.maps {
    * method will then be called whenever a map property changes that could
    * change the position of the element, such as zoom, center, or map type.
    */
-  export class OverlayView extends google.maps.MVCObject {
+  class OverlayView extends google.maps.MVCObject {
     /**
      * Implement this method to draw or update the overlay. Use the position
      * from projection.fromLatLngToDivPixel() to correctly position the overlay
@@ -3996,7 +4004,7 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  export interface Padding {
+  interface Padding {
     /**
      * Padding for the bottom, in pixels.
      */
@@ -4019,7 +4027,7 @@ declare namespace google.maps {
   /**
    * Options for the rendering of the pan control.
    */
-  export interface PanControlOptions {
+  interface PanControlOptions {
     /**
      * Position id. Used to specify the position of the control on the map. The
      * default position is <code>TOP_LEFT</code>.
@@ -4031,7 +4039,7 @@ declare namespace google.maps {
   /**
    * Options for the Custom Pano Provider.
    */
-  export interface PanoProviderOptions {
+  interface PanoProviderOptions {
     /**
      * If set, the renderer will use technologies (like webgl) that only work
      * when cors headers are appropiately set on the provided images. It is the
@@ -4049,7 +4057,7 @@ declare namespace google.maps {
    * evenly-spaced distances. All paths from vertex to vertex use segments of
    * the great circle between those two points.
    */
-  export interface PathElevationRequest {
+  interface PathElevationRequest {
     /**
      * The path along which to collect elevation values.
      */
@@ -4068,7 +4076,7 @@ declare namespace google.maps {
    * containing the list of {@link google.maps.ElevationResult}s evenly-spaced
    * along the path of the {@link google.maps.PathElevationRequest}.
    */
-  export interface PathElevationResponse {
+  interface PathElevationResponse {
     /**
      * The list of {@link google.maps.ElevationResult}s matching the samples of
      * the {@link google.maps.PathElevationRequest}.
@@ -4084,7 +4092,7 @@ declare namespace google.maps {
    * means a business, point of interest, or geographic location. For fetching
    * information about a place, see {@link google.maps.places.PlacesService}.
    */
-  export interface Place {
+  interface Place {
     /**
      * The <code>LatLng</code> of the entity described by this place.
      */
@@ -4114,7 +4122,7 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  export class Point {
+  class Point {
     constructor(x: number, y: number);
     /**
      * Compares two Points
@@ -4138,7 +4146,7 @@ declare namespace google.maps {
   /**
    * This object is returned from mouse events on polylines and polygons.
    */
-  export interface PolyMouseEvent extends google.maps.MouseEvent {
+  interface PolyMouseEvent extends google.maps.MapMouseEvent {
     /**
      * The index of the edge within the path beneath the cursor when the event
      * occurred, if the event occurred on a mid-point on an editable polygon.
@@ -4171,7 +4179,7 @@ declare namespace google.maps {
    * offers a simpler way of creating holes because it handles the order of the
    * inner and outer paths for you.
    */
-  export class Polygon extends google.maps.MVCObject {
+  class Polygon extends google.maps.MVCObject {
     /**
      * A polygon (like a polyline) defines a series of connected coordinates in
      * an ordered sequence. Additionally, polygons form a closed loop and define
@@ -4247,7 +4255,7 @@ declare namespace google.maps {
    * PolygonOptions object used to define the properties that can be set on a
    * Polygon.
    */
-  export interface PolygonOptions {
+  interface PolygonOptions {
     /**
      * Indicates whether this <code>Polygon</code> handles mouse events.
      * Defaults to <code>true</code>.
@@ -4333,7 +4341,7 @@ declare namespace google.maps {
   /**
    * A polyline is a linear overlay of connected line segments on the map.
    */
-  export class Polyline extends google.maps.MVCObject {
+  class Polyline extends google.maps.MVCObject {
     /**
      * A polyline is a linear overlay of connected line segments on the map.
      */
@@ -4391,7 +4399,7 @@ declare namespace google.maps {
    * PolylineOptions object used to define the properties that can be set on a
    * Polyline.
    */
-  export interface PolylineOptions {
+  interface PolylineOptions {
     /**
      * Indicates whether this <code>Polyline</code> handles mouse events.
      * Defaults to <code>true</code>.
@@ -4461,7 +4469,7 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  export interface Projection {
+  interface Projection {
     /**
      * Translates from the LatLng cylinder to the Point plane. This interface
      * specifies a function which implements translation from given
@@ -4489,7 +4497,7 @@ declare namespace google.maps {
   /**
    * A rectangle overlay.
    */
-  export class Rectangle extends google.maps.MVCObject {
+  class Rectangle extends google.maps.MVCObject {
     /**
      * A rectangle overlay.
      */
@@ -4545,7 +4553,7 @@ declare namespace google.maps {
    * RectangleOptions object used to define the properties that can be set on a
    * Rectangle.
    */
-  export interface RectangleOptions {
+  interface RectangleOptions {
     /**
      * The bounds.
      */
@@ -4612,7 +4620,7 @@ declare namespace google.maps {
   /**
    * Options for the rendering of the rotate control.
    */
-  export interface RotateControlOptions {
+  interface RotateControlOptions {
     /**
      * Position id. Used to specify the position of the control on the map. The
      * default position is <code>TOP_LEFT</code>.
@@ -4624,7 +4632,7 @@ declare namespace google.maps {
   /**
    * Options for the rendering of the scale control.
    */
-  export interface ScaleControlOptions {
+  interface ScaleControlOptions {
     /**
      * Style id. Used to select what style of scale control to display.
      */
@@ -4635,12 +4643,12 @@ declare namespace google.maps {
   /**
    * Identifiers for scale control ids.
    */
-  export enum ScaleControlStyle {
+  enum ScaleControlStyle {
     DEFAULT = 0.0,
   }
 }
 declare namespace google.maps {
-  export class Size {
+  class Size {
     constructor(
         width: number, height: number, widthUnit?: string, heightUnit?: string);
     /**
@@ -4665,7 +4673,7 @@ declare namespace google.maps {
   /**
    * Options for the rendering of the Street View address control.
    */
-  export interface StreetViewAddressControlOptions {
+  interface StreetViewAddressControlOptions {
     /**
      * Position id. This id is used to specify the position of the control on
      * the map. The default position is <code>TOP_LEFT</code>.
@@ -4677,7 +4685,7 @@ declare namespace google.maps {
   /**
    * Options for the rendering of the Street View pegman control on the map.
    */
-  export interface StreetViewControlOptions {
+  interface StreetViewControlOptions {
     /**
      * Position id. Used to specify the position of the control on the map. The
      * default position is embedded within the navigation (zoom and pan)
@@ -4693,7 +4701,7 @@ declare namespace google.maps {
   /**
    * A layer that illustrates the locations where Street View is available.
    */
-  export class StreetViewCoverageLayer extends google.maps.MVCObject {
+  class StreetViewCoverageLayer extends google.maps.MVCObject {
     /**
      * Returns the map on which this layer is displayed.
      */
@@ -4709,7 +4717,7 @@ declare namespace google.maps {
   /**
    * A collection of references to adjacent Street View panos.
    */
-  export interface StreetViewLink {
+  interface StreetViewLink {
     /**
      * A localized string describing the link.
      */
@@ -4729,7 +4737,7 @@ declare namespace google.maps {
   /**
    * A representation of a location in the Street View panorama.
    */
-  export interface StreetViewLocation {
+  interface StreetViewLocation {
     /**
      * A localized string describing the location.
      */
@@ -4755,7 +4763,7 @@ declare namespace google.maps {
    * <code>StreetViewLocationRequest</code> lets you search for a Street View
    * panoroma at a specified location.
    */
-  export interface StreetViewLocationRequest {
+  interface StreetViewLocationRequest {
     /**
      * Specifies the location where to search for a Street View panorama.
      */
@@ -4784,7 +4792,7 @@ declare namespace google.maps {
    * A <code>StreetViewPanoRequest</code> is used with the
    * <code>getPanorama</code> to find a panorama with a specified ID.
    */
-  export interface StreetViewPanoRequest {
+  interface StreetViewPanoRequest {
     /**
      * Specifies the pano ID to search for.
      */
@@ -4798,7 +4806,7 @@ declare namespace google.maps {
    * &quot;viewer&quot; which can be stand-alone within a separate
    * <code>&lt;div&gt;</code> or bound to a <code>Map</code>.
    */
-  export class StreetViewPanorama extends google.maps.MVCObject {
+  class StreetViewPanorama extends google.maps.MVCObject {
     /**
      * Displays the panorama for a given <code>LatLng</code> or panorama ID. A
      * <code>StreetViewPanorama</code> object provides a Street View
@@ -4918,7 +4926,7 @@ declare namespace google.maps {
    * The representation of a panorama returned from the provider defined using
    * <code>registerPanoProvider</code>.
    */
-  export interface StreetViewPanoramaData {
+  interface StreetViewPanoramaData {
     /**
      * Specifies the copyright text for this panorama.
      */
@@ -4947,7 +4955,7 @@ declare namespace google.maps {
    * Options defining the properties of a <code>StreetViewPanorama</code>
    * object.
    */
-  export interface StreetViewPanoramaOptions {
+  interface StreetViewPanoramaOptions {
     /**
      * The enabled/disabled state of the address control.
      */
@@ -5075,7 +5083,7 @@ declare namespace google.maps {
    * Street View panorama&#39;s position. The point of view is defined as
    * heading and pitch.
    */
-  export interface StreetViewPov {
+  interface StreetViewPov {
     /**
      * The camera heading in degrees relative to true north. True north is
      * 0&deg;, east is 90&deg;, south is 180&deg;, west is 270&deg;.
@@ -5096,7 +5104,7 @@ declare namespace google.maps {
    * using the constant&#39;s name. For example, <code>'best'</code> or
    * <code>google.maps.StreetViewPreference.BEST</code>.
    */
-  export enum StreetViewPreference {
+  enum StreetViewPreference {
     BEST = 'BEST',
     NEAREST = 'NEAREST',
   }
@@ -5106,7 +5114,7 @@ declare namespace google.maps {
    * The response resolved for a Promise from {@link
    * google.maps.StreetViewService.getPanorama}.
    */
-  export interface StreetViewResponse {
+  interface StreetViewResponse {
     /**
      * The representation of a panorama.
      */
@@ -5118,7 +5126,7 @@ declare namespace google.maps {
    * A <code>StreetViewService</code> object performs searches for Street View
    * data.
    */
-  export class StreetViewService {
+  class StreetViewService {
     /**
      * Retrieves the <code>StreetViewPanoramaData</code> for a panorama that
      * matches the supplied Street View query request. The
@@ -5143,7 +5151,7 @@ declare namespace google.maps {
    * Identifiers to limit Street View searches to selected sources. These values
    * are specified as strings. For example, <code>'outdoor'</code>.
    */
-  export enum StreetViewSource {
+  enum StreetViewSource {
     DEFAULT = 'DEFAULT',
     OUTDOOR = 'OUTDOOR',
   }
@@ -5155,7 +5163,7 @@ declare namespace google.maps {
    * constant&#39;s name. For example, <code>'OK'</code> or
    * <code>google.maps.StreetViewStatus.OK</code>.
    */
-  export enum StreetViewStatus {
+  enum StreetViewStatus {
     OK = 'OK',
     UNKNOWN_ERROR = 'UNKNOWN_ERROR',
     ZERO_RESULTS = 'ZERO_RESULTS',
@@ -5165,7 +5173,7 @@ declare namespace google.maps {
   /**
    * The properties of the tile set used in a Street View panorama.
    */
-  export interface StreetViewTileData {
+  interface StreetViewTileData {
     /**
      * The heading (in degrees) at the center of the panoramic tiles.
      */
@@ -5196,7 +5204,7 @@ declare namespace google.maps {
   /**
    * The possible positions of the stroke on a polygon.
    */
-  export enum StrokePosition {
+  enum StrokePosition {
     CENTER = 0.0,
     INSIDE = 1.0,
     OUTSIDE = 2.0,
@@ -5206,7 +5214,7 @@ declare namespace google.maps {
   /**
    * Creates a <code>MapType</code> with a custom style.
    */
-  export class StyledMapType extends google.maps.MVCObject implements
+  class StyledMapType extends google.maps.MVCObject implements
       google.maps.MapType {
     /**
      * Creates a <code>MapType</code> with a custom style.
@@ -5233,7 +5241,7 @@ declare namespace google.maps {
    * <code>StyledMapType</code>. These options cannot be changed after the
    * <code>StyledMapType</code> is instantiated.
    */
-  export interface StyledMapTypeOptions {
+  interface StyledMapTypeOptions {
     /**
      * Text to display when this <code>MapType</code>&#39;s button is hovered
      * over in the map type control.
@@ -5260,7 +5268,7 @@ declare namespace google.maps {
    * Describes a symbol, which consists of a vector path with styling. A symbol
    * can be used as the icon of a marker, or placed on a polyline.
    */
-  export interface Symbol {
+  interface Symbol {
     /**
      * The position of the symbol relative to the marker or polyline. The
      * coordinates of the symbol&#39;s path are translated left and up by the
@@ -5333,7 +5341,7 @@ declare namespace google.maps {
   /**
    * Built-in symbol paths.
    */
-  export enum SymbolPath {
+  enum SymbolPath {
     BACKWARD_CLOSED_ARROW = 0.0,
     BACKWARD_OPEN_ARROW = 1.0,
     CIRCLE = 2.0,
@@ -5346,7 +5354,7 @@ declare namespace google.maps {
    * A representation of time as a Date object, a localized string, and a time
    * zone.
    */
-  export interface Time {
+  interface Time {
     /**
      * A string representing the time&#39;s value. The time is displayed in the
      * time zone of the transit stop.
@@ -5369,7 +5377,7 @@ declare namespace google.maps {
   /**
    * A traffic layer.
    */
-  export class TrafficLayer extends google.maps.MVCObject {
+  class TrafficLayer extends google.maps.MVCObject {
     /**
      * A traffic layer.
      */
@@ -5391,7 +5399,7 @@ declare namespace google.maps {
    * TrafficLayerOptions object used to define the properties that can be set on
    * a TrafficLayer.
    */
-  export interface TrafficLayerOptions {
+  interface TrafficLayerOptions {
     /**
      * Whether the traffic layer refreshes with updated information
      * automatically. This is true by default.
@@ -5412,7 +5420,7 @@ declare namespace google.maps {
    * <code>'bestguess'</code> or
    * <code>google.maps.TrafficModel.BEST_GUESS</code>.
    */
-  export enum TrafficModel {
+  enum TrafficModel {
     BEST_GUESS = 'BEST_GUESS',
     OPTIMISTIC = 'OPTIMISTIC',
     PESSIMISTIC = 'PESSIMISTIC',
@@ -5422,7 +5430,7 @@ declare namespace google.maps {
   /**
    * Information about an agency that operates a transit line.
    */
-  export interface TransitAgency {
+  interface TransitAgency {
     /**
      * The name of this transit agency.
      */
@@ -5442,7 +5450,7 @@ declare namespace google.maps {
    * Details about the departure, arrival, and mode of transit used in this
    * step.
    */
-  export interface TransitDetails {
+  interface TransitDetails {
     /**
      * The arrival stop of this transit step.
      */
@@ -5490,7 +5498,7 @@ declare namespace google.maps {
    * A fare of a <code><a href="#DirectionsResult">DirectionsRoute</a> </code>
    * consisting of value and currency.
    */
-  export interface TransitFare {
+  interface TransitFare {
     /**
      * An <a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217 currency
      * code</a> indicating the currency in which the fare is expressed.
@@ -5507,7 +5515,7 @@ declare namespace google.maps {
   /**
    * A transit layer.
    */
-  export class TransitLayer extends google.maps.MVCObject {
+  class TransitLayer extends google.maps.MVCObject {
     /**
      * Returns the map on which this layer is displayed.
      */
@@ -5523,7 +5531,7 @@ declare namespace google.maps {
   /**
    * Information about the transit line that operates this transit step.
    */
-  export interface TransitLine {
+  interface TransitLine {
     /**
      * The transit agency that operates this transit line.
      */
@@ -5567,7 +5575,7 @@ declare namespace google.maps {
    * value, or by using the constant&#39;s name. For example, <code>'BUS'</code>
    * or <code>google.maps.TransitMode.BUS</code>.
    */
-  export enum TransitMode {
+  enum TransitMode {
     BUS = 'BUS',
     RAIL = 'RAIL',
     SUBWAY = 'SUBWAY',
@@ -5581,7 +5589,7 @@ declare namespace google.maps {
    * href="#DirectionsRequest">DirectionsRequest</a></code> when the travel mode
    * is set to TRANSIT.
    */
-  export interface TransitOptions {
+  interface TransitOptions {
     /**
      * The desired arrival time for the route, specified as a Date object. The
      * Date object measures time in milliseconds since 1 January 1970. If
@@ -5616,7 +5624,7 @@ declare namespace google.maps {
    * <code>'LESS_WALKING'</code> or
    * <code>google.maps.TransitRoutePreference.LESS_WALKING</code>.
    */
-  export enum TransitRoutePreference {
+  enum TransitRoutePreference {
     FEWER_TRANSFERS = 'FEWER_TRANSFERS',
     LESS_WALKING = 'LESS_WALKING',
   }
@@ -5625,7 +5633,7 @@ declare namespace google.maps {
   /**
    * Details about a transit stop or station.
    */
-  export interface TransitStop {
+  interface TransitStop {
     /**
      * The location of this stop.
      */
@@ -5640,7 +5648,7 @@ declare namespace google.maps {
   /**
    * Information about the vehicle that operates on a transit line.
    */
-  export interface TransitVehicle {
+  interface TransitVehicle {
     /**
      * A URL for an icon that corresponds to the type of vehicle used on this
      * line.
@@ -5670,7 +5678,7 @@ declare namespace google.maps {
    * constant&#39;s name. For example, <code>'BICYCLING'</code> or
    * <code>google.maps.TravelMode.BICYCLING</code>.
    */
-  export enum TravelMode {
+  enum TravelMode {
     BICYCLING = 'BICYCLING',
     DRIVING = 'DRIVING',
     TRANSIT = 'TRANSIT',
@@ -5682,7 +5690,7 @@ declare namespace google.maps {
    * The valid unit systems that can be specified in a <i><code><a
    * href="#DirectionsRequest">DirectionsRequest</a></code></i>.
    */
-  export enum UnitSystem {
+  enum UnitSystem {
     IMPERIAL = 0.0,
     METRIC = 1.0,
   }
@@ -5692,7 +5700,7 @@ declare namespace google.maps {
    * Possible values for vehicle types. These values are specified as strings,
    * i.e. &#39;BUS&#39; or &#39;TRAIN&#39;.
    */
-  export enum VehicleType {
+  enum VehicleType {
     BUS = 'BUS',
     CABLE_CAR = 'CABLE_CAR',
     COMMUTER_TRAIN = 'COMMUTER_TRAIN',
@@ -5716,7 +5724,7 @@ declare namespace google.maps {
   /**
    * Options for the rendering of the zoom control.
    */
-  export interface ZoomControlOptions {
+  interface ZoomControlOptions {
     /**
      * Position id. Used to specify the position of the control on the map. The
      * default position is <code>TOP_LEFT</code>.
@@ -5728,7 +5736,7 @@ declare namespace google.maps.drawing {
   /**
    * Options for the rendering of the drawing control.
    */
-  export interface DrawingControlOptions {
+  interface DrawingControlOptions {
     /**
      * The drawing modes to display in the drawing control, in the order in
      * which they are to be displayed. The hand icon (which corresponds to the
@@ -5751,7 +5759,7 @@ declare namespace google.maps.drawing {
    * type of overlay that will be created by the user. Adds a control to the
    * map, allowing the user to switch drawing mode.
    */
-  export class DrawingManager extends google.maps.MVCObject {
+  class DrawingManager extends google.maps.MVCObject {
     /**
      * Allows users to draw markers, polygons, polylines, rectangles, and
      * circles on the map. The <code>DrawingManager</code>&#39;s drawing mode
@@ -5793,7 +5801,7 @@ declare namespace google.maps.drawing {
   /**
    * Options for the drawing manager.
    */
-  export interface DrawingManagerOptions {
+  interface DrawingManagerOptions {
     /**
      * Options to apply to any new circles created with this
      * <code>DrawingManager</code>. The <code>center</code> and
@@ -5861,7 +5869,7 @@ declare namespace google.maps.drawing {
    * The properties of an overlaycomplete event on a
    * <code>DrawingManager</code>.
    */
-  export interface OverlayCompleteEvent {
+  interface OverlayCompleteEvent {
     /**
      * The completed overlay.
      */
@@ -5880,7 +5888,7 @@ declare namespace google.maps.drawing {
    * constant&#39;s name. For example, <code>'polygon'</code> or
    * <code>google.maps.drawing.OverlayType.POLYGON</code>.
    */
-  export enum OverlayType {
+  enum OverlayType {
     CIRCLE = 'CIRCLE',
     MARKER = 'MARKER',
     POLYGON = 'POLYGON',
@@ -5894,7 +5902,7 @@ declare namespace google.maps.event {
    * calling removeListener(handle) for the handle that is returned by this
    * function.
    */
-  export function addDomListener(
+  function addDomListener(
       instance: object, eventName: string, handler: Function,
       capture?: boolean): google.maps.MapsEventListener;
 }
@@ -5903,7 +5911,7 @@ declare namespace google.maps.event {
    * Wrapper around addDomListener that removes the listener after the first
    * event.
    */
-  export function addDomListenerOnce(
+  function addDomListenerOnce(
       instance: object, eventName: string, handler: Function,
       capture?: boolean): google.maps.MapsEventListener;
 }
@@ -5913,16 +5921,15 @@ declare namespace google.maps.event {
    * object instance. Returns an identifier for this listener that can be used
    * with removeListener().
    */
-  export function addListener(
-      instance: object, eventName: string,
-      handler: Function): google.maps.MapsEventListener;
+  function addListener(instance: object, eventName: string, handler: Function):
+      google.maps.MapsEventListener;
 }
 declare namespace google.maps.event {
   /**
    * Like addListener, but the handler removes itself after handling the first
    * event.
    */
-  export function addListenerOnce(
+  function addListenerOnce(
       instance: object, eventName: string,
       handler: Function): google.maps.MapsEventListener;
 }
@@ -5930,47 +5937,47 @@ declare namespace google.maps.event {
   /**
    * Removes all listeners for all events for the given instance.
    */
-  export function clearInstanceListeners(instance: object): void;
+  function clearInstanceListeners(instance: object): void;
 }
 declare namespace google.maps.event {
   /**
    * Removes all listeners for the given event for the given instance.
    */
-  export function clearListeners(instance: object, eventName: string): void;
+  function clearListeners(instance: object, eventName: string): void;
 }
 declare namespace google.maps.event {
   /**
    * Removes the given listener, which should have been returned by addListener
    * above. Equivalent to calling <code>listener.remove()</code>.
    */
-  export function removeListener(listener: google.maps.MapsEventListener): void;
+  function removeListener(listener: google.maps.MapsEventListener): void;
 }
 declare namespace google.maps.event {
   /**
    * Triggers the given event. All arguments after eventName are passed as
    * arguments to the listeners.
    */
-  export function trigger(
+  function trigger(
       instance: object, eventName: string, ...eventArgs: any[]): void;
 }
 declare namespace google.maps.geometry.encoding {
   /**
    * Decodes an encoded path string into a sequence of LatLngs.
    */
-  export function decodePath(encodedPath: string): (google.maps.LatLng|null)[];
+  function decodePath(encodedPath: string): (google.maps.LatLng|null)[];
 }
 declare namespace google.maps.geometry.encoding {
   /**
    * Encodes a sequence of LatLngs into an encoded path string.
    */
-  export function encodePath(path: (google.maps.LatLng|null)[]|null|
-                             google.maps.MVCArray<any>): string;
+  function encodePath(path: (google.maps.LatLng|null)[]|null|
+                      google.maps.MVCArray<any>): string;
 }
 declare namespace google.maps.geometry.poly {
   /**
    * Computes whether the given point lies inside the specified polygon.
    */
-  export function containsLocation(
+  function containsLocation(
       point: google.maps.LatLng|null,
       polygon: google.maps.Polygon|null): boolean;
 }
@@ -5982,7 +5989,7 @@ declare namespace google.maps.geometry.poly {
    * and the closest point on the edge, is less than the tolerance. The
    * tolerance defaults to 10<sup>-9</sup> degrees.
    */
-  export function isLocationOnEdge(
+  function isLocationOnEdge(
       point: google.maps.LatLng|null,
       poly: google.maps.Polygon|null|google.maps.Polyline,
       tolerance?: number): boolean;
@@ -5993,7 +6000,7 @@ declare namespace google.maps.geometry.spherical {
    * the radius. The radius defaults to the Earth&#39;s radius in meters, in
    * which case the area is in square meters.
    */
-  export function computeArea(
+  function computeArea(
       path: (google.maps.LatLng|null)[]|null|google.maps.MVCArray<any>,
       radius?: number): number;
 }
@@ -6002,7 +6009,7 @@ declare namespace google.maps.geometry.spherical {
    * Returns the distance, in meters, between two LatLngs. You can optionally
    * specify a custom radius. The radius defaults to the radius of the Earth.
    */
-  export function computeDistanceBetween(
+  function computeDistanceBetween(
       from: google.maps.LatLng|null, to: google.maps.LatLng|null,
       radius?: number): number;
 }
@@ -6011,14 +6018,14 @@ declare namespace google.maps.geometry.spherical {
    * Returns the heading from one LatLng to another LatLng. Headings are
    * expressed in degrees clockwise from North within the range [-180,180).
    */
-  export function computeHeading(
+  function computeHeading(
       from: google.maps.LatLng|null, to: google.maps.LatLng|null): number;
 }
 declare namespace google.maps.geometry.spherical {
   /**
    * Returns the length of the given path.
    */
-  export function computeLength(
+  function computeLength(
       path: (google.maps.LatLng|null)[]|null|google.maps.MVCArray<any>,
       radius?: number): number;
 }
@@ -6027,7 +6034,7 @@ declare namespace google.maps.geometry.spherical {
    * Returns the LatLng resulting from moving a distance from an origin in the
    * specified heading (expressed in degrees clockwise from north).
    */
-  export function computeOffset(
+  function computeOffset(
       from: google.maps.LatLng|null, distance: number, heading: number,
       radius?: number): google.maps.LatLng;
 }
@@ -6038,7 +6045,7 @@ declare namespace google.maps.geometry.spherical {
    * clockwise from North. This function returns null when no solution is
    * available.
    */
-  export function computeOffsetOrigin(
+  function computeOffsetOrigin(
       to: google.maps.LatLng|null, distance: number, heading: number,
       radius?: number): google.maps.LatLng|null;
 }
@@ -6049,7 +6056,7 @@ declare namespace google.maps.geometry.spherical {
    * units as the radius. The radius defaults to the Earth&#39;s radius in
    * meters, in which case the area is in square meters.
    */
-  export function computeSignedArea(
+  function computeSignedArea(
       loop: (google.maps.LatLng|null)[]|null|google.maps.MVCArray<any>,
       radius?: number): number;
 }
@@ -6058,7 +6065,7 @@ declare namespace google.maps.geometry.spherical {
    * Returns the LatLng which lies the given fraction of the way between the
    * origin LatLng and the destination LatLng.
    */
-  export function interpolate(
+  function interpolate(
       from: google.maps.LatLng|null, to: google.maps.LatLng|null,
       fraction: number): google.maps.LatLng;
 }
@@ -6066,7 +6073,7 @@ declare namespace google.maps.localContext {
   /**
    * Shows a Local Context experience with a {@link google.maps.Map}.
    */
-  export class LocalContextMapView implements
+  class LocalContextMapView implements
       google.maps.localContext.LocalContextMapViewOptions {
     /**
      * Shows a Local Context experience with a {@link google.maps.Map}.
@@ -6165,7 +6172,7 @@ declare namespace google.maps.localContext {
    * google.maps.localContext.LocalContextMapView}, or accessing an
    * existing {@link google.maps.localContext.LocalContextMapView}.
    */
-  export interface LocalContextMapViewOptions {
+  interface LocalContextMapViewOptions {
     /**
      * Options for customizing directions. If not set, directions and distance
      * will be disabled.
@@ -6256,7 +6263,7 @@ declare namespace google.maps.localContext {
    * Provides settings for directions with a {@link
    * google.maps.localContext.LocalContextMapView}.
    */
-  export class MapDirectionsOptions implements
+  class MapDirectionsOptions implements
       google.maps.localContext.MapDirectionsOptionsLiteral {
     /**
      * Adds the given listener function to the given event name.
@@ -6274,7 +6281,7 @@ declare namespace google.maps.localContext {
    * google.maps.localContext.MapDirectionsOptions} objects when the Maps API
    * encounters them.
    */
-  export interface MapDirectionsOptionsLiteral {
+  interface MapDirectionsOptionsLiteral {
     /**
      * Origin for directions and distance.
      */
@@ -6285,7 +6292,7 @@ declare namespace google.maps.localContext {
   /**
    * Options for customizing a pin marker.
    */
-  export interface PinOptions {
+  interface PinOptions {
     /**
      * The color of the icon&#39;s shape, can be any valid CSS color.
      */
@@ -6305,7 +6312,7 @@ declare namespace google.maps.localContext {
   /**
    * Layout modes for the place chooser.
    */
-  export enum PlaceChooserLayoutMode {
+  enum PlaceChooserLayoutMode {
     HIDDEN = 'HIDDEN',
     SHEET = 'SHEET',
   }
@@ -6314,7 +6321,7 @@ declare namespace google.maps.localContext {
   /**
    * Display positions for the place chooser.
    */
-  export enum PlaceChooserPosition {
+  enum PlaceChooserPosition {
     BLOCK_END = 'BLOCK_END',
     INLINE_END = 'INLINE_END',
     INLINE_START = 'INLINE_START',
@@ -6326,7 +6333,7 @@ declare namespace google.maps.localContext {
    * href="/maps/documentation/javascript/local-context/set-options#setting_layout_and_visibility">setting
    * layout and visibility</a>.
    */
-  export interface PlaceChooserViewSetupOptions {
+  interface PlaceChooserViewSetupOptions {
     layoutMode?: google.maps.localContext.PlaceChooserLayoutMode|null;
     /**
      * Ignored when <code>layoutMode:HIDDEN</code>. If not passed, a position
@@ -6339,7 +6346,7 @@ declare namespace google.maps.localContext {
   /**
    * Layout modes for the place details.
    */
-  export enum PlaceDetailsLayoutMode {
+  enum PlaceDetailsLayoutMode {
     INFO_WINDOW = 'INFO_WINDOW',
     SHEET = 'SHEET',
   }
@@ -6348,7 +6355,7 @@ declare namespace google.maps.localContext {
   /**
    * Display positions for the place details.
    */
-  export enum PlaceDetailsPosition {
+  enum PlaceDetailsPosition {
     INLINE_END = 'INLINE_END',
     INLINE_START = 'INLINE_START',
   }
@@ -6359,7 +6366,7 @@ declare namespace google.maps.localContext {
    * href="/maps/documentation/javascript/local-context/set-options#setting_layout_and_visibility">setting
    * layout and visibility</a>.
    */
-  export interface PlaceDetailsViewSetupOptions {
+  interface PlaceDetailsViewSetupOptions {
     hidesOnMapClick?: boolean;
     layoutMode?: google.maps.localContext.PlaceDetailsLayoutMode|null;
     /**
@@ -6371,7 +6378,7 @@ declare namespace google.maps.localContext {
   }
 }
 declare namespace google.maps.localContext {
-  export type PlaceTypePreference = {type: string, weight?: number};
+  type PlaceTypePreference = {type: string, weight?: number};
 }
 declare namespace google.maps.places {
   /**
@@ -6380,7 +6387,7 @@ declare namespace google.maps.places {
    * text entry in that field. The list of predictions is presented as a
    * drop-down list, and is updated as text is entered.
    */
-  export class Autocomplete extends google.maps.MVCObject {
+  class Autocomplete extends google.maps.MVCObject {
     /**
      * A widget that provides Place predictions based on a user&#39;s text
      * input. It attaches to an input element of type <code>text</code>, and
@@ -6442,7 +6449,7 @@ declare namespace google.maps.places {
   /**
    * The options that can be set on an <code>Autocomplete</code> object.
    */
-  export interface AutocompleteOptions {
+  interface AutocompleteOptions {
     /**
      * The area in which to search for places.
      */
@@ -6495,7 +6502,7 @@ declare namespace google.maps.places {
   /**
    * Represents a single autocomplete prediction.
    */
-  export interface AutocompletePrediction {
+  interface AutocompletePrediction {
     /**
      * This is the unformatted version of the query suggested by the Places
      * service.
@@ -6543,7 +6550,7 @@ declare namespace google.maps.places {
   /**
    * Contains methods related to retrieving Autocomplete predictions.
    */
-  export class AutocompleteService {
+  class AutocompleteService {
     /**
      * Retrieves place autocomplete predictions based on the supplied
      * autocomplete request.
@@ -6571,14 +6578,14 @@ declare namespace google.maps.places {
    * google.maps.places.AutocompleteService.getPlacePredictions} calls followed
    * by a single {@link google.maps.places.PlacesService.getDetails} call.
    */
-  export class AutocompleteSessionToken {}
+  class AutocompleteSessionToken {}
 }
 declare namespace google.maps.places {
   /**
    * An Autocompletion request to be sent to {@link
    * google.maps.places.AutocompleteService.getPlacePredictions}.
    */
-  export interface AutocompletionRequest {
+  interface AutocompletionRequest {
     /**
      * Bounds for prediction biasing. Predictions will be biased towards, but
      * not restricted to, the given <code>bounds</code>. Both
@@ -6645,7 +6652,7 @@ declare namespace google.maps.places {
    * name (example: <code>&#39;OPERATIONAL&#39;</code> or
    * <code>google.maps.places.BusinessStatus.OPERATIONAL</code>).
    */
-  export enum BusinessStatus {
+  enum BusinessStatus {
     CLOSED_PERMANENTLY = 'CLOSED_PERMANENTLY',
     CLOSED_TEMPORARILY = 'CLOSED_TEMPORARILY',
     OPERATIONAL = 'OPERATIONAL',
@@ -6656,7 +6663,7 @@ declare namespace google.maps.places {
    * Defines the component restrictions that can be used with the autocomplete
    * service.
    */
-  export interface ComponentRestrictions {
+  interface ComponentRestrictions {
     /**
      * Restricts predictions to the specified country (ISO 3166-1 Alpha-2
      * country code, case insensitive). For example, <code>'us'</code>,
@@ -6671,7 +6678,7 @@ declare namespace google.maps.places {
    * A find place from text search request to be sent to {@link
    * google.maps.places.PlacesService.findPlaceFromPhoneNumber}.
    */
-  export interface FindPlaceFromPhoneNumberRequest {
+  interface FindPlaceFromPhoneNumberRequest {
     /**
      * Fields to be included in the response, <a
      * href="https://developers.google.com/maps/billing/understanding-cost-of-use#places-product">which
@@ -6702,7 +6709,7 @@ declare namespace google.maps.places {
    * A find place from text search request to be sent to {@link
    * google.maps.places.PlacesService.findPlaceFromQuery}.
    */
-  export interface FindPlaceFromQueryRequest {
+  interface FindPlaceFromQueryRequest {
     /**
      * Fields to be included in the response, <a
      * href="https://developers.google.com/maps/billing/understanding-cost-of-use#places-product">which
@@ -6728,20 +6735,20 @@ declare namespace google.maps.places {
   }
 }
 declare namespace google.maps.places {
-  export type LocationBias =
-      google.maps.LatLng|google.maps.LatLngLiteral|
-      google.maps.LatLngBounds|google.maps.LatLngBoundsLiteral|
-      google.maps.Circle|google.maps.CircleLiteral|string;
+  type LocationBias = google.maps.LatLng|google.maps.LatLngLiteral|
+                      google.maps.LatLngBounds|
+                      google.maps.LatLngBoundsLiteral|google.maps.Circle|
+                      google.maps.CircleLiteral|string;
 }
 declare namespace google.maps.places {
-  export type LocationRestriction =
+  type LocationRestriction =
       google.maps.LatLngBounds|google.maps.LatLngBoundsLiteral;
 }
 declare namespace google.maps.places {
   /**
    * Defines photo-requesting options.
    */
-  export interface PhotoOptions {
+  interface PhotoOptions {
     /**
      * The maximum height in pixels of the returned image.
      */
@@ -6756,7 +6763,7 @@ declare namespace google.maps.places {
   /**
    * Defines information about an aspect of the place that users have reviewed.
    */
-  export interface PlaceAspectRating {
+  interface PlaceAspectRating {
     /**
      * The rating of this aspect. For individual reviews this is an integer from
      * 0 to 3. For aggregated ratings of a place this is an integer from 0
@@ -6774,7 +6781,7 @@ declare namespace google.maps.places {
   /**
    * A Place details query to be sent to the <code>PlacesService</code>.
    */
-  export interface PlaceDetailsRequest {
+  interface PlaceDetailsRequest {
     /**
      * Fields to be included in the details response, <a
      * href="https://developers.google.com/maps/billing/understanding-cost-of-use#places-product">which
@@ -6801,7 +6808,7 @@ declare namespace google.maps.places {
   /**
    * Defines information about the geometry of a Place.
    */
-  export interface PlaceGeometry {
+  interface PlaceGeometry {
     /**
      * The Place’s position.
      */
@@ -6818,7 +6825,7 @@ declare namespace google.maps.places {
   /**
    * Defines information about the opening hours of a Place.
    */
-  export interface PlaceOpeningHours {
+  interface PlaceOpeningHours {
     /**
      * Check whether the place is open now (when no date is passed), or at the
      * given date. If this place does not have {@link
@@ -6860,7 +6867,7 @@ declare namespace google.maps.places {
    * containing <code>day</code> with value <code>0</code> and <code>time</code>
    * with value <code>"0000"</code>, and no <code>close</code>.</li>
    */
-  export interface PlaceOpeningHoursPeriod {
+  interface PlaceOpeningHoursPeriod {
     /**
      * The closing time for the Place.
      */
@@ -6875,7 +6882,7 @@ declare namespace google.maps.places {
   /**
    * Defines when a Place opens or closes.
    */
-  export interface PlaceOpeningHoursTime {
+  interface PlaceOpeningHoursTime {
     /**
      * The days of the week, as a number in the range [<code>0</code>,
      * <code>6</code>], starting on Sunday. For example, <code>2</code> means
@@ -6918,7 +6925,7 @@ declare namespace google.maps.places {
   /**
    * Represents a photo element of a Place.
    */
-  export interface PlacePhoto {
+  interface PlacePhoto {
     /**
      * Returns the image URL corresponding to the specified options.
      */
@@ -6944,7 +6951,7 @@ declare namespace google.maps.places {
    * street addresses in places where they do not exist (where buildings are not
    * numbered or streets are not named).
    */
-  export interface PlacePlusCode {
+  interface PlacePlusCode {
     /**
      * A <a href="https://plus.codes/">plus code</a> with a 1/8000th of a degree
      * by 1/8000th of a degree area where the first four characters (the area
@@ -6964,7 +6971,7 @@ declare namespace google.maps.places {
   /**
    * Defines information about a Place.
    */
-  export interface PlaceResult {
+  interface PlaceResult {
     /**
      * The collection of address components for this Place’s location. Only
      * available with {@link google.maps.places.PlacesService.getDetails}.
@@ -7125,7 +7132,7 @@ declare namespace google.maps.places {
   /**
    * Represents a single review of a place.
    */
-  export interface PlaceReview {
+  interface PlaceReview {
     /**
      * The aspects rated by the review. The ratings on a scale of 0 to 3.
      */
@@ -7172,7 +7179,7 @@ declare namespace google.maps.places {
   /**
    * An object used to fetch additional pages of Places results.
    */
-  export interface PlaceSearchPagination {
+  interface PlaceSearchPagination {
     /**
      * Indicates if further results are available. <code>true</code> when there
      * is an additional results page.
@@ -7189,7 +7196,7 @@ declare namespace google.maps.places {
   /**
    * A Place search query to be sent to the <code>PlacesService</code>.
    */
-  export interface PlaceSearchRequest {
+  interface PlaceSearchRequest {
     /**
      * The bounds within which to search for Places. Both <code>location</code>
      * and <code>radius</code> will be ignored if <code>bounds</code> is set.
@@ -7257,7 +7264,7 @@ declare namespace google.maps.places {
    * Contains methods related to searching for places and retrieving details
    * about a place.
    */
-  export class PlacesService {
+  class PlacesService {
     /**
      * Contains methods related to searching for places and retrieving details
      * about a place.
@@ -7353,7 +7360,7 @@ declare namespace google.maps.places {
    * For example, <code>'OK'</code> or
    * <code>google.maps.places.PlacesServiceStatus.OK</code>.
    */
-  export enum PlacesServiceStatus {
+  enum PlacesServiceStatus {
     INVALID_REQUEST = 'INVALID_REQUEST',
     NOT_FOUND = 'NOT_FOUND',
     OK = 'OK',
@@ -7367,7 +7374,7 @@ declare namespace google.maps.places {
   /**
    * Represents a prediction substring.
    */
-  export interface PredictionSubstring {
+  interface PredictionSubstring {
     /**
      * The length of the substring.
      */
@@ -7382,7 +7389,7 @@ declare namespace google.maps.places {
   /**
    * Represents a prediction term.
    */
-  export interface PredictionTerm {
+  interface PredictionTerm {
     /**
      * The offset, in unicode characters, of the start of this term in the
      * description of the place.
@@ -7398,7 +7405,7 @@ declare namespace google.maps.places {
   /**
    * Represents a single Query Autocomplete prediction.
    */
-  export interface QueryAutocompletePrediction {
+  interface QueryAutocompletePrediction {
     /**
      * This is the unformatted version of the query suggested by the Places
      * service.
@@ -7431,7 +7438,7 @@ declare namespace google.maps.places {
    * An QueryAutocompletion request to be sent to the
    * <code>QueryAutocompleteService</code>.
    */
-  export interface QueryAutocompletionRequest {
+  interface QueryAutocompletionRequest {
     /**
      * Bounds for prediction biasing. Predictions will be biased towards, but
      * not restricted to, the given <code>bounds</code>. Both
@@ -7467,7 +7474,7 @@ declare namespace google.maps.places {
   /**
    * Ranking options for a PlaceSearchRequest.
    */
-  export enum RankBy {
+  enum RankBy {
     DISTANCE = 0.0,
     PROMINENCE = 1.0,
   }
@@ -7479,7 +7486,7 @@ declare namespace google.maps.places {
    * text entry in that field. The list of predictions is presented as a
    * drop-down list, and is updated as text is entered.
    */
-  export class SearchBox extends google.maps.MVCObject {
+  class SearchBox extends google.maps.MVCObject {
     /**
      * A widget that provides query predictions based on a user&#39;s text
      * input. It attaches to an input element of type <code>text</code>, and
@@ -7510,7 +7517,7 @@ declare namespace google.maps.places {
   /**
    * The options that can be set on a <code>SearchBox</code> object.
    */
-  export interface SearchBoxOptions {
+  interface SearchBoxOptions {
     /**
      * The area towards which to bias query predictions. Predictions are biased
      * towards, but not restricted to, queries targeting these bounds.
@@ -7525,7 +7532,7 @@ declare namespace google.maps.places {
    * substrings from the autocomplete input, identified by an offset and a
    * length, expressed in unicode characters.
    */
-  export interface StructuredFormatting {
+  interface StructuredFormatting {
     /**
      * This is the main text part of the unformatted description of the place
      * suggested by the Places service. Usually the name of the place.
@@ -7549,7 +7556,7 @@ declare namespace google.maps.places {
   /**
    * A text search request to be sent to the <code>PlacesService</code>.
    */
-  export interface TextSearchRequest {
+  interface TextSearchRequest {
     /**
      * Bounds used to bias results when searching for Places (optional). Both
      * <code>location</code> and <code>radius</code> will be ignored if
@@ -7586,12 +7593,18 @@ declare namespace google.maps.places {
     type?: string;
   }
 }
+declare namespace google.maps {
+  /**
+   * Google Maps JavaScript API version loaded by the browser.
+   */
+  let version: string;
+}
 declare namespace google.maps.visualization {
   /**
    * A layer that provides a client-side rendered heatmap, depicting the
    * intensity of data at geographical points.
    */
-  export class HeatmapLayer extends google.maps.MVCObject {
+  class HeatmapLayer extends google.maps.MVCObject {
     /**
      * A layer that provides a client-side rendered heatmap, depicting the
      * intensity of data at geographical points.
@@ -7622,7 +7635,7 @@ declare namespace google.maps.visualization {
    * This object defines the properties that can be set on a
    * <code>HeatmapLayer</code> object.
    */
-  export interface HeatmapLayerOptions {
+  interface HeatmapLayerOptions {
     /**
      * The data points to display. Required.
      */
@@ -7667,7 +7680,7 @@ declare namespace google.maps.visualization {
    * A data point entry for a heatmap. This is a geographical data point with a
    * weight attribute.
    */
-  export interface WeightedLocation {
+  interface WeightedLocation {
     /**
      * The location of the data point.
      */
