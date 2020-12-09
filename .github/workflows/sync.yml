@@ -1,0 +1,53 @@
+# Copyright 2020 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: "Sync"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.SYNCED_GITHUB_TOKEN_REPO }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: js-types
+      - name: Setup Bazel
+        uses: jpoehnelt/setup-bazel@74990a5bf57cb8275729e56a1ba1d85240d7e5f7
+      - run: bazel build :definitelytyped.d.ts
+        working-directory: js-types
+      - uses: actions/checkout@v2
+        with:
+          repository: DefinitelyTyped/DefinitelyTyped
+          token: ${{ env.GITHUB_TOKEN}}
+          path: dt
+          ref: master
+      - run: |
+          mkdir -p dt/types/google-maps-web
+          cp js-types/bazel-bin/definitelytyped.d.ts dt/types/google-maps-web/index.d.ts
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v3
+      #   with:
+      #     path: dt
+      #     token: ${{ env.GITHUB_TOKEN}}
+      #     push-to-fork: googlemaps/DefinitelyTyped
+      #     title: "chore: sync updates to google-maps-web"
+      #     body: "This is a automatic pull request to update @types/google-maps-web."
+      #     commit-message: "chore: sync updates to google-maps-web"
+      #     branch: "chore/sync-google-maps-web"
+      #     delete-branch: true

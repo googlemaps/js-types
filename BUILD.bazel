@@ -1,0 +1,17 @@
+exports_files(
+    ["index.d.ts"],
+    visibility = ["//visibility:public"],
+)
+
+genrule(
+    name = "definitelytyped_d_ts",
+    srcs = [
+        ":index.d.ts",
+        ":header.d.ts",
+        ":VERSION",
+    ],
+    outs = ["definitelytyped.d.ts"],
+    cmd = "version=`cut -d '.' -f 1,2 <$(location :VERSION)`;" +
+          "tail -n +17 $(location :header.d.ts) | sed \"s/VERSION/$$version/g\" > $@; " +
+          "tail -n +17 $(location :index.d.ts) >> $@; ",
+)
