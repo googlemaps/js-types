@@ -35,7 +35,7 @@ jobs:
           token: ${{ env.GITHUB_TOKEN}}
           path: dt
           ref: master
-      - run: js-types/.github/worklows/sync.sh
+      - run: js-types/.github/workflows/sync.sh
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
