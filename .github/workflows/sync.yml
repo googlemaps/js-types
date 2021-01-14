@@ -15,8 +15,6 @@
 name: "Sync"
 on:
   push:
-    branches:
-      - main
 jobs:
   build:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
@@ -37,9 +35,7 @@ jobs:
           token: ${{ env.GITHUB_TOKEN}}
           path: dt
           ref: master
-      - run: |
-          mkdir -p dt/types/google-maps-web
-          cp js-types/bazel-bin/definitelytyped.d.ts dt/types/google-maps-web/index.d.ts
+      - run: ./.github/worklows/sync.sh
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
@@ -51,3 +47,4 @@ jobs:
           commit-message: "chore: sync updates to google-maps-web"
           branch: "chore/sync-google-maps-web"
           delete-branch: true
+        if: github.ref == 'refs/heads/main'
