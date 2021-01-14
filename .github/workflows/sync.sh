@@ -15,7 +15,7 @@ cp js-types/bazel-bin/definitelytyped.d.ts "${dt}/${index}"
 cd "${dt}"
 
 # Run git diff on the tpyings
-git diff "${index}"
+git diff --exit-code "${index}"
 
 # Update tests if there are changes allowing owner to merge 
 # instead of waiting for maintainer review
