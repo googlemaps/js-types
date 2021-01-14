@@ -22,7 +22,6 @@ git diff --exit-code "${index}"
 if [[ $?  == 1 ]]; then
     echo "// No tests required for generated types"
     echo "// Synced from: https://github.com/googlemaps/js-types/commit/${GITHUB_SHA}" >> "${tests}"
-    echo "google.maps.Map;" >> "${tests}"
-    git diff "${tests}"
+    echo "google.maps.Map;" >> "${tests}"    
 fi
 
