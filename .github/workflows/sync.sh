@@ -5,6 +5,9 @@ set -x
 index="dt/types/google-maps-web/index.d.ts"
 tests="dt/types/google-maps-web/google-maps-web-tests.ts"
 
+# Run from root of workspace
+cd "${GITHUB_WORKSPACE}"
+
 # Copy file from bazel output
 cp js-types/bazel-bin/definitelytyped.d.ts "${index}"
 
