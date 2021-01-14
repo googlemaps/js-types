@@ -12,7 +12,7 @@ cd "${GITHUB_WORKSPACE}"
 cp js-types/bazel-bin/definitelytyped.d.ts "${index}"
 
 # Run git diff on the tpyings
-git diff --exit-code --no-index "${index}"
+git diff --no-index "${index}"
 
 # Update tests if there are changes allowing owner to merge 
 # instead of waiting for maintainer review
