@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 index="dt/types/google-maps-web/index.d.ts"
 tests="dt/types/google-maps-web/google-maps-web-tests.ts"
 
