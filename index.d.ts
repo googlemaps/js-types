@@ -986,21 +986,21 @@ declare namespace google.maps {
      * Whether the geocoder did not return an exact match for the original
      * waypoint, though it was able to match part of the requested address.
      */
-    partial_match: boolean;
+    partial_match?: boolean;
     /**
      * The place ID associated with the waypoint. Place IDs uniquely identify a
      * place in the Google Places database and on Google Maps. Learn more about
      * <a href="/places/place-id">Place IDs</a> in the Places API developer
      * guide.
      */
-    place_id: string;
+    place_id?: string;
     /**
      * An array of strings denoting the type of the returned geocoded element.
      * For a list of possible strings, refer to the <a href=
      * "/maps/documentation/javascript/geocoding#GeocodingAddressTypes"> Address
      * Component Types</a> section of the Developer&#39;s Guide.
      */
-    types: string[]|null;
+    types?: string[];
   }
 }
 declare namespace google.maps {
@@ -1016,22 +1016,22 @@ declare namespace google.maps {
      * An estimated arrival time for this leg. Only applicable for TRANSIT
      * requests.
      */
-    arrival_time: google.maps.Time|null;
+    arrival_time?: google.maps.Time;
     /**
      * An estimated departure time for this leg. Only applicable for TRANSIT
      * requests.
      */
-    departure_time: google.maps.Time|null;
+    departure_time?: google.maps.Time;
     /**
      * The total distance covered by this leg. This property may be undefined as
      * the distance may be unknown.
      */
-    distance: google.maps.Distance|null;
+    distance?: google.maps.Distance;
     /**
      * The total duration of this leg. This property may be undefined as the
      * duration may be unknown.
      */
-    duration: google.maps.Duration|null;
+    duration?: google.maps.Duration;
     /**
      * The total duration of this leg, taking into account the traffic
      * conditions indicated by the <code>trafficModel</code> property. This
@@ -1039,7 +1039,7 @@ declare namespace google.maps {
      * to Premium Plan customers when <code>drivingOptions</code> is defined
      * when making the request.
      */
-    duration_in_traffic: google.maps.Duration|null;
+    duration_in_traffic?: google.maps.Duration;
     /**
      * The address of the destination of this leg.
      */
@@ -1052,7 +1052,7 @@ declare namespace google.maps {
      * <code>end_location</code> of the last step if, for example, the road is
      * not near the destination of this leg.
      */
-    end_location: google.maps.LatLng|null;
+    end_location: google.maps.LatLng;
     /**
      * The address of the origin of this leg.
      */
@@ -1065,12 +1065,12 @@ declare namespace google.maps {
      * <code>start_location</code> of the first step if, for example, the road
      * is not near the origin of this leg.
      */
-    start_location: google.maps.LatLng|null;
+    start_location: google.maps.LatLng;
     /**
      * An array of <code>DirectionsStep</code>s, each of which contains
      * information about the individual steps in this leg.
      */
-    steps: (google.maps.DirectionsStep|null)[]|null;
+    steps: google.maps.DirectionsStep[];
     /**
      * An array of non-stopover waypoints along this leg, which were specified
      * in the original request. <p> <strong>Deprecated in alternative
@@ -1081,7 +1081,7 @@ declare namespace google.maps {
      * route should be draggable. Users can drag the main route until it matches
      * an alternative route.
      */
-    via_waypoints: (google.maps.LatLng|null)[]|null;
+    via_waypoints: google.maps.LatLng[];
   }
 }
 declare namespace google.maps {
@@ -1321,14 +1321,14 @@ declare namespace google.maps {
      * contains information about the geocoding of origin, destination and
      * waypoints.
      */
-    geocoded_waypoints: (google.maps.DirectionsGeocodedWaypoint|null)[]|null;
+    geocoded_waypoints?: google.maps.DirectionsGeocodedWaypoint[];
     /**
      * An array of <code>DirectionsRoute</code>s, each of which contains
      * information about the legs and steps of which it is composed. There will
      * only be one route unless the <code>DirectionsRequest</code> was made with
      * <code>provideRouteAlternatives</code> set to <code>true</code>.
      */
-    routes: (google.maps.DirectionsRoute|null)[]|null;
+    routes: google.maps.DirectionsRoute[];
   }
 }
 declare namespace google.maps {
@@ -1342,7 +1342,7 @@ declare namespace google.maps {
     /**
      * The bounds for this route.
      */
-    bounds: google.maps.LatLngBounds|null;
+    bounds: google.maps.LatLngBounds;
     /**
      * Copyrights text to be displayed for this route.
      */
@@ -1351,7 +1351,7 @@ declare namespace google.maps {
      * The total fare for the whole transit trip. Only applicable to transit
      * requests.
      */
-    fare: google.maps.TransitFare|null;
+    fare?: google.maps.TransitFare;
     /**
      * An array of <code>DirectionsLeg</code>s, each of which contains
      * information about the steps of which it is composed. There will be one
@@ -1359,14 +1359,14 @@ declare namespace google.maps {
      * no stopover waypoints will contain one <code>DirectionsLeg</code> and a
      * route with one stopover waypoint will contain two.
      */
-    legs: (google.maps.DirectionsLeg|null)[]|null;
+    legs: google.maps.DirectionsLeg[];
     /**
      * An array of <code>LatLng</code>s representing the entire course of this
      * route. The path is simplified in order to make it suitable in contexts
      * where a small number of vertices is required (such as Static Maps API
      * URLs).
      */
-    overview_path: (google.maps.LatLng|null)[]|null;
+    overview_path: google.maps.LatLng[];
     /**
      * An <a href="/maps/documentation/utilities/polylinealgorithm">encoded
      * polyline representation</a> of the route in overview_path. This polyline
@@ -1376,7 +1376,7 @@ declare namespace google.maps {
     /**
      * Warnings to be displayed when showing these directions.
      */
-    warnings: string[]|null;
+    warnings: string[];
     /**
      * If <code>optimizeWaypoints</code> was set to <code>true</code>, this
      * field will contain the re-ordered permutation of the input waypoints. For
@@ -1391,7 +1391,7 @@ declare namespace google.maps {
      * has <code>stopover</code> set to <code>false</code>, this field will be
      * empty, since route optimization is not available for such queries.
      */
-    waypoint_order: number[]|null;
+    waypoint_order: number[];
   }
 }
 declare namespace google.maps {
@@ -1444,16 +1444,16 @@ declare namespace google.maps {
      * The distance covered by this step. This property may be undefined as the
      * distance may be unknown.
      */
-    distance: google.maps.Distance|null;
+    distance?: google.maps.Distance;
     /**
      * The typical time required to perform this step in seconds and in text
      * form. This property may be undefined as the duration may be unknown.
      */
-    duration: google.maps.Duration|null;
+    duration?: google.maps.Duration;
     /**
      * The ending location of this step.
      */
-    end_location: google.maps.LatLng|null;
+    end_location: google.maps.LatLng;
     /**
      * Instructions for this step.
      */
@@ -1461,21 +1461,21 @@ declare namespace google.maps {
     /**
      * A sequence of <code>LatLng</code>s describing the course of this step.
      */
-    path: (google.maps.LatLng|null)[]|null;
+    path: google.maps.LatLng[];
     /**
      * The starting location of this step.
      */
-    start_location: google.maps.LatLng|null;
+    start_location: google.maps.LatLng;
     /**
      * Sub-steps of this step. Specified for non-transit sections of transit
      * routes.
      */
-    steps: (google.maps.DirectionsStep|null)[]|null;
+    steps?: google.maps.DirectionsStep[];
     /**
      * Transit-specific details about this step. This property will be undefined
      * unless the travel mode of this step is <code>TRANSIT</code>.
      */
-    transit: google.maps.TransitDetails|null;
+    transit?: google.maps.TransitDetails;
     /**
      * The mode of travel used in this step.
      */
@@ -2730,8 +2730,7 @@ declare namespace google.maps {
     /**
      * Returns <code>true</code> if the given lat/lng is in this bounds.
      */
-    contains(latLng: google.maps.LatLng|null|
-             google.maps.LatLngLiteral): boolean;
+    contains(latLng: google.maps.LatLng|google.maps.LatLngLiteral): boolean;
     /**
      * Returns <code>true</code> if this bounds approximately equals the given
      * bounds.
@@ -2741,7 +2740,7 @@ declare namespace google.maps {
     /**
      * Extends this bounds to contain the given point.
      */
-    extend(point: google.maps.LatLng|null|
+    extend(point: google.maps.LatLng|
            google.maps.LatLngLiteral): google.maps.LatLngBounds;
     /**
      * Computes the center of this LatLngBounds
@@ -2759,7 +2758,7 @@ declare namespace google.maps {
      * Returns <code>true</code> if this bounds shares any points with the other
      * bounds.
      */
-    intersects(other: google.maps.LatLngBounds|null|
+    intersects(other: google.maps.LatLngBounds|
                google.maps.LatLngBoundsLiteral): boolean;
     /**
      * Returns if the bounds are empty.
@@ -2788,7 +2787,7 @@ declare namespace google.maps {
     /**
      * Extends this bounds to contain the union of this and the given bounds.
      */
-    union(other: google.maps.LatLngBounds|null|
+    union(other: google.maps.LatLngBounds|
           google.maps.LatLngBoundsLiteral): google.maps.LatLngBounds;
   }
 }
@@ -4001,12 +4000,12 @@ declare namespace google.maps {
      * to the map. Use this to prevent map dragging and zooming, as well as map
      * &quot;click&quot; events.
      */
-    static preventMapHitsAndGesturesFrom(element: Element): void;
+    static preventMapHitsAndGesturesFrom(this: any, element: Element): void;
     /**
      * Stops click or tap on the element from bubbling up to the map. Use this
      * to prevent the map from triggering &quot;click&quot; events.
      */
-    static preventMapHitsFrom(element: Element): void;
+    static preventMapHitsFrom(this: any, element: Element): void;
   }
 }
 declare namespace google.maps {
@@ -4215,7 +4214,7 @@ declare namespace google.maps {
     /**
      * Retrieves the first path.
      */
-    getPath(): google.maps.MVCArray<any>|null;
+    getPath(): google.maps.MVCArray<any>;
     /**
      * Retrieves the paths for this polygon.
      */
@@ -4244,12 +4243,12 @@ declare namespace google.maps {
      * Sets the first path. See <em><code><a
      * href="#PolygonOptions">PolygonOptions</a></code></em> for more details.
      */
-    setPath(path: google.maps.MVCArray<any>|null|
-            (google.maps.LatLng|null|google.maps.LatLngLiteral)[]): void;
+    setPath(path: google.maps.MVCArray<any>|
+            (google.maps.LatLng|google.maps.LatLngLiteral)[]): void;
     /**
      * Sets the path for this polygon.
      */
-    setPaths(paths: google.maps.MVCArray<any>|null|any[]): void;
+    setPaths(paths: google.maps.MVCArray<any>|any[]): void;
     /**
      * Hides this poly if set to <code>false</code>.
      */
@@ -4392,8 +4391,8 @@ declare namespace google.maps {
      * Sets the path. See <em><code><a
      * href="#PolylineOptions">PolylineOptions</a></code></em> for more details.
      */
-    setPath(path: google.maps.MVCArray<any>|null|
-            (google.maps.LatLng|null|google.maps.LatLngLiteral)[]): void;
+    setPath(path: google.maps.MVCArray<any>|
+            (google.maps.LatLng|google.maps.LatLngLiteral)[]): void;
     /**
      * Hides this poly if set to <code>false</code>.
      */
@@ -4747,11 +4746,11 @@ declare namespace google.maps {
     /**
      * A localized string describing the location.
      */
-    description: string|null;
+    description?: string|null;
     /**
      * The latlng of the panorama.
      */
-    latLng: google.maps.LatLng|null;
+    latLng?: google.maps.LatLng|null;
     /**
      * A unique identifier for the panorama. This is stable within a session but
      * unstable across sessions.
@@ -4760,7 +4759,7 @@ declare namespace google.maps {
     /**
      * Short description of the location.
      */
-    shortDescription: string|null;
+    shortDescription?: string|null;
   }
 }
 declare namespace google.maps {
@@ -5970,13 +5969,13 @@ declare namespace google.maps.geometry.encoding {
   /**
    * Decodes an encoded path string into a sequence of LatLngs.
    */
-  function decodePath(encodedPath: string): (google.maps.LatLng|null)[];
+  function decodePath(encodedPath: string): google.maps.LatLng[];
 }
 declare namespace google.maps.geometry.encoding {
   /**
    * Encodes a sequence of LatLngs into an encoded path string.
    */
-  function encodePath(path: (google.maps.LatLng|null)[]|null|
+  function encodePath(path: google.maps.LatLng[]|
                       google.maps.MVCArray<any>): string;
 }
 declare namespace google.maps.geometry.poly {
@@ -6007,7 +6006,7 @@ declare namespace google.maps.geometry.spherical {
    * which case the area is in square meters.
    */
   function computeArea(
-      path: (google.maps.LatLng|null)[]|null|google.maps.MVCArray<any>,
+      path: google.maps.LatLng[]|google.maps.MVCArray<any>,
       radius?: number): number;
 }
 declare namespace google.maps.geometry.spherical {
@@ -6016,7 +6015,7 @@ declare namespace google.maps.geometry.spherical {
    * specify a custom radius. The radius defaults to the radius of the Earth.
    */
   function computeDistanceBetween(
-      from: google.maps.LatLng|null, to: google.maps.LatLng|null,
+      from: google.maps.LatLng, to: google.maps.LatLng,
       radius?: number): number;
 }
 declare namespace google.maps.geometry.spherical {
@@ -6025,14 +6024,14 @@ declare namespace google.maps.geometry.spherical {
    * expressed in degrees clockwise from North within the range [-180,180).
    */
   function computeHeading(
-      from: google.maps.LatLng|null, to: google.maps.LatLng|null): number;
+      from: google.maps.LatLng, to: google.maps.LatLng): number;
 }
 declare namespace google.maps.geometry.spherical {
   /**
    * Returns the length of the given path.
    */
   function computeLength(
-      path: (google.maps.LatLng|null)[]|null|google.maps.MVCArray<any>,
+      path: google.maps.LatLng[]|google.maps.MVCArray<any>,
       radius?: number): number;
 }
 declare namespace google.maps.geometry.spherical {
@@ -6041,7 +6040,7 @@ declare namespace google.maps.geometry.spherical {
    * specified heading (expressed in degrees clockwise from north).
    */
   function computeOffset(
-      from: google.maps.LatLng|null, distance: number, heading: number,
+      from: google.maps.LatLng, distance: number, heading: number,
       radius?: number): google.maps.LatLng;
 }
 declare namespace google.maps.geometry.spherical {
@@ -6052,7 +6051,7 @@ declare namespace google.maps.geometry.spherical {
    * available.
    */
   function computeOffsetOrigin(
-      to: google.maps.LatLng|null, distance: number, heading: number,
+      to: google.maps.LatLng, distance: number, heading: number,
       radius?: number): google.maps.LatLng|null;
 }
 declare namespace google.maps.geometry.spherical {
@@ -6063,7 +6062,7 @@ declare namespace google.maps.geometry.spherical {
    * meters, in which case the area is in square meters.
    */
   function computeSignedArea(
-      loop: (google.maps.LatLng|null)[]|null|google.maps.MVCArray<any>,
+      loop: google.maps.LatLng[]|google.maps.MVCArray<any>,
       radius?: number): number;
 }
 declare namespace google.maps.geometry.spherical {
@@ -6072,7 +6071,7 @@ declare namespace google.maps.geometry.spherical {
    * origin LatLng and the destination LatLng.
    */
   function interpolate(
-      from: google.maps.LatLng|null, to: google.maps.LatLng|null,
+      from: google.maps.LatLng, to: google.maps.LatLng,
       fraction: number): google.maps.LatLng;
 }
 declare namespace google.maps.localContext {
@@ -6558,18 +6557,36 @@ declare namespace google.maps.places {
 }
 declare namespace google.maps.places {
   /**
+   * An Autocomplete response returned by the call to {@link
+   * google.maps.places.AutocompleteService.getPlacePredictions} containing a
+   * list of {@link google.maps.places.AutocompletePrediction}s.
+   */
+  class AutocompleteResponse {
+    /**
+     * The list of {@link google.maps.places.AutocompletePrediction}s.
+     */
+    predictions: google.maps.places.AutocompletePrediction[];
+  }
+}
+declare namespace google.maps.places {
+  /**
    * Contains methods related to retrieving Autocomplete predictions.
    */
   class AutocompleteService {
     /**
      * Retrieves place autocomplete predictions based on the supplied
-     * autocomplete request.
+     * autocomplete request. <aside class="note">Note: <strong>For the beta
+     * release, <code>v=beta</code>, the callback is optional and a Promise is
+     * returned</strong>. More information is available in the <a
+     * href="/maps/documentation/javascript/promises">Promises
+     * guide</a>.</aside>
      */
     getPlacePredictions(
         request: google.maps.places.AutocompletionRequest,
-        callback:
+        callback?:
             (a: google.maps.places.AutocompletePrediction[]|null,
-             b: google.maps.places.PlacesServiceStatus) => void): void;
+             b: google.maps.places.PlacesServiceStatus) => void):
+        Promise<google.maps.places.AutocompleteResponse>|null;
     /**
      * Retrieves query autocomplete predictions based on the supplied query
      * autocomplete request.
