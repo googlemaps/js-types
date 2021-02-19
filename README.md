@@ -16,34 +16,7 @@ Any changes made to the types in this repository will be overwritten with the ne
 
 ## Install
 
-It is recommended to install these from
-[@types/google-maps-web](https://www.npmjs.com/package/@types/google-maps-web)
-instead of the the package
-[@googlemaps/types](https://www.npmjs.com/package/@googlemaps/types). Any change
-in this repository is automatically synced to
-[@types/google-maps-web](https://www.npmjs.com/package/@types/google-maps-web).
+`npm i -D @types/google.maps`
 
-Available via npm as the package
-[@googlemaps/types](https://www.npmjs.com/package/@googlemaps/types).
-
-`npm i -D @types/google-maps-web`
-
-## Configure TypeScript
-
-### `@types/google-maps-web`
-
-No configuration required.
-
-### `@googlemaps/types`
-
-Update the tsconfig.json with the following
-[typeRoots](https://www.typescriptlang.org/tsconfig#typeRoots). Other options
-may be required.
-
-```js
-{
-  "compilerOptions": {
-    "typeRoots": ["./node_modules/@types", "./node_modules/@googlemaps/types"]
-  }
-}
-```
+Any change in this repository is automatically synced to
+[@types/google.maps](https://www.npmjs.com/package/@types/google.maps).
