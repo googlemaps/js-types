@@ -3,8 +3,8 @@
 set -x
 
 dt="dt"
-index="types/google-maps-web/index.d.ts"
-tests="types/google-maps-web/google-maps-web-tests.ts"
+index="types/google.maps/index.d.ts"
+tests="types/google.maps/google.maps-tests.ts"
 
 # Run from root of workspace
 cd "${GITHUB_WORKSPACE}"
