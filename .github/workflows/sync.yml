@@ -42,9 +42,9 @@ jobs:
           path: dt
           token: ${{ env.GITHUB_TOKEN}}
           push-to-fork: googlemaps/DefinitelyTyped
-          title: "chore: sync updates to google-maps-web"
-          body: "This is a automatic pull request to update @types/google-maps-web."
-          commit-message: "chore: sync updates to google-maps-web"
-          branch: "chore/sync-google-maps-web"
+          title: "chore: sync updates to google.maps"
+          body: "This is a automatic pull request to update @types/google.maps"
+          commit-message: "chore: sync updates to google.maps"
+          branch: "chore/sync-google-dot-maps"
           delete-branch: true
         if: github.ref == 'refs/heads/main'
