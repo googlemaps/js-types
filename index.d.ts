@@ -1881,7 +1881,7 @@ declare namespace google.maps {
      * of valid types can be found <a
      * href="/maps/documentation/javascript/geocoding#GeocodingAddressTypes">here</a>
      */
-    types: string[]|null;
+    types: string[];
   }
 }
 declare namespace google.maps {
@@ -1924,11 +1924,11 @@ declare namespace google.maps {
     /**
      * The precise bounds of this <code>GeocoderResult</code>, if applicable
      */
-    bounds: google.maps.LatLngBounds|null;
+    bounds?: google.maps.LatLngBounds;
     /**
      * The latitude/longitude coordinates of this result
      */
-    location: google.maps.LatLng|null;
+    location: google.maps.LatLng;
     /**
      * The type of location returned in <code>location</code>
      */
@@ -1937,7 +1937,7 @@ declare namespace google.maps {
      * The bounds of the recommended viewport for displaying this
      * <code>GeocoderResult</code>
      */
-    viewport: google.maps.LatLngBounds|null;
+    viewport: google.maps.LatLngBounds;
   }
 }
 declare namespace google.maps {
@@ -2028,7 +2028,7 @@ declare namespace google.maps {
     /**
      * An array of <code>GeocoderAddressComponent</code>s
      */
-    address_components: (google.maps.GeocoderAddressComponent|null)[]|null;
+    address_components: google.maps.GeocoderAddressComponent[];
     /**
      * A string containing the human-readable address of this location.
      */
@@ -2036,12 +2036,13 @@ declare namespace google.maps {
     /**
      * A <code>GeocoderGeometry</code> object
      */
-    geometry: google.maps.GeocoderGeometry|null;
+    geometry: google.maps.GeocoderGeometry;
     /**
      * Whether the geocoder did not return an exact match for the original
-     * request, though it was able to match part of the requested address.
+     * request, though it was able to match part of the requested address. If an
+     * exact match, the value will be undefined.
      */
-    partial_match: boolean;
+    partial_match?: boolean;
     /**
      * The place ID associated with the location. Place IDs uniquely identify a
      * place in the Google Places database and on Google Maps. Learn more about
@@ -2054,14 +2055,14 @@ declare namespace google.maps {
      * code. This is only present when the result is a postal code that contains
      * multiple localities. This array can contain up to 10 localities.
      */
-    postcode_localities: string[]|null;
+    postcode_localities?: string[];
     /**
      * An array of strings denoting the type of the returned geocoded element.
      * For a list of possible strings, refer to the <a href=
      * "/maps/documentation/javascript/geocoding#GeocodingAddressTypes"> Address
      * Component Types</a> section of the Developer&#39;s Guide.
      */
-    types: string[]|null;
+    types: string[];
   }
 }
 declare namespace google.maps {
