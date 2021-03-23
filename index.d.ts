@@ -25,9 +25,9 @@
 
 declare namespace google.maps {
   /**
-   * Animations that can be played on a marker. Use the
-   * <code>setAnimation</code> method on Marker or the <code>animation</code>
-   * option to play an animation.
+   * Animations that can be played on a marker. Use the {@link
+   * google.maps.Marker.setAnimation} method on Marker or the {@link
+   * google.maps.MarkerOptions.animation} option to play an animation.
    */
   enum Animation {
     BOUNCE = 0.0,
@@ -44,8 +44,8 @@ declare namespace google.maps {
      */
     getMap(): google.maps.Map|null;
     /**
-     * Renders the layer on the specified map. If map is set to null, the layer
-     * will be removed.
+     * Renders the layer on the specified map. If map is set to
+     * <code>null</code>, the layer will be removed.
      */
     setMap(map: google.maps.Map|null): void;
   }
@@ -94,17 +94,18 @@ declare namespace google.maps {
      */
     setCenter(center: google.maps.LatLng|null|google.maps.LatLngLiteral): void;
     /**
-     * If set to true, the user can drag this circle over the map.
+     * If set to <code>true</code>, the user can drag this circle over the map.
      */
     setDraggable(draggable: boolean): void;
     /**
-     * If set to true, the user can edit this circle by dragging the control
-     * points shown at the center and around the circumference of the circle.
+     * If set to <code>true</code>, the user can edit this circle by dragging
+     * the control points shown at the center and around the circumference of
+     * the circle.
      */
     setEditable(editable: boolean): void;
     /**
-     * Renders the circle on the specified map. If map is set to null, the
-     * circle will be removed.
+     * Renders the circle on the specified map. If map is set to
+     * <code>null</code>, the circle will be removed.
      */
     setMap(map: google.maps.Map|null): void;
     setOptions(options: google.maps.CircleOptions|null): void;
@@ -149,14 +150,14 @@ declare namespace google.maps {
      */
     clickable?: boolean|null;
     /**
-     * If set to true, the user can drag this circle over the map. Defaults to
-     * <code>false</code>.
+     * If set to <code>true</code>, the user can drag this circle over the map.
+     * Defaults to <code>false</code>.
      */
     draggable?: boolean|null;
     /**
-     * If set to true, the user can edit this circle by dragging the control
-     * points shown at the center and around the circumference of the circle.
-     * Defaults to <code>false</code>.
+     * If set to <code>true</code>, the user can edit this circle by dragging
+     * the control points shown at the center and around the circumference of
+     * the circle. Defaults to <code>false</code>.
      */
     editable?: boolean|null;
     /**
@@ -297,16 +298,16 @@ declare namespace google.maps {
     getControlPosition(): google.maps.ControlPosition;
     /**
      * Returns which drawing modes are available for the user to select, in the
-     * order they are displayed. This does not include the null drawing mode,
-     * which is added by default. Possible drawing modes are
+     * order they are displayed. This does not include the <code>null</code>
+     * drawing mode, which is added by default. Possible drawing modes are
      * <code>"Point"</code>, <code>"LineString"</code> or
      * <code>"Polygon"</code>.
      */
     getControls(): string[]|null;
     /**
      * Returns the current drawing mode of the given Data layer. A drawing mode
-     * of null means that the user can interact with the map as normal, and
-     * clicks do not draw anything. Possible drawing modes are
+     * of <code>null</code> means that the user can interact with the map as
+     * normal, and clicks do not draw anything. Possible drawing modes are
      * <code>null</code>, <code>"Point"</code>, <code>"LineString"</code> or
      * <code>"Polygon"</code>.
      */
@@ -338,8 +339,9 @@ declare namespace google.maps {
         callback?: (a: google.maps.Data.Feature[]) => void): void;
     /**
      * Changes the style of a feature. These changes are applied on top of the
-     * style specified by <code>setStyle()</code>. Style properties set to null
-     * revert to the value specified via <code>setStyle()</code>.
+     * style specified by <code>setStyle()</code>. Style properties set to
+     * <code>null</code> revert to the value specified via
+     * <code>setStyle()</code>.
      */
     overrideStyle(
         feature: google.maps.Data.Feature,
@@ -352,7 +354,7 @@ declare namespace google.maps {
      * Removes the effect of previous <code>overrideStyle()</code> calls. The
      * style of the given feature reverts to the style specified by
      * <code>setStyle()</code>. <p>If no feature is given, all features have
-     * their style reverted.
+     * their style reverted.</p>
      */
     revertStyle(feature?: google.maps.Data.Feature|null): void;
     /**
@@ -361,23 +363,24 @@ declare namespace google.maps {
     setControlPosition(controlPosition: google.maps.ControlPosition): void;
     /**
      * Sets which drawing modes are available for the user to select, in the
-     * order they are displayed. This should not include the null drawing mode,
-     * which is added by default. If null, drawing controls are disabled and not
-     * displayed. Possible drawing modes are <code>"Point"</code>,
-     * <code>"LineString"</code> or <code>"Polygon"</code>.
+     * order they are displayed. This should not include the <code>null</code>
+     * drawing mode, which is added by default. If <code>null</code>, drawing
+     * controls are disabled and not displayed. Possible drawing modes are
+     * <code>"Point"</code>, <code>"LineString"</code> or
+     * <code>"Polygon"</code>.
      */
     setControls(controls: string[]|null): void;
     /**
      * Sets the current drawing mode of the given Data layer. A drawing mode of
-     * null means that the user can interact with the map as normal, and clicks
-     * do not draw anything. Possible drawing modes are <code>null</code>,
-     * <code>"Point"</code>, <code>"LineString"</code> or
+     * <code>null</code> means that the user can interact with the map as
+     * normal, and clicks do not draw anything. Possible drawing modes are
+     * <code>null</code>, <code>"Point"</code>, <code>"LineString"</code> or
      * <code>"Polygon"</code>.
      */
     setDrawingMode(drawingMode: string|null): void;
     /**
-     * Renders the features on the specified map. If map is set to null, the
-     * features will be removed from the map.
+     * Renders the features on the specified map. If map is set to
+     * <code>null</code>, the features will be removed from the map.
      */
     setMap(map: google.maps.Map|null): void;
     /**
@@ -419,19 +422,20 @@ declare namespace google.maps.Data {
     controlPosition?: google.maps.ControlPosition;
     /**
      * Describes which drawing modes are available for the user to select, in
-     * the order they are displayed. This should not include the null drawing
-     * mode, which is added by default. If null, drawing controls are disabled
-     * and not displayed. Defaults to null. Possible drawing modes are
+     * the order they are displayed. This should not include the
+     * <code>null</code> drawing mode, which is added by default. If
+     * <code>null</code>, drawing controls are disabled and not displayed.
+     * Defaults to <code>null</code>. Possible drawing modes are
      * <code>"Point"</code>, <code>"LineString"</code> or
      * <code>"Polygon"</code>.
      */
     controls?: string[]|null;
     /**
-     * The current drawing mode of the given Data layer. A drawing mode of null
-     * means that the user can interact with the map as normal, and clicks do
-     * not draw anything. Defaults to null. Possible drawing modes are null,
-     * <code>"Point"</code>, <code>"LineString"</code> or
-     * <code>"Polygon"</code>.
+     * The current drawing mode of the given Data layer. A drawing mode of
+     * <code>null</code> means that the user can interact with the map as
+     * normal, and clicks do not draw anything. Defaults to <code>null</code>.
+     * Possible drawing modes are <code>null</code>, <code>"Point"</code>,
+     * <code>"LineString"</code> or <code>"Polygon"</code>.
      */
     drawingMode?: string|null;
     /**
@@ -439,7 +443,7 @@ declare namespace google.maps.Data {
      * or Polygon), this function is called with that Geometry and should return
      * a Feature that is to be added to the Data layer. If a featureFactory is
      * not supplied, a Feature with no id and no properties will be created from
-     * that Geometry instead. Defaults to null.
+     * that Geometry instead. Defaults to <code>null</code>.
      */
     featureFactory?:
         ((a: google.maps.Data.Geometry) => google.maps.Data.Feature)|null;
@@ -478,8 +482,8 @@ declare namespace google.maps.Data {
      */
     getId(): number|string|undefined;
     /**
-     * Returns the value of the requested property, or undefined if the property
-     * does not exist.
+     * Returns the value of the requested property, or <code>undefined</code> if
+     * the property does not exist.
      */
     getProperty(name: string): any;
     /**
@@ -510,9 +514,9 @@ declare namespace google.maps.Data {
   interface FeatureOptions {
     /**
      * The feature geometry. If none is specified when a feature is constructed,
-     * the feature&#39;s geometry will be null. If a <code>LatLng</code> object
-     * or <code>LatLngLiteral</code> is given, this will be converted to a
-     * <code>Data.Point</code> geometry.
+     * the feature&#39;s geometry will be <code>null</code>. If a
+     * <code>LatLng</code> object or <code>LatLngLiteral</code> is given, this
+     * will be converted to a <code>Data.Point</code> geometry.
      */
     geometry?: google.maps.Data.Geometry|null|google.maps.LatLng|
         google.maps.LatLngLiteral;
@@ -788,7 +792,7 @@ declare namespace google.maps.Data {
    * A Polygon geometry contains a number of <code>Data.LinearRing</code>s. The
    * first linear-ring must be the polygon exterior boundary and subsequent
    * linear-rings must be interior boundaries, also known as holes. See the <a
-   * href="/maps/documentation/javascript/examples/layer-data-polygon">sample
+   * href="https://developers.google.com/maps/documentation/javascript/examples/layer-data-polygon">sample
    * polygon with a hole</a>.
    */
   class Polygon implements google.maps.Data.Geometry {
@@ -797,7 +801,7 @@ declare namespace google.maps.Data {
      * The first linear-ring must be the polygon exterior boundary and
      * subsequent linear-rings must be interior boundaries, also known as holes.
      * See the <a
-     * href="/maps/documentation/javascript/examples/layer-data-polygon">sample
+     * href="https://developers.google.com/maps/documentation/javascript/examples/layer-data-polygon">sample
      * polygon with a hole</a>.
      */
     constructor(elements: (google.maps.Data.LinearRing|
@@ -990,15 +994,16 @@ declare namespace google.maps {
     /**
      * The place ID associated with the waypoint. Place IDs uniquely identify a
      * place in the Google Places database and on Google Maps. Learn more about
-     * <a href="/places/place-id">Place IDs</a> in the Places API developer
-     * guide.
+     * <a
+     * href="https://developers.google.com/maps/documentation/places/web-service/place-id">Place
+     * IDs</a> in the Places API developer guide.
      */
     place_id?: string;
     /**
      * An array of strings denoting the type of the returned geocoded element.
      * For a list of possible strings, refer to the <a href=
-     * "/maps/documentation/javascript/geocoding#GeocodingAddressTypes"> Address
-     * Component Types</a> section of the Developer&#39;s Guide.
+     * "https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingAddressTypes">
+     * Address Component Types</a> section of the Developer&#39;s Guide.
      */
     types?: string[];
   }
@@ -1028,16 +1033,16 @@ declare namespace google.maps {
      */
     distance?: google.maps.Distance;
     /**
-     * The total duration of this leg. This property may be undefined as the
-     * duration may be unknown.
+     * The total duration of this leg. This property may be
+     * <code>undefined</code> as the duration may be unknown.
      */
     duration?: google.maps.Duration;
     /**
      * The total duration of this leg, taking into account the traffic
      * conditions indicated by the <code>trafficModel</code> property. This
-     * property may be undefined as the duration may be unknown. Only available
-     * to Premium Plan customers when <code>drivingOptions</code> is defined
-     * when making the request.
+     * property may be <code>undefined</code> as the duration may be unknown.
+     * Only available to Premium Plan customers when <code>drivingOptions</code>
+     * is defined when making the request.
      */
     duration_in_traffic?: google.maps.Duration;
     /**
@@ -1156,8 +1161,8 @@ declare namespace google.maps {
      */
     directions?: google.maps.DirectionsResult|null;
     /**
-     * If true, allows the user to drag and modify the paths of routes rendered
-     * by this <code>DirectionsRenderer</code>.
+     * If <code>true</code>, allows the user to drag and modify the paths of
+     * routes rendered by this <code>DirectionsRenderer</code>.
      */
     draggable?: boolean|null;
     /**
@@ -1174,7 +1179,7 @@ declare namespace google.maps {
      * its position moved. If no info window is specified, the
      * <code>DirectionsRenderer</code> will create and use its own info window.
      * This property will be ignored if <code>suppressInfoWindows</code> is set
-     * to true.
+     * to <code>true</code>.
      */
     infoWindow?: google.maps.InfoWindow|null;
     /**
@@ -1233,18 +1238,18 @@ declare namespace google.maps {
    */
   interface DirectionsRequest {
     /**
-     * If true, instructs the Directions service to avoid ferries where
-     * possible. Optional.
+     * If <code>true</code>, instructs the Directions service to avoid ferries
+     * where possible. Optional.
      */
     avoidFerries?: boolean;
     /**
-     * If true, instructs the Directions service to avoid highways where
-     * possible. Optional.
+     * If <code>true</code>, instructs the Directions service to avoid highways
+     * where possible. Optional.
      */
     avoidHighways?: boolean;
     /**
-     * If true, instructs the Directions service to avoid toll roads where
-     * possible. Optional.
+     * If <code>true</code>, instructs the Directions service to avoid toll
+     * roads where possible. Optional.
      */
     avoidTolls?: boolean;
     /**
@@ -1260,9 +1265,9 @@ declare namespace google.maps {
      */
     drivingOptions?: google.maps.DrivingOptions;
     /**
-     * If set to true, the <code>DirectionsService</code> will attempt to
-     * re-order the supplied intermediate waypoints to minimize overall cost of
-     * the route. If waypoints are optimized, inspect
+     * If set to <code>true</code>, the <code>DirectionsService</code> will
+     * attempt to re-order the supplied intermediate waypoints to minimize
+     * overall cost of the route. If waypoints are optimized, inspect
      * <code>DirectionsRoute.waypoint_order</code> in the response to determine
      * the new ordering.
      */
@@ -1298,7 +1303,8 @@ declare namespace google.maps {
     /**
      * Array of intermediate waypoints. Directions are calculated from the
      * origin to the destination by way of each waypoint in this array. See the
-     * <a href="/maps/documentation/javascript/directions#UsageLimits">
+     * <a
+     * href="https://developers.google.com/maps/documentation/javascript/directions#UsageLimits">
      * developer&#39;s guide</a> for the maximum number of waypoints allowed.
      * Waypoints are not supported for transit directions. Optional.
      */
@@ -1308,12 +1314,13 @@ declare namespace google.maps {
 declare namespace google.maps {
   /**
    * The directions response retrieved from the directions server. You can
-   * render these using a <code><a
-   * href="#DirectionsRenderer">DirectionsRenderer</a></code> or parse this
+   * render these using a {@link google.maps.DirectionsRenderer} or parse this
    * object and render it yourself. You must display the warnings and copyrights
-   * as noted in the <a href="/maps/terms">{{maps_api_tos}}</a>. Note that
-   * though this result is &quot;JSON-like,&quot; it is not strictly JSON, as it
-   * indirectly includes <code>LatLng</code> objects.
+   * as noted in the <a
+   * href="https://cloud.google.com/maps-platform/terms">Google Maps Platform
+   * Terms of Service</a>. Note that though this result is
+   * &quot;JSON-like,&quot; it is not strictly JSON, as it indirectly includes
+   * <code>LatLng</code> objects.
    */
   interface DirectionsResult {
     /**
@@ -1368,7 +1375,8 @@ declare namespace google.maps {
      */
     overview_path: google.maps.LatLng[];
     /**
-     * An <a href="/maps/documentation/utilities/polylinealgorithm">encoded
+     * An <a
+     * href="https://developers.google.com/maps/documentation/utilities/polylinealgorithm">encoded
      * polyline representation</a> of the route in overview_path. This polyline
      * is an approximate (smoothed) path of the resulting directions.
      */
@@ -1435,19 +1443,20 @@ declare namespace google.maps {
 declare namespace google.maps {
   /**
    * A single <code>DirectionsStep</code> in a <code>DirectionsResult</code>.
-   * Some fields may be undefined. Note that though this object is
+   * Some fields may be <code>undefined</code>. Note that though this object is
    * &quot;JSON-like,&quot; it is not strictly JSON, as it directly includes
    * <code>LatLng</code> objects.
    */
   interface DirectionsStep {
     /**
-     * The distance covered by this step. This property may be undefined as the
-     * distance may be unknown.
+     * The distance covered by this step. This property may be
+     * <code>undefined</code> as the distance may be unknown.
      */
     distance?: google.maps.Distance;
     /**
      * The typical time required to perform this step in seconds and in text
-     * form. This property may be undefined as the duration may be unknown.
+     * form. This property may be <code>undefined</code> as the duration may be
+     * unknown.
      */
     duration?: google.maps.Duration;
     /**
@@ -1541,18 +1550,18 @@ declare namespace google.maps {
    */
   interface DistanceMatrixRequest {
     /**
-     * If true, instructs the Distance Matrix service to avoid ferries where
-     * possible. Optional.
+     * If <code>true</code>, instructs the Distance Matrix service to avoid
+     * ferries where possible. Optional.
      */
     avoidFerries?: boolean;
     /**
-     * If true, instructs the Distance Matrix service to avoid highways where
-     * possible. Optional.
+     * If <code>true</code>, instructs the Distance Matrix service to avoid
+     * highways where possible. Optional.
      */
     avoidHighways?: boolean;
     /**
-     * If true, instructs the Distance Matrix service to avoid toll roads where
-     * possible. Optional.
+     * If <code>true</code>, instructs the Distance Matrix service to avoid toll
+     * roads where possible. Optional.
      */
     avoidTolls?: boolean;
     /**
@@ -1637,9 +1646,9 @@ declare namespace google.maps {
     /**
      * The duration for this origin-destination pairing, taking into account the
      * traffic conditions indicated by the <code>trafficModel</code> property.
-     * This property may be undefined as the duration may be unknown. Only
-     * available to Premium Plan customers when <code>drivingOptions</code> is
-     * defined when making the request.
+     * This property may be <code>undefined</code> as the duration may be
+     * unknown. Only available to Premium Plan customers when
+     * <code>drivingOptions</code> is defined when making the request.
      */
     duration_in_traffic: google.maps.Duration;
     /**
@@ -1879,7 +1888,7 @@ declare namespace google.maps {
     /**
      * An array of strings denoting the type of this address component. A list
      * of valid types can be found <a
-     * href="/maps/documentation/javascript/geocoding#GeocodingAddressTypes">here</a>
+     * href="https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingAddressTypes">here</a>
      */
     types: string[];
   }
@@ -1888,7 +1897,7 @@ declare namespace google.maps {
   /**
    * <code>GeocoderComponentRestrictions</code> represents a set of filters that
    * resolve to a specific area. For details on how this works, see <a
-   * href="/maps/documentation/javascript/geocoding#ComponentFiltering">
+   * href="https://developers.google.com/maps/documentation/javascript/geocoding#ComponentFiltering">
    * Geocoding Component Filtering</a>.
    */
   interface GeocoderComponentRestrictions {
@@ -1981,8 +1990,8 @@ declare namespace google.maps {
     /**
      * <code>LatLng</code> (or <code>LatLngLiteral</code>) for which to search.
      * The geocoder performs a reverse geocode. See <a
-     * href="/maps/documentation/javascript/geocoding#ReverseGeocoding"> Reverse
-     * Geocoding</a> for more information. One, and only one, of
+     * href="https://developers.google.com/maps/documentation/javascript/geocoding#ReverseGeocoding">
+     * Reverse Geocoding</a> for more information. One, and only one, of
      * <code>address</code>, <code>location</code> and <code>placeId</code> must
      * be supplied.
      */
@@ -1990,9 +1999,11 @@ declare namespace google.maps {
     /**
      * The place ID associated with the location. Place IDs uniquely identify a
      * place in the Google Places database and on Google Maps. Learn more about
-     * <a href="/places/place-id">place IDs</a> in the Places API developer
-     * guide. The geocoder performs a reverse geocode. See <a
-     * href="/maps/documentation/javascript/geocoding#ReverseGeocoding"> Reverse
+     * <a
+     * href="https://developers.google.com/maps/documentation/places/web-service/place-id">place
+     * IDs</a> in the Places API developer guide. The geocoder performs a
+     * reverse geocode. See <a
+     * href="https://developers.google.com/maps/documentation/javascript/geocoding#ReverseGeocoding">Reverse
      * Geocoding</a> for more information. One, and only one, of
      * <code>address</code>, <code>location</code> and <code>placeId</code> must
      * be supplied.
@@ -2040,14 +2051,15 @@ declare namespace google.maps {
     /**
      * Whether the geocoder did not return an exact match for the original
      * request, though it was able to match part of the requested address. If an
-     * exact match, the value will be undefined.
+     * exact match, the value will be <code>undefined</code>.
      */
     partial_match?: boolean;
     /**
      * The place ID associated with the location. Place IDs uniquely identify a
      * place in the Google Places database and on Google Maps. Learn more about
-     * <a href="/places/place-id">Place IDs</a> in the Places API developer
-     * guide.
+     * <a
+     * href="https://developers.google.com/maps/documentation/places/web-service/place-id">Place
+     * IDs</a> in the Places API developer guide.
      */
     place_id: string;
     /**
@@ -2059,8 +2071,8 @@ declare namespace google.maps {
     /**
      * An array of strings denoting the type of the returned geocoded element.
      * For a list of possible strings, refer to the <a href=
-     * "/maps/documentation/javascript/geocoding#GeocodingAddressTypes"> Address
-     * Component Types</a> section of the Developer&#39;s Guide.
+     * "https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingAddressTypes">
+     * Address Component Types</a> section of the Developer&#39;s Guide.
      */
     types: string[];
   }
@@ -2111,8 +2123,8 @@ declare namespace google.maps {
      */
     getUrl(): string;
     /**
-     * Renders the ground overlay on the specified map. If map is set to null,
-     * the overlay is removed.
+     * Renders the ground overlay on the specified map. If map is set to
+     * <code>null</code>, the overlay is removed.
      */
     setMap(map: google.maps.Map|null): void;
     /**
@@ -2187,14 +2199,16 @@ declare namespace google.maps {
    * The place ID of this place is stored in the placeId member. To prevent the
    * default info window from showing up, call the stop() method on this event
    * to prevent it being propagated. Learn more about <a
-   * href="/places/place-id">place IDs</a> in the Places API developer guide.
+   * href="https://developers.google.com/maps/documentation/places/web-service/place-id">place
+   * IDs</a> in the Places API developer guide.
    */
   interface IconMouseEvent extends google.maps.MapMouseEvent {
     /**
      * The place ID of the place that was clicked. This place ID can be used to
      * query more information about the feature that was clicked. <p> Learn more
-     * about <a href="/places/place-id">place IDs</a> in the Places API
-     * developer guide.
+     * about <a
+     * href="https://developers.google.com/maps/documentation/places/web-service/place-id">place
+     * IDs</a> in the Places API developer guide.
      */
     placeId: string|null;
   }
@@ -2503,8 +2517,8 @@ declare namespace google.maps {
      */
     getZIndex(): number;
     /**
-     * Renders the KML Layer on the specified map. If map is set to null, the
-     * layer is removed.
+     * Renders the KML Layer on the specified map. If map is set to
+     * <code>null</code>, the layer is removed.
      */
     setMap(map: google.maps.Map|null): void;
     setOptions(options: google.maps.KmlLayerOptions|null): void;
@@ -2556,7 +2570,8 @@ declare namespace google.maps {
    */
   interface KmlLayerOptions {
     /**
-     * If true, the layer receives mouse events. Default value is true.
+     * If <code>true</code>, the layer receives mouse events. Default value is
+     * <code>true</code>.
      */
     clickable?: boolean|null;
     /**
@@ -2571,7 +2586,7 @@ declare namespace google.maps {
      */
     preserveViewport?: boolean|null;
     /**
-     * Whether to render the screen overlays. Default true.
+     * Whether to render the screen overlays. Default <code>true</code>.
      */
     screenOverlays?: boolean|null;
     /**
@@ -3004,6 +3019,11 @@ declare namespace google.maps {
      * therefore does not do anything. To change the viewport while the map is
      * hidden, set the map to <code>visibility: hidden</code>, thereby ensuring
      * the map div has an actual size.
+     * @param bounds Bounds to show.
+     * @param padding Padding in pixels. The bounds will be fit in the part of
+     *     the map that remains after padding is removed. A number value will
+     *     yield the same padding on all 4 sides. Supply 0 here to make a
+     *     fitBounds idempotent on the result of getBounds.
      */
     fitBounds(
         bounds: google.maps.LatLngBounds|google.maps.LatLngBoundsLiteral,
@@ -3024,23 +3044,23 @@ declare namespace google.maps {
     getCenter(): google.maps.LatLng|undefined;
     /**
      * Returns the clickability of the map icons. A map icon represents a point
-     * of interest, also known as a POI. If the returned value is true, then the
-     * icons are clickable on the map.
+     * of interest, also known as a POI. If the returned value is
+     * <code>true</code>, then the icons are clickable on the map.
      */
     getClickableIcons(): boolean|undefined;
     getDiv(): Element;
     /**
      * Returns the compass heading of aerial imagery. The heading value is
      * measured in degrees (clockwise) from cardinal direction North. If the map
-     * is not yet initialized then the result is undefined.
+     * is not yet initialized then the result is <code>undefined</code>.
      */
     getHeading(): number|undefined;
     getMapTypeId(): string|undefined;
     /**
      * Returns the current <code>Projection</code>. If the map is not yet
-     * initialized then the result is undefined. Listen to the
+     * initialized then the result is <code>undefined</code>. Listen to the
      * <code>projection_changed</code> event and check its value to ensure it is
-     * not undefined.
+     * not <code>undefined</code>.
      */
     getProjection(): google.maps.Projection|undefined;
     /**
@@ -3083,12 +3103,15 @@ declare namespace google.maps {
      * transition will be smoothly animated. Note that the map coordinate system
      * increases from west to east (for x values) and north to south (for y
      * values).
+     * @param x Number of pixels to move the map in the x direction.
+     * @param y Number of pixels to move the map in the y direction.
      */
     panBy(x: number, y: number): void;
     /**
      * Changes the center of the map to the given <code>LatLng</code>. If the
      * change is less than both the width and height of the map, the transition
      * will be smoothly animated.
+     * @param latLng The new center latitude/longitude of the map.
      */
     panTo(latLng: google.maps.LatLng|google.maps.LatLngLiteral): void;
     /**
@@ -3096,6 +3119,9 @@ declare namespace google.maps {
      * <code>LatLngBounds</code>. It makes no guarantee where on the map the
      * bounds will be, except that the map will be panned to show as much of the
      * bounds as possible inside <code>{currentMapSizeInPx} - {padding}</code>.
+     * @param latLngBounds The bounds to pan the map to.
+     * @param padding Padding in pixels. A number value will yield the same
+     *     padding on all 4 sides. The default value is 0.
      */
     panToBounds(
         latLngBounds: google.maps.LatLngBounds|google.maps.LatLngBoundsLiteral,
@@ -3120,6 +3146,7 @@ declare namespace google.maps {
      * overrides the default <code>StreetViewPanorama</code>, allowing the map
      * to bind to an external panorama outside of the map. Setting the panorama
      * to <code>null</code> binds the default embedded panorama back to the map.
+     * @param panorama The panorama to bind to the map.
      */
     setStreetView(panorama: google.maps.StreetViewPanorama|null): void;
     /**
@@ -3233,9 +3260,9 @@ declare namespace google.maps {
     /**
      * Size in pixels of the controls appearing on the map. This value must be
      * supplied directly when creating the Map, updating this value later may
-     * bring the controls into an undefined state. Only governs the controls
-     * made by the Maps API itself. Does not scale developer created custom
-     * controls.
+     * bring the controls into an <code>undefined</code> state. Only governs the
+     * controls made by the Maps API itself. Does not scale developer created
+     * custom controls.
      */
     controlSize?: number|null;
     /**
@@ -3254,8 +3281,8 @@ declare namespace google.maps {
      */
     disableDoubleClickZoom?: boolean|null;
     /**
-     * If false, prevents the map from being dragged. Dragging is enabled by
-     * default.
+     * If <code>false</code>, prevents the map from being dragged. Dragging is
+     * enabled by default.
      * @deprecated Deprecated in 2017. To disable dragging on the map, you can
      *     use the <code>gestureHandling</code> property, and set it to
      *     <code>"none"</code>.
@@ -3309,8 +3336,8 @@ declare namespace google.maps {
      */
     heading?: number|null;
     /**
-     * If false, prevents the map from being controlled by the keyboard.
-     * Keyboard shortcuts are enabled by default.
+     * If <code>false</code>, prevents the map from being controlled by the
+     * keyboard. Keyboard shortcuts are enabled by default.
      */
     keyboardShortcuts?: boolean|null;
     /**
@@ -3327,20 +3354,24 @@ declare namespace google.maps {
     mapTypeId?: null|string;
     /**
      * The maximum zoom level which will be displayed on the map. If omitted, or
-     * set to null, the maximum zoom from the current map type is used instead.
-     * Valid values: Integers between zero, and up to the supported <a
-     * href="/maps/documentation/javascript/maxzoom">maximum zoom level</a>.
+     * set to <code>null</code>, the maximum zoom from the current map type is
+     * used instead. Valid values: Integers between zero, and up to the
+     * supported <a
+     * href="https://developers.google.com/maps/documentation/javascript/maxzoom">maximum
+     * zoom level</a>.
      */
     maxZoom?: number|null;
     /**
      * The minimum zoom level which will be displayed on the map. If omitted, or
-     * set to null, the minimum zoom from the current map type is used instead.
-     * Valid values: Integers between zero, and up to the supported <a
-     * href="/maps/documentation/javascript/maxzoom">maximum zoom level</a>.
+     * set to <code>null</code>, the minimum zoom from the current map type is
+     * used instead. Valid values: Integers between zero, and up to the
+     * supported <a
+     * href="https://developers.google.com/maps/documentation/javascript/maxzoom">maximum
+     * zoom level</a>.
      */
     minZoom?: number|null;
     /**
-     * If true, do not clear the contents of the Map div.
+     * If <code>true</code>, do not clear the contents of the Map div.
      */
     noClear?: boolean|null;
     /**
@@ -3349,8 +3380,8 @@ declare namespace google.maps {
      * Google Maps JavaScript API. While using v3.22 and v3.23, you can choose
      * to use the earlier set of controls rather than the new controls, thus
      * making the Pan control available as part of the old control set. See <a
-     * href="/maps/articles/v322-controls-diff">What&#39;s New in the v3.22 Map
-     * Controls</a>.
+     * href="https://developers.google.com/maps/articles/v322-controls-diff">What&#39;s
+     * New in the v3.22 Map Controls</a>.
      */
     panControl?: boolean|null;
     /**
@@ -3359,8 +3390,8 @@ declare namespace google.maps {
      * Maps JavaScript API. While using v3.22 and v3.23, you can choose to use
      * the earlier set of controls rather than the new controls, thus making the
      * Pan control available as part of the old control set. See <a
-     * href="/maps/articles/v322-controls-diff">What&#39;s New in the v3.22 Map
-     * Controls</a>.
+     * href="https://developers.google.com/maps/articles/v322-controls-diff">What&#39;s
+     * New in the v3.22 Map Controls</a>.
      */
     panControlOptions?: google.maps.PanControlOptions|null;
     /**
@@ -3386,11 +3417,11 @@ declare namespace google.maps {
      */
     scaleControlOptions?: google.maps.ScaleControlOptions|null;
     /**
-     * If false, disables zooming on the map using a mouse scroll wheel. The
-     * scrollwheel is enabled by default. <p><strong>Note</strong>: This
-     * property is <strong>not recommended</strong>. To disable zooming using
-     * scrollwheel, you can use the <code>gestureHandling</code> property, and
-     * set it to either <code>"cooperative"</code> or <code>"none"</code>.
+     * If <code>false</code>, disables zooming on the map using a mouse scroll
+     * wheel. The scrollwheel is enabled by default. <p><strong>Note</strong>:
+     * This property is <strong>not recommended</strong>. To disable zooming
+     * using scrollwheel, you can use the <code>gestureHandling</code> property,
+     * and set it to either <code>"cooperative"</code> or <code>"none"</code>.
      */
     scrollwheel?: boolean|null;
     /**
@@ -3436,7 +3467,8 @@ declare namespace google.maps {
     tilt?: number|null;
     /**
      * The initial Map zoom level. Valid values: Integers between zero, and up
-     * to the supported <a href="/maps/documentation/javascript/maxzoom">maximum
+     * to the supported <a
+     * href="https://developers.google.com/maps/documentation/javascript/maxzoom">maximum
      * zoom level</a>.
      */
     zoom?: number|null;
@@ -3493,11 +3525,11 @@ declare namespace google.maps {
     latLngBounds: google.maps.LatLngBounds|google.maps.LatLngBoundsLiteral;
     /**
      * Bounds can be made more restrictive by setting the
-     * <code>strictBounds</code> flag to true. This reduces how far a user can
-     * zoom out, ensuring that everything outside of the restricted bounds stays
-     * hidden. The default is <code>false</code>, meaning that a user can zoom
-     * out until the entire bounded area is in view, possibly including areas
-     * outside the bounded area.
+     * <code>strictBounds</code> flag to <code>true</code>. This reduces how far
+     * a user can zoom out, ensuring that everything outside of the restricted
+     * bounds stays hidden. The default is <code>false</code>, meaning that a
+     * user can zoom out until the entire bounded area is in view, possibly
+     * including areas outside the bounded area.
      */
     strictBounds?: boolean;
   }
@@ -3617,7 +3649,8 @@ declare namespace google.maps {
    * define how the map should be styled. Selectors specify the map features
    * and/or elements that should be affected, and stylers specify how those
    * features and elements should be modified. For details, see the <a
-   * href="/maps/documentation/javascript/style-reference">style reference</a>.
+   * href="https://developers.google.com/maps/documentation/javascript/style-reference">style
+   * reference</a>.
    */
   interface MapTypeStyle {
     /**
@@ -3626,7 +3659,7 @@ declare namespace google.maps {
      * fill applied to the geometry, and more. Optional. If
      * <code>elementType</code> is not specified, the value is assumed to be
      * <code>'all'</code>. For details of usage and allowed values, see the <a
-     * href="/maps/documentation/javascript/style-reference#style-elements">style
+     * href="https://developers.google.com/maps/documentation/javascript/style-reference#style-elements">style
      * reference</a>.
      */
     elementType?: string|null;
@@ -3635,7 +3668,7 @@ declare namespace google.maps {
      * Optional. If <code>featureType</code> is not specified, the value is
      * assumed to be <code>'all'</code>. For details of usage and allowed
      * values, see the <a
-     * href="/maps/documentation/javascript/style-reference#style-features">style
+     * href="https://developers.google.com/maps/documentation/javascript/style-reference#style-features">style
      * reference</a>.
      */
     featureType?: string|null;
@@ -3643,7 +3676,7 @@ declare namespace google.maps {
      * The style rules to apply to the selected map features and elements. The
      * rules are applied in the order that you specify in this array. For
      * guidelines on usage and allowed values, see the <a
-     * href="/maps/documentation/javascript/style-reference#stylers">style
+     * href="https://developers.google.com/maps/documentation/javascript/style-reference#stylers">style
      * reference</a>.
      */
     stylers: object[];
@@ -3665,42 +3698,139 @@ declare namespace google.maps {
 declare namespace google.maps {
   class Marker extends google.maps.MVCObject {
     constructor(opts?: google.maps.MarkerOptions|null);
+    /**
+     * Get the currently running animation.
+     */
     getAnimation(): google.maps.Animation|null;
+    /**
+     * Get the clickable status of the {@link google.maps.Marker}.
+     */
     getClickable(): boolean;
+    /**
+     * Get the mouse cursor type shown on hover.
+     */
     getCursor(): string;
+    /**
+     * Get the draggable status of the {@link google.maps.Marker}.
+     */
     getDraggable(): boolean;
+    /**
+     * Get the icon of the {@link google.maps.Marker}. See {@link
+     * google.maps.MarkerOptions.icon}.
+     */
     getIcon(): string|google.maps.Icon|null|google.maps.Symbol;
+    /**
+     * Get the label of the {@link google.maps.Marker}. See {@link
+     * google.maps.MarkerOptions.label}.
+     */
     getLabel(): google.maps.MarkerLabel|null;
+    /**
+     * Get the map or panaroama the {@link google.maps.Marker} is rendered on.
+     */
     getMap(): google.maps.Map|null|google.maps.StreetViewPanorama;
+    /**
+     * Get the opacity of the {@link google.maps.Marker}.
+     */
     getOpacity(): number;
+    /**
+     * Get the position of the {@link google.maps.Marker}.
+     */
     getPosition(): google.maps.LatLng|null|undefined;
+    /**
+     * Get the shape of the {@link google.maps.Marker} used for interaction.
+     * See {@link google.maps.MarkerOptions.shape} and {@link
+     * google.maps.MarkerShape}.
+     */
     getShape(): google.maps.MarkerShape|null;
+    /**
+     * Get the title of the {@link google.maps.Marker} tooltip. See {@link
+     * google.maps.MarkerOptions.title}.
+     */
     getTitle(): string;
+    /**
+     * Get the visibility of the {@link google.maps.Marker}.
+     */
     getVisible(): boolean;
+    /**
+     * Get the zIndex of the {@link google.maps.Marker}. See {@link
+     * google.maps.MarkerOptions.zIndex}.
+     */
     getZIndex(): number;
     /**
      * Start an animation. Any ongoing animation will be cancelled. Currently
-     * supported animations are: BOUNCE, DROP. Passing in <code>null</code> will
-     * cause any animation to stop.
+     * supported animations are: {@link google.maps.Animation.BOUNCE}, {@link
+     * google.maps.Animation.DROP}. Passing in <code>null</code> will cause any
+     * animation to stop.
+     * @param animation The animation to play.
      */
     setAnimation(animation: google.maps.Animation|null): void;
+    /**
+     * Set if the {@link google.maps.Marker} is clickable.
+     * @param flag If <code>true</code>, the Marker can be clicked.
+     */
     setClickable(flag: boolean): void;
+    /**
+     * Set the mouse cursor type shown on hover.
+     * @param cursor Mouse cursor type.
+     */
     setCursor(cursor: string): void;
+    /**
+     * Set if the {@link google.maps.Marker} is draggable.
+     * @param flag If <code>true</code>, the Marker can be dragged.
+     */
     setDraggable(flag: boolean|null): void;
+    /**
+     * Set the icon for the {@link google.maps.Marker}. See {@link
+     * google.maps.MarkerOptions.icon}.
+     */
     setIcon(icon: string|google.maps.Icon|null|google.maps.Symbol): void;
+    /**
+     * Set the label for the {@link google.maps.Marker}. See {@link
+     * google.maps.MarkerOptions.label}.
+     * @param label The label can either be a character string or a {@link
+     *     google.maps.MarkerLabel} object.
+     */
     setLabel(label: string|google.maps.MarkerLabel|null): void;
     /**
-     * Renders the marker on the specified map or panorama. If map is set to
-     * null, the marker will be removed.
+     * Renders the {@link google.maps.Marker} on the specified map or panorama.
+     * If map is set to <code>null</code>, the marker will be removed.
      */
     setMap(map: google.maps.Map|null|google.maps.StreetViewPanorama): void;
+    /**
+     * Set the opacity of the {@link google.maps.Marker}.
+     * @param opacity A number between 0.0, transparent, and 1.0, opaque.
+     */
     setOpacity(opacity: number): void;
+    /**
+     * Set the options for the {@link google.maps.Marker}.
+     */
     setOptions(options: google.maps.MarkerOptions|null): void;
+    /**
+     * Set the postition for the {@link google.maps.Marker}.
+     * @param latlng The new position.
+     */
     setPosition(latlng: google.maps.LatLng|null|google.maps.LatLngLiteral|
                 undefined): void;
+    /**
+     * Set the shape of the {@link google.maps.Marker} used for interaction.
+     * See {@link google.maps.MarkerOptions.shape} and {@link
+     * google.maps.MarkerShape}.
+     */
     setShape(shape: google.maps.MarkerShape|null): void;
+    /**
+     * Set the title of the {@link google.maps.Marker} tooltip. See {@link
+     * google.maps.MarkerOptions.title}.
+     */
     setTitle(title: string): void;
+    /**
+     * Set if the {@link google.maps.Marker} is visible.
+     * @param visible If <code>true</code>, the Marker is visible
+     */
     setVisible(visible: boolean): void;
+    /**
+     * Set the zIndex of the {@link google.maps.Marker}. See {@link
+     * google.maps.MarkerOptions.zIndex}.
+     */
     setZIndex(zIndex: number): void;
     /**
      * The maximum default z-index that the API will assign to a marker. You may
@@ -3770,21 +3900,22 @@ declare namespace google.maps {
      */
     animation?: google.maps.Animation|null;
     /**
-     * If true, the marker receives mouse and touch events. Default value is
-     * true.
+     * If <code>true</code>, the marker receives mouse and touch events. Default
+     * value is <code>true</code>.
      */
     clickable?: boolean|null;
     /**
-     * If false, disables cross that appears beneath the marker when dragging.
-     * This option is <code>true</code> by default.
+     * If <code>false</code>, disables cross that appears beneath the marker
+     * when dragging. This option is <code>true</code> by default.
      */
     crossOnDrag?: boolean|null;
     /**
-     * Mouse cursor to show on hover
+     * Mouse cursor type to show on hover.
      */
     cursor?: string|null;
     /**
-     * If true, the marker can be dragged. Default value is false.
+     * If <code>true</code>, the marker can be dragged. Default value is
+     * <code>false</code>.
      */
     draggable?: boolean|null;
     /**
@@ -3793,7 +3924,8 @@ declare namespace google.maps {
      */
     icon?: string|null|google.maps.Icon|google.maps.Symbol;
     /**
-     * Adds a label to the marker. The label can either be a string, or a
+     * Adds a label to the marker. A marker label is a letter or number that
+     * appears inside a marker. The label can either be a string, or a
      * <code>MarkerLabel</code> object. If provided and {@link
      * google.maps.MarkerOptions.title} is not provided, an accessibility text
      * (e.g. for use with screen readers) will be added to the marker with the
@@ -3802,11 +3934,13 @@ declare namespace google.maps {
      */
     label?: string|null|google.maps.MarkerLabel;
     /**
-     * Map on which to display Marker.
+     * Map on which to display Marker. The map is required to display the marker
+     * and can be provided with {@link google.maps.Marker.setMap} if not
+     * provided at marker construction.
      */
     map?: google.maps.Map|null|google.maps.StreetViewPanorama;
     /**
-     * The marker&#39;s opacity between 0.0 and 1.0.
+     * A number between 0.0, transparent, and 1.0, opaque.
      */
     opacity?: number|null;
     /**
@@ -3819,7 +3953,9 @@ declare namespace google.maps {
      */
     optimized?: boolean|null;
     /**
-     * Marker position. Required in order to display the marker.
+     * Marker position. The position is required to display the marker and can
+     * be provided with {@link google.maps.Marker.setPosition} if not provided
+     * at marker construction.
      */
     position?: google.maps.LatLng|null|google.maps.LatLngLiteral;
     /**
@@ -3834,7 +3970,7 @@ declare namespace google.maps {
      */
     title?: string|null;
     /**
-     * If true, the marker is visible
+     * If <code>true</code>, the marker is visible.
      */
     visible?: boolean|null;
     /**
@@ -4116,9 +4252,11 @@ declare namespace google.maps {
      * identifying a place. If possible, you should specify the
      * <code>placeId</code> rather than a <code>query</code>. A place ID can be
      * retrieved from any request to the Places API, such as a <a
-     * href="/places/webservice/search">TextSearch</a>. Place IDs can also be
-     * retrieved from requests to the Geocoding API. For more information, see
-     * the <a href="/places/place-id">overview of place IDs</a>.
+     * href="https://developers.google.com/maps/documentation/places/web-service/search">TextSearch</a>.
+     * Place IDs can also be retrieved from requests to the Geocoding API. For
+     * more information, see the <a
+     * href="https://developers.google.com/maps/documentation/places/web-service/place-id">overview
+     * of place IDs</a>.
      */
     placeId?: string;
     /**
@@ -4167,13 +4305,14 @@ declare namespace google.maps {
     /**
      * The index of the path beneath the cursor when the event occurred, if the
      * event occurred on a vertex and the polygon is editable. Otherwise
-     * undefined.
+     * <code>undefined</code>.
      */
     path?: number;
     /**
      * The index of the vertex beneath the cursor when the event occurred, if
      * the event occurred on a vertex and the polyline or polygon is editable.
-     * If the event does not occur on a vertex, the value is undefined.
+     * If the event does not occur on a vertex, the value is
+     * <code>undefined</code>.
      */
     vertex?: number;
   }
@@ -4183,10 +4322,11 @@ declare namespace google.maps {
    * A polygon (like a polyline) defines a series of connected coordinates in an
    * ordered sequence. Additionally, polygons form a closed loop and define a
    * filled region. See the samples in the developer&#39;s guide, starting with
-   * a <a href="/maps/documentation/javascript/examples/polygon-simple">simple
+   * a <a
+   * href="https://developers.google.com/maps/documentation/javascript/examples/polygon-simple">simple
    * polygon</a>, a <a
-   * href="/maps/documentation/javascript/examples/polygon-hole">polygon with a
-   * hole</a>, and more. Note that you can also use the <a
+   * href="https://developers.google.com/maps/documentation/javascript/examples/polygon-hole">polygon
+   * with a hole</a>, and more. Note that you can also use the <a
    * href="#Data.Polygon">Data layer</a> to create a polygon. The Data layer
    * offers a simpler way of creating holes because it handles the order of the
    * inner and outer paths for you.
@@ -4197,10 +4337,10 @@ declare namespace google.maps {
      * an ordered sequence. Additionally, polygons form a closed loop and define
      * a filled region. See the samples in the developer&#39;s guide, starting
      * with a <a
-     * href="/maps/documentation/javascript/examples/polygon-simple">simple
+     * href="https://developers.google.com/maps/documentation/javascript/examples/polygon-simple">simple
      * polygon</a>, a <a
-     * href="/maps/documentation/javascript/examples/polygon-hole">polygon with
-     * a hole</a>, and more. Note that you can also use the <a
+     * href="https://developers.google.com/maps/documentation/javascript/examples/polygon-hole">polygon
+     * with a hole</a>, and more. Note that you can also use the <a
      * href="#Data.Polygon">Data layer</a> to create a polygon. The Data layer
      * offers a simpler way of creating holes because it handles the order of
      * the inner and outer paths for you.
@@ -4231,18 +4371,18 @@ declare namespace google.maps {
      */
     getVisible(): boolean;
     /**
-     * If set to true, the user can drag this shape over the map. The
-     * <code>geodesic</code> property defines the mode of dragging.
+     * If set to <code>true</code>, the user can drag this shape over the map.
+     * The <code>geodesic</code> property defines the mode of dragging.
      */
     setDraggable(draggable: boolean): void;
     /**
-     * If set to true, the user can edit this shape by dragging the control
-     * points shown at the vertices and on each segment.
+     * If set to <code>true</code>, the user can edit this shape by dragging the
+     * control points shown at the vertices and on each segment.
      */
     setEditable(editable: boolean): void;
     /**
-     * Renders this shape on the specified map. If map is set to null, the shape
-     * will be removed.
+     * Renders this shape on the specified map. If map is set to
+     * <code>null</code>, the shape will be removed.
      */
     setMap(map: google.maps.Map|null): void;
     setOptions(options: google.maps.PolygonOptions|null): void;
@@ -4274,14 +4414,14 @@ declare namespace google.maps {
      */
     clickable?: boolean|null;
     /**
-     * If set to true, the user can drag this shape over the map. The
-     * <code>geodesic</code> property defines the mode of dragging. Defaults to
-     * <code>false</code>.
+     * If set to <code>true</code>, the user can drag this shape over the map.
+     * The <code>geodesic</code> property defines the mode of dragging. Defaults
+     * to <code>false</code>.
      */
     draggable?: boolean|null;
     /**
-     * If set to true, the user can edit this shape by dragging the control
-     * points shown at the vertices and on each segment. Defaults to
+     * If set to <code>true</code>, the user can edit this shape by dragging the
+     * control points shown at the vertices and on each segment. Defaults to
      * <code>false</code>.
      */
     editable?: boolean|null;
@@ -4295,12 +4435,12 @@ declare namespace google.maps {
      */
     fillOpacity?: number|null;
     /**
-     * When true, edges of the polygon are interpreted as geodesic and will
-     * follow the curvature of the Earth. When false, edges of the polygon are
-     * rendered as straight lines in screen space. Note that the shape of a
-     * geodesic polygon may appear to change when dragged, as the dimensions are
-     * maintained relative to the surface of the earth. Defaults to
-     * <code>false</code>.
+     * When <code>true</code>, edges of the polygon are interpreted as geodesic
+     * and will follow the curvature of the Earth. When <code>false</code>,
+     * edges of the polygon are rendered as straight lines in screen space. Note
+     * that the shape of a geodesic polygon may appear to change when dragged,
+     * as the dimensions are maintained relative to the surface of the earth.
+     * Defaults to <code>false</code>.
      */
     geodesic?: boolean|null;
     /**
@@ -4379,18 +4519,18 @@ declare namespace google.maps {
      */
     getVisible(): boolean;
     /**
-     * If set to true, the user can drag this shape over the map. The
-     * <code>geodesic</code> property defines the mode of dragging.
+     * If set to <code>true</code>, the user can drag this shape over the map.
+     * The <code>geodesic</code> property defines the mode of dragging.
      */
     setDraggable(draggable: boolean): void;
     /**
-     * If set to true, the user can edit this shape by dragging the control
-     * points shown at the vertices and on each segment.
+     * If set to <code>true</code>, the user can edit this shape by dragging the
+     * control points shown at the vertices and on each segment.
      */
     setEditable(editable: boolean): void;
     /**
-     * Renders this shape on the specified map. If map is set to null, the shape
-     * will be removed.
+     * Renders this shape on the specified map. If map is set to
+     * <code>null</code>, the shape will be removed.
      */
     setMap(map: google.maps.Map|null): void;
     setOptions(options: google.maps.PolylineOptions|null): void;
@@ -4418,24 +4558,24 @@ declare namespace google.maps {
      */
     clickable?: boolean|null;
     /**
-     * If set to true, the user can drag this shape over the map. The
-     * <code>geodesic</code> property defines the mode of dragging. Defaults to
-     * <code>false</code>.
+     * If set to <code>true</code>, the user can drag this shape over the map.
+     * The <code>geodesic</code> property defines the mode of dragging. Defaults
+     * to <code>false</code>.
      */
     draggable?: boolean|null;
     /**
-     * If set to true, the user can edit this shape by dragging the control
-     * points shown at the vertices and on each segment. Defaults to
+     * If set to <code>true</code>, the user can edit this shape by dragging the
+     * control points shown at the vertices and on each segment. Defaults to
      * <code>false</code>.
      */
     editable?: boolean|null;
     /**
-     * When true, edges of the polygon are interpreted as geodesic and will
-     * follow the curvature of the Earth. When false, edges of the polygon are
-     * rendered as straight lines in screen space. Note that the shape of a
-     * geodesic polygon may appear to change when dragged, as the dimensions are
-     * maintained relative to the surface of the earth. Defaults to
-     * <code>false</code>.
+     * When <code>true</code>, edges of the polygon are interpreted as geodesic
+     * and will follow the curvature of the Earth. When <code>false</code>,
+     * edges of the polygon are rendered as straight lines in screen space. Note
+     * that the shape of a geodesic polygon may appear to change when dragged,
+     * as the dimensions are maintained relative to the surface of the earth.
+     * Defaults to <code>false</code>.
      */
     geodesic?: boolean|null;
     /**
@@ -4540,17 +4680,18 @@ declare namespace google.maps {
     setBounds(bounds: google.maps.LatLngBounds|null|
               google.maps.LatLngBoundsLiteral): void;
     /**
-     * If set to true, the user can drag this rectangle over the map.
+     * If set to <code>true</code>, the user can drag this rectangle over the
+     * map.
      */
     setDraggable(draggable: boolean): void;
     /**
-     * If set to true, the user can edit this rectangle by dragging the control
-     * points shown at the corners and on each edge.
+     * If set to <code>true</code>, the user can edit this rectangle by dragging
+     * the control points shown at the corners and on each edge.
      */
     setEditable(editable: boolean): void;
     /**
-     * Renders the rectangle on the specified map. If map is set to null, the
-     * rectangle will be removed.
+     * Renders the rectangle on the specified map. If map is set to
+     * <code>null</code>, the rectangle will be removed.
      */
     setMap(map: google.maps.Map|null): void;
     setOptions(options: google.maps.RectangleOptions|null): void;
@@ -4576,13 +4717,13 @@ declare namespace google.maps {
      */
     clickable?: boolean|null;
     /**
-     * If set to true, the user can drag this rectangle over the map. Defaults
-     * to <code>false</code>.
+     * If set to <code>true</code>, the user can drag this rectangle over the
+     * map. Defaults to <code>false</code>.
      */
     draggable?: boolean|null;
     /**
-     * If set to true, the user can edit this rectangle by dragging the control
-     * points shown at the corners and on each edge. Defaults to
+     * If set to <code>true</code>, the user can edit this rectangle by dragging
+     * the control points shown at the corners and on each edge. Defaults to
      * <code>false</code>.
      */
     editable?: boolean|null;
@@ -4843,9 +4984,9 @@ declare namespace google.maps {
      */
     getLocation(): google.maps.StreetViewLocation|null;
     /**
-     * Returns the state of motion tracker. If true when the user physically
-     * moves the device and the browser supports it, the Street View Panorama
-     * tracks the physical movements.
+     * Returns the state of motion tracker. If <code>true</code> when the user
+     * physically moves the device and the browser supports it, the Street View
+     * Panorama tracks the physical movements.
      */
     getMotionTracking(): boolean;
     /**
@@ -4897,9 +5038,9 @@ declare namespace google.maps {
      */
     setLinks(links: (google.maps.StreetViewLink|null)[]|null): void;
     /**
-     * Sets the state of motion tracker. If true when the user physically moves
-     * the device and the browser supports it, the Street View Panorama tracks
-     * the physical movements.
+     * Sets the state of motion tracker. If <code>true</code> when the user
+     * physically moves the device and the browser supports it, the Street View
+     * Panorama tracks the physical movements.
      */
     setMotionTracking(motionTracking: boolean): void;
     /**
@@ -5021,8 +5162,8 @@ declare namespace google.maps {
      * Whether motion tracking is on or off. Enabled by default when the motion
      * tracking control is present, so that the POV (point of view) follows the
      * orientation of the device. This is primarily applicable to mobile
-     * devices. If <code>motionTracking</code> is set to false while
-     * <code>motionTrackingControl</code> is enabled, the motion tracking
+     * devices. If <code>motionTracking</code> is set to <code>false</code>
+     * while <code>motionTrackingControl</code> is enabled, the motion tracking
      * control appears but tracking is off. The user can tap the motion tracking
      * control to toggle this option.
      */
@@ -5059,8 +5200,8 @@ declare namespace google.maps {
      */
     pov?: google.maps.StreetViewPov|null;
     /**
-     * If false, disables scrollwheel zooming in Street View. The scrollwheel is
-     * enabled by default.
+     * If <code>false</code>, disables scrollwheel zooming in Street View. The
+     * scrollwheel is enabled by default.
      */
     scrollwheel?: boolean|null;
     /**
@@ -5097,8 +5238,8 @@ declare namespace google.maps {
    */
   interface StreetViewPov {
     /**
-     * The camera heading in degrees relative to true north. True north is
-     * 0&deg;, east is 90&deg;, south is 180&deg;, west is 270&deg;.
+     * The camera heading in degrees relative to <code>true</code> north. True
+     * north is 0&deg;, east is 90&deg;, south is 180&deg;, west is 270&deg;.
      */
     heading: number;
     /**
@@ -5399,8 +5540,8 @@ declare namespace google.maps {
      */
     getMap(): google.maps.Map|null;
     /**
-     * Renders the layer on the specified map. If map is set to null, the layer
-     * will be removed.
+     * Renders the layer on the specified map. If map is set to
+     * <code>null</code>, the layer will be removed.
      */
     setMap(map: google.maps.Map|null): void;
     setOptions(options: google.maps.TrafficLayerOptions|null): void;
@@ -5414,7 +5555,7 @@ declare namespace google.maps {
   interface TrafficLayerOptions {
     /**
      * Whether the traffic layer refreshes with updated information
-     * automatically. This is true by default.
+     * automatically. This is <code>true</code> by default.
      */
     autoRefresh?: boolean|null;
     /**
@@ -5533,8 +5674,8 @@ declare namespace google.maps {
      */
     getMap(): google.maps.Map|null;
     /**
-     * Renders the layer on the specified map. If map is set to null, the layer
-     * will be removed.
+     * Renders the layer on the specified map. If map is set to
+     * <code>null</code>, the layer will be removed.
      */
     setMap(map: google.maps.Map|null): void;
   }
@@ -5752,9 +5893,9 @@ declare namespace google.maps.drawing {
     /**
      * The drawing modes to display in the drawing control, in the order in
      * which they are to be displayed. The hand icon (which corresponds to the
-     * null drawing mode) is always available and is not to be specified in this
-     * array. Defaults to <code>['marker', 'polyline', 'rectangle', 'circle',
-     * 'polygon']</code>.
+     * <code>null</code> drawing mode) is always available and is not to be
+     * specified in this array. Defaults to <code>['marker', 'polyline',
+     * 'rectangle', 'circle', 'polygon']</code>.
      */
     drawingModes?: google.maps.drawing.OverlayType[]|null;
     /**
@@ -6054,8 +6195,8 @@ declare namespace google.maps.geometry.spherical {
   /**
    * Returns the location of origin when provided with a LatLng destination,
    * meters travelled and original heading. Headings are expressed in degrees
-   * clockwise from North. This function returns null when no solution is
-   * available.
+   * clockwise from North. This function returns <code>null</code> when no
+   * solution is available.
    */
   function computeOffsetOrigin(
       to: google.maps.LatLng, distance: number, heading: number,
@@ -6344,7 +6485,7 @@ declare namespace google.maps.localContext {
 declare namespace google.maps.localContext {
   /**
    * Setup options for the place chooser. Read more about <a
-   * href="/maps/documentation/javascript/local-context/set-options#setting_layout_and_visibility">setting
+   * href="https://developers.google.com/maps/documentation/javascript/local-context/set-options#setting_layout_and_visibility">setting
    * layout and visibility</a>.
    */
   interface PlaceChooserViewSetupOptions {
@@ -6377,7 +6518,7 @@ declare namespace google.maps.localContext {
 declare namespace google.maps.localContext {
   /**
    * Setup options for the place details. Read more about <a
-   * href="/maps/documentation/javascript/local-context/set-options#setting_layout_and_visibility">setting
+   * href="https://developers.google.com/maps/documentation/javascript/local-context/set-options#setting_layout_and_visibility">setting
    * layout and visibility</a>.
    */
   interface PlaceDetailsViewSetupOptions {
@@ -6451,7 +6592,7 @@ declare namespace google.maps.places {
     /**
      * Sets the types of predictions to be returned. For a list of supported
      * types, see the <a
-     * href="https://developers.google.com/places/supported_types#table3">
+     * href="https://developers.google.com/maps/documentation/places/web-service/supported_types#table3">
      * developer&#39;s guide</a>. If no type is specified, all types will be
      * returned. The <code>setTypes</code> method accepts a single element
      * array.
@@ -6477,8 +6618,8 @@ declare namespace google.maps.places {
     /**
      * Fields to be included for the Place in the details response when the
      * details are successfully retrieved, <a
-     * href="https://developers.google.com/maps/billing/understanding-cost-of-use#places-product">which
-     * will be billed for</a>. If <code>[&#39;ALL&#39;]</code> is passed in, all
+     * href="/maps/billing/understanding-cost-of-use#places-product">which will
+     * be billed for</a>. If <code>[&#39;ALL&#39;]</code> is passed in, all
      * available fields will be returned and billed for (this is not recommended
      * for production deployments). For a list of fields see {@link
      * google.maps.places.PlaceResult}. Nested fields can be specified with
@@ -6499,15 +6640,15 @@ declare namespace google.maps.places {
     /**
      * A boolean value, indicating that the Autocomplete widget should only
      * return those places that are inside the bounds of the Autocomplete widget
-     * at the time the query is sent. Setting strictBounds to false (which is
-     * the default) will make the results biased towards, but not restricted to,
-     * places contained within the bounds.
+     * at the time the query is sent. Setting strictBounds to <code>false</code>
+     * (which is the default) will make the results biased towards, but not
+     * restricted to, places contained within the bounds.
      */
     strictBounds?: boolean;
     /**
      * The types of predictions to be returned. For a list of supported types,
      * see the <a
-     * href="https://developers.google.com/places/supported_types#table3">developer&#39;s
+     * href="https://developers.google.com/maps/documentation/places/web-service/supported_types#table3">developer&#39;s
      * guide</a>. If nothing is specified, all types are returned. In general
      * only a single type is allowed. The exception is that you can safely mix
      * the <code>'geocode'</code> and <code>'establishment'</code> types, but
@@ -6669,8 +6810,8 @@ declare namespace google.maps.places {
     sessionToken?: google.maps.places.AutocompleteSessionToken;
     /**
      * The types of predictions to be returned. For a list of supported types,
-     * see the <a
-     * href="https://developers.google.com/places/supported_types#table3">
+     * see the &lt;a href=<a
+     * href="https://cloud.google.com/maps-platform/terms/documentation/places/web-service/supported_types#table3&quot;&gt;">https://cloud.google.com/maps-platform/terms/documentation/places/web-service/supported_types#table3&quot;&gt;</a>
      * developer&#39;s guide</a>. If nothing is specified, all types are
      * returned. In general only a single type is allowed. The exception is that
      * you can safely mix the <code>'geocode'</code> and
@@ -6717,8 +6858,8 @@ declare namespace google.maps.places {
   interface FindPlaceFromPhoneNumberRequest {
     /**
      * Fields to be included in the response, <a
-     * href="https://developers.google.com/maps/billing/understanding-cost-of-use#places-product">which
-     * will be billed for</a>. If <code>[&#39;ALL&#39;]</code> is passed in, all
+     * href="/maps/billing/understanding-cost-of-use#places-product">which will
+     * be billed for</a>. If <code>[&#39;ALL&#39;]</code> is passed in, all
      * available fields will be returned and billed for (this is not recommended
      * for production deployments). For a list of fields see {@link
      * google.maps.places.PlaceResult}. Nested fields can be specified with
@@ -6748,8 +6889,8 @@ declare namespace google.maps.places {
   interface FindPlaceFromQueryRequest {
     /**
      * Fields to be included in the response, <a
-     * href="https://developers.google.com/maps/billing/understanding-cost-of-use#places-product">which
-     * will be billed for</a>. If <code>[&#39;ALL&#39;]</code> is passed in, all
+     * href="/maps/billing/understanding-cost-of-use#places-product">which will
+     * be billed for</a>. If <code>[&#39;ALL&#39;]</code> is passed in, all
      * available fields will be returned and billed for (this is not recommended
      * for production deployments). For a list of fields see {@link
      * google.maps.places.PlaceResult}. Nested fields can be specified with
@@ -6820,8 +6961,8 @@ declare namespace google.maps.places {
   interface PlaceDetailsRequest {
     /**
      * Fields to be included in the details response, <a
-     * href="https://developers.google.com/maps/billing/understanding-cost-of-use#places-product">which
-     * will be billed for</a>. If no fields are specified or
+     * href="/maps/billing/understanding-cost-of-use#places-product">which will
+     * be billed for</a>. If no fields are specified or
      * <code>[&#39;ALL&#39;]</code> is passed in, all available fields will be
      * returned and billed for (this is not recommended for production
      * deployments). For a list of fields see {@link
@@ -6851,8 +6992,9 @@ declare namespace google.maps.places {
     location?: google.maps.LatLng;
     /**
      * The preferred viewport when displaying this Place on a map. This property
-     * will be null if the preferred viewport for the Place is not known. Only
-     * available with {@link google.maps.places.PlacesService.getDetails}.
+     * will be <code>null</code> if the preferred viewport for the Place is not
+     * known. Only available with {@link
+     * google.maps.places.PlacesService.getDetails}.
      */
     viewport?: google.maps.LatLngBounds;
   }
@@ -7124,9 +7266,10 @@ declare namespace google.maps.places {
      */
     reviews?: google.maps.places.PlaceReview[];
     /**
-     * An array of <a href="/places/supported_types">types for this Place</a>
-     * (for example, <code>["political", "locality"]</code> or
-     * <code>["restaurant", "establishment"]</code>).
+     * An array of <a
+     * href="https://developers.google.com/maps/documentation/places/web-service/supported_types">
+     * types for this Place</a> (for example, <code>["political",
+     * "locality"]</code> or <code>["restaurant", "establishment"]</code>).
      */
     types?: string[];
     /**
@@ -7304,7 +7447,7 @@ declare namespace google.maps.places {
      * type string. Results of a different type are dropped from the response.
      * Use this field to perform language and region independent categorical
      * searches. Valid types are given <a
-     * href="/maps/documentation/places/supported_types">here</a>.
+     * href="https://developers.google.com/maps/documentation/places/web-service/supported_types">here</a>.
      */
     type?: string;
   }
@@ -7370,7 +7513,7 @@ declare namespace google.maps.places {
      * the full {@link google.maps.places.PlaceResult}. Your app can get a more
      * detailed {@link google.maps.places.PlaceResult} for each place by sending
      * a <a
-     * href="/maps/documentation/javascript/places#place_details_requests">Place
+     * href="https://developers.google.com/maps/documentation/javascript/places#place_details_requests">Place
      * Details request</a> passing the {@link
      * google.maps.places.PlaceResult.place_id} for the desired place.
      * The {@link google.maps.places.PlaceSearchPagination} object can be used
@@ -7638,7 +7781,7 @@ declare namespace google.maps.places {
      * type string. Results of a different type are dropped from the response.
      * Use this field to perform language and region independent categorical
      * searches. Valid types are given <a
-     * href="/maps/documentation/places/supported_types">here</a>.
+     * href="https://developers.google.com/maps/documentation/places/web-service/supported_types">here</a>.
      */
     type?: string;
   }
@@ -7672,8 +7815,8 @@ declare namespace google.maps.visualization {
             (google.maps.LatLng|google.maps.visualization.WeightedLocation)[]):
         void;
     /**
-     * Renders the heatmap on the specified map. If map is set to null, the
-     * heatmap will be removed.
+     * Renders the heatmap on the specified map. If map is set to
+     * <code>null</code>, the heatmap will be removed.
      */
     setMap(map: google.maps.Map|null): void;
     setOptions(options: google.maps.visualization.HeatmapLayerOptions|
