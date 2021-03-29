@@ -30,7 +30,17 @@ declare namespace google.maps {
    * google.maps.MarkerOptions.animation} option to play an animation.
    */
   enum Animation {
+    /**
+     * Marker bounces until animation is stopped by calling {@link
+     * google.maps.Marker.setAnimation} with <code>null</code>.
+     */
     BOUNCE = 0.0,
+    /**
+     * Marker drops from the top of the map to its final location. Animation
+     * will cease once the marker comes to rest and {@link
+     * google.maps.Marker.getAnimation} will return <code>null</code>. This type
+     * of animation is usually specified during creation of the marker.
+     */
     DROP = 1.0,
   }
 }
@@ -227,17 +237,59 @@ declare namespace google.maps {
    * right column flow towards the middle of the column.
    */
   enum ControlPosition {
+    /**
+     * Elements are positioned in the center of the bottom row.
+     */
     BOTTOM_CENTER = 0.0,
+    /**
+     * Elements are positioned in the bottom left and flow towards the middle.
+     * Elements are positioned to the right of the Google logo.
+     */
     BOTTOM_LEFT = 1.0,
+    /**
+     * Elements are positioned in the bottom right and flow towards the middle.
+     * Elements are positioned to the left of the copyrights.
+     */
     BOTTOM_RIGHT = 2.0,
+    /**
+     * Elements are positioned on the left, above bottom-left elements, and flow
+     * upwards.
+     */
     LEFT_BOTTOM = 3.0,
+    /**
+     * Elements are positioned in the center of the left side.
+     */
     LEFT_CENTER = 4.0,
+    /**
+     * Elements are positioned on the left, below top-left elements, and flow
+     * downwards.
+     */
     LEFT_TOP = 5.0,
+    /**
+     * Elements are positioned on the right, above bottom-right elements, and
+     * flow upwards.
+     */
     RIGHT_BOTTOM = 6.0,
+    /**
+     * Elements are positioned in the center of the right side.
+     */
     RIGHT_CENTER = 7.0,
+    /**
+     * Elements are positioned on the right, below top-right elements, and flow
+     * downwards.
+     */
     RIGHT_TOP = 8.0,
+    /**
+     * Elements are positioned in the center of the top row.
+     */
     TOP_CENTER = 9.0,
+    /**
+     * Elements are positioned in the top left and flow towards the middle.
+     */
     TOP_LEFT = 10.0,
+    /**
+     * Elements are positioned in the top right and flow towards the middle.
+     */
     TOP_RIGHT = 11.0,
   }
 }
@@ -1430,13 +1482,43 @@ declare namespace google.maps {
    * <code>google.maps.DirectionsStatus.OK</code>.
    */
   enum DirectionsStatus {
+    /**
+     * The <code>DirectionsRequest</code> provided was invalid.
+     */
     INVALID_REQUEST = 'INVALID_REQUEST',
+    /**
+     * Too many <code>DirectionsWaypoint</code>s were provided in the
+     * <code>DirectionsRequest</code>. See the <a
+     * href="https://developers.google.com/maps/documentation/javascript/directions#UsageLimits">
+     * developer&#39;s guide</a> for the maximum number of waypoints allowed.
+     */
     MAX_WAYPOINTS_EXCEEDED = 'MAX_WAYPOINTS_EXCEEDED',
+    /**
+     * At least one of the origin, destination, or waypoints could not be
+     * geocoded.
+     */
     NOT_FOUND = 'NOT_FOUND',
+    /**
+     * The response contains a valid <code>DirectionsResult</code>.
+     */
     OK = 'OK',
+    /**
+     * The webpage has gone over the requests limit in too short a period of
+     * time.
+     */
     OVER_QUERY_LIMIT = 'OVER_QUERY_LIMIT',
+    /**
+     * The webpage is not allowed to use the directions service.
+     */
     REQUEST_DENIED = 'REQUEST_DENIED',
+    /**
+     * A directions request could not be processed due to a server error. The
+     * request may succeed if you try again.
+     */
     UNKNOWN_ERROR = 'UNKNOWN_ERROR',
+    /**
+     * No route could be found between the origin and destination.
+     */
     ZERO_RESULTS = 'ZERO_RESULTS',
   }
 }
@@ -1537,8 +1619,17 @@ declare namespace google.maps {
    * example, <code>'OK'</code>.
    */
   enum DistanceMatrixElementStatus {
+    /**
+     * The origin and/or destination of this pairing could not be geocoded.
+     */
     NOT_FOUND = 'NOT_FOUND',
+    /**
+     * The response contains a valid result.
+     */
     OK = 'OK',
+    /**
+     * No route could be found between the origin and destination.
+     */
     ZERO_RESULTS = 'ZERO_RESULTS',
   }
 }
@@ -1705,12 +1796,35 @@ declare namespace google.maps {
    * <code>google.maps.DistanceMatrixStatus.OK</code>.
    */
   enum DistanceMatrixStatus {
+    /**
+     * The provided request was invalid.
+     */
     INVALID_REQUEST = 'INVALID_REQUEST',
+    /**
+     * The request contains more than 25 origins, or more than 25 destinations.
+     */
     MAX_DIMENSIONS_EXCEEDED = 'MAX_DIMENSIONS_EXCEEDED',
+    /**
+     * The product of origins and destinations exceeds the per-query limit.
+     */
     MAX_ELEMENTS_EXCEEDED = 'MAX_ELEMENTS_EXCEEDED',
+    /**
+     * The response contains a valid result.
+     */
     OK = 'OK',
+    /**
+     * Too many elements have been requested within the allowed time period. The
+     * request should succeed if you try again after some time.
+     */
     OVER_QUERY_LIMIT = 'OVER_QUERY_LIMIT',
+    /**
+     * The service denied use of the Distance Matrix service by your web page.
+     */
     REQUEST_DENIED = 'REQUEST_DENIED',
+    /**
+     * A Distance Matrix request could not be processed due to a server error.
+     * The request may succeed if you try again.
+     */
     UNKNOWN_ERROR = 'UNKNOWN_ERROR',
   }
 }
@@ -1821,10 +1935,27 @@ declare namespace google.maps {
    * <code>google.maps.ElevationStatus.OK</code>.
    */
   enum ElevationStatus {
+    /**
+     * The request was invalid.
+     */
     INVALID_REQUEST = 'INVALID_REQUEST',
+    /**
+     * The request did not encounter any errors.
+     */
     OK = 'OK',
+    /**
+     * The webpage has gone over the requests limit in too short a period of
+     * time.
+     */
     OVER_QUERY_LIMIT = 'OVER_QUERY_LIMIT',
+    /**
+     * The webpage is not allowed to use the elevation service.
+     */
     REQUEST_DENIED = 'REQUEST_DENIED',
+    /**
+     * The elevation request could not be successfully processed, yet the exact
+     * reason for the failure is not known.
+     */
     UNKNOWN_ERROR = 'UNKNOWN_ERROR',
   }
 }
@@ -1957,9 +2088,25 @@ declare namespace google.maps {
    * <code>google.maps.GeocoderLocationType.ROOFTOP</code>.
    */
   enum GeocoderLocationType {
+    /**
+     * The returned result is approximate.
+     */
     APPROXIMATE = 'APPROXIMATE',
+    /**
+     * The returned result is the geometric center of a result such a line (e.g.
+     * street) or polygon (region).
+     */
     GEOMETRIC_CENTER = 'GEOMETRIC_CENTER',
+    /**
+     * The returned result reflects an approximation (usually on a road)
+     * interpolated between two precise points (such as intersections).
+     * Interpolated results are generally returned when rooftop geocodes are
+     * unavailable for a street address.
+     */
     RANGE_INTERPOLATED = 'RANGE_INTERPOLATED',
+    /**
+     * The returned result reflects a precise geocode.
+     */
     ROOFTOP = 'ROOFTOP',
   }
 }
@@ -2085,12 +2232,35 @@ declare namespace google.maps {
    * <code>google.maps.GeocoderStatus.OK</code>.
    */
   enum GeocoderStatus {
+    /**
+     * There was a problem contacting the Google servers.
+     */
     ERROR = 'ERROR',
+    /**
+     * This <code>GeocoderRequest</code> was invalid.
+     */
     INVALID_REQUEST = 'INVALID_REQUEST',
+    /**
+     * The response contains a valid <code>GeocoderResponse</code>.
+     */
     OK = 'OK',
+    /**
+     * The webpage has gone over the requests limit in too short a period of
+     * time.
+     */
     OVER_QUERY_LIMIT = 'OVER_QUERY_LIMIT',
+    /**
+     * The webpage is not allowed to use the geocoder.
+     */
     REQUEST_DENIED = 'REQUEST_DENIED',
+    /**
+     * A geocoding request could not be processed due to a server error. The
+     * request may succeed if you try again.
+     */
     UNKNOWN_ERROR = 'UNKNOWN_ERROR',
+    /**
+     * No result was found for this <code>GeocoderRequest</code>.
+     */
     ZERO_RESULTS = 'ZERO_RESULTS',
   }
 }
@@ -2610,14 +2780,42 @@ declare namespace google.maps {
    * example, <code>'OK'</code> or <code>google.maps.KmlLayerStatus.OK</code>.
    */
   enum KmlLayerStatus {
+    /**
+     * The document could not be found. Most likely it is an invalid URL, or the
+     * document is not publicly available.
+     */
     DOCUMENT_NOT_FOUND = 'DOCUMENT_NOT_FOUND',
+    /**
+     * The document exceeds the file size limits of KmlLayer.
+     */
     DOCUMENT_TOO_LARGE = 'DOCUMENT_TOO_LARGE',
+    /**
+     * The document could not be fetched.
+     */
     FETCH_ERROR = 'FETCH_ERROR',
+    /**
+     * The document is not a valid KML, KMZ or GeoRSS document.
+     */
     INVALID_DOCUMENT = 'INVALID_DOCUMENT',
+    /**
+     * The <code>KmlLayer</code> is invalid.
+     */
     INVALID_REQUEST = 'INVALID_REQUEST',
+    /**
+     * The document exceeds the feature limits of KmlLayer.
+     */
     LIMITS_EXCEEDED = 'LIMITS_EXCEEDED',
+    /**
+     * The layer loaded successfully.
+     */
     OK = 'OK',
+    /**
+     * The document could not be loaded within a reasonable amount of time.
+     */
     TIMED_OUT = 'TIMED_OUT',
+    /**
+     * The document failed to load for an unknown reason.
+     */
     UNKNOWN = 'UNKNOWN',
   }
 }
@@ -3613,8 +3811,19 @@ declare namespace google.maps {
    * Identifiers for common MapTypesControls.
    */
   enum MapTypeControlStyle {
+    /**
+     * Uses the default map type control. When the <code>DEFAULT</code> control
+     * is shown, it will vary according to window size and other factors. The
+     * <code>DEFAULT</code> control may change in future versions of the API.
+     */
     DEFAULT = 0.0,
+    /**
+     * A dropdown menu for the screen realestate conscious.
+     */
     DROPDOWN_MENU = 1.0,
+    /**
+     * The standard horizontal radio buttons bar.
+     */
     HORIZONTAL_BAR = 2.0,
   }
 }
@@ -3625,9 +3834,23 @@ declare namespace google.maps {
    * <code>google.maps.MapTypeId.SATELLITE</code>.
    */
   enum MapTypeId {
+    /**
+     * This map type displays a transparent layer of major streets on satellite
+     * images.
+     */
     HYBRID = 'HYBRID',
+    /**
+     * This map type displays a normal street map.
+     */
     ROADMAP = 'ROADMAP',
+    /**
+     * This map type displays satellite images.
+     */
     SATELLITE = 'SATELLITE',
+    /**
+     * This map type displays maps with physical features such as terrain and
+     * vegetation.
+     */
     TERRAIN = 'TERRAIN',
   }
 }
@@ -4065,7 +4288,13 @@ declare namespace google.maps {
    * <code>google.maps.MaxZoomStatus.OK</code>.
    */
   enum MaxZoomStatus {
+    /**
+     * An unknown error occurred.
+     */
     ERROR = 'ERROR',
+    /**
+     * The response contains a valid <code>MaxZoomResult</code>.
+     */
     OK = 'OK',
   }
 }
@@ -4797,6 +5026,9 @@ declare namespace google.maps {
    * Identifiers for scale control ids.
    */
   enum ScaleControlStyle {
+    /**
+     * The standard scale control.
+     */
     DEFAULT = 0.0,
   }
 }
@@ -5258,7 +5490,18 @@ declare namespace google.maps {
    * <code>google.maps.StreetViewPreference.BEST</code>.
    */
   enum StreetViewPreference {
+    /**
+     * Return the Street View panorama that is considered most likely to be what
+     * the user wants to see. The best result is determined by algorithms based
+     * on user research and parameters such as recognised points of interest,
+     * image quality, and distance from the given location.
+     */
     BEST = 'BEST',
+    /**
+     * Return the Street View panorama that is the shortest distance from the
+     * provided location. This works well only within a limited radius. The
+     * recommended radius is 1km or less.
+     */
     NEAREST = 'NEAREST',
   }
 }
@@ -5305,7 +5548,18 @@ declare namespace google.maps {
    * are specified as strings. For example, <code>'outdoor'</code>.
    */
   enum StreetViewSource {
+    /**
+     * Uses the default sources of Street View, searches will not be limited to
+     * specific sources.
+     */
     DEFAULT = 'DEFAULT',
+    /**
+     * Limits Street View searches to outdoor collections. Indoor collections
+     * are not included in search results. Note also that the search only
+     * returns panoramas where it&#39;s possible to determine whether
+     * they&#39;re indoors or outdoors. For example, PhotoSpheres are not
+     * returned because it&#39;s unknown whether they are indoors or outdoors.
+     */
     OUTDOOR = 'OUTDOOR',
   }
 }
@@ -5317,8 +5571,18 @@ declare namespace google.maps {
    * <code>google.maps.StreetViewStatus.OK</code>.
    */
   enum StreetViewStatus {
+    /**
+     * The request was successful.
+     */
     OK = 'OK',
+    /**
+     * The request could not be successfully processed, yet the exact reason for
+     * failure is unknown.
+     */
     UNKNOWN_ERROR = 'UNKNOWN_ERROR',
+    /**
+     * There are no panoramas found that match the search criteria.
+     */
     ZERO_RESULTS = 'ZERO_RESULTS',
   }
 }
@@ -5358,8 +5622,18 @@ declare namespace google.maps {
    * The possible positions of the stroke on a polygon.
    */
   enum StrokePosition {
+    /**
+     * The stroke is centered on the polygon&#39;s path, with half the stroke
+     * inside the polygon and half the stroke outside the polygon.
+     */
     CENTER = 0.0,
+    /**
+     * The stroke lies inside the polygon.
+     */
     INSIDE = 1.0,
+    /**
+     * The stroke lies outside the polygon.
+     */
     OUTSIDE = 2.0,
   }
 }
@@ -5495,10 +5769,25 @@ declare namespace google.maps {
    * Built-in symbol paths.
    */
   enum SymbolPath {
+    /**
+     * A backward-pointing closed arrow.
+     */
     BACKWARD_CLOSED_ARROW = 0.0,
+    /**
+     * A backward-pointing open arrow.
+     */
     BACKWARD_OPEN_ARROW = 1.0,
+    /**
+     * A circle.
+     */
     CIRCLE = 2.0,
+    /**
+     * A forward-pointing closed arrow.
+     */
     FORWARD_CLOSED_ARROW = 3.0,
+    /**
+     * A forward-pointing open arrow.
+     */
     FORWARD_OPEN_ARROW = 4.0,
   }
 }
@@ -5574,8 +5863,19 @@ declare namespace google.maps {
    * <code>google.maps.TrafficModel.BEST_GUESS</code>.
    */
   enum TrafficModel {
+    /**
+     * Use historical traffic data to best estimate the time spent in traffic.
+     */
     BEST_GUESS = 'BEST_GUESS',
+    /**
+     * Use historical traffic data to make an optimistic estimate of what the
+     * duration in traffic will be.
+     */
     OPTIMISTIC = 'OPTIMISTIC',
+    /**
+     * Use historical traffic data to make a pessimistic estimate of what the
+     * duration in traffic will be.
+     */
     PESSIMISTIC = 'PESSIMISTIC',
   }
 }
@@ -5729,10 +6029,25 @@ declare namespace google.maps {
    * or <code>google.maps.TransitMode.BUS</code>.
    */
   enum TransitMode {
+    /**
+     * Specifies bus as a preferred mode of transit.
+     */
     BUS = 'BUS',
+    /**
+     * Specifies rail as a preferred mode of transit.
+     */
     RAIL = 'RAIL',
+    /**
+     * Specifies subway as a preferred mode of transit.
+     */
     SUBWAY = 'SUBWAY',
+    /**
+     * Specifies train as a preferred mode of transit.
+     */
     TRAIN = 'TRAIN',
+    /**
+     * Specifies tram as a preferred mode of transit.
+     */
     TRAM = 'TRAM',
   }
 }
@@ -5778,7 +6093,15 @@ declare namespace google.maps {
    * <code>google.maps.TransitRoutePreference.LESS_WALKING</code>.
    */
   enum TransitRoutePreference {
+    /**
+     * Specifies that the calculated route should prefer a limited number of
+     * transfers.
+     */
     FEWER_TRANSFERS = 'FEWER_TRANSFERS',
+    /**
+     * Specifies that the calculated route should prefer limited amounts of
+     * walking.
+     */
     LESS_WALKING = 'LESS_WALKING',
   }
 }
@@ -5832,9 +6155,21 @@ declare namespace google.maps {
    * <code>google.maps.TravelMode.BICYCLING</code>.
    */
   enum TravelMode {
+    /**
+     * Specifies a bicycling directions request.
+     */
     BICYCLING = 'BICYCLING',
+    /**
+     * Specifies a driving directions request.
+     */
     DRIVING = 'DRIVING',
+    /**
+     * Specifies a transit directions request.
+     */
     TRANSIT = 'TRANSIT',
+    /**
+     * Specifies a walking directions request.
+     */
     WALKING = 'WALKING',
   }
 }
@@ -5844,7 +6179,15 @@ declare namespace google.maps {
    * href="#DirectionsRequest">DirectionsRequest</a></code></i>.
    */
   enum UnitSystem {
+    /**
+     * Specifies that distances in the <code>DirectionsResult</code> should be
+     * expressed in imperial units.
+     */
     IMPERIAL = 0.0,
+    /**
+     * Specifies that distances in the <code>DirectionsResult</code> should be
+     * expressed in metric units.
+     */
     METRIC = 1.0,
   }
 }
@@ -5854,22 +6197,76 @@ declare namespace google.maps {
    * i.e. &#39;BUS&#39; or &#39;TRAIN&#39;.
    */
   enum VehicleType {
+    /**
+     * Bus.
+     */
     BUS = 'BUS',
+    /**
+     * A vehicle that operates on a cable, usually on the ground. Aerial cable
+     * cars may be of the type <code>GONDOLA_LIFT</code>.
+     */
     CABLE_CAR = 'CABLE_CAR',
+    /**
+     * Commuter rail.
+     */
     COMMUTER_TRAIN = 'COMMUTER_TRAIN',
+    /**
+     * Ferry.
+     */
     FERRY = 'FERRY',
+    /**
+     * A vehicle that is pulled up a steep incline by a cable.
+     */
     FUNICULAR = 'FUNICULAR',
+    /**
+     * An aerial cable car.
+     */
     GONDOLA_LIFT = 'GONDOLA_LIFT',
+    /**
+     * Heavy rail.
+     */
     HEAVY_RAIL = 'HEAVY_RAIL',
+    /**
+     * High speed train.
+     */
     HIGH_SPEED_TRAIN = 'HIGH_SPEED_TRAIN',
+    /**
+     * Intercity bus.
+     */
     INTERCITY_BUS = 'INTERCITY_BUS',
+    /**
+     * Light rail.
+     */
     METRO_RAIL = 'METRO_RAIL',
+    /**
+     * Monorail.
+     */
     MONORAIL = 'MONORAIL',
+    /**
+     * Other vehicles.
+     */
     OTHER = 'OTHER',
+    /**
+     * Rail.
+     */
     RAIL = 'RAIL',
+    /**
+     * Share taxi is a sort of bus transport with ability to drop off and pick
+     * up passengers anywhere on its route. Generally share taxi uses minibus
+     * vehicles.
+     */
     SHARE_TAXI = 'SHARE_TAXI',
+    /**
+     * Underground light rail.
+     */
     SUBWAY = 'SUBWAY',
+    /**
+     * Above ground light rail.
+     */
     TRAM = 'TRAM',
+    /**
+     * Trolleybus.
+     */
     TROLLEYBUS = 'TROLLEYBUS',
   }
 }
@@ -6042,10 +6439,32 @@ declare namespace google.maps.drawing {
    * <code>google.maps.drawing.OverlayType.POLYGON</code>.
    */
   enum OverlayType {
+    /**
+     * Specifies that the <code>DrawingManager</code> creates circles, and that
+     * the overlay given in the <code>overlaycomplete</code> event is a circle.
+     */
     CIRCLE = 'CIRCLE',
+    /**
+     * Specifies that the <code>DrawingManager</code> creates markers, and that
+     * the overlay given in the <code>overlaycomplete</code> event is a marker.
+     */
     MARKER = 'MARKER',
+    /**
+     * Specifies that the <code>DrawingManager</code> creates polygons, and that
+     * the overlay given in the <code>overlaycomplete</code> event is a polygon.
+     */
     POLYGON = 'POLYGON',
+    /**
+     * Specifies that the <code>DrawingManager</code> creates polylines, and
+     * that the overlay given in the <code>overlaycomplete</code> event is a
+     * polyline.
+     */
     POLYLINE = 'POLYLINE',
+    /**
+     * Specifies that the <code>DrawingManager</code> creates rectangles, and
+     * that the overlay given in the <code>overlaycomplete</code> event is a
+     * rectangle.
+     */
     RECTANGLE = 'RECTANGLE',
   }
 }
@@ -6468,7 +6887,13 @@ declare namespace google.maps.localContext {
    * Layout modes for the place chooser.
    */
   enum PlaceChooserLayoutMode {
+    /**
+     * Place chooser is hidden.
+     */
     HIDDEN = 'HIDDEN',
+    /**
+     * Place chooser is shown as a sheet.
+     */
     SHEET = 'SHEET',
   }
 }
@@ -6477,8 +6902,22 @@ declare namespace google.maps.localContext {
    * Display positions for the place chooser.
    */
   enum PlaceChooserPosition {
+    /**
+     * Place chooser is displayed on a line below the map extending to the end
+     * of the container.
+     */
     BLOCK_END = 'BLOCK_END',
+    /**
+     * Place chooser is displayed inline with the map at the end of the line.
+     * (In a left-to-right language this means that the place chooser is to the
+     * right of the map.)
+     */
     INLINE_END = 'INLINE_END',
+    /**
+     * Place chooser is displayed inline with the map at the start of the line.
+     * (In a left-to-right language this means that the place chooser is to the
+     * left of the map.)
+     */
     INLINE_START = 'INLINE_START',
   }
 }
@@ -6502,7 +6941,13 @@ declare namespace google.maps.localContext {
    * Layout modes for the place details.
    */
   enum PlaceDetailsLayoutMode {
+    /**
+     * Place details is displayed in an {@link google.maps.InfoWindow}.
+     */
     INFO_WINDOW = 'INFO_WINDOW',
+    /**
+     * Place details is displayed in a sheet.
+     */
     SHEET = 'SHEET',
   }
 }
@@ -6511,7 +6956,17 @@ declare namespace google.maps.localContext {
    * Display positions for the place details.
    */
   enum PlaceDetailsPosition {
+    /**
+     * Place details is displayed inline with the map at the end of the line.
+     * (In a left-to-right language this means that the place details is to the
+     * right of the map.)
+     */
     INLINE_END = 'INLINE_END',
+    /**
+     * Place details is displayed inline with the map at the start of the line.
+     * (In a left-to-right language this means that the place details is to the
+     * left of the map.)
+     */
     INLINE_START = 'INLINE_START',
   }
 }
@@ -6810,13 +7265,12 @@ declare namespace google.maps.places {
     sessionToken?: google.maps.places.AutocompleteSessionToken;
     /**
      * The types of predictions to be returned. For a list of supported types,
-     * see the &lt;a href=<a
-     * href="https://cloud.google.com/maps-platform/terms/documentation/places/web-service/supported_types#table3&quot;&gt;">https://cloud.google.com/maps-platform/terms/documentation/places/web-service/supported_types#table3&quot;&gt;</a>
-     * developer&#39;s guide</a>. If nothing is specified, all types are
-     * returned. In general only a single type is allowed. The exception is that
-     * you can safely mix the <code>'geocode'</code> and
-     * <code>'establishment'</code> types, but note that this will have the same
-     * effect as specifying no types.
+     * see the <a
+     * href="https://developers.google.com/maps/documentation/places/web-service/supported_types#table3">developer&#39;s
+     * guide</a>. If nothing is specified, all types are returned. In general
+     * only a single type is allowed. The exception is that you can safely mix
+     * the <code>'geocode'</code> and <code>'establishment'</code> types, but
+     * note that this will have the same effect as specifying no types.
      */
     types?: string[];
   }
@@ -6830,8 +7284,17 @@ declare namespace google.maps.places {
    * <code>google.maps.places.BusinessStatus.OPERATIONAL</code>).
    */
   enum BusinessStatus {
+    /**
+     * The business is closed permanently.
+     */
     CLOSED_PERMANENTLY = 'CLOSED_PERMANENTLY',
+    /**
+     * The business is closed temporarily.
+     */
     CLOSED_TEMPORARILY = 'CLOSED_TEMPORARILY',
+    /**
+     * The business is operating normally.
+     */
     OPERATIONAL = 'OPERATIONAL',
   }
 }
@@ -7554,12 +8017,34 @@ declare namespace google.maps.places {
    * <code>google.maps.places.PlacesServiceStatus.OK</code>.
    */
   enum PlacesServiceStatus {
+    /**
+     * This request was invalid.
+     */
     INVALID_REQUEST = 'INVALID_REQUEST',
+    /**
+     * The place referenced was not found.
+     */
     NOT_FOUND = 'NOT_FOUND',
+    /**
+     * The response contains a valid result.
+     */
     OK = 'OK',
+    /**
+     * The application has gone over its request quota.
+     */
     OVER_QUERY_LIMIT = 'OVER_QUERY_LIMIT',
+    /**
+     * The application is not allowed to use the <code>PlacesService</code>.
+     */
     REQUEST_DENIED = 'REQUEST_DENIED',
+    /**
+     * The <code>PlacesService</code> request could not be processed due to a
+     * server error. The request may succeed if you try again.
+     */
     UNKNOWN_ERROR = 'UNKNOWN_ERROR',
+    /**
+     * No result was found for this request.
+     */
     ZERO_RESULTS = 'ZERO_RESULTS',
   }
 }
@@ -7668,7 +8153,13 @@ declare namespace google.maps.places {
    * Ranking options for a PlaceSearchRequest.
    */
   enum RankBy {
+    /**
+     * Ranks place results by distance from the location.
+     */
     DISTANCE = 0.0,
+    /**
+     * Ranks place results by their prominence.
+     */
     PROMINENCE = 1.0,
   }
 }
