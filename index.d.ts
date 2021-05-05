@@ -1463,7 +1463,7 @@ declare namespace google.maps {
      * Issue a directions search request. <aside class="note">Note: <strong>For
      * the beta release, <code>v=beta</code>, the callback is optional and a
      * Promise is returned</strong>. More information is available in the <a
-     * href="/maps/documentation/javascript/promises">Promises
+     * href="https://developers.google.com/maps/documentation/javascript/promises">Promises
      * guide</a>.</aside>
      */
     route(
@@ -1776,7 +1776,7 @@ declare namespace google.maps {
      * Issues a distance matrix request. <aside class="note">Note: <strong>For
      * the beta release, <code>v=beta</code>, the callback is optional and a
      * Promise is returned</strong>. More information is available in the <a
-     * href="/maps/documentation/javascript/promises">Promises
+     * href="https://developers.google.com/maps/documentation/javascript/promises">Promises
      * guide</a>.</aside>
      */
     getDistanceMatrix(
@@ -1902,7 +1902,8 @@ declare namespace google.maps {
      * returned as distance-based samples along that path. <aside
      * class="note">Note: <strong>A Promise is only returned for the beta
      * release, <code>v=beta</code></strong>. More information is available in
-     * the <a href="/maps/documentation/javascript/promises">Promises
+     * the <a
+     * href="https://developers.google.com/maps/documentation/javascript/promises">Promises
      * guide</a>.</aside>
      */
     getElevationAlongPath(
@@ -1916,7 +1917,7 @@ declare namespace google.maps {
      * class="note">Note: <strong>For the beta release, <code>v=beta</code>, the
      * callback is optional and a Promise is returned</strong>. More information
      * is available in the <a
-     * href="/maps/documentation/javascript/promises">Promises
+     * href="https://developers.google.com/maps/documentation/javascript/promises">Promises
      * guide</a>.</aside>
      */
     getElevationForLocations(
@@ -1991,7 +1992,7 @@ declare namespace google.maps {
      * Geocode a request. <aside class="note">Note: <strong>A Promise is only
      * returned for the beta release, <code>v=beta</code></strong>. More
      * information is available in the <a
-     * href="/maps/documentation/javascript/promises">Promises
+     * href="https://developers.google.com/maps/documentation/javascript/promises">Promises
      * guide</a>.</aside>
      */
     geocode(
@@ -4078,7 +4079,7 @@ declare namespace google.maps {
      * <code>MarkerLabel</code>. CSS classes should not be used to change the
      * position nor orientation of the label (e.g. using translations and
      * rotations) if also using <a
-     * href="/maps/documentation/javascript/examples/marker-collision-management">marker
+     * href="https://developers.google.com/maps/documentation/javascript/examples/marker-collision-management">marker
      * collision management</a>.
      */
     className?: string;
@@ -4271,7 +4272,7 @@ declare namespace google.maps {
      * passed a <code>MaxZoomResult</code>.<aside class="note">Note: <strong>For
      * the beta release, <code>v=beta</code>, the callback is optional and a
      * Promise is returned</strong>. More information is available in the <a
-     * href="/maps/documentation/javascript/promises">Promises
+     * href="https://developers.google.com/maps/documentation/javascript/promises">Promises
      * guide</a>.</aside>
      */
     getMaxZoomAtLatLng(
@@ -5530,7 +5531,7 @@ declare namespace google.maps {
      * <aside class="note">Note: <strong>For the beta release,
      * <code>v=beta</code>, the callback is optional and a Promise is
      * returned</strong>. More information is available in the <a
-     * href="/maps/documentation/javascript/promises">Promises
+     * href="https://developers.google.com/maps/documentation/javascript/promises">Promises
      * guide</a>.</aside>
      */
     getPanorama(
@@ -7073,8 +7074,8 @@ declare namespace google.maps.places {
     /**
      * Fields to be included for the Place in the details response when the
      * details are successfully retrieved, <a
-     * href="/maps/billing/understanding-cost-of-use#places-product">which will
-     * be billed for</a>. If <code>[&#39;ALL&#39;]</code> is passed in, all
+     * href="https://developers.google.com/maps/billing/understanding-cost-of-use#places-product">which
+     * will be billed for</a>. If <code>[&#39;ALL&#39;]</code> is passed in, all
      * available fields will be returned and billed for (this is not recommended
      * for production deployments). For a list of fields see {@link
      * google.maps.places.PlaceResult}. Nested fields can be specified with
@@ -7183,7 +7184,7 @@ declare namespace google.maps.places {
      * autocomplete request. <aside class="note">Note: <strong>For the beta
      * release, <code>v=beta</code>, the callback is optional and a Promise is
      * returned</strong>. More information is available in the <a
-     * href="/maps/documentation/javascript/promises">Promises
+     * href="https://developers.google.com/maps/documentation/javascript/promises">Promises
      * guide</a>.</aside>
      */
     getPlacePredictions(
@@ -7321,8 +7322,8 @@ declare namespace google.maps.places {
   interface FindPlaceFromPhoneNumberRequest {
     /**
      * Fields to be included in the response, <a
-     * href="/maps/billing/understanding-cost-of-use#places-product">which will
-     * be billed for</a>. If <code>[&#39;ALL&#39;]</code> is passed in, all
+     * href="https://developers.google.com/maps/billing/understanding-cost-of-use#places-product">which
+     * will be billed for</a>. If <code>[&#39;ALL&#39;]</code> is passed in, all
      * available fields will be returned and billed for (this is not recommended
      * for production deployments). For a list of fields see {@link
      * google.maps.places.PlaceResult}. Nested fields can be specified with
@@ -7352,8 +7353,8 @@ declare namespace google.maps.places {
   interface FindPlaceFromQueryRequest {
     /**
      * Fields to be included in the response, <a
-     * href="/maps/billing/understanding-cost-of-use#places-product">which will
-     * be billed for</a>. If <code>[&#39;ALL&#39;]</code> is passed in, all
+     * href="https://developers.google.com/maps/billing/understanding-cost-of-use#places-product">which
+     * will be billed for</a>. If <code>[&#39;ALL&#39;]</code> is passed in, all
      * available fields will be returned and billed for (this is not recommended
      * for production deployments). For a list of fields see {@link
      * google.maps.places.PlaceResult}. Nested fields can be specified with
@@ -7424,8 +7425,8 @@ declare namespace google.maps.places {
   interface PlaceDetailsRequest {
     /**
      * Fields to be included in the details response, <a
-     * href="/maps/billing/understanding-cost-of-use#places-product">which will
-     * be billed for</a>. If no fields are specified or
+     * href="https://developers.google.com/maps/billing/understanding-cost-of-use#places-product">which
+     * will be billed for</a>. If no fields are specified or
      * <code>[&#39;ALL&#39;]</code> is passed in, all available fields will be
      * returned and billed for (this is not recommended for production
      * deployments). For a list of fields see {@link
