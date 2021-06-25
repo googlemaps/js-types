@@ -2538,8 +2538,8 @@ declare namespace google.maps {
      * Closes this InfoWindow by removing it from the DOM structure.
      */
     close(): void;
-    getContent(): string|Node|null;
-    getPosition(): google.maps.LatLng|null;
+    getContent(): string|Node|null|undefined;
+    getPosition(): google.maps.LatLng|null|undefined;
     getZIndex(): number;
     /**
      * Opens this InfoWindow on the given map. Optionally, an InfoWindow can be
@@ -2564,9 +2564,9 @@ declare namespace google.maps {
         options?: google.maps.InfoWindowOpenOptions|null|google.maps.Map|
         google.maps.StreetViewPanorama,
         anchor?: google.maps.MVCObject|null): void;
-    setContent(content: string|Node|null): void;
-    setOptions(options: google.maps.InfoWindowOptions|null): void;
-    setPosition(position: google.maps.LatLng|null|
+    setContent(content?: string|Node|null): void;
+    setOptions(options?: google.maps.InfoWindowOptions|null): void;
+    setPosition(position?: google.maps.LatLng|null|
                 google.maps.LatLngLiteral): void;
     setZIndex(zIndex: number): void;
   }
@@ -7263,6 +7263,9 @@ declare namespace google.maps.places {
      * input. It attaches to an input element of type <code>text</code>, and
      * listens for text entry in that field. The list of predictions is
      * presented as a drop-down list, and is updated as text is entered.
+     * @param inputField The <code>&lt;input&gt;</code> text field to which the
+     *     <code>Autocomplete</code> should be attached.
+     * @param opts Options.
      */
     constructor(
         inputField: HTMLInputElement,
@@ -7286,6 +7289,7 @@ declare namespace google.maps.places {
     /**
      * Sets the preferred area within which to return Place results. Results are
      * biased towards, but not restricted to, this area.
+     * @param bounds The biasing bounds.
      */
     setBounds(bounds: google.maps.LatLngBounds|google.maps.LatLngBoundsLiteral|
               undefined): void;
@@ -7293,6 +7297,7 @@ declare namespace google.maps.places {
      * Sets the component restrictions. Component restrictions are used to
      * restrict predictions to only those within the parent component. For
      * example, the country.
+     * @param restrictions The restrictions to use.
      */
     setComponentRestrictions(restrictions:
                                  google.maps.places.ComponentRestrictions|
@@ -7311,6 +7316,7 @@ declare namespace google.maps.places {
      * developer&#39;s guide</a>. If no type is specified, all types will be
      * returned. The <code>setTypes</code> method accepts a single element
      * array.
+     * @param types The types of predictions to be included.
      */
     setTypes(types: string[]|null): void;
   }
@@ -7441,6 +7447,9 @@ declare namespace google.maps.places {
     /**
      * Retrieves place autocomplete predictions based on the supplied
      * autocomplete request.
+     * @param request The autocompletion request.
+     * @param callback A callback accepting an array of AutocompletePrediction
+     *     objects and a PlacesServiceStatus value as argument.
      */
     getPlacePredictions(
         request: google.maps.places.AutocompletionRequest,
@@ -7451,6 +7460,10 @@ declare namespace google.maps.places {
     /**
      * Retrieves query autocomplete predictions based on the supplied query
      * autocomplete request.
+     * @param request The query autocompletion request.
+     * @param callback A callback accepting an array of
+     *     QueryAutocompletePrediction objects and a PlacesServiceStatus value
+     *     as argument.
      */
     getQueryPredictions(
         request: google.maps.places.QueryAutocompletionRequest,
