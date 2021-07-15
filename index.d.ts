@@ -229,6 +229,31 @@ declare namespace google.maps {
 }
 declare namespace google.maps {
   /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   */
+  enum CollisionBehavior {
+    /**
+     * Display the marker only if it does not overlap with other markers. If two
+     * markers of this type would overlap, the one with the higher zIndex is
+     * shown. If they have the same zIndex, the one with the lower vertical
+     * screen position is shown.
+     */
+    OPTIONAL_AND_HIDES_LOWER_PRIORITY = 'OPTIONAL_AND_HIDES_LOWER_PRIORITY',
+    /**
+     * Always display the marker regardless of collision. This is the default
+     * behavior.
+     */
+    REQUIRED = 'REQUIRED',
+    /**
+     * Always display the marker regardless of collision, and hide any
+     * OPTIONAL_AND_HIDES_LOWER_PRIORITY markers or labels that would overlap
+     * with the marker.
+     */
+    REQUIRED_AND_HIDES_OPTIONAL = 'REQUIRED_AND_HIDES_OPTIONAL',
+  }
+}
+declare namespace google.maps {
+  /**
    * Identifiers used to specify the placement of controls on the map. Controls
    * are positioned relative to other controls in the same layout position.
    * Controls that are added first are positioned closer to the edge of the map.
@@ -4253,6 +4278,11 @@ declare namespace google.maps {
      */
     clickable?: boolean|null;
     /**
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     * Set a collision behavior for markers on vector maps.
+     */
+    collisionBehavior?: string|null;
+    /**
      * If <code>false</code>, disables cross that appears beneath the marker
      * when dragging. This option is <code>true</code> by default.
      */
@@ -7344,7 +7374,8 @@ declare namespace google.maps.places {
      * available fields will be returned and billed for (this is not recommended
      * for production deployments). For a list of fields see {@link
      * google.maps.places.PlaceResult}. Nested fields can be specified with
-     * dot-paths (for example, <code>"geometry.location"</code>).
+     * dot-paths (for example, <code>"geometry.location"</code>). The default is
+     * <code>[&#39;ALL&#39;]</code>.
      */
     fields?: string[];
     /**
