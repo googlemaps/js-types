@@ -7969,6 +7969,17 @@ declare namespace google.maps.places {
      */
     icon?: string;
     /**
+     * Background color for use with a Place&#39;s icon. See also {@link
+     * google.maps.places.PlaceResult.icon_mask_base_uri}.
+     */
+    icon_background_color?: string;
+    /**
+     * A truncated URL to an icon mask. Access different icon types by appending
+     * a file extension to the end (i.e. <code>.svg</code> or
+     * <code>.png</code>).
+     */
+    icon_mask_base_uri?: string;
+    /**
      * The Place’s phone number in international format. International format
      * includes the country code, and is prefixed with the plus (+) sign. Only
      * available with {@link google.maps.places.PlacesService.getDetails}.
