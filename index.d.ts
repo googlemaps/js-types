@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-// Google Maps JS API Version: 3.45
+// Google Maps JS API Version: 3.46
 // tslint:disable:enforce-name-casing
 // tslint:disable:no-any
 // tslint:disable:interface-over-type-literal
@@ -3364,7 +3364,6 @@ declare namespace google.maps {
      */
     getProjection(): google.maps.Projection|undefined;
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * Returns the current RenderingType of the map.
      */
     getRenderingType(): google.maps.RenderingType;
@@ -5152,9 +5151,6 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   enum RenderingType {
     /**
      * Indicates that the map is a raster map.
