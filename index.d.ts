@@ -4851,8 +4851,7 @@ declare namespace google.maps {
      */
     strokeOpacity?: number|null;
     /**
-     * The stroke position. Defaults to CENTER. This property is not supported
-     * on Internet Explorer 8 and earlier.
+     * The stroke position. Defaults to <code>CENTER</code>.
      */
     strokePosition?: google.maps.StrokePosition|null;
     /**
