@@ -1170,7 +1170,8 @@ declare namespace google.maps {
      */
     duration_in_traffic?: google.maps.Duration;
     /**
-     * The address of the destination of this leg.
+     * The address of the destination of this leg. This content is meant to be
+     * read as-is. Do not programmatically parse the formatted address.
      */
     end_address: string;
     /**
@@ -1183,7 +1184,8 @@ declare namespace google.maps {
      */
     end_location: google.maps.LatLng;
     /**
-     * The address of the origin of this leg.
+     * The address of the origin of this leg. This content is meant to be read
+     * as-is. Do not programmatically parse the formatted address.
      */
     start_address: string;
     /**
