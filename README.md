@@ -2,10 +2,11 @@
 
 [![npm](https://img.shields.io/npm/v/@googlemaps/types)](https://www.npmjs.com/package/@googlemaps/types)
 ![Build](https://github.com/googlemaps/js-types/workflows/Build/badge.svg)
-![Release](https://github.com/googlemaps/js-types/workflows/Release/badge.svg)
 ![GitHub contributors](https://img.shields.io/github/contributors/googlemaps/js-types?color=green)
 
 ## Description
+
+See [@types/google.maps](https://www.npmjs.com/package/@types/google.maps).
 
 This package includes an automatically generated index.d.ts for the Google Maps
 Platform JavaScript API.
