@@ -15,6 +15,11 @@
 name: "Sync"
 on:
   push:
+      branches:
+        - main
+  workflow_dispatch:
+      branches:
+        - main
 jobs:
   build:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
