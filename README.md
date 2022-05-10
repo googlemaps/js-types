@@ -1,6 +1,6 @@
 # Automatically generated types for the Google Maps Platform JavaScript API
 
-![Build](https://github.com/googlemaps/js-types/workflows/Build/badge.svg)
+![Build](https://github.com/googlemaps/js-types/workflows/Test/badge.svg)
 ![GitHub contributors](https://img.shields.io/github/contributors/googlemaps/js-types?color=green)
 
 ## Description
