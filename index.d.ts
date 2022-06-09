@@ -7253,9 +7253,10 @@ declare namespace google.maps.geometry.poly {
 }
 declare namespace google.maps.geometry.spherical {
   /**
-   * Returns the area of a closed path. The computed area uses the same units as
-   * the radius. The radius defaults to the Earth&#39;s radius in meters, in
-   * which case the area is in square meters.
+   * Returns the unsigned area of a closed path, in the range [0,
+   * -2×pi×radius²]. The computed area uses the same units as the radius. The
+   * radius defaults to the Earth&#39;s radius in meters, in which case the area
+   * is in square meters.
    */
   function computeArea(
       path: (google.maps.LatLng|google.maps.LatLngLiteral)[]|
@@ -7312,10 +7313,19 @@ declare namespace google.maps.geometry.spherical {
 }
 declare namespace google.maps.geometry.spherical {
   /**
-   * Returns the signed area of a closed path. The signed area may be used to
-   * determine the orientation of the path. The computed area uses the same
-   * units as the radius. The radius defaults to the Earth&#39;s radius in
-   * meters, in which case the area is in square meters.
+   * Returns the signed area of a closed path, where counterclockwise is
+   * positive, in the range [-2×pi×radius², 2×pi×radius²]. The computed area
+   * uses the same units as the radius. The radius defaults to the Earth&#39;s
+   * radius in meters, in which case the area is in square meters. <br><br> The
+   * area is computed using the <a
+   * href="https://wikipedia.org/wiki/Parallel_transport">parallel transport</a>
+   * method; the parallel transport around a closed path on the unit sphere
+   * twists by an angle that is equal to the area enclosed by the path. This is
+   * simpler and more accurate and robust than triangulation using Girard,
+   * l&#39;Huilier, or Eriksson on each triangle. In particular, since it
+   * doesn&#39;t triangulate, it suffers no instability except in the
+   * unavoidable case when an <em>edge</em> (not a diagonal) of the polygon
+   * spans 180 degrees.
    */
   function computeSignedArea(
       loop: (google.maps.LatLng|google.maps.LatLngLiteral)[]|
