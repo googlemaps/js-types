@@ -10652,7 +10652,8 @@ declare namespace google.maps.places {
 }
 declare namespace google.maps {
   /**
-   * Google Maps JavaScript API version loaded by the browser.
+   * Google Maps JavaScript API version loaded by the browser. See <a
+   * href="https://developers.google.com/maps/documentation/javascript/versions">https://developers.google.com/maps/documentation/javascript/versions</a>
    */
   let version: string;
 }
