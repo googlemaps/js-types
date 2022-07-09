@@ -5964,6 +5964,14 @@ declare namespace google.maps {
      */
     controls: google.maps.MVCArray<HTMLElement>[];
     /**
+     * Sets focus on this <code>StreetViewPanorama</code>. You may wish to
+     * consider using this method along with a <code>visible_changed</code>
+     * event to make sure that <code>StreetViewPanorama</code> is visible before
+     * setting focus on it. A <code>StreetViewPanorama</code> that is not
+     * visible cannot be focused.
+     */
+    focus(): void;
+    /**
      * Returns the set of navigation links for the Street View panorama.
      */
     getLinks(): (google.maps.StreetViewLink|null)[]|null;
@@ -8859,7 +8867,7 @@ declare namespace google.maps.journeySharing {
      */
     speedKilometersPerHour: number|null;
     /**
-     * The update time.
+     * The time this update was received from the vehicle.
      */
     time: Date|null;
   }
