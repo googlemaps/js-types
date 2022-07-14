@@ -2544,7 +2544,7 @@ declare namespace google.maps {
     /**
      * An array of strings denoting all the localities contained in a postal
      * code. This is only present when the result is a postal code that contains
-     * multiple localities. This array can contain up to 10 localities.
+     * multiple localities.
      */
     postcode_localities?: string[];
     /**
@@ -4616,7 +4616,7 @@ declare namespace google.maps {
      * Get the label of the {@link google.maps.Marker}. See {@link
      * google.maps.MarkerOptions.label}.
      */
-    getLabel(): google.maps.MarkerLabel|null|undefined;
+    getLabel(): google.maps.MarkerLabel|null|string|undefined;
     /**
      * Get the map or panaroama the {@link google.maps.Marker} is rendered on.
      */
@@ -4729,7 +4729,7 @@ declare namespace google.maps {
      * The maximum default z-index that the API will assign to a marker. You may
      * set a higher z-index to bring a marker to the front.
      */
-    static MAX_ZINDEX: number;
+    static readonly MAX_ZINDEX: number;
   }
 }
 declare namespace google.maps {
@@ -7897,7 +7897,11 @@ declare namespace google.maps.journeySharing {
         this: any, a: google.maps.journeySharing.AuthTokenFetcherOptions):
         Promise<google.maps.journeySharing.AuthToken>;
     /**
-     * The delivery vehicle ID to track initially.
+     * The delivery vehicle ID to track immediately after the location provider
+     * is instantiated. If not specified, the location provider does not start
+     * tracking any vehicle; use {@link
+     * google.maps.journeySharing.FleetEngineDeliveryVehicleLocationProvider.deliveryVehicleId}
+     * to set the ID and begin tracking.
      */
     deliveryVehicleId: string|null;
     /**
@@ -8047,9 +8051,13 @@ declare namespace google.maps.journeySharing {
      */
     projectId: string;
     /**
-     * The tracking ID to track initially.
+     * The tracking ID of the task to track immediately after the location
+     * provider is instantiated. If not specified, the location provider does
+     * not start tracking any task; use {@link
+     * google.maps.journeySharing.FleetEngineShipmentLocationProvider.trackingId}
+     * to set the tracking ID and begin tracking.
      */
-    trackingId: string;
+    trackingId: string|null;
   }
 }
 declare namespace google.maps.journeySharing {
@@ -8141,9 +8149,13 @@ declare namespace google.maps.journeySharing {
      */
     projectId: string;
     /**
-     * The trip ID to track initially.
+     * The trip ID to track immediately after the location provider is
+     * instantiated. If not specified, the location provider does not start
+     * tracking any trip; use {@link
+     * google.maps.journeySharing.FleetEngineTripLocationProvider.tripId} to set
+     * the ID and begin tracking.
      */
-    tripId: string;
+    tripId: string|null;
   }
 }
 declare namespace google.maps.journeySharing {
