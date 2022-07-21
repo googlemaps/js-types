@@ -1441,9 +1441,17 @@ declare namespace google.maps {
      */
     provideRouteAlternatives?: boolean;
     /**
-     * Region code used as a bias for geocoding requests. Optional.
+     * Region code used as a bias for geocoding requests. The region code
+     * accepts a <a
+     * href="https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#Country_code_top-level_domains">ccTLD
+     * (&quot;top-level domain&quot;)</a> two-character value. Most ccTLD codes
+     * are identical to ISO 3166-1 codes, with some notable exceptions. For
+     * example, the United Kingdom&#39;s ccTLD is &quot;uk&quot;
+     * (<code>.co.uk</code>) while its ISO 3166-1 code is &quot;gb&quot;
+     * (technically for the entity of &quot;The United Kingdom of Great Britain
+     * and Northern Ireland&quot;).
      */
-    region?: string;
+    region?: string|null;
     /**
      * Settings that apply only to requests where <code>travelMode</code> is
      * TRANSIT. This object will have no effect for other travel modes.
@@ -1837,9 +1845,17 @@ declare namespace google.maps {
     origins: (string|google.maps.LatLng|google.maps.LatLngLiteral|
               google.maps.Place)[];
     /**
-     * Region code used as a bias for geocoding requests. Optional.
+     * Region code used as a bias for geocoding requests. The region code
+     * accepts a <a
+     * href="https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#Country_code_top-level_domains">ccTLD
+     * (&quot;top-level domain&quot;)</a> two-character value. Most ccTLD codes
+     * are identical to ISO 3166-1 codes, with some notable exceptions. For
+     * example, the United Kingdom&#39;s ccTLD is &quot;uk&quot;
+     * (<code>.co.uk</code>) while its ISO 3166-1 code is &quot;gb&quot;
+     * (technically for the entity of &quot;The United Kingdom of Great Britain
+     * and Northern Ireland&quot;).
      */
-    region?: string;
+    region?: string|null;
     /**
      * Settings that apply only to requests where <code>travelMode</code> is
      * TRANSIT. This object will have no effect for other travel modes.
@@ -6158,12 +6174,19 @@ declare namespace google.maps {
     linksControl?: boolean|null;
     /**
      * Whether motion tracking is on or off. Enabled by default when the motion
-     * tracking control is present, so that the POV (point of view) follows the
-     * orientation of the device. This is primarily applicable to mobile
-     * devices. If <code>motionTracking</code> is set to <code>false</code>
-     * while <code>motionTrackingControl</code> is enabled, the motion tracking
+     * tracking control is present and permission is granted by a user or not
+     * required, so that the POV (point of view) follows the orientation of the
+     * device. This is primarily applicable to mobile devices. If
+     * <code>motionTracking</code> is set to <code>false</code> while
+     * <code>motionTrackingControl</code> is enabled, the motion tracking
      * control appears but tracking is off. The user can tap the motion tracking
-     * control to toggle this option.
+     * control to toggle this option. If <code>motionTracking</code> is set to
+     * <code>true</code> while permission is required but not yet requested, the
+     * motion tracking control appears but tracking is off. The user can tap the
+     * motion tracking control to request permission. If
+     * <code>motionTracking</code> is set to <code>true</code> while permission
+     * is denied by a user, the motion tracking control appears disabled with
+     * tracking turned off.
      */
     motionTracking?: boolean|null;
     /**
