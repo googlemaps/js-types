@@ -7827,10 +7827,9 @@ declare namespace google.maps.journeySharing {
     constructor(options: google.maps.journeySharing
                     .FleetEngineDeliveryFleetLocationProviderOptions);
     /**
-     * The filter options to apply when fetching the delivery vehicles.
+     * The filter applied when fetching the delivery vehicles.
      */
-    deliveryVehicleFilterOptions?:
-        google.maps.journeySharing.FleetEngineDeliveryVehicleFilterOptions|null;
+    deliveryVehicleFilter?: string|null;
     /**
      * The bounds within which to track delivery vehicles. If no bounds are set,
      * no delivery vehicles will be tracked. To track all delivery vehicles
@@ -7870,10 +7869,15 @@ declare namespace google.maps.journeySharing {
         this: any, a: google.maps.journeySharing.AuthTokenFetcherOptions):
         Promise<google.maps.journeySharing.AuthToken>;
     /**
-     * Filter options to apply when fetching the delivery vehicles.
+     * A filter query to apply when fetching delivery vehicles. This filter is
+     * passed directly to Fleet Engine. <p>See <a
+     * href="https://developers.google.com/maps/documentation/transportation-logistics/last-mile-fleet-solution/reference/fleet-engine/rpc/maps.fleetengine.delivery.v1#listdeliveryvehiclesrequest">ListDeliveryVehiclesRequest.filter</a>
+     * for supported formats. <p>Note that valid filters for attributes must
+     * have the &quot;attributes&quot; prefix. For example, <code>attributes.x =
+     * &quot;y&quot;</code> or <code>attributes.&quot;x y&quot; =
+     * &quot;z&quot;</code>.
      */
-    deliveryVehicleFilterOptions:
-        google.maps.journeySharing.FleetEngineDeliveryVehicleFilterOptions|null;
+    deliveryVehicleFilter: string|null;
     /**
      * The latitude/longitude bounds within which to track vehicles immediately
      * after the location provider is instantiated. If not set, the location
@@ -7909,19 +7913,6 @@ declare namespace google.maps.journeySharing {
      * The list of delivery vehicles returned by the query. Unmodifiable.
      */
     deliveryVehicles: google.maps.journeySharing.DeliveryVehicle[]|null;
-  }
-}
-declare namespace google.maps.journeySharing {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   * Options for filtering for delivery vehicles
-   */
-  interface FleetEngineDeliveryVehicleFilterOptions {
-    /**
-     * Custom attributes that the delivery vehicles must have. Values must be
-     * strings or an error will be generated.
-     */
-    requiredAttributes: {[key: string]: string}|null;
   }
 }
 declare namespace google.maps.journeySharing {
