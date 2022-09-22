@@ -5012,7 +5012,7 @@ declare namespace google.maps {
      * with {@link google.maps.MaxZoomService.getMaxZoomAtLatLng} (it is not
      * defined when using Promises).
      */
-    status: google.maps.MaxZoomStatus|null;
+    status: null|google.maps.MaxZoomStatus;
     /**
      * The maximum zoom level found at the given <code>LatLng</code>.
      */
