@@ -2360,10 +2360,10 @@ declare namespace google.maps {
      */
     geocode(
         request: google.maps.GeocoderRequest,
-        callback?:
-            ((a: google.maps.GeocoderResult[]|null,
-              b: google.maps.GeocoderStatus) => void)|
-        null): Promise<google.maps.GeocoderResponse>;
+        callback?: null|
+        ((a: null|google.maps.GeocoderResult[],
+          b: google.maps.GeocoderStatus) => void)):
+        Promise<google.maps.GeocoderResponse>;
   }
 }
 declare namespace google.maps {
