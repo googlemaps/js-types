@@ -1718,7 +1718,7 @@ declare namespace google.maps {
      * @deprecated Please use {@link
      *     google.maps.DirectionsStep.encoded_lat_lngs}.
      */
-    polyline?: google.maps.DirectionsStep[];
+    polyline?: google.maps.DirectionsPolyline;
     /**
      * The starting location of this step.
      */
@@ -1765,7 +1765,8 @@ declare namespace google.maps {
      * Waypoint location. Can be an address string, a <code>LatLng</code>, or a
      * <code>Place</code>. Optional.
      */
-    location?: string|google.maps.LatLng|google.maps.Place;
+    location?: string|google.maps.LatLng|google.maps.LatLngLiteral|
+        google.maps.Place;
     /**
      * If <code>true</code>, indicates that this waypoint is a stop between the
      * origin and destination. This has the effect of splitting the route into
@@ -1858,7 +1859,7 @@ declare namespace google.maps {
      * href="https://developers.google.com/maps/faq#languagesupport">list of
      * supported languages</a>.
      */
-    language?: string|null;
+    language?: null|string;
     /**
      * An array containing origin address strings, or <code>LatLng</code>, or
      * <code>Place</code> objects, from which to calculate distance and time.
@@ -1877,7 +1878,7 @@ declare namespace google.maps {
      * (technically for the entity of &quot;The United Kingdom of Great Britain
      * and Northern Ireland&quot;).
      */
-    region?: string|null;
+    region?: null|string;
     /**
      * Settings that apply only to requests where <code>travelMode</code> is
      * TRANSIT. This object will have no effect for other travel modes.
@@ -2074,7 +2075,7 @@ declare namespace google.maps {
     /**
      * The location of this elevation result.
      */
-    location: google.maps.LatLng|null;
+    location: null|google.maps.LatLng;
     /**
      * The distance, in meters, between sample points from which the elevation
      * was interpolated. This property will be missing if the resolution is not
@@ -2166,7 +2167,6 @@ declare namespace google.maps {
    */
   interface Feature {
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * <code>FeatureType</code> of this <code>Feature</code>.
      */
     featureType: google.maps.FeatureType;
@@ -2181,7 +2181,6 @@ declare namespace google.maps {
    */
   interface FeatureLayer {
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * Adds the given listener function to the given event name. Returns an
      * identifier for this listener that can be used with {@link
      * google.maps.event.removeListener}.
@@ -2191,13 +2190,11 @@ declare namespace google.maps {
     addListener(eventName: string, handler: Function):
         google.maps.MapsEventListener;
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * The <code>FeatureType</code> associated with this
      * <code>FeatureLayer</code>.
      */
     featureType: google.maps.FeatureType;
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * Whether this <code>FeatureLayer</code> is available, meaning whether
      * Data-driven styling is available for this map (there is a map ID using
      * vector tiles with this <code>FeatureLayer</code> enabled in the Google
@@ -2207,7 +2204,6 @@ declare namespace google.maps {
      */
     isAvailable: boolean;
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * The style of <code>Feature</code>s in the <code>FeatureLayer</code>. The
      * style is applied when style is set. If your style function updates, you
      * must set the style property again. A <code>FeatureStyleFunction</code>
@@ -2230,7 +2226,6 @@ declare namespace google.maps {
    */
   interface FeatureMouseEvent extends google.maps.MapMouseEvent {
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * The <code>Feature</code>s at this mouse event.
      */
     features: google.maps.Feature[];
@@ -2250,7 +2245,6 @@ declare namespace google.maps {
    */
   interface FeatureStyleFunctionOptions {
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * <code>Feature</code> passed into the <code>FeatureStyleFunction</code>
      * for styling.
      */
@@ -2265,29 +2259,24 @@ declare namespace google.maps {
    */
   interface FeatureStyleOptions {
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * Hex RGB string (like &quot;#00FF00&quot; for green). Only applies to
      * polygon geometries.
      */
     fillColor?: string;
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * The fill opacity between 0.0 and 1.0. Only applies to polygon geometries.
      */
     fillOpacity?: number;
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * Hex RGB string (like &quot;#00FF00&quot; for green).
      */
     strokeColor?: string;
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * The stroke opacity between 0.0 and 1.0. Only applies to line and polygon
      * geometries.
      */
     strokeOpacity?: number;
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * The stroke width in pixels. Only applies to line and polygon geometries.
      */
     strokeWeight?: number;
@@ -3387,6 +3376,31 @@ declare namespace google.maps {
   class LatLngAltitude implements google.maps.LatLngAltitudeLiteral,
                                   google.maps.LatLngLiteral {
     /**
+     * A <code>LatLngAltitude</code> is a 3D point in geographical coordinates:
+     * latitude, longitude, and altitude.<br> <ul> <li>Latitude ranges between
+     * -90 and 90 degrees, inclusive. Values above or below this range will be
+     * clamped to the range [-90, 90]. This means that if the value specified is
+     * less than -90, it will be set to -90. And if the value is greater than
+     * 90, it will be set to 90.</li> <li>Longitude ranges between -180 and 180
+     * degrees, inclusive. Values above or below this range will be wrapped so
+     * that they fall within the range. For example, a value of -190 will be
+     * converted to 170. A value of 190 will be converted to -170. This reflects
+     * the fact that longitudes wrap around the globe.</li> <li>Altitude is
+     * measured in meters. Positive values denote heights above ground level,
+     * and negative values denote heights underneath the ground surface.</li>
+     * </ul>
+     * @param value The initializing value.
+     * @param noClampNoWrap Whether to preserve the initialization values, even
+     *     if they may not necessarily be valid latitude values in the range of
+     *     [-90, 90] or valid longitude values in the range of [-180, 180]. The
+     *     default is <code>false</code> which enables latitude clamping and
+     *     longitude wrapping.
+     */
+    constructor(
+        value: google.maps.LatLngAltitudeLiteral|google.maps.LatLng|
+        google.maps.LatLngLiteral,
+        noClampNoWrap?: boolean);
+    /**
      * Returns the altitude.
      */
     altitude: number;
@@ -3592,7 +3606,7 @@ declare namespace google.maps {
     /**
      * The discrete locations for which to retrieve elevations.
      */
-    locations?: (google.maps.LatLng|google.maps.LatLngLiteral)[]|null;
+    locations?: null|(google.maps.LatLng|google.maps.LatLngLiteral)[];
   }
 }
 declare namespace google.maps {
@@ -3985,13 +3999,7 @@ declare namespace google.maps {
    * for the Map. See the properties for a list of possible capabilities.
    */
   interface MapCapabilities {
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     */
     isAdvancedMarkersAvailable?: boolean;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     */
     isDataDrivenStylingAvailable?: boolean;
   }
 }
@@ -5203,7 +5211,7 @@ declare namespace google.maps {
     /**
      * The path along which to collect elevation values.
      */
-    path?: (google.maps.LatLng|google.maps.LatLngLiteral)[]|null;
+    path?: null|(google.maps.LatLng|google.maps.LatLngLiteral)[];
     /**
      * Required. The number of equidistant points along the given path for which
      * to retrieve elevation data, including the endpoints. The number of
@@ -5281,12 +5289,10 @@ declare namespace google.maps {
    */
   interface PlaceFeature extends google.maps.Feature {
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * The display name.
      */
     displayName: string;
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * The {@link google.maps.places.PlaceResult.place_id}.
      */
     placeId: string;
@@ -9509,6 +9515,16 @@ declare namespace google.maps.marker {
    * google.maps.marker.PinView.scale}.
    */
   class PinView implements google.maps.marker.PinViewOptions {
+    /**
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     * A <code>PinView</code> represents a DOM element that consists of a shape
+     * and a glyph. The shape has the same balloon style as seen in the
+     * default {@link google.maps.marker.AdvancedMarkerView}. The glyph is an
+     * optional DOM element displayed in the balloon shape. A
+     * <code>PinView</code> may have a different aspect ratio depending on
+     * its {@link google.maps.marker.PinView.scale}.
+     */
+    constructor(options?: google.maps.marker.PinViewOptions);
     /**
      * Adds the given listener function to the given event name.
      */
