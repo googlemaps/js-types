@@ -7457,86 +7457,79 @@ declare namespace google.maps.drawing {
     RECTANGLE = 'rectangle',
   }
 }
-declare namespace google.maps.event {
+declare namespace google.maps {
   /**
-   * Cross browser event handler registration. This listener is removed by
-   * calling removeListener(handle) for the handle that is returned by this
-   * function.
-   * @deprecated <code>google.maps.event.addDomListener()</code> is deprecated,
-   *     use the standard <a
-   *     href="https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener">addEventListener()</a>
-   *     method instead. The feature will continue to work and there is no plan
-   *     to decommission it.
+   * Namespace for all public event functions
    */
-  function addDomListener(
-      instance: object, eventName: string, handler: Function,
-      capture?: boolean): google.maps.MapsEventListener;
-}
-declare namespace google.maps.event {
-  /**
-   * Wrapper around addDomListener that removes the listener after the first
-   * event.
-   * @deprecated <code>google.maps.event.addDomListenerOnce()</code> is
-   *     deprecated, use the standard <a
-   *     href="https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener">addEventListener()</a>
-   *     method instead. The feature will continue to work and there is no plan
-   *     to decommission it.
-   */
-  function addDomListenerOnce(
-      instance: object, eventName: string, handler: Function,
-      capture?: boolean): google.maps.MapsEventListener;
-}
-declare namespace google.maps.event {
-  /**
-   * Adds the given listener function to the given event name for the given
-   * object instance. Returns an identifier for this listener that can be used
-   * with removeListener().
-   */
-  function addListener(instance: object, eventName: string, handler: Function):
-      google.maps.MapsEventListener;
-}
-declare namespace google.maps.event {
-  /**
-   * Like addListener, but the handler removes itself after handling the first
-   * event.
-   */
-  function addListenerOnce(
-      instance: object, eventName: string,
-      handler: Function): google.maps.MapsEventListener;
-}
-declare namespace google.maps.event {
-  /**
-   * Removes all listeners for all events for the given instance.
-   */
-  function clearInstanceListeners(instance: object): void;
-}
-declare namespace google.maps.event {
-  /**
-   * Removes all listeners for the given event for the given instance.
-   */
-  function clearListeners(instance: object, eventName: string): void;
-}
-declare namespace google.maps.event {
-  /**
-   * Returns if there are listeners for the given event on the given instance.
-   * Can be used to to save the computation of expensive event details.
-   */
-  function hasListeners(instance: object, eventName: string): boolean;
-}
-declare namespace google.maps.event {
-  /**
-   * Removes the given listener, which should have been returned by addListener
-   * above. Equivalent to calling <code>listener.remove()</code>.
-   */
-  function removeListener(listener: google.maps.MapsEventListener): void;
-}
-declare namespace google.maps.event {
-  /**
-   * Triggers the given event. All arguments after eventName are passed as
-   * arguments to the listeners.
-   */
-  function trigger(
-      instance: object, eventName: string, ...eventArgs: any[]): void;
+  class event {
+    /**
+     * Cross browser event handler registration. This listener is removed by
+     * calling removeListener(handle) for the handle that is returned by this
+     * function.
+     * @deprecated <code>google.maps.event.addDomListener()</code> is
+     *     deprecated, use the standard <a
+     *     href="https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener">addEventListener()</a>
+     *     method instead. The feature will continue to work and there is no
+     *     plan to decommission it.
+     */
+    static addDomListener(
+        this: any, instance: object, eventName: string, handler: Function,
+        capture?: boolean): google.maps.MapsEventListener;
+    /**
+     * Wrapper around addDomListener that removes the listener after the first
+     * event.
+     * @deprecated <code>google.maps.event.addDomListenerOnce()</code> is
+     *     deprecated, use the standard <a
+     *     href="https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener">addEventListener()</a>
+     *     method instead. The feature will continue to work and there is no
+     *     plan to decommission it.
+     */
+    static addDomListenerOnce(
+        this: any, instance: object, eventName: string, handler: Function,
+        capture?: boolean): google.maps.MapsEventListener;
+    /**
+     * Adds the given listener function to the given event name for the given
+     * object instance. Returns an identifier for this listener that can be used
+     * with removeListener().
+     */
+    static addListener(
+        this: any, instance: object, eventName: string,
+        handler: Function): google.maps.MapsEventListener;
+    /**
+     * Like addListener, but the handler removes itself after handling the first
+     * event.
+     */
+    static addListenerOnce(
+        this: any, instance: object, eventName: string,
+        handler: Function): google.maps.MapsEventListener;
+    /**
+     * Removes all listeners for all events for the given instance.
+     */
+    static clearInstanceListeners(this: any, instance: object): void;
+    /**
+     * Removes all listeners for the given event for the given instance.
+     */
+    static clearListeners(this: any, instance: object, eventName: string): void;
+    /**
+     * Returns if there are listeners for the given event on the given instance.
+     * Can be used to to save the computation of expensive event details.
+     */
+    static hasListeners(this: any, instance: object, eventName: string):
+        boolean;
+    /**
+     * Removes the given listener, which should have been returned by
+     * addListener above. Equivalent to calling <code>listener.remove()</code>.
+     */
+    static removeListener(this: any, listener: google.maps.MapsEventListener):
+        void;
+    /**
+     * Triggers the given event. All arguments after eventName are passed as
+     * arguments to the listeners.
+     */
+    static trigger(
+        this: any, instance: object, eventName: string,
+        ...eventArgs: any[]): void;
+  }
 }
 declare namespace google.maps.geometry.encoding {
   /**
