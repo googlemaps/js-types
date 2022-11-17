@@ -10276,9 +10276,7 @@ declare namespace google.maps.places {
     fields: string[];
     /**
      * Unique reference used to bundle the details request with an autocomplete
-     * session. If you are using the PlaceAutocompleteView widget, sessionToken
-     * does not need to be explicitly passed in. The widget manages autocomplete
-     * sessions automatically.
+     * session.
      */
     sessionToken?: google.maps.places.AutocompleteSessionToken|null;
   }
