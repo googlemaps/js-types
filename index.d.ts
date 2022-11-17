@@ -2525,8 +2525,8 @@ declare namespace google.maps {
 }
 declare namespace google.maps {
   /**
-   * An Geocoder response returned by the {@link google.maps.Geocoder}
-   * containing the list of {@link google.maps.GeocoderResult}s.
+   * A Geocoder response returned by the {@link google.maps.Geocoder} containing
+   * the list of {@link google.maps.GeocoderResult}s.
    */
   interface GeocoderResponse {
     /**
@@ -5192,7 +5192,7 @@ declare namespace google.maps {
   interface PanoProviderOptions {
     /**
      * If set, the renderer will use technologies (like webgl) that only work
-     * when cors headers are appropiately set on the provided images. It is the
+     * when cors headers are appropriately set on the provided images. It is the
      * developer&#39;s task to serve the images correctly in combination with
      * this flag, which might otherwise lead to SecurityErrors.
      */
@@ -10243,6 +10243,10 @@ declare namespace google.maps.places {
      */
     iconBackgroundColor?: string|null;
     /**
+     * The unique place id.
+     */
+    id: string;
+    /**
      * The Place’s phone number in international format. International format
      * includes the country code, and is prefixed with the plus (+) sign.
      */
@@ -10284,6 +10288,14 @@ declare namespace google.maps.places {
      * A rating, between 1.0 to 5.0, based on user reviews of this Place.
      */
     rating?: number|null;
+    /**
+     * The requested language for this place.
+     */
+    requestedLanguage?: string|null;
+    /**
+     * The requested region for this place.
+     */
+    requestedRegion?: string|null;
     /**
      * A list of reviews for this Place.
      */
@@ -10344,18 +10356,6 @@ declare namespace google.maps.places {
     static findPlaceFromQuery(
         this: any, request: google.maps.places.FindPlaceFromQueryRequest):
         Promise<{places: google.maps.places.Place[]}>;
-    /**
-     * The unique place id.
-     */
-    static readonly id: string;
-    /**
-     * The requested language for this place.
-     */
-    static readonly requestedLanguage?: string|null;
-    /**
-     * The requested region for this place.
-     */
-    static readonly requestedRegion?: string|null;
   }
 }
 declare namespace google.maps.places {
@@ -11171,7 +11171,7 @@ declare namespace google.maps.places {
 }
 declare namespace google.maps.places {
   /**
-   * An QueryAutocompletion request to be sent to the
+   * A QueryAutocompletion request to be sent to the
    * <code>QueryAutocompleteService</code>.
    */
   interface QueryAutocompletionRequest {
