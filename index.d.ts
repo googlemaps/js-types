@@ -7753,6 +7753,9 @@ declare namespace google.maps.journeySharing {
   /**
    * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * MarkerSetup default options.
+   * @deprecated Marker setup is deprecated. Use the
+   *     <code>MarkerCustomizationFunction</code> methods for your location
+   *     provider instead.
    */
   interface DefaultMarkerSetupOptions {
     /**
@@ -7826,6 +7829,23 @@ declare namespace google.maps.journeySharing {
 declare namespace google.maps.journeySharing {
   /**
    * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   * Parameters specific to marker customization functions that apply options to
+   * delivery vehicle markers. Used by {@link
+   * google.maps.journeySharing.FleetEngineDeliveryVehicleLocationProviderOptions.deliveryVehicleMarkerCustomization}
+   * and {@link
+   * google.maps.journeySharing.FleetEngineDeliveryFleetLocationProviderOptions.deliveryVehicleMarkerCustomization}.
+   */
+  interface DeliveryVehicleMarkerCustomizationFunctionParams extends
+      google.maps.journeySharing.MarkerCustomizationFunctionParams {
+    /**
+     * The delivery vehicle represented by this marker.
+     */
+    vehicle: google.maps.journeySharing.DeliveryVehicle;
+  }
+}
+declare namespace google.maps.journeySharing {
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Delivery Fleet Location Provider.
    */
   class FleetEngineDeliveryFleetLocationProvider extends
@@ -7891,6 +7911,22 @@ declare namespace google.maps.journeySharing {
      * &quot;z&quot;</code>.
      */
     deliveryVehicleFilter: string|null;
+    /**
+     * Customization function that is applied to a delivery vehicle marker. <p>
+     * Use this function to specify custom styling (such as marker icon) and
+     * interactivity (such as click handling). This function is invoked once
+     * when the marker is created, before it is added to the map view. (On this
+     * invocation, the <code>isNew</code> parameter in the function parameters
+     * object is set to <code>true</code>.) Additionally, this function is
+     * invoked when the location provider receives data from Fleet Engine,
+     * regardless of whether the data corresponding to this marker have changed.
+     * <p> See {@link
+     * google.maps.journeySharing.DeliveryVehicleMarkerCustomizationFunctionParams}
+     * for a list of supplied parameters and their uses.
+     */
+    deliveryVehicleMarkerCustomization?:
+        ((a: google.maps.journeySharing
+              .DeliveryVehicleMarkerCustomizationFunctionParams) => void)|null;
     /**
      * The latitude/longitude bounds within which to track vehicles immediately
      * after the location provider is instantiated. If not set, the location
@@ -7990,6 +8026,38 @@ declare namespace google.maps.journeySharing {
      */
     deliveryVehicleId: string|null;
     /**
+     * Customization function that is applied to the delivery vehicle marker.
+     * <p> Use this function to specify custom styling (such as marker icon) and
+     * interactivity (such as click handling). This function is invoked once
+     * when the marker is created, before it is added to the map view. (On this
+     * invocation, the <code>isNew</code> parameter in the function parameters
+     * object is set to <code>true</code>.) Additionally, this function is
+     * invoked when the location provider receives data from Fleet Engine,
+     * regardless of whether the data corresponding to this marker have changed.
+     * <p> See {@link
+     * google.maps.journeySharing.DeliveryVehicleMarkerCustomizationFunctionParams}
+     * for a list of supplied parameters and their uses.
+     */
+    deliveryVehicleMarkerCustomization?:
+        ((a: google.maps.journeySharing
+              .DeliveryVehicleMarkerCustomizationFunctionParams) => void)|null;
+    /**
+     * Customization function that is applied to a planned stop marker. <p> Use
+     * this function to specify custom styling (such as marker icon) and
+     * interactivity (such as click handling). This function is invoked once
+     * when the marker is created, before it is added to the map view. (On this
+     * invocation, the <code>isNew</code> parameter in the function parameters
+     * object is set to <code>true</code>.) Additionally, this function is
+     * invoked when the location provider receives data from Fleet Engine,
+     * regardless of whether the data corresponding to this marker have changed.
+     * <p> See {@link
+     * google.maps.journeySharing.PlannedStopMarkerCustomizationFunctionParams}
+     * for a list of supplied parameters and their uses.
+     */
+    plannedStopMarkerCustomization?:
+        ((a: google.maps.journeySharing
+              .PlannedStopMarkerCustomizationFunctionParams) => void)|null;
+    /**
      * Minimum time between fetching location updates in milliseconds. If it
      * takes longer than <code>pollingIntervalMillis</code> to fetch a location
      * update, the next location update is not started until the current one
@@ -8028,6 +8096,40 @@ declare namespace google.maps.journeySharing {
      */
     taskFilterOptions: google.maps.journeySharing.FleetEngineTaskFilterOptions|
         null;
+    /**
+     * Customization function that is applied to a task marker. A task marker is
+     * rendered at the planned location of each task assigned to the delivery
+     * vehicle. <p> Use this function to specify custom styling (such as marker
+     * icon) and interactivity (such as click handling). This function is
+     * invoked once when the marker is created, before it is added to the map
+     * view. (On this invocation, the <code>isNew</code> parameter in the
+     * function parameters object is set to <code>true</code>.) Additionally,
+     * this function is invoked when the location provider receives data from
+     * Fleet Engine, regardless of whether the data corresponding to this marker
+     * have changed. <p> See {@link
+     * google.maps.journeySharing.TaskMarkerCustomizationFunctionParams} for a
+     * list of supplied parameters and their uses.
+     */
+    taskMarkerCustomization?:
+        ((a: google.maps.journeySharing
+              .TaskMarkerCustomizationFunctionParams) => void)|null;
+    /**
+     * Customization function that is applied to a task outcome marker. A task
+     * outcome marker is rendered at the actual outcome location of each task
+     * assigned to the delivery vehicle. <p> Use this function to specify custom
+     * styling (such as marker icon) and interactivity (such as click handling).
+     * This function is invoked once when the marker is created, before it is
+     * added to the map view. (On this invocation, the <code>isNew</code>
+     * parameter in the function parameters object is set to <code>true</code>.)
+     * Additionally, this function is invoked when the location provider
+     * receives data from Fleet Engine, regardless of whether the data
+     * corresponding to this marker have changed. <p> See {@link
+     * google.maps.journeySharing.TaskMarkerCustomizationFunctionParams} for a
+     * list of supplied parameters and their uses.
+     */
+    taskOutcomeMarkerCustomization?:
+        ((a: google.maps.journeySharing
+              .TaskMarkerCustomizationFunctionParams) => void)|null;
   }
 }
 declare namespace google.maps.journeySharing {
@@ -8120,6 +8222,38 @@ declare namespace google.maps.journeySharing {
     authTokenFetcher(
         this: any, a: google.maps.journeySharing.AuthTokenFetcherOptions):
         Promise<google.maps.journeySharing.AuthToken>;
+    /**
+     * Customization function that is applied to the delivery vehicle marker.
+     * <p> Use this function to specify custom styling (such as marker icon) and
+     * interactivity (such as click handling). This function is invoked once
+     * when the marker is created, before it is added to the map view. (On this
+     * invocation, the <code>isNew</code> parameter in the function parameters
+     * object is set to <code>true</code>.) Additionally, this function is
+     * invoked when the location provider receives data from Fleet Engine,
+     * regardless of whether the data corresponding to this marker have changed.
+     * <p> See {@link
+     * google.maps.journeySharing.ShipmentMarkerCustomizationFunctionParams} for
+     * a list of supplied parameters and their uses.
+     */
+    deliveryVehicleMarkerCustomization?:
+        ((a: google.maps.journeySharing
+              .ShipmentMarkerCustomizationFunctionParams) => void)|null;
+    /**
+     * Customization function that is applied to the destination marker. <p> Use
+     * this function to specify custom styling (such as marker icon) and
+     * interactivity (such as click handling). This function is invoked once
+     * when the marker is created, before it is added to the map view. (On this
+     * invocation, the <code>isNew</code> parameter in the function parameters
+     * object is set to <code>true</code>.) Additionally, this function is
+     * invoked when the location provider receives data from Fleet Engine,
+     * regardless of whether the data corresponding to this marker have changed.
+     * <p> See {@link
+     * google.maps.journeySharing.ShipmentMarkerCustomizationFunctionParams} for
+     * a list of supplied parameters and their uses.
+     */
+    destinationMarkerCustomization?:
+        ((a: google.maps.journeySharing
+              .ShipmentMarkerCustomizationFunctionParams) => void)|null;
     /**
      * Minimum time between fetching location updates in milliseconds. If it
      * takes longer than <code>pollingIntervalMillis</code> to fetch a location
@@ -8311,12 +8445,19 @@ declare namespace google.maps.journeySharing {
      * markerOptions is unset or null, it will be overwritten with the default.
      * Any value set for markerOptions.map or markerOptions.position will be
      * ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     destinationMarkerSetup: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
              google.maps.journeySharing.MarkerSetupOptions);
     /**
      * Returns the destination markers, if any.
+     * @deprecated getting a list of markers via the <code>MapView</code> is
+     *     deprecated. Use the <code>MarkerCustomizationFunction</code>s for
+     *     your location provider to receive callbacks when a marker is added to
+     *     the map or updated.
      */
     destinationMarkers: google.maps.Marker[];
     /**
@@ -8333,11 +8474,12 @@ declare namespace google.maps.journeySharing {
      */
     locationProvider: google.maps.journeySharing.LocationProvider;
     /**
-     * The map object contained in the map view.
+     * This Field is read-only. The map object contained in the map view.
      */
     map: google.maps.Map;
     /**
-     * The map options passed into the map via the map view.
+     * This Field is read-only. The map options passed into the map via the map
+     * view.
      */
     mapOptions: google.maps.MapOptions;
     /**
@@ -8353,12 +8495,19 @@ declare namespace google.maps.journeySharing {
      * different MarkerSetupOptions objects. If markerOptions is unset or null,
      * it will be overwritten with the default. Any value set for
      * markerOptions.map or markerOptions.position will be ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     originMarkerSetup: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
              google.maps.journeySharing.MarkerSetupOptions);
     /**
      * Returns the origin markers, if any.
+     * @deprecated getting a list of markers via the <code>MapView</code> is
+     *     deprecated. Use the <code>MarkerCustomizationFunction</code>s for
+     *     your location provider to receive callbacks when a marker is added to
+     *     the map or updated.
      */
     originMarkers: google.maps.Marker[];
     /**
@@ -8374,6 +8523,9 @@ declare namespace google.maps.journeySharing {
      * different MarkerSetupOptions objects. If markerOptions is unset or null,
      * it will be overwritten with the default. Any value set for
      * markerOptions.map or markerOptions.position will be ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     pingMarkerSetup: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
@@ -8392,12 +8544,19 @@ declare namespace google.maps.journeySharing {
      * markerOptions is unset or null, it will be overwritten with the default.
      * Any value set for markerOptions.map or markerOptions.position will be
      * ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     successfulTaskMarkerSetup: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
              google.maps.journeySharing.MarkerSetupOptions);
     /**
      * Returns the successful task markers, if any.
+     * @deprecated getting a list of markers via the <code>MapView</code> is
+     *     deprecated. Use the <code>MarkerCustomizationFunction</code>s for
+     *     your location provider to receive callbacks when a marker is added to
+     *     the map or updated.
      */
     successfulTaskMarkers: google.maps.Marker[];
     /**
@@ -8436,12 +8595,19 @@ declare namespace google.maps.journeySharing {
      * markerOptions is unset or null, it will be overwritten with the default.
      * Any value set for markerOptions.map or markerOptions.position will be
      * ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     taskOutcomeMarkerSetup: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
              google.maps.journeySharing.MarkerSetupOptions);
     /**
      * Returns the task outcome markers, if any.
+     * @deprecated getting a list of markers via the <code>MapView</code> is
+     *     deprecated. Use the <code>MarkerCustomizationFunction</code>s for
+     *     your location provider to receive callbacks when a marker is added to
+     *     the map or updated.
      */
     taskOutcomeMarkers: google.maps.Marker[];
     /**
@@ -8458,12 +8624,19 @@ declare namespace google.maps.journeySharing {
      * markerOptions is unset or null, it will be overwritten with the default.
      * Any value set for markerOptions.map or markerOptions.position will be
      * ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     unsuccessfulTaskMarkerSetup: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
              google.maps.journeySharing.MarkerSetupOptions);
     /**
      * Returns the unsuccessful task markers, if any.
+     * @deprecated getting a list of markers via the <code>MapView</code> is
+     *     deprecated. Use the <code>MarkerCustomizationFunction</code>s for
+     *     your location provider to receive callbacks when a marker is added to
+     *     the map or updated.
      */
     unsuccessfulTaskMarkers: google.maps.Marker[];
     /**
@@ -8479,12 +8652,19 @@ declare namespace google.maps.journeySharing {
      * different MarkerSetupOptions objects. If markerOptions is unset or null,
      * it will be overwritten with the default. Any value set for
      * markerOptions.map or markerOptions.position will be ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     vehicleMarkerSetup: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
              google.maps.journeySharing.MarkerSetupOptions);
     /**
      * Returns the vehicle markers, if any.
+     * @deprecated getting a list of markers via the <code>MapView</code> is
+     *     deprecated. Use the <code>MarkerCustomizationFunction</code>s for
+     *     your location provider to receive callbacks when a marker is added to
+     *     the map or updated.
      */
     vehicleMarkers: google.maps.Marker[];
     /**
@@ -8501,12 +8681,19 @@ declare namespace google.maps.journeySharing {
      * markerOptions is unset or null, it will be overwritten with the default.
      * Any value set for markerOptions.map or markerOptions.position will be
      * ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     waypointMarkerSetup: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
              google.maps.journeySharing.MarkerSetupOptions);
     /**
      * Returns the waypoint markers, if any.
+     * @deprecated getting a list of markers via the <code>MapView</code> is
+     *     deprecated. Use the <code>MarkerCustomizationFunction</code>s for
+     *     your location provider to receive callbacks when a marker is added to
+     *     the map or updated.
      */
     waypointMarkers: google.maps.Marker[];
   }
@@ -8558,6 +8745,9 @@ declare namespace google.maps.journeySharing {
      * markerOptions is unset or null, it will be overwritten with the default.
      * Any value set for markerOptions.map or markerOptions.position will be
      * ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     destinationMarkerSetup?: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
@@ -8588,6 +8778,9 @@ declare namespace google.maps.journeySharing {
      * different MarkerSetupOptions objects. If markerOptions is unset or null,
      * it will be overwritten with the default. Any value set for
      * markerOptions.map or markerOptions.position will be ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     originMarkerSetup?: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
@@ -8605,6 +8798,9 @@ declare namespace google.maps.journeySharing {
      * different MarkerSetupOptions objects. If markerOptions is unset or null,
      * it will be overwritten with the default. Any value set for
      * markerOptions.map or markerOptions.position will be ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     pingMarkerSetup?: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
@@ -8623,6 +8819,9 @@ declare namespace google.maps.journeySharing {
      * markerOptions is unset or null, it will be overwritten with the default.
      * Any value set for markerOptions.map or markerOptions.position will be
      * ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     successfulTaskMarkerSetup?: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
@@ -8659,6 +8858,9 @@ declare namespace google.maps.journeySharing {
      * markerOptions is unset or null, it will be overwritten with the default.
      * Any value set for markerOptions.map or markerOptions.position will be
      * ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     taskOutcomeMarkerSetup?: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
@@ -8677,6 +8879,9 @@ declare namespace google.maps.journeySharing {
      * markerOptions is unset or null, it will be overwritten with the default.
      * Any value set for markerOptions.map or markerOptions.position will be
      * ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     unsuccessfulTaskMarkerSetup?: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
@@ -8694,6 +8899,9 @@ declare namespace google.maps.journeySharing {
      * different MarkerSetupOptions objects. If markerOptions is unset or null,
      * it will be overwritten with the default. Any value set for
      * markerOptions.map or markerOptions.position will be ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     vehicleMarkerSetup?: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
@@ -8712,6 +8920,9 @@ declare namespace google.maps.journeySharing {
      * markerOptions is unset or null, it will be overwritten with the default.
      * Any value set for markerOptions.map or markerOptions.position will be
      * ignored.
+     * @deprecated Marker setup is deprecated. Use the
+     *     <code>MarkerCustomizationFunction</code> methods for your location
+     *     provider instead. This field will be removed in the future.
      */
     waypointMarkerSetup?: google.maps.journeySharing.MarkerSetupOptions|
         ((a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
@@ -8739,6 +8950,33 @@ declare namespace google.maps.journeySharing {
 declare namespace google.maps.journeySharing {
   /**
    * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   * Parameters that are common to all marker customization functions. No object
+   * of this class is provided directly to any marker customization function; an
+   * object of one of its descendent classes is provided instead.
+   */
+  interface MarkerCustomizationFunctionParams {
+    /**
+     * The default options used to create this marker.
+     */
+    defaultOptions: google.maps.MarkerOptions;
+    /**
+     * If true, the marker was newly created, and the marker customization
+     * function is being called for the first time, before the marker has been
+     * added to the map view. False otherwise.
+     */
+    isNew: boolean;
+    /**
+     * The marker. Any customizations should be made to this object directly.
+     */
+    marker: google.maps.Marker;
+  }
+}
+declare namespace google.maps.journeySharing {
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   * @deprecated Marker setup is deprecated. Use the
+   *     <code>MarkerCustomizationFunction</code> methods for your location
+   *     provider instead.
    */
   type MarkerSetup = google.maps.journeySharing.MarkerSetupOptions|(
       (a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
@@ -8748,12 +8986,31 @@ declare namespace google.maps.journeySharing {
   /**
    * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * MarkerSetup options.
+   * @deprecated Marker setup is deprecated. Use the
+   *     <code>MarkerCustomizationFunction</code> methods for your location
+   *     provider instead.
    */
   interface MarkerSetupOptions {
     /**
      * Marker options.
      */
     markerOptions?: google.maps.MarkerOptions|null;
+  }
+}
+declare namespace google.maps.journeySharing {
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   * Parameters specific to marker customization functions that apply options to
+   * markers representing planned stops. Used by {@link
+   * google.maps.journeySharing.FleetEngineDeliveryVehicleLocationProviderOptions.plannedStopMarkerCustomization}.
+   */
+  interface PlannedStopMarkerCustomizationFunctionParams extends
+      google.maps.journeySharing
+          .DeliveryVehicleMarkerCustomizationFunctionParams {
+    /**
+     * The 0-based index of this stop in the list of remaining stops.
+     */
+    stopIndex: number;
   }
 }
 declare namespace google.maps.journeySharing {
@@ -8778,6 +9035,27 @@ declare namespace google.maps.journeySharing {
      * Polyline visibility.
      */
     visible?: boolean|null;
+  }
+}
+declare namespace google.maps.journeySharing {
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   * Parameters specific to marker customization functions that apply options to
+   * markers representing shipment delivery vehicle and destination locations.
+   * Used by {@link
+   * google.maps.journeySharing.FleetEngineShipmentLocationProviderOptions.deliveryVehicleMarkerCustomization}
+   * and {@link
+   * google.maps.journeySharing.FleetEngineShipmentLocationProviderOptions.destinationMarkerCustomization}.
+   */
+  interface ShipmentMarkerCustomizationFunctionParams extends
+      google.maps.journeySharing.MarkerCustomizationFunctionParams {
+    /**
+     * The task associated with this marker. <p> For information about the
+     * delivery vehicle servicing this task, use {@link
+     * google.maps.journeySharing.Task.latestVehicleLocationUpdate} and {@link
+     * google.maps.journeySharing.Task.remainingVehicleJourneySegments}.
+     */
+    task: google.maps.journeySharing.Task;
   }
 }
 declare namespace google.maps.journeySharing {
@@ -8845,6 +9123,24 @@ declare namespace google.maps.journeySharing {
      * The ID of the vehicle performing this task.
      */
     vehicleId: string|null;
+  }
+}
+declare namespace google.maps.journeySharing {
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   * Parameters specific to marker customization functions that apply options to
+   * markers representing planned or actual task locations. Used by {@link
+   * google.maps.journeySharing.FleetEngineDeliveryVehicleLocationProviderOptions.taskMarkerCustomization}
+   * and {@link
+   * google.maps.journeySharing.FleetEngineDeliveryVehicleLocationProviderOptions.taskOutcomeMarkerCustomization}.
+   */
+  interface TaskMarkerCustomizationFunctionParams extends
+      google.maps.journeySharing
+          .DeliveryVehicleMarkerCustomizationFunctionParams {
+    /**
+     * The task location represented by this marker.
+     */
+    task: google.maps.journeySharing.Task;
   }
 }
 declare namespace google.maps.journeySharing {
