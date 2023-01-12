@@ -6665,7 +6665,9 @@ declare namespace google.maps {
      */
     addressControlOptions?: google.maps.StreetViewAddressControlOptions|null;
     /**
-     * The enabled/disabled state of click-to-go.
+     * The enabled/disabled state of click-to-go. Not applicable to custom
+     * panoramas.
+     * @defaultValue <code>true</code>
      */
     clickToGo?: boolean|null;
     /**
@@ -6765,6 +6767,7 @@ declare namespace google.maps {
      * specified, or is set to <code>true</code>, street names are displayed on
      * the panorama. If set to <code>false</code>, street names are not
      * displayed.
+     * @defaultValue <code>true</code>
      */
     showRoadLabels?: boolean|null;
     /**
@@ -7736,7 +7739,7 @@ declare namespace google.maps {
     /**
      * Implement this method to fetch or create intermediate data structures
      * before the overlay is drawn that don’t require immediate access to the
-     * WebGL rendering context.
+     * WebGL rendering context. This method must be implemented to render.
      */
     onAdd(): void;
     /**
@@ -7762,7 +7765,8 @@ declare namespace google.maps {
     /**
      * This method is called when the overlay is removed from the map with
      * <code>WebGLOverlayView.setMap(null)</code>, and is where you should
-     * remove all intermediate objects.
+     * remove all intermediate objects. This method must be implemented to
+     * render.
      */
     onRemove(): void;
     /**
@@ -8462,9 +8466,7 @@ declare namespace google.maps.journeySharing {
      * `const {FleetEngineDeliveryFleetLocationProvider} = await
      * google.map.importLibrary("journeySharing")`. See
      * https://developers.google.com/maps/documentation/javascript/libraries.
-     * @param options <p>{@link
-     *     google.maps.journeySharing.FleetEngineDeliveryFleetLocationProviderOptions}
-     *     <p>Options to pass to the location provider.
+     * @param options Options to pass to the location provider.
      */
     constructor(options: google.maps.journeySharing
                     .FleetEngineDeliveryFleetLocationProviderOptions);
@@ -8483,11 +8485,11 @@ declare namespace google.maps.journeySharing {
      * Minimum time between fetching location updates in milliseconds. If it
      * takes longer than <code>pollingIntervalMillis</code> to fetch a location
      * update, the next location update is not started until the current one
-     * finishes. <p>Setting this value to 0 disables recurring location updates.
-     * A new location update is fetched if any of the parameters observed by the
-     * location provider changes. <p>The default polling interval is 5000
-     * milliseconds, the minimum interval. If you set the polling interval to a
-     * lower non-zero value, 5000 is used.
+     * finishes. <br><br>Setting this value to 0 disables recurring location
+     * updates. A new location update is fetched if any of the parameters
+     * observed by the location provider changes. <br><br>The default polling
+     * interval is 5000 milliseconds, the minimum interval. If you set the
+     * polling interval to a lower non-zero value, 5000 is used.
      */
     pollingIntervalMillis: number|null;
     /**
@@ -8513,26 +8515,29 @@ declare namespace google.maps.journeySharing {
         Promise<google.maps.journeySharing.AuthToken>;
     /**
      * A filter query to apply when fetching delivery vehicles. This filter is
-     * passed directly to Fleet Engine. <p>See <a
+     * passed directly to Fleet Engine. <br><br>See <a
      * href="https://goo.gle/3wT0Dlt">ListDeliveryVehiclesRequest.filter</a> for
-     * supported formats. <p>Note that valid filters for attributes must have
-     * the &quot;attributes&quot; prefix. For example, <code>attributes.x =
+     * supported formats.<br><br>Note that valid filters for attributes must
+     * have the &quot;attributes&quot; prefix. For example, <code>attributes.x =
      * &quot;y&quot;</code> or <code>attributes.&quot;x y&quot; =
      * &quot;z&quot;</code>.
      */
     deliveryVehicleFilter: string|null;
     /**
-     * Customization function that is applied to a delivery vehicle marker. <p>
-     * Use this function to specify custom styling (such as marker icon) and
-     * interactivity (such as click handling). This function is invoked once
+     * Customization applied to a delivery vehicle marker. <br><br>Use this
+     * field to specify custom styling (such as marker icon) and interactivity
+     * (such as click handling).<ul><li>If a {@link google.maps.MarkerOptions}
+     * object is specified, the changes specified in it are applied to the
+     * marker after the marker has been created, overwriting its default options
+     * if they exist.</li><li> If a function is specified, it is invoked once
      * when the marker is created, before it is added to the map view. (On this
      * invocation, the <code>isNew</code> parameter in the function parameters
      * object is set to <code>true</code>.) Additionally, this function is
      * invoked when the location provider receives data from Fleet Engine,
-     * regardless of whether the data corresponding to this marker have changed.
-     * <p> See {@link
+     * regardless of whether the data corresponding to this marker have
+     * changed.<br><br>See {@link
      * google.maps.journeySharing.DeliveryVehicleMarkerCustomizationFunctionParams}
-     * for a list of supplied parameters and their uses.
+     * for a list of supplied parameters and their uses.</li></ul>
      */
     deliveryVehicleMarkerCustomization?:
         ((a: google.maps.journeySharing
@@ -8598,9 +8603,7 @@ declare namespace google.maps.journeySharing {
      * `const {FleetEngineDeliveryVehicleLocationProvider} = await
      * google.map.importLibrary("journeySharing")`. See
      * https://developers.google.com/maps/documentation/javascript/libraries.
-     * @param options <p>{@link
-     *     google.maps.journeySharing.FleetEngineDeliveryVehicleLocationProviderOptions}
-     *     <p>Options to pass to the location provider.
+     * @param options Options to pass to the location provider.
      */
     constructor(options: google.maps.journeySharing
                     .FleetEngineDeliveryVehicleLocationProviderOptions);
@@ -8651,46 +8654,54 @@ declare namespace google.maps.journeySharing {
      */
     deliveryVehicleId: string|null;
     /**
-     * Customization function that is applied to the delivery vehicle marker.
-     * <p> Use this function to specify custom styling (such as marker icon) and
-     * interactivity (such as click handling). This function is invoked once
+     * Customization applied to the delivery vehicle marker. <br><br>Use this
+     * field to specify custom styling (such as marker icon) and interactivity
+     * (such as click handling).<ul><li>If a {@link google.maps.MarkerOptions}
+     * object is specified, the changes specified in it are applied to the
+     * marker after the marker has been created, overwriting its default options
+     * if they exist.</li><li>If a function is specified, it is invoked once
      * when the marker is created, before it is added to the map view. (On this
      * invocation, the <code>isNew</code> parameter in the function parameters
      * object is set to <code>true</code>.) Additionally, this function is
      * invoked when the location provider receives data from Fleet Engine,
-     * regardless of whether the data corresponding to this marker have changed.
-     * <p> See {@link
+     * regardless of whether the data corresponding to this marker have
+     * changed.<br><br>See {@link
      * google.maps.journeySharing.DeliveryVehicleMarkerCustomizationFunctionParams}
-     * for a list of supplied parameters and their uses.
+     * for a list of supplied parameters and their uses.</li></ul>
      */
     deliveryVehicleMarkerCustomization?:
         ((a: google.maps.journeySharing
-              .DeliveryVehicleMarkerCustomizationFunctionParams) => void)|null;
+              .DeliveryVehicleMarkerCustomizationFunctionParams) => void)|null
+        |google.maps.MarkerOptions;
     /**
-     * Customization function that is applied to a planned stop marker. <p> Use
-     * this function to specify custom styling (such as marker icon) and
-     * interactivity (such as click handling). This function is invoked once
-     * when the marker is created, before it is added to the map view. (On this
+     * Customization applied to a planned stop marker. <br><br>Use this field to
+     * specify custom styling (such as marker icon) and interactivity (such as
+     * click handling).<ul><li>If a {@link google.maps.MarkerOptions} object is
+     * specified, the changes specified in it are applied to the marker after
+     * the marker has been created, overwriting its default options if they
+     * exist.</li><li>If a function is specified, it is invoked once when the
+     * marker is created, before it is added to the map view. (On this
      * invocation, the <code>isNew</code> parameter in the function parameters
      * object is set to <code>true</code>.) Additionally, this function is
      * invoked when the location provider receives data from Fleet Engine,
-     * regardless of whether the data corresponding to this marker have changed.
-     * <p> See {@link
+     * regardless of whether the data corresponding to this marker have
+     * changed.<br><br>See {@link
      * google.maps.journeySharing.PlannedStopMarkerCustomizationFunctionParams}
-     * for a list of supplied parameters and their uses.
+     * for a list of supplied parameters and their uses.</li></ul>
      */
     plannedStopMarkerCustomization?:
         ((a: google.maps.journeySharing
-              .PlannedStopMarkerCustomizationFunctionParams) => void)|null;
+              .PlannedStopMarkerCustomizationFunctionParams) => void)|null
+        |google.maps.MarkerOptions;
     /**
      * Minimum time between fetching location updates in milliseconds. If it
      * takes longer than <code>pollingIntervalMillis</code> to fetch a location
      * update, the next location update is not started until the current one
-     * finishes. <p>Setting this value to 0 disables recurring location updates.
-     * A new location update is fetched if any of the parameters observed by the
-     * location provider changes. <p>The default polling interval is 5000
-     * milliseconds, the minimum interval. If you set the polling interval to a
-     * lower non-zero value, 5000 is used.
+     * finishes. <br><br>Setting this value to 0 disables recurring location
+     * updates. A new location update is fetched if any of the parameters
+     * observed by the location provider changes. <br><br>The default polling
+     * interval is 5000 milliseconds, the minimum interval. If you set the
+     * polling interval to a lower non-zero value, 5000 is used.
      */
     pollingIntervalMillis: number|null;
     /**
@@ -8722,35 +8733,41 @@ declare namespace google.maps.journeySharing {
     taskFilterOptions: google.maps.journeySharing.FleetEngineTaskFilterOptions|
         null;
     /**
-     * Customization function that is applied to a task marker. A task marker is
-     * rendered at the planned location of each task assigned to the delivery
-     * vehicle. <p> Use this function to specify custom styling (such as marker
-     * icon) and interactivity (such as click handling). This function is
-     * invoked once when the marker is created, before it is added to the map
-     * view. (On this invocation, the <code>isNew</code> parameter in the
-     * function parameters object is set to <code>true</code>.) Additionally,
-     * this function is invoked when the location provider receives data from
-     * Fleet Engine, regardless of whether the data corresponding to this marker
-     * have changed. <p> See {@link
-     * google.maps.journeySharing.TaskMarkerCustomizationFunctionParams} for a
-     * list of supplied parameters and their uses.
-     */
-    taskMarkerCustomization?:
-        ((a: google.maps.journeySharing
-              .TaskMarkerCustomizationFunctionParams) => void)|null;
-    /**
-     * Customization function that is applied to a task outcome marker. A task
-     * outcome marker is rendered at the actual outcome location of each task
-     * assigned to the delivery vehicle. <p> Use this function to specify custom
-     * styling (such as marker icon) and interactivity (such as click handling).
-     * This function is invoked once when the marker is created, before it is
+     * Customization applied to a task marker. A task marker is rendered at the
+     * planned location of each task assigned to the delivery vehicle.
+     * <br><br>Use this field to specify custom styling (such as marker icon)
+     * and interactivity (such as click handling).<ul><li>If a {@link
+     * google.maps.MarkerOptions} object is specified, the changes specified in
+     * it are applied to the marker after the marker has been created,
+     * overwriting its default options if they exist.</li><li>If a function is
+     * specified, it is invoked once when the marker is created, before it is
      * added to the map view. (On this invocation, the <code>isNew</code>
      * parameter in the function parameters object is set to <code>true</code>.)
      * Additionally, this function is invoked when the location provider
      * receives data from Fleet Engine, regardless of whether the data
-     * corresponding to this marker have changed. <p> See {@link
+     * corresponding to this marker have changed.<br><br>See {@link
      * google.maps.journeySharing.TaskMarkerCustomizationFunctionParams} for a
-     * list of supplied parameters and their uses.
+     * list of supplied parameters and their uses.</li></ul>
+     */
+    taskMarkerCustomization?: (
+        (a: google.maps.journeySharing.TaskMarkerCustomizationFunctionParams) =>
+            void)|null|google.maps.MarkerOptions;
+    /**
+     * Customization applied to a task outcome marker. A task outcome marker is
+     * rendered at the actual outcome location of each task assigned to the
+     * delivery vehicle. <br><br>Use this field to specify custom styling (such
+     * as marker icon) and interactivity (such as click handling).<ul><li>If
+     * a {@link google.maps.MarkerOptions} object is specified, the changes
+     * specified in it are applied to the marker after the marker has been
+     * created, overwriting its default options if they exist.</li><li>If a
+     * function is specified, it is invoked once when the marker is created,
+     * before it is added to the map view. (On this invocation, the
+     * <code>isNew</code> parameter in the function parameters object is set to
+     * <code>true</code>.) Additionally, this function is invoked when the
+     * location provider receives data from Fleet Engine, regardless of whether
+     * the data corresponding to this marker have changed.<br><br>See {@link
+     * google.maps.journeySharing.TaskMarkerCustomizationFunctionParams} for a
+     * list of supplied parameters and their uses.</li></ul>
      */
     taskOutcomeMarkerCustomization?:
         ((a: google.maps.journeySharing
@@ -8834,9 +8851,7 @@ declare namespace google.maps.journeySharing {
      * `const {FleetEngineShipmentLocationProvider} = await
      * google.map.importLibrary("journeySharing")`. See
      * https://developers.google.com/maps/documentation/javascript/libraries.
-     * @param options <p>{@link
-     *     google.maps.journeySharing.FleetEngineShipmentLocationProviderOptions}
-     *     <p>Options for the location provider.
+     * @param options Options for the location provider.
      */
     constructor(options: google.maps.journeySharing
                     .FleetEngineShipmentLocationProviderOptions);
@@ -8869,46 +8884,54 @@ declare namespace google.maps.journeySharing {
         this: any, a: google.maps.journeySharing.AuthTokenFetcherOptions):
         Promise<google.maps.journeySharing.AuthToken>;
     /**
-     * Customization function that is applied to the delivery vehicle marker.
-     * <p> Use this function to specify custom styling (such as marker icon) and
-     * interactivity (such as click handling). This function is invoked once
+     * Customization applied to the delivery vehicle marker. <br><br>Use this
+     * field to specify custom styling (such as marker icon) and interactivity
+     * (such as click handling).<ul><li> If a {@link google.maps.MarkerOptions}
+     * object is specified, the changes specified in it are applied to the
+     * marker after the marker has been created, overwriting its default options
+     * if they exist.</li><li>If a function is specified, it is invoked once
      * when the marker is created, before it is added to the map view. (On this
      * invocation, the <code>isNew</code> parameter in the function parameters
      * object is set to <code>true</code>.) Additionally, this function is
      * invoked when the location provider receives data from Fleet Engine,
-     * regardless of whether the data corresponding to this marker have changed.
-     * <p> See {@link
+     * regardless of whether the data corresponding to this marker have
+     * changed.<br><br>See {@link
      * google.maps.journeySharing.ShipmentMarkerCustomizationFunctionParams} for
-     * a list of supplied parameters and their uses.
+     * a list of supplied parameters and their uses.</li></ul>
      */
     deliveryVehicleMarkerCustomization?:
         ((a: google.maps.journeySharing
-              .ShipmentMarkerCustomizationFunctionParams) => void)|null;
+              .ShipmentMarkerCustomizationFunctionParams) => void)|null
+        |google.maps.MarkerOptions;
     /**
-     * Customization function that is applied to the destination marker. <p> Use
-     * this function to specify custom styling (such as marker icon) and
-     * interactivity (such as click handling). This function is invoked once
-     * when the marker is created, before it is added to the map view. (On this
+     * Customization applied to the destination marker. <br><br>Use this field
+     * to specify custom styling (such as marker icon) and interactivity (such
+     * as click handling).<ul><li> If a {@link google.maps.MarkerOptions} object
+     * is specified, the changes specified in it are applied to the marker after
+     * the marker has been created, overwriting its default options if they
+     * exist.</li><li>If a function is specified, it is invoked once when the
+     * marker is created, before it is added to the map view. (On this
      * invocation, the <code>isNew</code> parameter in the function parameters
      * object is set to <code>true</code>.) Additionally, this function is
      * invoked when the location provider receives data from Fleet Engine,
-     * regardless of whether the data corresponding to this marker have changed.
-     * <p> See {@link
+     * regardless of whether the data corresponding to this marker have
+     * changed.<br><br>See {@link
      * google.maps.journeySharing.ShipmentMarkerCustomizationFunctionParams} for
-     * a list of supplied parameters and their uses.
+     * a list of supplied parameters and their uses.</li></ul>
      */
     destinationMarkerCustomization?:
         ((a: google.maps.journeySharing
-              .ShipmentMarkerCustomizationFunctionParams) => void)|null;
+              .ShipmentMarkerCustomizationFunctionParams) => void)|null
+        |google.maps.MarkerOptions;
     /**
      * Minimum time between fetching location updates in milliseconds. If it
      * takes longer than <code>pollingIntervalMillis</code> to fetch a location
      * update, the next location update is not started until the current one
-     * finishes. <p>Setting this value to 0 disables recurring location updates.
-     * A new location update is fetched if any of the parameters observed by the
-     * location provider changes. <p>The default polling interval is 5000
-     * milliseconds, the minimum interval. If you set the polling interval to a
-     * lower non-zero value, 5000 is used.
+     * finishes. <br><br>Setting this value to 0 disables recurring location
+     * updates. A new location update is fetched if any of the parameters
+     * observed by the location provider changes. <br><br>The default polling
+     * interval is 5000 milliseconds, the minimum interval. If you set the
+     * polling interval to a lower non-zero value, 5000 is used.
      */
     pollingIntervalMillis: number|null;
     /**
@@ -8985,9 +9008,7 @@ declare namespace google.maps.journeySharing {
      * `const {FleetEngineTripLocationProvider} = await
      * google.map.importLibrary("journeySharing")`. See
      * https://developers.google.com/maps/documentation/javascript/libraries.
-     * @param options <p>{@link
-     *     google.maps.journeySharing.FleetEngineTripLocationProviderOptions}
-     *     <p>Options for the location provider.
+     * @param options Options for the location provider.
      */
     constructor(options: google.maps.journeySharing
                     .FleetEngineTripLocationProviderOptions);
@@ -9016,46 +9037,52 @@ declare namespace google.maps.journeySharing {
         this: any, a: google.maps.journeySharing.AuthTokenFetcherOptions):
         Promise<google.maps.journeySharing.AuthToken>;
     /**
-     * Customization function that is applied to the destination marker. <p> Use
-     * this function to specify custom styling (such as marker icon) and
-     * interactivity (such as click handling). This function is invoked once
-     * when the marker is created, before it is added to the map view. (On this
+     * Customization applied to the destination marker. <br><br>Use this field
+     * to specify custom styling (such as marker icon) and interactivity (such
+     * as click handling).<ul><li>If a {@link google.maps.MarkerOptions} object
+     * is specified, the changes specified in it are applied to the marker after
+     * the marker has been created, overwriting its default options if they
+     * exist.</li><li>If a function is specified, it is invoked once when the
+     * marker is created, before it is added to the map view. (On this
      * invocation, the <code>isNew</code> parameter in the function parameters
      * object is set to <code>true</code>.) Additionally, this function is
      * invoked when the location provider receives data from Fleet Engine,
-     * regardless of whether the data corresponding to this marker have changed.
-     * <p> See {@link
+     * regardless of whether the data corresponding to this marker have
+     * changed.<br><br>See {@link
      * google.maps.journeySharing.TripMarkerCustomizationFunctionParams} for a
-     * list of supplied parameters and their uses.
+     * list of supplied parameters and their uses.</li></ul>
      */
-    destinationMarkerCustomization?:
-        ((a: google.maps.journeySharing
-              .TripMarkerCustomizationFunctionParams) => void)|null;
+    destinationMarkerCustomization?: (
+        (a: google.maps.journeySharing.TripMarkerCustomizationFunctionParams) =>
+            void)|null|google.maps.MarkerOptions;
     /**
-     * Customization function that is applied to the origin marker. <p> Use this
-     * function to specify custom styling (such as marker icon) and
-     * interactivity (such as click handling). This function is invoked once
-     * when the marker is created, before it is added to the map view. (On this
+     * Customization applied to the origin marker. <br><br>Use this field to
+     * specify custom styling (such as marker icon) and interactivity (such as
+     * click handling).<ul><li>If a {@link google.maps.MarkerOptions} object is
+     * specified, the changes specified in it are applied to the marker after
+     * the marker has been created, overwriting its default options if they
+     * exist.</li><li>If a function is specified, it is invoked once when the
+     * marker is created, before it is added to the map view. (On this
      * invocation, the <code>isNew</code> parameter in the function parameters
      * object is set to <code>true</code>.) Additionally, this function is
      * invoked when the location provider receives data from Fleet Engine,
-     * regardless of whether the data corresponding to this marker have changed.
-     * <p> See {@link
+     * regardless of whether the data corresponding to this marker have
+     * changed.<br><br>See {@link
      * google.maps.journeySharing.TripMarkerCustomizationFunctionParams} for a
-     * list of supplied parameters and their uses.
+     * list of supplied parameters and their uses.</li></ul>
      */
-    originMarkerCustomization?:
-        ((a: google.maps.journeySharing
-              .TripMarkerCustomizationFunctionParams) => void)|null;
+    originMarkerCustomization?: (
+        (a: google.maps.journeySharing.TripMarkerCustomizationFunctionParams) =>
+            void)|null|google.maps.MarkerOptions;
     /**
      * Minimum time between fetching location updates in milliseconds. If it
      * takes longer than <code>pollingIntervalMillis</code> to fetch a location
      * update, the next location update is not started until the current one
-     * finishes. <p>Setting this value to 0 disables recurring location updates.
-     * A new location update is fetched if any of the parameters observed by the
-     * location provider changes. <p>The default polling interval is 5000
-     * milliseconds, the minimum interval. If you set the polling interval to a
-     * lower non-zero value, 5000 is used.
+     * finishes. <br><br>Setting this value to 0 disables recurring location
+     * updates. A new location update is fetched if any of the parameters
+     * observed by the location provider changes. <br><br>The default polling
+     * interval is 5000 milliseconds, the minimum interval. If you set the
+     * polling interval to a lower non-zero value, 5000 is used.
      */
     pollingIntervalMillis: number|null;
     /**
@@ -9071,37 +9098,44 @@ declare namespace google.maps.journeySharing {
      */
     tripId: string|null;
     /**
-     * Customization function that is applied to the vehicle marker. <p> Use
-     * this function to specify custom styling (such as marker icon) and
-     * interactivity (such as click handling). This function is invoked once
-     * when the marker is created, before it is added to the map view. (On this
+     * Customization applied to the vehicle marker. <br><br>Use this field to
+     * specify custom styling (such as marker icon) and interactivity (such as
+     * click handling).<ul><li>If a {@link google.maps.MarkerOptions} object is
+     * specified, the changes specified in it are applied to the marker after
+     * the marker has been created, overwriting its default options if they
+     * exist.</li><li>If a function is specified, it is invoked once when the
+     * marker is created, before it is added to the map view. (On this
      * invocation, the <code>isNew</code> parameter in the function parameters
      * object is set to <code>true</code>.) Additionally, this function is
      * invoked when the location provider receives data from Fleet Engine,
-     * regardless of whether the data corresponding to this marker have changed.
-     * <p> See {@link
+     * regardless of whether the data corresponding to this marker have
+     * changed.<br><br>See {@link
      * google.maps.journeySharing.TripMarkerCustomizationFunctionParams} for a
-     * list of supplied parameters and their uses.
+     * list of supplied parameters and their uses.</li></ul>
      */
-    vehicleMarkerCustomization?:
-        ((a: google.maps.journeySharing
-              .TripMarkerCustomizationFunctionParams) => void)|null;
+    vehicleMarkerCustomization?: (
+        (a: google.maps.journeySharing.TripMarkerCustomizationFunctionParams) =>
+            void)|null|google.maps.MarkerOptions;
     /**
-     * Customization function that is applied to a waypoint marker. <p> Use this
-     * function to specify custom styling (such as marker icon) and
-     * interactivity (such as click handling). This function is invoked once
-     * when the marker is created, before it is added to the map view. (On this
+     * Customization applied to a waypoint marker. <br><br>Use this field to
+     * specify custom styling (such as marker icon) and interactivity (such as
+     * click handling).<ul><li>If a {@link google.maps.MarkerOptions} object is
+     * specified, the changes specified in it are applied to the marker after
+     * the marker has been created, overwriting its default options if they
+     * exist.</li><li>If a function is specified, it is invoked once when the
+     * marker is created, before it is added to the map view. (On this
      * invocation, the <code>isNew</code> parameter in the function parameters
      * object is set to <code>true</code>.) Additionally, this function is
      * invoked when the location provider receives data from Fleet Engine,
-     * regardless of whether the data corresponding to this marker have changed.
-     * <p> See {@link
-     * google.maps.journeySharing.TripMarkerCustomizationFunctionParams} for a
-     * list of supplied parameters and their uses.
+     * regardless of whether the data corresponding to this marker have
+     * changed.<br><br>See {@link
+     * google.maps.journeySharing.TripWaypointMarkerCustomizationFunctionParams}
+     * for a list of supplied parameters and their uses.</li></ul>
      */
     waypointMarkerCustomization?:
         ((a: google.maps.journeySharing
-              .TripWaypointMarkerCustomizationFunctionParams) => void)|null;
+              .TripWaypointMarkerCustomizationFunctionParams) => void)|null
+        |google.maps.MarkerOptions;
   }
 }
 declare namespace google.maps.journeySharing {
@@ -9140,26 +9174,24 @@ declare namespace google.maps.journeySharing {
      * `const {JourneySharingMapView} = await
      * google.map.importLibrary("journeySharing")`. See
      * https://developers.google.com/maps/documentation/javascript/libraries.
-     * @param options <p>{@link
-     *     google.maps.journeySharing.JourneySharingMapViewOptions} <p>Options
-     *     for the map view.
+     * @param options Options for the map view.
      */
     constructor(options:
                     google.maps.journeySharing.JourneySharingMapViewOptions);
     /**
      * Configures options for an anticipated route polyline. Invoked whenever a
-     * new anticipated route polyline is rendered. <p>If specifying a function,
-     * the function can and should modify the input&#39;s defaultPolylineOptions
-     * field containing a google.maps.PolylineOptions object, and return it as
-     * polylineOptions in the output PolylineSetupOptions object. <p>Specifying
-     * a PolylineSetupOptions object has the same effect as specifying a
-     * function that returns that static object. <p>Do not reuse the same
-     * PolylineSetupOptions object in different PolylineSetup functions or
-     * static values, and do not reuse the same google.maps.PolylineOptions
-     * object for the polylineOptions key in different PolylineSetupOptions
-     * objects. If polylineOptions or visible is unset or null, it will be
-     * overwritten with the default. Any values set for polylineOptions.map or
-     * polylineOptions.path will be ignored.
+     * new anticipated route polyline is rendered. <br><br>If specifying a
+     * function, the function can and should modify the input&#39;s
+     * defaultPolylineOptions field containing a google.maps.PolylineOptions
+     * object, and return it as polylineOptions in the output
+     * PolylineSetupOptions object. <br><br>Specifying a PolylineSetupOptions
+     * object has the same effect as specifying a function that returns that
+     * static object. <br><br>Do not reuse the same PolylineSetupOptions object
+     * in different PolylineSetup functions or static values, and do not reuse
+     * the same google.maps.PolylineOptions object for the polylineOptions key
+     * in different PolylineSetupOptions objects. If polylineOptions or visible
+     * is unset or null, it will be overwritten with the default. Any values set
+     * for polylineOptions.map or polylineOptions.path will be ignored.
      */
     anticipatedRoutePolylineSetup:
         google.maps.journeySharing.PolylineSetupOptions|
@@ -9175,12 +9207,12 @@ declare namespace google.maps.journeySharing {
     automaticViewportMode: google.maps.journeySharing.AutomaticViewportMode;
     /**
      * Configures options for a destination location marker. Invoked whenever a
-     * new destination marker is rendered. <p>If specifying a function, the
+     * new destination marker is rendered. <br><br>If specifying a function, the
      * function can and should modify the input&#39;s defaultMarkerOptions field
      * containing a google.maps.MarkerOptions object, and return it as
-     * markerOptions in the output MarkerSetupOptions object. <p>Specifying a
-     * MarkerSetupOptions object has the same effect as specifying a function
-     * that returns that static object. <p>Do not reuse the same
+     * markerOptions in the output MarkerSetupOptions object. <br><br>Specifying
+     * a MarkerSetupOptions object has the same effect as specifying a function
+     * that returns that static object. <br><br>Do not reuse the same
      * MarkerSetupOptions object in different MarkerSetup functions or static
      * values, and do not reuse the same google.maps.MarkerOptions object for
      * the markerOptions key in different MarkerSetupOptions objects. If
@@ -9226,17 +9258,18 @@ declare namespace google.maps.journeySharing {
     mapOptions: google.maps.MapOptions;
     /**
      * Configures options for an origin location marker. Invoked whenever a new
-     * origin marker is rendered. <p>If specifying a function, the function can
-     * and should modify the input&#39;s defaultMarkerOptions field containing a
-     * google.maps.MarkerOptions object, and return it as markerOptions in the
-     * output MarkerSetupOptions object. <p>Specifying a MarkerSetupOptions
-     * object has the same effect as specifying a function that returns that
-     * static object. <p>Do not reuse the same MarkerSetupOptions object in
-     * different MarkerSetup functions or static values, and do not reuse the
-     * same google.maps.MarkerOptions object for the markerOptions key in
-     * different MarkerSetupOptions objects. If markerOptions is unset or null,
-     * it will be overwritten with the default. Any value set for
-     * markerOptions.map or markerOptions.position will be ignored.
+     * origin marker is rendered. <br><br>If specifying a function, the function
+     * can and should modify the input&#39;s defaultMarkerOptions field
+     * containing a google.maps.MarkerOptions object, and return it as
+     * markerOptions in the output MarkerSetupOptions object. <br><br>Specifying
+     * a MarkerSetupOptions object has the same effect as specifying a function
+     * that returns that static object. <br><br>Do not reuse the same
+     * MarkerSetupOptions object in different MarkerSetup functions or static
+     * values, and do not reuse the same google.maps.MarkerOptions object for
+     * the markerOptions key in different MarkerSetupOptions objects. If
+     * markerOptions is unset or null, it will be overwritten with the default.
+     * Any value set for markerOptions.map or markerOptions.position will be
+     * ignored.
      * @deprecated Marker setup is deprecated. Use the
      *     <code>MarkerCustomizationFunction</code> methods for your location
      *     provider instead. This field will be removed in the future.
@@ -9254,17 +9287,18 @@ declare namespace google.maps.journeySharing {
     originMarkers: google.maps.Marker[];
     /**
      * Configures options for a ping location marker. Invoked whenever a new
-     * ping marker is rendered. <p>If specifying a function, the function can
-     * and should modify the input&#39;s defaultMarkerOptions field containing a
-     * google.maps.MarkerOptions object, and return it as markerOptions in the
-     * output MarkerSetupOptions object. <p>Specifying a MarkerSetupOptions
-     * object has the same effect as specifying a function that returns that
-     * static object. <p>Do not reuse the same MarkerSetupOptions object in
-     * different MarkerSetup functions or static values, and do not reuse the
-     * same google.maps.MarkerOptions object for the markerOptions key in
-     * different MarkerSetupOptions objects. If markerOptions is unset or null,
-     * it will be overwritten with the default. Any value set for
-     * markerOptions.map or markerOptions.position will be ignored.
+     * ping marker is rendered. <br><br>If specifying a function, the function
+     * can and should modify the input&#39;s defaultMarkerOptions field
+     * containing a google.maps.MarkerOptions object, and return it as
+     * markerOptions in the output MarkerSetupOptions object. <br><br>Specifying
+     * a MarkerSetupOptions object has the same effect as specifying a function
+     * that returns that static object. <br><br>Do not reuse the same
+     * MarkerSetupOptions object in different MarkerSetup functions or static
+     * values, and do not reuse the same google.maps.MarkerOptions object for
+     * the markerOptions key in different MarkerSetupOptions objects. If
+     * markerOptions is unset or null, it will be overwritten with the default.
+     * Any value set for markerOptions.map or markerOptions.position will be
+     * ignored.
      * @deprecated Marker setup is deprecated. Use the
      *     <code>MarkerCustomizationFunction</code> methods for your location
      *     provider instead. This field will be removed in the future.
@@ -9274,18 +9308,18 @@ declare namespace google.maps.journeySharing {
              google.maps.journeySharing.MarkerSetupOptions);
     /**
      * Configures options for a successful task location marker. Invoked
-     * whenever a new successful task marker is rendered. <p>If specifying a
-     * function, the function can and should modify the input&#39;s
+     * whenever a new successful task marker is rendered. <br><br>If specifying
+     * a function, the function can and should modify the input&#39;s
      * defaultMarkerOptions field containing a google.maps.MarkerOptions object,
      * and return it as markerOptions in the output MarkerSetupOptions object.
-     * <p>Specifying a MarkerSetupOptions object has the same effect as
-     * specifying a function that returns that static object. <p>Do not reuse
-     * the same MarkerSetupOptions object in different MarkerSetup functions or
-     * static values, and do not reuse the same google.maps.MarkerOptions object
-     * for the markerOptions key in different MarkerSetupOptions objects. If
-     * markerOptions is unset or null, it will be overwritten with the default.
-     * Any value set for markerOptions.map or markerOptions.position will be
-     * ignored.
+     * <br><br>Specifying a MarkerSetupOptions object has the same effect as
+     * specifying a function that returns that static object. <br><br>Do not
+     * reuse the same MarkerSetupOptions object in different MarkerSetup
+     * functions or static values, and do not reuse the same
+     * google.maps.MarkerOptions object for the markerOptions key in different
+     * MarkerSetupOptions objects. If markerOptions is unset or null, it will be
+     * overwritten with the default. Any value set for markerOptions.map or
+     * markerOptions.position will be ignored.
      * @deprecated Marker setup is deprecated. Use the
      *     <code>MarkerCustomizationFunction</code> methods for your location
      *     provider instead. This field will be removed in the future.
@@ -9303,18 +9337,18 @@ declare namespace google.maps.journeySharing {
     successfulTaskMarkers: google.maps.Marker[];
     /**
      * Configures options for a taken route polyline. Invoked whenever a new
-     * taken route polyline is rendered. <p>If specifying a function, the
+     * taken route polyline is rendered. <br><br>If specifying a function, the
      * function can and should modify the input&#39;s defaultPolylineOptions
      * field containing a google.maps.PolylineOptions object, and return it as
-     * polylineOptions in the output PolylineSetupOptions object. <p>Specifying
-     * a PolylineSetupOptions object has the same effect as specifying a
-     * function that returns that static object. <p>Do not reuse the same
-     * PolylineSetupOptions object in different PolylineSetup functions or
-     * static values, and do not reuse the same google.maps.PolylineOptions
-     * object for the polylineOptions key in different PolylineSetupOptions
-     * objects. <p>Any values set for polylineOptions.map or
-     * polylineOptions.path will be ignored. Any unset or null value will be
-     * overwritten with the default.
+     * polylineOptions in the output PolylineSetupOptions object.
+     * <br><br>Specifying a PolylineSetupOptions object has the same effect as
+     * specifying a function that returns that static object. <br><br>Do not
+     * reuse the same PolylineSetupOptions object in different PolylineSetup
+     * functions or static values, and do not reuse the same
+     * google.maps.PolylineOptions object for the polylineOptions key in
+     * different PolylineSetupOptions objects. <br><br>Any values set for
+     * polylineOptions.map or polylineOptions.path will be ignored. Any unset or
+     * null value will be overwritten with the default.
      */
     takenRoutePolylineSetup: google.maps.journeySharing.PolylineSetupOptions|
         ((a: google.maps.journeySharing.DefaultPolylineSetupOptions) =>
@@ -9325,18 +9359,18 @@ declare namespace google.maps.journeySharing {
     takenRoutePolylines: google.maps.Polyline[];
     /**
      * Configures options for a task outcome location marker. Invoked whenever a
-     * new task outcome location marker is rendered. <p>If specifying a
+     * new task outcome location marker is rendered. <br><br>If specifying a
      * function, the function can and should modify the input&#39;s
      * defaultMarkerOptions field containing a google.maps.MarkerOptions object,
      * and return it as markerOptions in the output MarkerSetupOptions object.
-     * <p>Specifying a MarkerSetupOptions object has the same effect as
-     * specifying a function that returns that static object. <p>Do not reuse
-     * the same MarkerSetupOptions object in different MarkerSetup functions or
-     * static values, and do not reuse the same google.maps.MarkerOptions object
-     * for the markerOptions key in different MarkerSetupOptions objects. If
-     * markerOptions is unset or null, it will be overwritten with the default.
-     * Any value set for markerOptions.map or markerOptions.position will be
-     * ignored.
+     * <br><br>Specifying a MarkerSetupOptions object has the same effect as
+     * specifying a function that returns that static object. <br><br>Do not
+     * reuse the same MarkerSetupOptions object in different MarkerSetup
+     * functions or static values, and do not reuse the same
+     * google.maps.MarkerOptions object for the markerOptions key in different
+     * MarkerSetupOptions objects. If markerOptions is unset or null, it will be
+     * overwritten with the default. Any value set for markerOptions.map or
+     * markerOptions.position will be ignored.
      * @deprecated Marker setup is deprecated. Use the
      *     <code>MarkerCustomizationFunction</code> methods for your location
      *     provider instead. This field will be removed in the future.
@@ -9354,18 +9388,18 @@ declare namespace google.maps.journeySharing {
     taskOutcomeMarkers: google.maps.Marker[];
     /**
      * Configures options for an unsuccessful task location marker. Invoked
-     * whenever a new unsuccessful task marker is rendered. <p>If specifying a
-     * function, the function can and should modify the input&#39;s
+     * whenever a new unsuccessful task marker is rendered. <br><br>If
+     * specifying a function, the function can and should modify the input&#39;s
      * defaultMarkerOptions field containing a google.maps.MarkerOptions object,
      * and return it as markerOptions in the output MarkerSetupOptions object.
-     * <p>Specifying a MarkerSetupOptions object has the same effect as
-     * specifying a function that returns that static object. <p>Do not reuse
-     * the same MarkerSetupOptions object in different MarkerSetup functions or
-     * static values, and do not reuse the same google.maps.MarkerOptions object
-     * for the markerOptions key in different MarkerSetupOptions objects. If
-     * markerOptions is unset or null, it will be overwritten with the default.
-     * Any value set for markerOptions.map or markerOptions.position will be
-     * ignored.
+     * <br><br>Specifying a MarkerSetupOptions object has the same effect as
+     * specifying a function that returns that static object. <br><br>Do not
+     * reuse the same MarkerSetupOptions object in different MarkerSetup
+     * functions or static values, and do not reuse the same
+     * google.maps.MarkerOptions object for the markerOptions key in different
+     * MarkerSetupOptions objects. If markerOptions is unset or null, it will be
+     * overwritten with the default. Any value set for markerOptions.map or
+     * markerOptions.position will be ignored.
      * @deprecated Marker setup is deprecated. Use the
      *     <code>MarkerCustomizationFunction</code> methods for your location
      *     provider instead. This field will be removed in the future.
@@ -9383,17 +9417,18 @@ declare namespace google.maps.journeySharing {
     unsuccessfulTaskMarkers: google.maps.Marker[];
     /**
      * Configures options for a vehicle location marker. Invoked whenever a new
-     * vehicle marker is rendered. <p>If specifying a function, the function can
-     * and should modify the input&#39;s defaultMarkerOptions field containing a
-     * google.maps.MarkerOptions object, and return it as markerOptions in the
-     * output MarkerSetupOptions object. <p>Specifying a MarkerSetupOptions
-     * object has the same effect as specifying a function that returns that
-     * static object. <p>Do not reuse the same MarkerSetupOptions object in
-     * different MarkerSetup functions or static values, and do not reuse the
-     * same google.maps.MarkerOptions object for the markerOptions key in
-     * different MarkerSetupOptions objects. If markerOptions is unset or null,
-     * it will be overwritten with the default. Any value set for
-     * markerOptions.map or markerOptions.position will be ignored.
+     * vehicle marker is rendered. <br><br>If specifying a function, the
+     * function can and should modify the input&#39;s defaultMarkerOptions field
+     * containing a google.maps.MarkerOptions object, and return it as
+     * markerOptions in the output MarkerSetupOptions object. <br><br>Specifying
+     * a MarkerSetupOptions object has the same effect as specifying a function
+     * that returns that static object. <br><br>Do not reuse the same
+     * MarkerSetupOptions object in different MarkerSetup functions or static
+     * values, and do not reuse the same google.maps.MarkerOptions object for
+     * the markerOptions key in different MarkerSetupOptions objects. If
+     * markerOptions is unset or null, it will be overwritten with the default.
+     * Any value set for markerOptions.map or markerOptions.position will be
+     * ignored.
      * @deprecated Marker setup is deprecated. Use the
      *     <code>MarkerCustomizationFunction</code> methods for your location
      *     provider instead. This field will be removed in the future.
@@ -9411,12 +9446,12 @@ declare namespace google.maps.journeySharing {
     vehicleMarkers: google.maps.Marker[];
     /**
      * Configures options for a waypoint location marker. Invoked whenever a new
-     * waypoint marker is rendered. <p>If specifying a function, the function
-     * can and should modify the input&#39;s defaultMarkerOptions field
+     * waypoint marker is rendered. <br><br>If specifying a function, the
+     * function can and should modify the input&#39;s defaultMarkerOptions field
      * containing a google.maps.MarkerOptions object, and return it as
-     * markerOptions in the output MarkerSetupOptions object. <p>Specifying a
-     * MarkerSetupOptions object has the same effect as specifying a function
-     * that returns that static object. <p>Do not reuse the same
+     * markerOptions in the output MarkerSetupOptions object. <br><br>Specifying
+     * a MarkerSetupOptions object has the same effect as specifying a function
+     * that returns that static object. <br><br>Do not reuse the same
      * MarkerSetupOptions object in different MarkerSetup functions or static
      * values, and do not reuse the same google.maps.MarkerOptions object for
      * the markerOptions key in different MarkerSetupOptions objects. If
@@ -9449,18 +9484,18 @@ declare namespace google.maps.journeySharing {
   interface JourneySharingMapViewOptions {
     /**
      * Configures options for an anticipated route polyline. Invoked whenever a
-     * new anticipated route polyline is rendered. <p>If specifying a function,
-     * the function can and should modify the input&#39;s defaultPolylineOptions
-     * field containing a google.maps.PolylineOptions object, and return it as
-     * polylineOptions in the output PolylineSetupOptions object. <p>Specifying
-     * a PolylineSetupOptions object has the same effect as specifying a
-     * function that returns that static object. <p>Do not reuse the same
-     * PolylineSetupOptions object in different PolylineSetup functions or
-     * static values, and do not reuse the same google.maps.PolylineOptions
-     * object for the polylineOptions key in different PolylineSetupOptions
-     * objects. If polylineOptions or visible is unset or null, it will be
-     * overwritten with the default. Any values set for polylineOptions.map or
-     * polylineOptions.path will be ignored.
+     * new anticipated route polyline is rendered. <br><br>If specifying a
+     * function, the function can and should modify the input&#39;s
+     * defaultPolylineOptions field containing a google.maps.PolylineOptions
+     * object, and return it as polylineOptions in the output
+     * PolylineSetupOptions object. <br><br>Specifying a PolylineSetupOptions
+     * object has the same effect as specifying a function that returns that
+     * static object. <br><br>Do not reuse the same PolylineSetupOptions object
+     * in different PolylineSetup functions or static values, and do not reuse
+     * the same google.maps.PolylineOptions object for the polylineOptions key
+     * in different PolylineSetupOptions objects. If polylineOptions or visible
+     * is unset or null, it will be overwritten with the default. Any values set
+     * for polylineOptions.map or polylineOptions.path will be ignored.
      */
     anticipatedRoutePolylineSetup?:
         google.maps.journeySharing.PolylineSetupOptions|
@@ -9476,12 +9511,12 @@ declare namespace google.maps.journeySharing {
         null;
     /**
      * Configures options for a destination location marker. Invoked whenever a
-     * new destination marker is rendered. <p>If specifying a function, the
+     * new destination marker is rendered. <br><br>If specifying a function, the
      * function can and should modify the input&#39;s defaultMarkerOptions field
      * containing a google.maps.MarkerOptions object, and return it as
-     * markerOptions in the output MarkerSetupOptions object. <p>Specifying a
-     * MarkerSetupOptions object has the same effect as specifying a function
-     * that returns that static object. <p>Do not reuse the same
+     * markerOptions in the output MarkerSetupOptions object. <br><br>Specifying
+     * a MarkerSetupOptions object has the same effect as specifying a function
+     * that returns that static object. <br><br>Do not reuse the same
      * MarkerSetupOptions object in different MarkerSetup functions or static
      * values, and do not reuse the same google.maps.MarkerOptions object for
      * the markerOptions key in different MarkerSetupOptions objects. If
@@ -9510,17 +9545,18 @@ declare namespace google.maps.journeySharing {
     mapOptions?: google.maps.MapOptions|null;
     /**
      * Configures options for an origin location marker. Invoked whenever a new
-     * origin marker is rendered. <p>If specifying a function, the function can
-     * and should modify the input&#39;s defaultMarkerOptions field containing a
-     * google.maps.MarkerOptions object, and return it as markerOptions in the
-     * output MarkerSetupOptions object. <p>Specifying a MarkerSetupOptions
-     * object has the same effect as specifying a function that returns that
-     * static object. <p>Do not reuse the same MarkerSetupOptions object in
-     * different MarkerSetup functions or static values, and do not reuse the
-     * same google.maps.MarkerOptions object for the markerOptions key in
-     * different MarkerSetupOptions objects. If markerOptions is unset or null,
-     * it will be overwritten with the default. Any value set for
-     * markerOptions.map or markerOptions.position will be ignored.
+     * origin marker is rendered. <br><br>If specifying a function, the function
+     * can and should modify the input&#39;s defaultMarkerOptions field
+     * containing a google.maps.MarkerOptions object, and return it as
+     * markerOptions in the output MarkerSetupOptions object. <br><br>Specifying
+     * a MarkerSetupOptions object has the same effect as specifying a function
+     * that returns that static object. <br><br>Do not reuse the same
+     * MarkerSetupOptions object in different MarkerSetup functions or static
+     * values, and do not reuse the same google.maps.MarkerOptions object for
+     * the markerOptions key in different MarkerSetupOptions objects. If
+     * markerOptions is unset or null, it will be overwritten with the default.
+     * Any value set for markerOptions.map or markerOptions.position will be
+     * ignored.
      * @deprecated Marker setup is deprecated. Use the
      *     <code>MarkerCustomizationFunction</code> methods for your location
      *     provider instead. This field will be removed in the future.
@@ -9530,17 +9566,18 @@ declare namespace google.maps.journeySharing {
              google.maps.journeySharing.MarkerSetupOptions)|null;
     /**
      * Configures options for a ping location marker. Invoked whenever a new
-     * ping marker is rendered. <p>If specifying a function, the function can
-     * and should modify the input&#39;s defaultMarkerOptions field containing a
-     * google.maps.MarkerOptions object, and return it as markerOptions in the
-     * output MarkerSetupOptions object. <p>Specifying a MarkerSetupOptions
-     * object has the same effect as specifying a function that returns that
-     * static object. <p>Do not reuse the same MarkerSetupOptions object in
-     * different MarkerSetup functions or static values, and do not reuse the
-     * same google.maps.MarkerOptions object for the markerOptions key in
-     * different MarkerSetupOptions objects. If markerOptions is unset or null,
-     * it will be overwritten with the default. Any value set for
-     * markerOptions.map or markerOptions.position will be ignored.
+     * ping marker is rendered. <br><br>If specifying a function, the function
+     * can and should modify the input&#39;s defaultMarkerOptions field
+     * containing a google.maps.MarkerOptions object, and return it as
+     * markerOptions in the output MarkerSetupOptions object. <br><br>Specifying
+     * a MarkerSetupOptions object has the same effect as specifying a function
+     * that returns that static object. <br><br>Do not reuse the same
+     * MarkerSetupOptions object in different MarkerSetup functions or static
+     * values, and do not reuse the same google.maps.MarkerOptions object for
+     * the markerOptions key in different MarkerSetupOptions objects. If
+     * markerOptions is unset or null, it will be overwritten with the default.
+     * Any value set for markerOptions.map or markerOptions.position will be
+     * ignored.
      * @deprecated Marker setup is deprecated. Use the
      *     <code>MarkerCustomizationFunction</code> methods for your location
      *     provider instead. This field will be removed in the future.
@@ -9550,18 +9587,18 @@ declare namespace google.maps.journeySharing {
              google.maps.journeySharing.MarkerSetupOptions)|null;
     /**
      * Configures options for a successful task location marker. Invoked
-     * whenever a new successful task marker is rendered. <p>If specifying a
-     * function, the function can and should modify the input&#39;s
+     * whenever a new successful task marker is rendered. <br><br>If specifying
+     * a function, the function can and should modify the input&#39;s
      * defaultMarkerOptions field containing a google.maps.MarkerOptions object,
      * and return it as markerOptions in the output MarkerSetupOptions object.
-     * <p>Specifying a MarkerSetupOptions object has the same effect as
-     * specifying a function that returns that static object. <p>Do not reuse
-     * the same MarkerSetupOptions object in different MarkerSetup functions or
-     * static values, and do not reuse the same google.maps.MarkerOptions object
-     * for the markerOptions key in different MarkerSetupOptions objects. If
-     * markerOptions is unset or null, it will be overwritten with the default.
-     * Any value set for markerOptions.map or markerOptions.position will be
-     * ignored.
+     * <br><br>Specifying a MarkerSetupOptions object has the same effect as
+     * specifying a function that returns that static object. <br><br>Do not
+     * reuse the same MarkerSetupOptions object in different MarkerSetup
+     * functions or static values, and do not reuse the same
+     * google.maps.MarkerOptions object for the markerOptions key in different
+     * MarkerSetupOptions objects. If markerOptions is unset or null, it will be
+     * overwritten with the default. Any value set for markerOptions.map or
+     * markerOptions.position will be ignored.
      * @deprecated Marker setup is deprecated. Use the
      *     <code>MarkerCustomizationFunction</code> methods for your location
      *     provider instead. This field will be removed in the future.
@@ -9571,36 +9608,36 @@ declare namespace google.maps.journeySharing {
              google.maps.journeySharing.MarkerSetupOptions)|null;
     /**
      * Configures options for a taken route polyline. Invoked whenever a new
-     * taken route polyline is rendered. <p>If specifying a function, the
+     * taken route polyline is rendered. <br><br>If specifying a function, the
      * function can and should modify the input&#39;s defaultPolylineOptions
      * field containing a google.maps.PolylineOptions object, and return it as
-     * polylineOptions in the output PolylineSetupOptions object. <p>Specifying
-     * a PolylineSetupOptions object has the same effect as specifying a
-     * function that returns that static object. <p>Do not reuse the same
-     * PolylineSetupOptions object in different PolylineSetup functions or
-     * static values, and do not reuse the same google.maps.PolylineOptions
-     * object for the polylineOptions key in different PolylineSetupOptions
-     * objects. <p>Any values set for polylineOptions.map or
-     * polylineOptions.path will be ignored. Any unset or null value will be
-     * overwritten with the default.
+     * polylineOptions in the output PolylineSetupOptions object.
+     * <br><br>Specifying a PolylineSetupOptions object has the same effect as
+     * specifying a function that returns that static object. <br><br>Do not
+     * reuse the same PolylineSetupOptions object in different PolylineSetup
+     * functions or static values, and do not reuse the same
+     * google.maps.PolylineOptions object for the polylineOptions key in
+     * different PolylineSetupOptions objects. <br><br>Any values set for
+     * polylineOptions.map or polylineOptions.path will be ignored. Any unset or
+     * null value will be overwritten with the default.
      */
     takenRoutePolylineSetup?: google.maps.journeySharing.PolylineSetupOptions|
         ((a: google.maps.journeySharing.DefaultPolylineSetupOptions) =>
              google.maps.journeySharing.PolylineSetupOptions)|null;
     /**
      * Configures options for a task outcome location marker. Invoked whenever a
-     * new task outcome location marker is rendered. <p>If specifying a
+     * new task outcome location marker is rendered. <br><br>If specifying a
      * function, the function can and should modify the input&#39;s
      * defaultMarkerOptions field containing a google.maps.MarkerOptions object,
      * and return it as markerOptions in the output MarkerSetupOptions object.
-     * <p>Specifying a MarkerSetupOptions object has the same effect as
-     * specifying a function that returns that static object. <p>Do not reuse
-     * the same MarkerSetupOptions object in different MarkerSetup functions or
-     * static values, and do not reuse the same google.maps.MarkerOptions object
-     * for the markerOptions key in different MarkerSetupOptions objects. If
-     * markerOptions is unset or null, it will be overwritten with the default.
-     * Any value set for markerOptions.map or markerOptions.position will be
-     * ignored.
+     * <br><br>Specifying a MarkerSetupOptions object has the same effect as
+     * specifying a function that returns that static object. <br><br>Do not
+     * reuse the same MarkerSetupOptions object in different MarkerSetup
+     * functions or static values, and do not reuse the same
+     * google.maps.MarkerOptions object for the markerOptions key in different
+     * MarkerSetupOptions objects. If markerOptions is unset or null, it will be
+     * overwritten with the default. Any value set for markerOptions.map or
+     * markerOptions.position will be ignored.
      * @deprecated Marker setup is deprecated. Use the
      *     <code>MarkerCustomizationFunction</code> methods for your location
      *     provider instead. This field will be removed in the future.
@@ -9610,18 +9647,18 @@ declare namespace google.maps.journeySharing {
              google.maps.journeySharing.MarkerSetupOptions)|null;
     /**
      * Configures options for an unsuccessful task location marker. Invoked
-     * whenever a new unsuccessful task marker is rendered. <p>If specifying a
-     * function, the function can and should modify the input&#39;s
+     * whenever a new unsuccessful task marker is rendered. <br><br>If
+     * specifying a function, the function can and should modify the input&#39;s
      * defaultMarkerOptions field containing a google.maps.MarkerOptions object,
      * and return it as markerOptions in the output MarkerSetupOptions object.
-     * <p>Specifying a MarkerSetupOptions object has the same effect as
-     * specifying a function that returns that static object. <p>Do not reuse
-     * the same MarkerSetupOptions object in different MarkerSetup functions or
-     * static values, and do not reuse the same google.maps.MarkerOptions object
-     * for the markerOptions key in different MarkerSetupOptions objects. If
-     * markerOptions is unset or null, it will be overwritten with the default.
-     * Any value set for markerOptions.map or markerOptions.position will be
-     * ignored.
+     * <br><br>Specifying a MarkerSetupOptions object has the same effect as
+     * specifying a function that returns that static object. <br><br>Do not
+     * reuse the same MarkerSetupOptions object in different MarkerSetup
+     * functions or static values, and do not reuse the same
+     * google.maps.MarkerOptions object for the markerOptions key in different
+     * MarkerSetupOptions objects. If markerOptions is unset or null, it will be
+     * overwritten with the default. Any value set for markerOptions.map or
+     * markerOptions.position will be ignored.
      * @deprecated Marker setup is deprecated. Use the
      *     <code>MarkerCustomizationFunction</code> methods for your location
      *     provider instead. This field will be removed in the future.
@@ -9631,17 +9668,18 @@ declare namespace google.maps.journeySharing {
              google.maps.journeySharing.MarkerSetupOptions)|null;
     /**
      * Configures options for a vehicle location marker. Invoked whenever a new
-     * vehicle marker is rendered. <p>If specifying a function, the function can
-     * and should modify the input&#39;s defaultMarkerOptions field containing a
-     * google.maps.MarkerOptions object, and return it as markerOptions in the
-     * output MarkerSetupOptions object. <p>Specifying a MarkerSetupOptions
-     * object has the same effect as specifying a function that returns that
-     * static object. <p>Do not reuse the same MarkerSetupOptions object in
-     * different MarkerSetup functions or static values, and do not reuse the
-     * same google.maps.MarkerOptions object for the markerOptions key in
-     * different MarkerSetupOptions objects. If markerOptions is unset or null,
-     * it will be overwritten with the default. Any value set for
-     * markerOptions.map or markerOptions.position will be ignored.
+     * vehicle marker is rendered. <br><br>If specifying a function, the
+     * function can and should modify the input&#39;s defaultMarkerOptions field
+     * containing a google.maps.MarkerOptions object, and return it as
+     * markerOptions in the output MarkerSetupOptions object. <br><br>Specifying
+     * a MarkerSetupOptions object has the same effect as specifying a function
+     * that returns that static object. <br><br>Do not reuse the same
+     * MarkerSetupOptions object in different MarkerSetup functions or static
+     * values, and do not reuse the same google.maps.MarkerOptions object for
+     * the markerOptions key in different MarkerSetupOptions objects. If
+     * markerOptions is unset or null, it will be overwritten with the default.
+     * Any value set for markerOptions.map or markerOptions.position will be
+     * ignored.
      * @deprecated Marker setup is deprecated. Use the
      *     <code>MarkerCustomizationFunction</code> methods for your location
      *     provider instead. This field will be removed in the future.
@@ -9651,12 +9689,12 @@ declare namespace google.maps.journeySharing {
              google.maps.journeySharing.MarkerSetupOptions)|null;
     /**
      * Configures options for a waypoint location marker. Invoked whenever a new
-     * waypoint marker is rendered. <p>If specifying a function, the function
-     * can and should modify the input&#39;s defaultMarkerOptions field
+     * waypoint marker is rendered. <br><br>If specifying a function, the
+     * function can and should modify the input&#39;s defaultMarkerOptions field
      * containing a google.maps.MarkerOptions object, and return it as
-     * markerOptions in the output MarkerSetupOptions object. <p>Specifying a
-     * MarkerSetupOptions object has the same effect as specifying a function
-     * that returns that static object. <p>Do not reuse the same
+     * markerOptions in the output MarkerSetupOptions object. <br><br>Specifying
+     * a MarkerSetupOptions object has the same effect as specifying a function
+     * that returns that static object. <br><br>Do not reuse the same
      * MarkerSetupOptions object in different MarkerSetup functions or static
      * values, and do not reuse the same google.maps.MarkerOptions object for
      * the markerOptions key in different MarkerSetupOptions objects. If
@@ -9829,7 +9867,7 @@ declare namespace google.maps.journeySharing {
   interface ShipmentMarkerCustomizationFunctionParams extends
       google.maps.journeySharing.MarkerCustomizationFunctionParams {
     /**
-     * The task associated with this marker. <p> For information about the
+     * The task associated with this marker. <br><br>For information about the
      * delivery vehicle servicing this task, use {@link
      * google.maps.journeySharing.Task.latestVehicleLocationUpdate} and {@link
      * google.maps.journeySharing.Task.remainingVehicleJourneySegments}.
@@ -10009,7 +10047,7 @@ declare namespace google.maps.journeySharing {
   interface TripMarkerCustomizationFunctionParams extends
       google.maps.journeySharing.MarkerCustomizationFunctionParams {
     /**
-     * The trip associated with this marker. <p> For information about the
+     * The trip associated with this marker. <br><br>For information about the
      * vehicle servicing this trip, use {@link
      * google.maps.journeySharing.Trip.latestVehicleLocationUpdate} and {@link
      * google.maps.journeySharing.Trip.remainingWaypoints}.
@@ -10185,7 +10223,7 @@ declare namespace google.maps.localContext {
     /**
      * This Field is read-only. The DOM Element backing the view.
      */
-    element?: null|Element;
+    element?: null|HTMLElement|SVGElement;
     /**
      * Hides the place details.
      */
@@ -10276,7 +10314,7 @@ declare namespace google.maps.localContext {
     /**
      * This Field is read-only. The DOM Element backing the view.
      */
-    element?: null|Element;
+    element?: null|HTMLElement|SVGElement;
     /**
      * A soft boundary or hint to use when searching for places.
      * @defaultValue <code>null</code>
@@ -10604,7 +10642,7 @@ declare namespace google.maps.marker {
     /**
      * This Field is read-only. The DOM Element backing the view.
      */
-    element?: null|Element;
+    element?: null|HTMLElement|SVGElement;
     /**
      * See {@link google.maps.marker.AdvancedMarkerViewOptions.map}.
      */
@@ -10661,7 +10699,7 @@ declare namespace google.maps.marker {
     /**
      * This Field is read-only. The DOM Element backing the view.
      */
-    element?: null|Element;
+    element?: null|HTMLElement|SVGElement;
     /**
      * Map on which to display the <code>AdvancedMarkerView</code>. The map is
      * required to display the <code>AdvancedMarkerView</code> and can be
@@ -10749,7 +10787,7 @@ declare namespace google.maps.marker {
     /**
      * This Field is read-only. The DOM Element backing the view.
      */
-    element?: null|Element;
+    element?: null|HTMLElement|SVGElement;
     /**
      * See {@link google.maps.marker.PinViewOptions.glyph}.
      */
@@ -10786,7 +10824,7 @@ declare namespace google.maps.marker {
     /**
      * This Field is read-only. The DOM Element backing the view.
      */
-    element?: null|Element;
+    element?: null|HTMLElement|SVGElement;
     /**
      * The DOM element displayed in the pin.
      */
