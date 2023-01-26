@@ -2372,12 +2372,12 @@ declare namespace google.maps {
      * style is applied when style is set. If your style function updates, you
      * must set the style property again. A <code>FeatureStyleFunction</code>
      * must return consistent results when it is applied over the map tiles, and
-     * should be optimized for performance. If you use a
-     * <code>FeatureStyleOptions</code>, all features of that layer will be
-     * styled with the same <code>FeatureStyleOptions</code>. Set the style to
-     * <code>null</code> to remove the previously set style. If this
-     * <code>FeatureLayer</code> is not available, setting style does nothing
-     * and logs an error.
+     * should be optimized for performance. Asynchronous functions are not
+     * supported. If you use a <code>FeatureStyleOptions</code>, all features of
+     * that layer will be styled with the same <code>FeatureStyleOptions</code>.
+     * Set the style to <code>null</code> to remove the previously set style. If
+     * this <code>FeatureLayer</code> is not available, setting style does
+     * nothing and logs an error.
      */
     style?: google.maps.FeatureStyleOptions|null|
         (google.maps.FeatureStyleFunction);
@@ -3181,20 +3181,20 @@ declare namespace google.maps {
     /**
      * AriaLabel to assign to the InfoWindow.
      */
-    ariaLabel?: string|null;
+    ariaLabel?: null|string;
     /**
      * Content to display in the InfoWindow. This can be an HTML element, a
      * plain-text string, or a string containing HTML. The InfoWindow will be
      * sized according to the content. To set an explicit size for the content,
      * set content to be a HTML element with that size.
      */
-    content?: string|null|Element|Text;
+    content?: null|string|Element|Text;
     /**
      * Disable panning the map to make the InfoWindow fully visible when it
      * opens.
      * @defaultValue <code>false</code>
      */
-    disableAutoPan?: boolean|null;
+    disableAutoPan?: null|boolean;
     /**
      * Maximum width of the InfoWindow, regardless of content&#39;s width. This
      * value is only considered if it is set before a call to
@@ -3202,7 +3202,7 @@ declare namespace google.maps {
      * call <code>close()</code>, <code>setOptions()</code>, and then
      * <code>open()</code>.
      */
-    maxWidth?: number|null;
+    maxWidth?: null|number;
     /**
      * Minimum width of the InfoWindow, regardless of the content&#39;s width.
      * When using this property, it is strongly recommended to set the
@@ -3212,19 +3212,19 @@ declare namespace google.maps {
      * call <code>close()</code>, <code>setOptions()</code>, and then
      * <code>open()</code>.
      */
-    minWidth?: number|null;
+    minWidth?: null|number;
     /**
      * The offset, in pixels, of the tip of the info window from the point on
      * the map at whose geographical coordinates the info window is anchored. If
      * an InfoWindow is opened with an anchor, the <code>pixelOffset</code> will
      * be calculated from the anchor&#39;s <code>anchorPoint</code> property.
      */
-    pixelOffset?: google.maps.Size|null;
+    pixelOffset?: null|google.maps.Size;
     /**
      * The LatLng at which to display this InfoWindow. If the InfoWindow is
      * opened with an anchor, the anchor&#39;s position will be used instead.
      */
-    position?: google.maps.LatLng|null|google.maps.LatLngLiteral;
+    position?: null|google.maps.LatLng|google.maps.LatLngLiteral;
     /**
      * All InfoWindows are displayed on the map in order of their zIndex, with
      * higher values displaying in front of InfoWindows with lower values. By
@@ -3232,7 +3232,7 @@ declare namespace google.maps {
      * InfoWindows of lower latitudes appearing in front of InfoWindows at
      * higher latitudes. InfoWindows are always displayed in front of markers.
      */
-    zIndex?: number|null;
+    zIndex?: null|number;
   }
 }
 declare namespace google.maps {
@@ -5667,8 +5667,22 @@ declare namespace google.maps {
   interface PlaceFeature extends google.maps.Feature {
     /**
      * The display name.
+     * @deprecated <code>google.maps.PlaceFeature.displayName</code> is
+     *     deprecated, and will be removed February 2023. Use
+     *     <code>google.maps.PlaceFeature.fetchPlace()</code> instead.
      */
     displayName: string;
+    /**
+     * Fetches a <code>Place</code> for this <code>PlaceFeature</code>. In the
+     * resulting <code>Place</code> object, the <code>id</code> and the
+     * <code>displayName</code> properties will be populated. (Additional fields
+     * can be subsequently requested via <code>Place.fetchFields()</code>
+     * subject to normal Places API enablement and billing.) Do not call this
+     * from a <code>FeatureStyleFunction</code> since only synchronous
+     * FeatureStyleFunctions are supported. The promise is rejected if there was
+     * an error fetching the <code>Place</code>.
+     */
+    fetchPlace(): Promise<google.maps.places.Place>;
     /**
      * The {@link google.maps.places.PlaceResult.place_id}.
      */
