@@ -10692,7 +10692,7 @@ declare namespace google.maps.marker {
      * <code>AdvancedMarkerView</code> to base map&#39;s label collision only
      * works on vector maps.
      */
-    collisionBehavior?: google.maps.CollisionBehavior|null;
+    collisionBehavior?: null|google.maps.CollisionBehavior;
     /**
      * The DOM Element backing the visual of an <code>AdvancedMarkerView</code>.
      * <p><strong>Note</strong>: <code>AdvancedMarkerView</code> does not clone
@@ -10702,14 +10702,14 @@ declare namespace google.maps.marker {
      * previous <code>AdvancedMarkerView</code> to look empty.
      * @defaultValue {@link google.maps.marker.PinView.element}
      */
-    content?: Element|null;
+    content?: null|Element;
     /**
      * If <code>true</code>, the <code>AdvancedMarkerView</code> can be dragged.
      * <p><strong>Note</strong>: <code>AdvancedMarkerView</code> with altitude
      * is not draggable.
      * @defaultValue <code>false</code>
      */
-    draggable?: boolean|null;
+    draggable?: null|boolean;
     /**
      * This Field is read-only. The DOM Element backing the view.
      */
@@ -10720,7 +10720,7 @@ declare namespace google.maps.marker {
      * provided by setting {@link google.maps.marker.AdvancedMarkerView.map} if
      * not provided at the construction.
      */
-    map?: google.maps.Map|null;
+    map?: null|google.maps.Map;
     /**
      * Sets the <code>AdvancedMarkerView</code>&#39;s position. An
      * <code>AdvancedMarkerView</code> may be constructed without a position,
@@ -10732,13 +10732,13 @@ declare namespace google.maps.marker {
      * <code>AdvancedMarkerView</code> with altitude is only supported on vector
      * maps.
      */
-    position?: google.maps.LatLng|null|google.maps.LatLngLiteral;
+    position?: null|google.maps.LatLng|google.maps.LatLngLiteral;
     /**
      * Rollover text. If provided, an accessibility text (e.g. for use with
      * screen readers) will be added to the <code>AdvancedMarkerView</code> with
      * the provided value.
      */
-    title?: string|null;
+    title?: null|string;
     /**
      * All <code>AdvancedMarkerView</code>s are displayed on the map in order of
      * their zIndex, with higher values displaying in front of
@@ -10751,7 +10751,7 @@ declare namespace google.maps.marker {
      * google.maps.CollisionBehavior.OPTIONAL_AND_HIDES_LOWER_PRIORITY} Advanced
      * Markers. A higher <code>zIndex</code> value indicates higher priority.
      */
-    zIndex?: number|null;
+    zIndex?: null|number;
   }
 }
 declare namespace google.maps.marker {
