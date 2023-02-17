@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-// Google Maps JS API Version: 3.51
+// Google Maps JS API Version: 3.52
 // tslint:disable:enforce-name-casing
 // tslint:disable:no-any
 // tslint:disable:interface-over-type-literal
@@ -8418,15 +8418,15 @@ declare namespace google.maps.journeySharing {
      * &quot;providers/{provider_id}/deliveryVehicles/{delivery_vehicle_id}&quot;.
      * The delivery_vehicle_id must be a unique identifier.
      */
-    name: string|null;
+    name: string;
     /**
      * The current navigation status of the vehicle.
      */
-    navigationStatus: string|null;
+    navigationStatus: string;
     /**
      * The remaining driving distance in the current route segment, in meters.
      */
-    remainingDistanceMeters: number|null;
+    remainingDistanceMeters: number;
     /**
      * The remaining driving duration in the current route segment, in
      * milliseconds.
@@ -8437,7 +8437,7 @@ declare namespace google.maps.journeySharing {
      * vehicle&#39;s most recently reported location.
      */
     remainingVehicleJourneySegments:
-        google.maps.journeySharing.VehicleJourneySegment[]|null;
+        google.maps.journeySharing.VehicleJourneySegment[];
   }
 }
 declare namespace google.maps.journeySharing {
@@ -9912,7 +9912,7 @@ declare namespace google.maps.journeySharing {
      * shipment, use the tracking_id field. Multiple tasks can have the same
      * tracking_id.
      */
-    name: string|null;
+    name: string;
     /**
      * The outcome of the task.
      */
@@ -9938,11 +9938,11 @@ declare namespace google.maps.journeySharing {
      * Information about the segments left to be completed for this task.
      */
     remainingVehicleJourneySegments:
-        google.maps.journeySharing.VehicleJourneySegment[]|null;
+        google.maps.journeySharing.VehicleJourneySegment[];
     /**
      * The current execution state of the task.
      */
-    status: string|null;
+    status: string;
     /**
      * The tracking ID of the shipment.
      */
@@ -9950,7 +9950,7 @@ declare namespace google.maps.journeySharing {
     /**
      * The task type; for example, a break or shipment.
      */
-    type: string|null;
+    type: string;
     /**
      * The ID of the vehicle performing this task.
      */
@@ -10005,11 +10005,11 @@ declare namespace google.maps.journeySharing {
      * In the format &quot;providers/{provider_id}/trips/{trip_id}&quot;. The
      * trip_id must be a unique identifier.
      */
-    name: string|null;
+    name: string;
     /**
      * Number of passengers on this trip; does not include the driver.
      */
-    passengerCount: number|null;
+    passengerCount: number;
     /**
      * The estimated future time when the passengers will be picked up, or the
      * actual time when they were picked up.
@@ -10027,23 +10027,23 @@ declare namespace google.maps.journeySharing {
      * An array of waypoints indicating the path from the current location to
      * the drop-off point.
      */
-    remainingWaypoints: google.maps.journeySharing.VehicleWaypoint[]|null;
+    remainingWaypoints: google.maps.journeySharing.VehicleWaypoint[];
     /**
      * Current status of the trip. Possible values are UNKNOWN_TRIP_STATUS, NEW,
      * ENROUTE_TO_PICKUP, ARRIVED_AT_PICKUP,
      * ARRIVED_AT_INTERMEDIATE_DESTINATION, ENROUTE_TO_INTERMEDIATE_DESTINATION,
      * ENROUTE_TO_DROPOFF, COMPLETE, or CANCELED.
      */
-    status: string|null;
+    status: string;
     /**
      * The type of the trip. Possible values are UNKNOWN_TRIP_TYPE, SHARED or
      * EXCLUSIVE.
      */
-    type: string|null;
+    type: string;
     /**
      * ID of the vehicle making this trip.
      */
-    vehicleId: string|null;
+    vehicleId: string;
   }
 }
 declare namespace google.maps.journeySharing {
