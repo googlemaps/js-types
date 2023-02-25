@@ -389,9 +389,6 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   interface CoreLibrary {}
 }
 declare namespace google.maps {
@@ -2167,9 +2164,6 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   interface DrawingLibrary {}
 }
 declare namespace google.maps {
@@ -2210,9 +2204,6 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   interface ElevationLibrary {}
 }
 declare namespace google.maps {
@@ -2816,15 +2807,9 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   interface GeocodingLibrary {}
 }
 declare namespace google.maps {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   interface GeometryLibrary {
     encoding: typeof google.maps.geometry.encoding;
     poly: typeof google.maps.geometry.poly;
@@ -4850,9 +4835,6 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   interface MapsLibrary {}
 }
 declare namespace google.maps {
@@ -5227,9 +5209,6 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   interface MarkerLibrary {}
 }
 declare namespace google.maps {
@@ -5666,13 +5645,6 @@ declare namespace google.maps {
    */
   interface PlaceFeature extends google.maps.Feature {
     /**
-     * The display name.
-     * @deprecated <code>google.maps.PlaceFeature.displayName</code> is
-     *     deprecated, and will be removed February 2023. Use
-     *     <code>google.maps.PlaceFeature.fetchPlace()</code> instead.
-     */
-    displayName: string;
-    /**
      * Fetches a <code>Place</code> for this <code>PlaceFeature</code>. In the
      * resulting <code>Place</code> object, the <code>id</code> and the
      * <code>displayName</code> properties will be populated. (Additional fields
@@ -5690,9 +5662,6 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   interface PlacesLibrary {}
 }
 declare namespace google.maps {
@@ -6264,9 +6233,6 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   interface RoutesLibrary {}
 }
 declare namespace google.maps {
@@ -6404,9 +6370,6 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   interface StreetViewLibrary {}
 }
 declare namespace google.maps {
@@ -7697,9 +7660,6 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   interface VisualizationLibrary {}
 }
 declare namespace google.maps {
@@ -8243,7 +8203,6 @@ declare namespace google.maps.geometry.spherical {
 }
 declare namespace google.maps {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Loads a <a
    * href="https://developers.google.com/maps/documentation/javascript/libraries">library</a>
    * of the Maps JavaScript API, resolving with the direct members of that API
