@@ -3221,9 +3221,6 @@ declare namespace google.maps {
   }
 }
 declare namespace google.maps {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   interface JourneySharingLibrary {
     AutomaticViewportMode:
         typeof google.maps.journeySharing.AutomaticViewportMode;
@@ -6461,16 +6458,16 @@ declare namespace google.maps {
     /**
      * A localized string describing the link.
      */
-    description: string|null;
+    description: null|string;
     /**
      * The heading of the link.
      */
-    heading: number|null;
+    heading: null|number;
     /**
      * A unique identifier for the panorama. This id is stable within a session
      * but unstable across sessions.
      */
-    pano: string|null;
+    pano: null|string;
   }
 }
 declare namespace google.maps {
@@ -6481,11 +6478,11 @@ declare namespace google.maps {
     /**
      * A localized string describing the location.
      */
-    description?: string|null;
+    description?: null|string;
     /**
      * The latlng of the panorama.
      */
-    latLng?: google.maps.LatLng|null;
+    latLng?: null|google.maps.LatLng;
     /**
      * A unique identifier for the panorama. This is stable within a session but
      * unstable across sessions.
@@ -6494,7 +6491,7 @@ declare namespace google.maps {
     /**
      * Short description of the location.
      */
-    shortDescription?: string|null;
+    shortDescription?: null|string;
   }
 }
 declare namespace google.maps {
@@ -6536,7 +6533,7 @@ declare namespace google.maps {
     /**
      * Specifies the pano ID to search for.
      */
-    pano?: string|null;
+    pano?: null|string;
   }
 }
 declare namespace google.maps {
@@ -8304,8 +8301,6 @@ declare namespace google.maps {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * The auth token returned by the token fetcher.
    */
   interface AuthToken {
@@ -8321,8 +8316,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Contains additional information needed to mint JSON Web Tokens.
    */
   interface AuthTokenContext {
@@ -8354,17 +8347,12 @@ declare namespace google.maps.journeySharing {
   }
 }
 declare namespace google.maps.journeySharing {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   type AuthTokenFetcher =
       (a: google.maps.journeySharing.AuthTokenFetcherOptions) =>
           Promise<google.maps.journeySharing.AuthToken>;
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Options for the auth token fetcher.
    */
   interface AuthTokenFetcherOptions {
@@ -8381,8 +8369,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Automatic viewport mode.
    *
    * When using `v=beta`, can be accessed by calling
@@ -8404,8 +8390,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * MarkerSetup default options.
    * @deprecated Marker setup is deprecated. Use the
    *     <code>MarkerCustomizationFunction</code> methods for your location
@@ -8420,8 +8404,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * PolylineSetup default options.
    */
   interface DefaultPolylineSetupOptions {
@@ -8437,8 +8419,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * The details for a delivery vehicle returned by Fleet Engine.
    */
   interface DeliveryVehicle {
@@ -8484,8 +8464,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Parameters specific to marker customization functions that apply options to
    * delivery vehicle markers. Used by {@link
    * google.maps.journeySharing.FleetEngineDeliveryVehicleLocationProviderOptions.deliveryVehicleMarkerCustomization}
@@ -8502,8 +8480,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * DeliveryVehicleStop type
    */
   interface DeliveryVehicleStop {
@@ -8517,8 +8493,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * The current state of a {@link
    * google.maps.journeySharing.DeliveryVehicleStop}.
    *
@@ -8549,8 +8523,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Delivery Fleet Location Provider.
    *
    * When using `v=beta`, can be accessed by calling
@@ -8561,8 +8533,6 @@ declare namespace google.maps.journeySharing {
   class FleetEngineDeliveryFleetLocationProvider extends
       google.maps.journeySharing.PollingLocationProvider {
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     *
      * Delivery Fleet Location Provider.
      *
      * When using `v=beta`, can be accessed by calling
@@ -8605,8 +8575,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Options for delivery fleet location provider.
    */
   interface FleetEngineDeliveryFleetLocationProviderOptions {
@@ -8671,8 +8639,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * The event object passed to the event handler when the {@link
    * google.maps.journeySharing.FleetEngineDeliveryFleetLocationProvider.update}
    * event is triggered.
@@ -8686,8 +8652,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Delivery Vehicle Location Provider.
    *
    * When using `v=beta`, can be accessed by calling
@@ -8698,8 +8662,6 @@ declare namespace google.maps.journeySharing {
   class FleetEngineDeliveryVehicleLocationProvider extends
       google.maps.journeySharing.PollingLocationProvider {
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     *
      * Delivery Vehicle Location Provider.
      *
      * When using `v=beta`, can be accessed by calling
@@ -8737,8 +8699,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Options for delivery vehicle location provider.
    */
   interface FleetEngineDeliveryVehicleLocationProviderOptions {
@@ -8879,8 +8839,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * The event object passed to the event handler when the {@link
    * google.maps.journeySharing.FleetEngineDeliveryVehicleLocationProvider.update}
    * event is triggered.
@@ -8904,8 +8862,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Types of Fleet Engine services.
    *
    * When using `v=beta`, can be accessed by calling
@@ -8934,8 +8890,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Shipment location provider.
    *
    * When using `v=beta`, can be accessed by calling
@@ -8946,8 +8900,6 @@ declare namespace google.maps.journeySharing {
   class FleetEngineShipmentLocationProvider extends
       google.maps.journeySharing.PollingLocationProvider {
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     *
      * Shipment location provider.
      *
      * When using `v=beta`, can be accessed by calling
@@ -8971,8 +8923,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Options for shipment location provider.
    */
   interface FleetEngineShipmentLocationProviderOptions {
@@ -9049,8 +8999,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * The event object passed to the event handler when the {@link
    * google.maps.journeySharing.FleetEngineShipmentLocationProvider.update}
    * event is triggered.
@@ -9064,8 +9012,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Filtering options for tasks in the Delivery Vehicle Location Provider.
    */
   interface FleetEngineTaskFilterOptions {
@@ -9087,8 +9033,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Trip location provider.
    *
    * When using `v=beta`, can be accessed by calling
@@ -9099,8 +9043,6 @@ declare namespace google.maps.journeySharing {
   class FleetEngineTripLocationProvider extends
       google.maps.journeySharing.PollingLocationProvider {
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     *
      * Trip location provider.
      *
      * When using `v=beta`, can be accessed by calling
@@ -9124,8 +9066,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Options for trip location provider.
    */
   interface FleetEngineTripLocationProviderOptions {
@@ -9239,8 +9179,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * The event object passed to the event handler when the {@link
    * google.maps.journeySharing.FleetEngineTripLocationProvider.update} event is
    * triggered.
@@ -9254,8 +9192,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * The map view.
    *
    * When using `v=beta`, can be accessed by calling
@@ -9265,8 +9201,6 @@ declare namespace google.maps.journeySharing {
    */
   class JourneySharingMapView {
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     *
      * The map view.
      *
      * When using `v=beta`, can be accessed by calling
@@ -9576,8 +9510,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Options for the map view.
    */
   interface JourneySharingMapViewOptions {
@@ -9811,8 +9743,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Parent class of all location providers.
    */
   abstract class LocationProvider {
@@ -9829,8 +9759,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Parameters that are common to all marker customization functions. No object
    * of this class is provided directly to any marker customization function; an
    * object of one of its descendent classes is provided instead.
@@ -9853,20 +9781,12 @@ declare namespace google.maps.journeySharing {
   }
 }
 declare namespace google.maps.journeySharing {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   * @deprecated Marker setup is deprecated. Use the
-   *     <code>MarkerCustomizationFunction</code> methods for your location
-   *     provider instead.
-   */
   type MarkerSetup = google.maps.journeySharing.MarkerSetupOptions|(
       (a: google.maps.journeySharing.DefaultMarkerSetupOptions) =>
           google.maps.journeySharing.MarkerSetupOptions);
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * MarkerSetup options.
    * @deprecated Marker setup is deprecated. Use the
    *     <code>MarkerCustomizationFunction</code> methods for your location
@@ -9881,8 +9801,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Parameters specific to marker customization functions that apply options to
    * markers representing planned stops. Used by {@link
    * google.maps.journeySharing.FleetEngineDeliveryVehicleLocationProviderOptions.plannedStopMarkerCustomization}.
@@ -9898,8 +9816,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Parent class of polling location providers.
    */
   abstract class PollingLocationProvider extends
@@ -9912,8 +9828,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * The event object passed to the event handler when the {@link
    * google.maps.journeySharing.PollingLocationProvider.ispollingchange} event
    * is triggered.
@@ -9928,17 +9842,12 @@ declare namespace google.maps.journeySharing {
   }
 }
 declare namespace google.maps.journeySharing {
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   */
   type PolylineSetup = google.maps.journeySharing.PolylineSetupOptions|(
       (a: google.maps.journeySharing.DefaultPolylineSetupOptions) =>
           google.maps.journeySharing.PolylineSetupOptions);
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * PolylineSetup options.
    */
   interface PolylineSetupOptions {
@@ -9954,8 +9863,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Parameters specific to marker customization functions that apply options to
    * markers representing shipment delivery vehicle and destination locations.
    * Used by {@link
@@ -9973,8 +9880,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * The details for a task returned by Fleet Engine.
    */
   interface Task {
@@ -10041,8 +9946,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Parameters specific to marker customization functions that apply options to
    * markers representing planned or actual task locations. Used by {@link
    * google.maps.journeySharing.FleetEngineDeliveryVehicleLocationProviderOptions.taskMarkerCustomization}
@@ -10060,8 +9963,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * The details for a task tracking info object returned by Fleet Engine.
    */
   interface TaskTrackingInfo {
@@ -10130,8 +10031,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * The details for a trip returned by Fleet Engine.
    */
   interface Trip {
@@ -10200,8 +10099,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Parameters specific to marker customization functions that apply options to
    * markers representing trip vehicle, origin and destination locations. Used
    * by {@link
@@ -10223,8 +10120,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Parameters specific to marker customization functions that apply options to
    * markers representing trip waypoint locations. Used by {@link
    * google.maps.journeySharing.FleetEngineTripLocationProviderOptions.waypointMarkerCustomization}.
@@ -10241,8 +10136,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * VehicleJourneySegment type
    */
   interface VehicleJourneySegment {
@@ -10268,8 +10161,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * VehicleLocationUpdate type
    */
   interface VehicleLocationUpdate {
@@ -10293,8 +10184,6 @@ declare namespace google.maps.journeySharing {
 }
 declare namespace google.maps.journeySharing {
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * VehicleWaypoint type.
    */
   interface VehicleWaypoint {
@@ -11948,6 +11837,116 @@ declare namespace google.maps.places {
      * <code>"service"</code>, or <code>"overall"</code>.
      */
     type: string;
+  }
+}
+declare namespace google.maps.places {
+  /**
+   * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+   *
+   * Implementation of AutocompleteView for Places API
+   *
+   * When using `v=beta`, can be accessed by calling
+   * `const {PlaceAutocompleteElement} = await
+   * google.map.importLibrary("places")`. See
+   * https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  class PlaceAutocompleteElement implements
+      google.maps.places.PlaceAutocompleteElementOptions {
+    /**
+     * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+     *
+     * Implementation of AutocompleteView for Places API
+     *
+     * When using `v=beta`, can be accessed by calling
+     * `const {PlaceAutocompleteElement} = await
+     * google.map.importLibrary("places")`. See
+     * https://developers.google.com/maps/documentation/javascript/libraries.
+     */
+    constructor(options: google.maps.places.PlaceAutocompleteElementOptions);
+    /**
+     * Adds the given listener function to the given event name.
+     */
+    addListener(eventName: string, handler: Function):
+        google.maps.MapsEventListener;
+    componentRestrictions?: google.maps.places.ComponentRestrictions|null;
+    /**
+     * This Field is read-only. The DOM Element backing the view.
+     */
+    element?: null|HTMLElement|SVGElement;
+    /**
+     * The input element to show autocompletions for.
+     */
+    inputElement: HTMLInputElement;
+    locationBias?: google.maps.LatLng|google.maps.LatLngLiteral|
+        google.maps.LatLngBounds|google.maps.LatLngBoundsLiteral|
+        google.maps.Circle|google.maps.CircleLiteral|string|null;
+    locationRestriction?: google.maps.LatLngBounds|
+        google.maps.LatLngBoundsLiteral|null;
+    requestedLanguage?: string|null;
+    requestedRegion?: string|null;
+    types?: string[]|null;
+  }
+}
+declare namespace google.maps.places {
+  /**
+   * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+   *
+   * Options for constructing a PlaceAutocompleteElement.
+   */
+  interface PlaceAutocompleteElementOptions {
+    /**
+     * The component restrictions. Component restrictions are used to restrict
+     * predictions to only those within the parent component. For example, the
+     * country.
+     */
+    componentRestrictions?: google.maps.places.ComponentRestrictions|null;
+    /**
+     * This Field is read-only. The DOM Element backing the view.
+     */
+    element?: null|HTMLElement|SVGElement;
+    /**
+     * The input element to show autocompletions for.
+     */
+    inputElement: HTMLInputElement;
+    /**
+     * A soft boundary or hint to use when searching for places.
+     */
+    locationBias?: google.maps.LatLng|google.maps.LatLngLiteral|
+        google.maps.LatLngBounds|google.maps.LatLngBoundsLiteral|
+        google.maps.Circle|google.maps.CircleLiteral|string|null;
+    /**
+     * Bounds to constrain search results.
+     */
+    locationRestriction?: google.maps.LatLngBounds|
+        google.maps.LatLngBoundsLiteral|null;
+    /**
+     * A language identifier for the language in which the results should be
+     * returned, if possible. Results in the selected language may be given a
+     * higher ranking, but suggestions are not restricted to this language. See
+     * the <a href="https://developers.google.com/maps/faq#languagesupport">list
+     * of supported languages</a>.
+     */
+    requestedLanguage?: string|null;
+    /**
+     * A region code which is used for result formatting and for result
+     * filtering. It does not restrict the suggestions to this country. The
+     * region code accepts a <a
+     * href="https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains#Country_code_top-level_domains">ccTLD
+     * (&quot;top-level domain&quot;)</a> two-character value. Most ccTLD codes
+     * are identical to ISO 3166-1 codes, with some notable exceptions. For
+     * example, the United Kingdom&#39;s ccTLD is &quot;uk&quot;
+     * (<code>.co.uk</code>) while its ISO 3166-1 code is &quot;gb&quot;
+     * (technically for the entity of &quot;The United Kingdom of Great Britain
+     * and Northern Ireland&quot;).
+     */
+    requestedRegion?: string|null;
+    /**
+     * The types of predictions to be returned. For supported types, see the <a
+     * href="https://developers.google.com/maps/documentation/javascript/places-autocomplete#constrain-place-types">
+     * developer&#39;s guide</a>. If no types are specified, all types will be
+     * returned.
+     */
+    types?: string[]|null;
   }
 }
 declare namespace google.maps.places {
