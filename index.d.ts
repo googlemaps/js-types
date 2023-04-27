@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-// Google Maps JS API Version: 3.52
+// Google Maps JS API Version: 3.53
 // tslint:disable:enforce-name-casing
 // tslint:disable:no-any
 // tslint:disable:interface-over-type-literal
@@ -151,68 +151,68 @@ declare namespace google.maps {
     /**
      * The center of the Circle.
      */
-    center?: google.maps.LatLng|null|google.maps.LatLngLiteral;
+    center?: null|google.maps.LatLng|google.maps.LatLngLiteral;
     /**
      * Indicates whether this <code>Circle</code> handles mouse events.
      * @defaultValue <code>true</code>
      */
-    clickable?: boolean|null;
+    clickable?: null|boolean;
     /**
      * If set to <code>true</code>, the user can drag this circle over the map.
      * @defaultValue <code>false</code>
      */
-    draggable?: boolean|null;
+    draggable?: null|boolean;
     /**
      * If set to <code>true</code>, the user can edit this circle by dragging
      * the control points shown at the center and around the circumference of
      * the circle.
      * @defaultValue <code>false</code>
      */
-    editable?: boolean|null;
+    editable?: null|boolean;
     /**
      * The fill color. All CSS3 colors are supported except for extended named
      * colors.
      */
-    fillColor?: string|null;
+    fillColor?: null|string;
     /**
      * The fill opacity between 0.0 and 1.0.
      */
-    fillOpacity?: number|null;
+    fillOpacity?: null|number;
     /**
      * Map on which to display the Circle.
      */
-    map?: google.maps.Map|null;
+    map?: null|google.maps.Map;
     /**
      * The radius in meters on the Earth&#39;s surface.
      */
-    radius?: number|null;
+    radius?: null|number;
     /**
      * The stroke color. All CSS3 colors are supported except for extended named
      * colors.
      */
-    strokeColor?: string|null;
+    strokeColor?: null|string;
     /**
      * The stroke opacity between 0.0 and 1.0.
      */
-    strokeOpacity?: number|null;
+    strokeOpacity?: null|number;
     /**
      * The stroke position.
      * @defaultValue {@link google.maps.StrokePosition.CENTER}
      */
-    strokePosition?: google.maps.StrokePosition|null;
+    strokePosition?: null|google.maps.StrokePosition;
     /**
      * The stroke width in pixels.
      */
-    strokeWeight?: number|null;
+    strokeWeight?: null|number;
     /**
      * Whether this circle is visible on the map.
      * @defaultValue <code>true</code>
      */
-    visible?: boolean|null;
+    visible?: null|boolean;
     /**
      * The zIndex compared to other polys.
      */
-    zIndex?: number|null;
+    zIndex?: null|number;
   }
   /**
    * This interface provides convenience methods for generating matrices to use
@@ -1766,7 +1766,7 @@ declare namespace google.maps {
     /**
      * The icon to render on the line.
      */
-    icon?: google.maps.Symbol|null;
+    icon?: null|google.maps.Symbol;
     /**
      * The distance from the start of the line at which an icon is to be
      * rendered. This distance may be expressed as a percentage of line&#39;s
@@ -4341,28 +4341,28 @@ declare namespace google.maps {
      * Indicates whether this <code>Polygon</code> handles mouse events.
      * @defaultValue <code>true</code>
      */
-    clickable?: boolean|null;
+    clickable?: null|boolean;
     /**
      * If set to <code>true</code>, the user can drag this shape over the map.
      * The <code>geodesic</code> property defines the mode of dragging.
      * @defaultValue <code>false</code>
      */
-    draggable?: boolean|null;
+    draggable?: null|boolean;
     /**
      * If set to <code>true</code>, the user can edit this shape by dragging the
      * control points shown at the vertices and on each segment.
      * @defaultValue <code>false</code>
      */
-    editable?: boolean|null;
+    editable?: null|boolean;
     /**
      * The fill color. All CSS3 colors are supported except for extended named
      * colors.
      */
-    fillColor?: string|null;
+    fillColor?: null|string;
     /**
      * The fill opacity between 0.0 and 1.0
      */
-    fillOpacity?: number|null;
+    fillOpacity?: null|number;
     /**
      * When <code>true</code>, edges of the polygon are interpreted as geodesic
      * and will follow the curvature of the Earth. When <code>false</code>,
@@ -4371,11 +4371,11 @@ declare namespace google.maps {
      * as the dimensions are maintained relative to the surface of the earth.
      * @defaultValue <code>false</code>
      */
-    geodesic?: boolean|null;
+    geodesic?: null|boolean;
     /**
      * Map on which to display Polygon.
      */
-    map?: google.maps.Map|null;
+    map?: null|google.maps.Map;
     /**
      * The ordered sequence of coordinates that designates a closed loop. Unlike
      * polylines, a polygon may consist of one or more paths. As a result, the
@@ -4393,29 +4393,29 @@ declare namespace google.maps {
      * The stroke color. All CSS3 colors are supported except for extended named
      * colors.
      */
-    strokeColor?: string|null;
+    strokeColor?: null|string;
     /**
      * The stroke opacity between 0.0 and 1.0
      */
-    strokeOpacity?: number|null;
+    strokeOpacity?: null|number;
     /**
      * The stroke position.
      * @defaultValue {@link google.maps.StrokePosition.CENTER}
      */
-    strokePosition?: google.maps.StrokePosition|null;
+    strokePosition?: null|google.maps.StrokePosition;
     /**
      * The stroke width in pixels.
      */
-    strokeWeight?: number|null;
+    strokeWeight?: null|number;
     /**
      * Whether this polygon is visible on the map.
      * @defaultValue <code>true</code>
      */
-    visible?: boolean|null;
+    visible?: null|boolean;
     /**
      * The zIndex compared to other polys.
      */
-    zIndex?: number|null;
+    zIndex?: null|number;
   }
   /**
    * A polyline is a linear overlay of connected line segments on the map.
@@ -4489,19 +4489,19 @@ declare namespace google.maps {
      * Indicates whether this <code>Polyline</code> handles mouse events.
      * @defaultValue <code>true</code>
      */
-    clickable?: boolean|null;
+    clickable?: null|boolean;
     /**
      * If set to <code>true</code>, the user can drag this shape over the map.
      * The <code>geodesic</code> property defines the mode of dragging.
      * @defaultValue <code>false</code>
      */
-    draggable?: boolean|null;
+    draggable?: null|boolean;
     /**
      * If set to <code>true</code>, the user can edit this shape by dragging the
      * control points shown at the vertices and on each segment.
      * @defaultValue <code>false</code>
      */
-    editable?: boolean|null;
+    editable?: null|boolean;
     /**
      * When <code>true</code>, edges of the polygon are interpreted as geodesic
      * and will follow the curvature of the Earth. When <code>false</code>,
@@ -4510,15 +4510,15 @@ declare namespace google.maps {
      * as the dimensions are maintained relative to the surface of the earth.
      * @defaultValue <code>false</code>
      */
-    geodesic?: boolean|null;
+    geodesic?: null|boolean;
     /**
      * The icons to be rendered along the polyline.
      */
-    icons?: google.maps.IconSequence[]|null;
+    icons?: null|google.maps.IconSequence[];
     /**
      * Map on which to display Polyline.
      */
-    map?: google.maps.Map|null;
+    map?: null|google.maps.Map;
     /**
      * The ordered sequence of coordinates of the Polyline. This path may be
      * specified using either a simple array of <code>LatLng</code>s, or an
@@ -4527,30 +4527,30 @@ declare namespace google.maps {
      * or removing LatLngs in the <code>MVCArray</code> will automatically
      * update the polyline on the map.
      */
-    path?: google.maps.MVCArray<google.maps.LatLng>|null|
+    path?: null|google.maps.MVCArray<google.maps.LatLng>|
         (google.maps.LatLng|google.maps.LatLngLiteral)[];
     /**
      * The stroke color. All CSS3 colors are supported except for extended named
      * colors.
      */
-    strokeColor?: string|null;
+    strokeColor?: null|string;
     /**
      * The stroke opacity between 0.0 and 1.0.
      */
-    strokeOpacity?: number|null;
+    strokeOpacity?: null|number;
     /**
      * The stroke width in pixels.
      */
-    strokeWeight?: number|null;
+    strokeWeight?: null|number;
     /**
      * Whether this polyline is visible on the map.
      * @defaultValue <code>true</code>
      */
-    visible?: boolean|null;
+    visible?: null|boolean;
     /**
      * The zIndex compared to other polys.
      */
-    zIndex?: number|null;
+    zIndex?: null|number;
   }
   export interface Projection {
     /**
@@ -4646,64 +4646,64 @@ declare namespace google.maps {
     /**
      * The bounds.
      */
-    bounds?: google.maps.LatLngBounds|null|google.maps.LatLngBoundsLiteral;
+    bounds?: null|google.maps.LatLngBounds|google.maps.LatLngBoundsLiteral;
     /**
      * Indicates whether this <code>Rectangle</code> handles mouse events.
      * @defaultValue <code>true</code>
      */
-    clickable?: boolean|null;
+    clickable?: null|boolean;
     /**
      * If set to <code>true</code>, the user can drag this rectangle over the
      * map.
      * @defaultValue <code>false</code>
      */
-    draggable?: boolean|null;
+    draggable?: null|boolean;
     /**
      * If set to <code>true</code>, the user can edit this rectangle by dragging
      * the control points shown at the corners and on each edge.
      * @defaultValue <code>false</code>
      */
-    editable?: boolean|null;
+    editable?: null|boolean;
     /**
      * The fill color. All CSS3 colors are supported except for extended named
      * colors.
      */
-    fillColor?: string|null;
+    fillColor?: null|string;
     /**
      * The fill opacity between 0.0 and 1.0
      */
-    fillOpacity?: number|null;
+    fillOpacity?: null|number;
     /**
      * Map on which to display Rectangle.
      */
-    map?: google.maps.Map|null;
+    map?: null|google.maps.Map;
     /**
      * The stroke color. All CSS3 colors are supported except for extended named
      * colors.
      */
-    strokeColor?: string|null;
+    strokeColor?: null|string;
     /**
      * The stroke opacity between 0.0 and 1.0
      */
-    strokeOpacity?: number|null;
+    strokeOpacity?: null|number;
     /**
      * The stroke position.
      * @defaultValue {@link google.maps.StrokePosition.CENTER}
      */
-    strokePosition?: google.maps.StrokePosition|null;
+    strokePosition?: null|google.maps.StrokePosition;
     /**
      * The stroke width in pixels.
      */
-    strokeWeight?: number|null;
+    strokeWeight?: null|number;
     /**
      * Whether this rectangle is visible on the map.
      * @defaultValue <code>true</code>
      */
-    visible?: boolean|null;
+    visible?: null|boolean;
     /**
      * The zIndex compared to other polys.
      */
-    zIndex?: number|null;
+    zIndex?: null|number;
   }
   /**
    * Options for the rendering of the rotate control.
@@ -11160,6 +11160,7 @@ declare namespace google.maps.places {
      * place’s category.
      */
     svgIconMaskURI?: string|null;
+    toJSON(): object;
     /**
      * An array of <a
      * href="https://developers.google.com/maps/documentation/places/web-service/supported_types">types
