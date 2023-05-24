@@ -9433,6 +9433,10 @@ declare namespace google.maps.journeySharing {
    */
   export interface Task {
     /**
+     * Attributes assigned to the task.
+     */
+    attributes: {[key: string]: any};
+    /**
      * The timestamp of the estimated completion time of the task.
      */
     estimatedCompletionTime: Date|null;
@@ -9515,6 +9519,10 @@ declare namespace google.maps.journeySharing {
    * The details for a task tracking info object returned by Fleet Engine.
    */
   export interface TaskTrackingInfo {
+    /**
+     * Attributes assigned to the task.
+     */
+    attributes: {[key: string]: any};
     /**
      * The estimated arrival time to the stop location.
      */
@@ -9706,15 +9714,14 @@ declare namespace google.maps.journeySharing {
      */
     drivingDurationMillis: number|null;
     /**
-     * The path from the previous waypoint (or the vehicle&#39;s current
-     * location, if this waypoint is the first in the list of waypoints) to this
-     * waypoint.
+     * The path from the previous stop (or the vehicle&#39;s current location,
+     * if this stop is the first in the list of stops) to this stop.
      */
     path: google.maps.LatLngLiteral[]|null;
     /**
-     * The stops to be served by this vehicle.
+     * Information about the stop.
      */
-    stop: google.maps.journeySharing.DeliveryVehicleStop[]|null;
+    stop: google.maps.journeySharing.DeliveryVehicleStop|null;
   }
   /**
    * VehicleLocationUpdate type
@@ -11105,10 +11112,9 @@ declare namespace google.maps.places {
     formattedAddress?: string|null;
     /**
      * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     * Calculates the timestamp (as milliseconds since the epoch, suitable for
-     * use with <code>new Date()</code>) representing the next OpeningHoursTime.
-     * Returns undefined if the data is insufficient to calculate the result, or
-     * this place is not operational.
+     * Calculates the Date representing the next OpeningHoursTime. Returns
+     * undefined if the data is insufficient to calculate the result, or this
+     * place is not operational.
      */
     getNextOpeningTime(date?: Date): Promise<Date|undefined>;
     /**
