@@ -7935,7 +7935,8 @@ declare namespace google.maps.journeySharing {
    */
   export interface AuthToken {
     /**
-     * The expiration time of this token, in seconds from token issuance.
+     * The expiration time in seconds. A token expires in this amount of time
+     * after fetching.
      */
     expiresInSeconds: number;
     /**
@@ -8071,7 +8072,10 @@ declare namespace google.maps.journeySharing {
     remainingDurationMillis: number|null;
     /**
      * The journey segments assigned to this delivery vehicle, starting from the
-     * vehicle&#39;s most recently reported location.
+     * vehicle&#39;s most recently reported location. This is only populated
+     * when the {@link google.maps.journeySharing.DeliveryVehicle} data object
+     * is provided through {@link
+     * google.maps.journeySharing.FleetEngineDeliveryVehicleLocationProvider}.
      */
     remainingVehicleJourneySegments:
         google.maps.journeySharing.VehicleJourneySegment[];
@@ -8095,11 +8099,19 @@ declare namespace google.maps.journeySharing {
    */
   export interface DeliveryVehicleStop {
     /**
+     * The location of the stop.
+     */
+    plannedLocation: google.maps.LatLngLiteral|null;
+    /**
+     * The state of the stop.
+     */
+    state: google.maps.journeySharing.DeliveryVehicleStopState|null;
+    /**
      * The list of Tasks to be performed at this stop. <ul> <li><code>id</code>:
      * the ID of the task. <li><code>extraDurationMillis</code>: the extra time
      * it takes to perform the task, in milliseconds. </ul>
      */
-    tasks: {extraDurationMillis: number|null, id: string|null}[];
+    tasks: google.maps.journeySharing.TaskInfo[];
   }
   /**
    * The current state of a {@link
@@ -9501,6 +9513,24 @@ declare namespace google.maps.journeySharing {
     vehicleId: string|null;
   }
   /**
+   * TaskInfo type, used by {@link
+   * google.maps.journeySharing.DeliveryVehicleStop}.
+   */
+  export interface TaskInfo {
+    /**
+     * The extra time it takes to perform the task, in milliseconds.
+     */
+    extraDurationMillis: number|null;
+    /**
+     * The ID of the task.
+     */
+    id: string|null;
+    /**
+     * The time window during which the task should be completed.
+     */
+    targetTimeWindow: google.maps.journeySharing.TimeWindow|null;
+  }
+  /**
    * Parameters specific to marker customization functions that apply options to
    * markers representing planned or actual task locations. Used by {@link
    * google.maps.journeySharing.FleetEngineDeliveryVehicleLocationProviderOptions.taskMarkerCustomization}
@@ -10241,7 +10271,7 @@ declare namespace google.maps.marker {
     /**
      * See {@link google.maps.marker.AdvancedMarkerElementOptions.content}.
      */
-    content?: null|Element;
+    content?: null|Node;
     /**
      * This field is read-only. The DOM Element backing the view.
      */
@@ -10293,7 +10323,7 @@ declare namespace google.maps.marker {
      * cause the previous <code>AdvancedMarkerElement</code> to look empty.
      * @defaultValue {@link google.maps.marker.PinElement.element}
      */
-    content?: null|Element;
+    content?: null|Node;
     /**
      * If <code>true</code>, the <code>AdvancedMarkerElement</code> can be
      * dragged. <p><strong>Note</strong>: <code>AdvancedMarkerElement</code>
