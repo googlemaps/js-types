@@ -3445,10 +3445,27 @@ declare namespace google.maps {
   }
   /**
    * Object containing a snapshot of what capabilities are currently available
-   * for the Map. See the properties for a list of possible capabilities.
+   * for the Map. Note that this does not necessarily mean that relevant modules
+   * are loaded or initialized, but rather that the current map has permission
+   * to use these APIs. See the properties for a list of possible capabilities.
    */
   export interface MapCapabilities {
+    /**
+     * If true, this map is configured properly to allow for the use of advanced
+     * markers. Note that you must still import the <code>marker</code> library
+     * in order to use advanced markers. See <a
+     * href="https://developers.google.com/maps/documentation/javascript/advanced-markers/start#update_your_map_initialization_code">https://developers.google.com/maps/documentation/javascript/advanced-markers/start#update_your_map_initialization_code</a>
+     * for more information.
+     */
     isAdvancedMarkersAvailable?: boolean;
+    /**
+     * If true, this map is configured properly to allow for the use of
+     * data-driven styling for at least one FeatureLayer. See <a
+     * href="https://developers.google.com/maps/documentation/javascript/dds-boundaries/overview">https://developers.google.com/maps/documentation/javascript/dds-boundaries/overview</a>
+     * and <a
+     * href="https://developers.google.com/maps/documentation/javascript/reference/data-driven-styling#FeatureLayer.isAvailable">https://developers.google.com/maps/documentation/javascript/reference/data-driven-styling#FeatureLayer.isAvailable</a>
+     * for more information.
+     */
     isDataDrivenStylingAvailable?: boolean;
   }
   /**
