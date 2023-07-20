@@ -2415,14 +2415,24 @@ declare namespace google.maps {
         typeof google.maps.journeySharing.AutomaticViewportMode;
     DeliveryVehicleStopState:
         typeof google.maps.journeySharing.DeliveryVehicleStopState;
+    FleetEngineFleetLocationProvider:
+        typeof google.maps.journeySharing.FleetEngineFleetLocationProvider;
     FleetEngineServiceType:
         typeof google.maps.journeySharing.FleetEngineServiceType;
     FleetEngineShipmentLocationProvider:
         typeof google.maps.journeySharing.FleetEngineShipmentLocationProvider;
     FleetEngineTripLocationProvider:
         typeof google.maps.journeySharing.FleetEngineTripLocationProvider;
+    FleetEngineVehicleLocationProvider:
+        typeof google.maps.journeySharing.FleetEngineVehicleLocationProvider;
     JourneySharingMapView:
         typeof google.maps.journeySharing.JourneySharingMapView;
+    TripType: typeof google.maps.journeySharing.TripType;
+    VehicleNavigationStatus:
+        typeof google.maps.journeySharing.VehicleNavigationStatus;
+    VehicleState: typeof google.maps.journeySharing.VehicleState;
+    VehicleType: typeof google.maps.journeySharing.VehicleType;
+    WaypointType: typeof google.maps.journeySharing.WaypointType;
   }
   /**
    * Contains details of the author of a KML document or feature.
@@ -2701,10 +2711,8 @@ declare namespace google.maps {
    * constructor are below: <pre> new google.maps.LatLng(-34, 151);<br> new
    * google.maps.LatLng(-34, 151, true);<br> new google.maps.LatLng({lat: -34,
    * lng: 151});<br> new google.maps.LatLng({lat: -34, lng: 151}, true);<br> new
-   * google.maps.LatLng({lat: -34, lng: 151}, null, true);<br> new
    * google.maps.LatLng(new google.maps.LatLng(-34, 151));<br> new
-   * google.maps.LatLng(new google.maps.LatLng(-34, 151), true);<br> new
-   * google.maps.LatLng(new google.maps.LatLng(-34, 151), null, true); </pre>
+   * google.maps.LatLng(new google.maps.LatLng(-34, 151), true);<br> </pre>
    *
    * Access by calling `const {LatLng} = await
    * google.maps.importLibrary("core")`. See
@@ -2737,10 +2745,8 @@ declare namespace google.maps {
      * <pre> new google.maps.LatLng(-34, 151);<br> new google.maps.LatLng(-34,
      * 151, true);<br> new google.maps.LatLng({lat: -34, lng: 151});<br> new
      * google.maps.LatLng({lat: -34, lng: 151}, true);<br> new
-     * google.maps.LatLng({lat: -34, lng: 151}, null, true);<br> new
      * google.maps.LatLng(new google.maps.LatLng(-34, 151));<br> new
-     * google.maps.LatLng(new google.maps.LatLng(-34, 151), true);<br> new
-     * google.maps.LatLng(new google.maps.LatLng(-34, 151), null, true); </pre>
+     * google.maps.LatLng(new google.maps.LatLng(-34, 151), true);<br> </pre>
      *
      * Access by calling `const {LatLng} = await
      * google.maps.importLibrary("core")`. See
@@ -2823,8 +2829,8 @@ declare namespace google.maps {
      *     longitude wrapping.
      */
     constructor(
-        value: google.maps.LatLngAltitudeLiteral|
-        google.maps.LatLngLiteral|google.maps.LatLng,
+        value: google.maps.LatLngAltitudeLiteral|google.maps.LatLng|
+        google.maps.LatLngLiteral,
         noClampNoWrap?: boolean);
     /**
      * Returns the altitude.
@@ -3454,16 +3460,16 @@ declare namespace google.maps {
      * If true, this map is configured properly to allow for the use of advanced
      * markers. Note that you must still import the <code>marker</code> library
      * in order to use advanced markers. See <a
-     * href="https://developers.google.com/maps/documentation/javascript/advanced-markers/start#update_your_map_initialization_code">https://developers.google.com/maps/documentation/javascript/advanced-markers/start#update_your_map_initialization_code</a>
+     * href="https://goo.gle/gmp-isAdvancedMarkersAvailable">https://goo.gle/gmp-isAdvancedMarkersAvailable</a>
      * for more information.
      */
     isAdvancedMarkersAvailable?: boolean;
     /**
      * If true, this map is configured properly to allow for the use of
      * data-driven styling for at least one FeatureLayer. See <a
-     * href="https://developers.google.com/maps/documentation/javascript/dds-boundaries/overview">https://developers.google.com/maps/documentation/javascript/dds-boundaries/overview</a>
+     * href="https://goo.gle/gmp-data-driven-styling">https://goo.gle/gmp-data-driven-styling</a>
      * and <a
-     * href="https://developers.google.com/maps/documentation/javascript/reference/data-driven-styling#FeatureLayer.isAvailable">https://developers.google.com/maps/documentation/javascript/reference/data-driven-styling#FeatureLayer.isAvailable</a>
+     * href="https://goo.gle/gmp-FeatureLayerIsAvailable">https://goo.gle/gmp-FeatureLayerIsAvailable</a>
      * for more information.
      */
     isDataDrivenStylingAvailable?: boolean;
@@ -4479,6 +4485,9 @@ declare namespace google.maps {
      * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * Set a collision behavior for markers on vector maps.
      * @defaultValue <code>null</code>
+     * @deprecated <code>collisionBehavior</code> is deprecated as of July 2023.
+     *     Use {@link
+     *     google.maps.marker.AdvancedMarkerElement.collisionBehavior} instead.
      */
     collisionBehavior?: string|null;
     /**
@@ -8470,6 +8479,124 @@ declare namespace google.maps.journeySharing {
     tasks: google.maps.journeySharing.Task[]|null;
   }
   /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * Fleet Location Provider.
+   *
+   * Access by calling `const {FleetEngineFleetLocationProvider} = await
+   * google.maps.importLibrary("journeySharing")`. See
+   * https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  export class FleetEngineFleetLocationProvider extends
+      google.maps.journeySharing.PollingLocationProvider {
+    /**
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     *
+     * Fleet Location Provider.
+     *
+     * Access by calling `const {FleetEngineFleetLocationProvider} = await
+     * google.maps.importLibrary("journeySharing")`. See
+     * https://developers.google.com/maps/documentation/javascript/libraries.
+     * @param options Options to pass to the location provider.
+     */
+    constructor(options: google.maps.journeySharing
+                    .FleetEngineFleetLocationProviderOptions);
+    /**
+     * The bounds within which to track vehicles. If no bounds are set, no
+     * vehicles will be tracked. To track all vehicles regardless of location,
+     * set bounds equivalent to the entire earth.
+     */
+    locationRestriction?: google.maps.LatLngBounds|null|
+        google.maps.LatLngBoundsLiteral;
+    /**
+     * This Field is read-only. Threshold for stale vehicle location. If the
+     * last updated location for the vehicle is older than this threshold, the
+     * vehicle will not be displayed.
+     */
+    staleLocationThresholdMillis: number;
+    /**
+     * The filter applied when fetching the vehicles.
+     */
+    vehicleFilter?: string|null;
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * Options for fleet location provider.
+   */
+  export interface FleetEngineFleetLocationProviderOptions {
+    /**
+     * Provides JSON Web Tokens for authenticating the client to Fleet Engine.
+     */
+    authTokenFetcher(
+        this: any, a: google.maps.journeySharing.AuthTokenFetcherOptions):
+        Promise<google.maps.journeySharing.AuthToken>;
+    /**
+     * The latitude/longitude bounds within which to track vehicles immediately
+     * after the location provider is instantiated. If not set, the location
+     * provider does not start tracking any vehicles; use {@link
+     * google.maps.journeySharing.FleetEngineFleetLocationProvider.locationRestriction}
+     * to set the bounds and begin tracking. To track all vehicles regardless of
+     * location, set bounds equivalent to the entire earth.
+     */
+    locationRestriction: google.maps.LatLngBounds|null|
+        google.maps.LatLngBoundsLiteral;
+    /**
+     * The consumer&#39;s project ID from Google Cloud Console.
+     */
+    projectId: string;
+    /**
+     * Threshold for stale vehicle location. If the last updated location for
+     * the vehicle is older than this threshold, the vehicle will not be
+     * displayed. Defaults to 24 hours in milliseconds. If the threshold is less
+     * than zero, or <i>Infinity</i>, the threshold will be ignored and the
+     * vehicle location will not be considered stale.
+     */
+    staleLocationThresholdMillis: number|null;
+    /**
+     * A filter query to apply when fetching vehicles. This filter is passed
+     * directly to Fleet Engine. <br><br>See <a
+     * href="https://developers.google.com/maps/documentation/transportation-logistics/on-demand-rides-deliveries-solution/reference/fleet-engine/rpc/maps.fleetengine.v1#listvehiclesrequest">ListVehiclesRequest.filter</a>
+     * for supported formats.<br><br>Note that valid filters for attributes must
+     * have the &quot;attributes&quot; prefix. For example, <code>attributes.x =
+     * &quot;y&quot;</code> or <code>attributes.&quot;x y&quot; =
+     * &quot;z&quot;</code>.
+     */
+    vehicleFilter: string|null;
+    /**
+     * Customization applied to a vehicle marker. <br><br>Use this field to
+     * specify custom styling (such as marker icon) and interactivity (such as
+     * click handling).<ul><li>If a {@link google.maps.MarkerOptions} object is
+     * specified, the changes specified in it are applied to the marker after
+     * the marker has been created, overwriting its default options if they
+     * exist.</li><li> If a function is specified, it is invoked once when the
+     * marker is created, before it is added to the map view. (On this
+     * invocation, the <code>isNew</code> parameter in the function parameters
+     * object is set to <code>true</code>.) Additionally, this function is
+     * invoked when the location provider receives data from Fleet Engine,
+     * regardless of whether the data corresponding to this marker have
+     * changed.<br><br>See {@link
+     * google.maps.journeySharing.VehicleMarkerCustomizationFunctionParams} for
+     * a list of supplied parameters and their uses.</li></ul>
+     */
+    vehicleMarkerCustomization?:
+        ((a: google.maps.journeySharing
+              .VehicleMarkerCustomizationFunctionParams) => void)|null;
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * The event object passed to the event handler when the {@link
+   * google.maps.journeySharing.FleetEngineFleetLocationProvider.update} event
+   * is triggered.
+   */
+  export interface FleetEngineFleetLocationProviderUpdateEvent {
+    /**
+     * The list of vehicles returned by the query. Unmodifiable.
+     */
+    vehicles: google.maps.journeySharing.Vehicle[]|null;
+  }
+  /**
    * Types of Fleet Engine services.
    *
    * Access by calling `const {FleetEngineServiceType} = await
@@ -8780,6 +8907,182 @@ declare namespace google.maps.journeySharing {
      * The trip structure returned by the update. Unmodifiable.
      */
     trip: google.maps.journeySharing.Trip|null;
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * Vehicle Location Provider.
+   *
+   * Access by calling `const {FleetEngineVehicleLocationProvider} = await
+   * google.maps.importLibrary("journeySharing")`. See
+   * https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  export class FleetEngineVehicleLocationProvider extends
+      google.maps.journeySharing.PollingLocationProvider {
+    /**
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     *
+     * Vehicle Location Provider.
+     *
+     * Access by calling `const {FleetEngineVehicleLocationProvider} = await
+     * google.maps.importLibrary("journeySharing")`. See
+     * https://developers.google.com/maps/documentation/javascript/libraries.
+     * @param options Options to pass to the location provider.
+     */
+    constructor(options: google.maps.journeySharing
+                    .FleetEngineVehicleLocationProviderOptions);
+    /**
+     * This Field is read-only. Threshold for stale vehicle location. If the
+     * last updated location for the vehicle is older than this threshold, the
+     * vehicle will not be displayed.
+     */
+    staleLocationThresholdMillis: number;
+    /**
+     * ID for the vehicle that this location provider observes. Set this field
+     * to track a vehicle.
+     */
+    vehicleId: string;
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * Options for vehicle location provider.
+   */
+  export interface FleetEngineVehicleLocationProviderOptions {
+    /**
+     * Provides JSON Web Tokens for authenticating the client to Fleet Engine.
+     */
+    authTokenFetcher(
+        this: any, a: google.maps.journeySharing.AuthTokenFetcherOptions):
+        Promise<google.maps.journeySharing.AuthToken>;
+    /**
+     * Customization applied to the vehicle trip destination marker. <br><br>Use
+     * this field to specify custom styling (such as marker icon) and
+     * interactivity (such as click handling).<ul><li>If a {@link
+     * google.maps.MarkerOptions} object is specified, the changes specified in
+     * it are applied to the marker after the marker has been created,
+     * overwriting its default options if they exist.</li><li>If a function is
+     * specified, it is invoked once when the marker is created, before it is
+     * added to the map view. (On this invocation, the <code>isNew</code>
+     * parameter in the function parameters object is set to <code>true</code>.)
+     * Additionally, this function is invoked when the location provider
+     * receives data from Fleet Engine, regardless of whether the data
+     * corresponding to this marker have changed.<br><br>See {@link
+     * google.maps.journeySharing.VehicleWaypointMarkerCustomizationFunctionParams}
+     * for a list of supplied parameters and their uses.</li></ul>
+     */
+    destinationMarkerCustomization?:
+        ((a: google.maps.journeySharing
+              .VehicleWaypointMarkerCustomizationFunctionParams) =>
+             void)|google.maps.MarkerOptions|null;
+    /**
+     * Customization applied to the vehicle trip intermediate destination
+     * markers. <br><br>Use this field to specify custom styling (such as marker
+     * icon) and interactivity (such as click handling).<ul><li>If a {@link
+     * google.maps.MarkerOptions} object is specified, the changes specified in
+     * it are applied to the marker after the marker has been created,
+     * overwriting its default options if they exist.</li><li>If a function is
+     * specified, it is invoked once when the marker is created, before it is
+     * added to the map view. (On this invocation, the <code>isNew</code>
+     * parameter in the function parameters object is set to <code>true</code>.)
+     * Additionally, this function is invoked when the location provider
+     * receives data from Fleet Engine, regardless of whether the data
+     * corresponding to this marker have changed.<br><br>See {@link
+     * google.maps.journeySharing.VehicleWaypointMarkerCustomizationFunctionParams}
+     * for a list of supplied parameters and their uses.</li></ul>
+     */
+    intermediateDestinationMarkerCustomization?:
+        ((a: google.maps.journeySharing
+              .VehicleWaypointMarkerCustomizationFunctionParams) =>
+             void)|google.maps.MarkerOptions|null;
+    /**
+     * Customization applied to the vehicle trip origin marker. <br><br>Use this
+     * field to specify custom styling (such as marker icon) and interactivity
+     * (such as click handling).<ul><li>If a {@link google.maps.MarkerOptions}
+     * object is specified, the changes specified in it are applied to the
+     * marker after the marker has been created, overwriting its default options
+     * if they exist.</li><li>If a function is specified, it is invoked once
+     * when the marker is created, before it is added to the map view. (On this
+     * invocation, the <code>isNew</code> parameter in the function parameters
+     * object is set to <code>true</code>.) Additionally, this function is
+     * invoked when the location provider receives data from Fleet Engine,
+     * regardless of whether the data corresponding to this marker have
+     * changed.<br><br>See {@link
+     * google.maps.journeySharing.VehicleWaypointMarkerCustomizationFunctionParams}
+     * for a list of supplied parameters and their uses.</li></ul>
+     */
+    originMarkerCustomization?:
+        ((a: google.maps.journeySharing
+              .VehicleWaypointMarkerCustomizationFunctionParams) =>
+             void)|google.maps.MarkerOptions|null;
+    /**
+     * Minimum time between fetching location updates in milliseconds. If it
+     * takes longer than <code>pollingIntervalMillis</code> to fetch a location
+     * update, the next location update is not started until the current one
+     * finishes. <br><br>Setting this value to 0 disables recurring location
+     * updates. A new location update is fetched if any of the parameters
+     * observed by the location provider changes. <br><br>The default polling
+     * interval is 5000 milliseconds, the minimum interval. If you set the
+     * polling interval to a lower non-zero value, 5000 is used.
+     */
+    pollingIntervalMillis: number|null;
+    /**
+     * The consumer&#39;s project ID from Google Cloud Console.
+     */
+    projectId: string;
+    /**
+     * Threshold for stale vehicle location. If the last updated location for
+     * the vehicle is older this threshold, the vehicle will not be displayed.
+     * Defaults to 24 hours in milliseconds. If the threshold is less than 0, or
+     * <i>Infinity</i>, the threshold will be ignored and the vehicle location
+     * will not be considered stale.
+     */
+    staleLocationThresholdMillis: number|null;
+    /**
+     * The vehicle ID to track immediately after the location provider is
+     * instantiated. If not specified, the location provider does not start
+     * tracking any vehicle; use {@link
+     * google.maps.journeySharing.FleetEngineVehicleLocationProvider.vehicleId}
+     * to set the ID and begin tracking.
+     */
+    vehicleId: string|null;
+    /**
+     * Customization applied to the vehicle marker. <br><br>Use this field to
+     * specify custom styling (such as marker icon) and interactivity (such as
+     * click handling).<ul><li>If a {@link google.maps.MarkerOptions} object is
+     * specified, the changes specified in it are applied to the marker after
+     * the marker has been created, overwriting its default options if they
+     * exist.</li><li>If a function is specified, it is invoked once when the
+     * marker is created, before it is added to the map view. (On this
+     * invocation, the <code>isNew</code> parameter in the function parameters
+     * object is set to <code>true</code>.) Additionally, this function is
+     * invoked when the location provider receives data from Fleet Engine,
+     * regardless of whether the data corresponding to this marker have
+     * changed.<br><br>See {@link
+     * google.maps.journeySharing.VehicleMarkerCustomizationFunctionParams} for
+     * a list of supplied parameters and their uses.</li></ul>
+     */
+    vehicleMarkerCustomization?:
+        ((a: google.maps.journeySharing
+              .VehicleMarkerCustomizationFunctionParams) =>
+             void)|google.maps.MarkerOptions|null;
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * The event object passed to the event handler when the {@link
+   * google.maps.journeySharing.FleetEngineVehicleLocationProvider.update} event
+   * is triggered.
+   */
+  export interface FleetEngineVehicleLocationProviderUpdateEvent {
+    /**
+     * The list of trips completed by this vehicle. Unmodifiable.
+     */
+    trips: google.maps.journeySharing.Trip[]|null;
+    /**
+     * The vehicle data structure returned by the update. Unmodifiable.
+     */
+    vehicle: google.maps.journeySharing.Vehicle|null;
   }
   /**
    * The map view.
@@ -9735,6 +10038,60 @@ declare namespace google.maps.journeySharing {
     trip: google.maps.journeySharing.Trip;
   }
   /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * Trip types supported by a {@link google.maps.journeySharing.Vehicle}.
+   *
+   * Access by calling `const {TripType} = await
+   * google.maps.importLibrary("journeySharing")`. See
+   * https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  export enum TripType {
+    /**
+     * The trip is exclusive to a vehicle.
+     */
+    EXCLUSIVE = 'EXCLUSIVE',
+    /**
+     * The trip may share a vehicle with other trips.
+     */
+    SHARED = 'SHARED',
+    /**
+     * Unknown trip type.
+     */
+    UNKNOWN_TRIP_TYPE = 'UNKNOWN_TRIP_TYPE',
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * TripWaypoint type.
+   */
+  export interface TripWaypoint {
+    /**
+     * The path distance between the previous waypoint (or the vehicle&#39;s
+     * current location, if this waypoint is the first in the list of waypoints)
+     * to this waypoint in meters.
+     */
+    distanceMeters: number|null;
+    /**
+     * Travel time between the previous waypoint (or the vehicle&#39;s current
+     * location, if this waypoint is the first in the list of waypoints) to this
+     * waypoint in milliseconds.
+     */
+    durationMillis: number|null;
+    /**
+     * The location of the waypoint.
+     */
+    location: google.maps.LatLngLiteral|null;
+    /**
+     * The trip associated with this waypoint.
+     */
+    tripId: string|null;
+    /**
+     * The role this waypoint plays in this trip, such as pickup or dropoff.
+     */
+    waypointType: google.maps.journeySharing.WaypointType|null;
+  }
+  /**
    * Parameters specific to marker customization functions that apply options to
    * markers representing trip waypoint locations. Used by {@link
    * google.maps.journeySharing.FleetEngineTripLocationProviderOptions.waypointMarkerCustomization}.
@@ -9747,6 +10104,75 @@ declare namespace google.maps.journeySharing {
      * information about the waypoint.
      */
     waypointIndex: number;
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * The details for a vehicle returned by Fleet Engine.
+   */
+  export interface Vehicle {
+    /**
+     * Custom vehicle attributes.
+     */
+    attributes: {[key: string]: any};
+    /**
+     * The waypoint where current route segment ends.
+     */
+    currentRouteSegmentEndPoint: google.maps.journeySharing.TripWaypoint|null;
+    /**
+     * Time when the current route segment was set.
+     */
+    currentRouteSegmentVersion: Date|null;
+    /**
+     * List of trip IDs for trips currently assigned to this vehicle.
+     */
+    currentTrips: string[]|null;
+    /**
+     * The ETA to the first entry in the waypoints field.
+     */
+    etaToFirstWaypoint: Date|null;
+    /**
+     * The last reported location of the vehicle.
+     */
+    latestLocation: google.maps.journeySharing.VehicleLocationUpdate|null;
+    /**
+     * The total numbers of riders this vehicle can carry. The driver is not
+     * considered in this value.
+     */
+    maximumCapacity: number|null;
+    /**
+     * In the format &quot;providers/{provider_id}/vehicles/{vehicle_id}&quot;.
+     * The vehicle_id must be a unique identifier.
+     */
+    name: string;
+    /**
+     * The current navigation status of the vehicle.
+     */
+    navigationStatus: google.maps.journeySharing.VehicleNavigationStatus;
+    /**
+     * The remaining driving distance in the current route segment, in meters.
+     */
+    remainingDistanceMeters: number;
+    /**
+     * Trip types supported by this vehicle.
+     */
+    supportedTripTypes: google.maps.journeySharing.TripType[]|null;
+    /**
+     * The vehicle state.
+     */
+    vehicleState: google.maps.journeySharing.VehicleState;
+    /**
+     * The type of this vehicle.
+     */
+    vehicleType: google.maps.journeySharing.VehicleType;
+    /**
+     * The remaining waypoints assigned to this Vehicle.
+     */
+    waypoints: google.maps.journeySharing.TripWaypoint[]|null;
+    /**
+     * Last time the waypoints field was updated.
+     */
+    waypointsVersion: Date|null;
   }
   /**
    * VehicleJourneySegment type
@@ -9792,6 +10218,109 @@ declare namespace google.maps.journeySharing {
     time: Date|null;
   }
   /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * Parameters specific to marker customization functions that apply options to
+   * vehicle markers. Used by {@link
+   * google.maps.journeySharing.FleetEngineVehicleLocationProviderOptions.vehicleMarkerCustomization}
+   * and {@link
+   * google.maps.journeySharing.FleetEngineFleetLocationProviderOptions.vehicleMarkerCustomization}.
+   */
+  export interface VehicleMarkerCustomizationFunctionParams extends
+      google.maps.journeySharing.MarkerCustomizationFunctionParams {
+    /**
+     * The vehicle represented by this marker.
+     */
+    vehicle: google.maps.journeySharing.Vehicle;
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * The current navigation status of a {@link
+   * google.maps.journeySharing.Vehicle}.
+   *
+   * Access by calling `const {VehicleNavigationStatus} = await
+   * google.maps.importLibrary("journeySharing")`. See
+   * https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  export enum VehicleNavigationStatus {
+    /**
+     * The vehicle is within approximately 50m of the destination.
+     */
+    ARRIVED_AT_DESTINATION = 'ARRIVED_AT_DESTINATION',
+    /**
+     * Turn-by-turn navigation is available and the Driver app navigation has
+     * entered GUIDED_NAV mode.
+     */
+    ENROUTE_TO_DESTINATION = 'ENROUTE_TO_DESTINATION',
+    /**
+     * The Driver app&#39;s navigation is in FREE_NAV mode.
+     */
+    NO_GUIDANCE = 'NO_GUIDANCE',
+    /**
+     * The vehicle has gone off the suggested route.
+     */
+    OFF_ROUTE = 'OFF_ROUTE',
+    /**
+     * Unspecified navigation status.
+     */
+    UNKNOWN_NAVIGATION_STATUS = 'UNKNOWN_NAVIGATION_STATUS',
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * The current state of a {@link google.maps.journeySharing.Vehicle}.
+   *
+   * Access by calling `const {VehicleState} = await
+   * google.maps.importLibrary("journeySharing")`. See
+   * https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  export enum VehicleState {
+    /**
+     * The vehicle is not accepting new trips.
+     */
+    OFFLINE = 'OFFLINE',
+    /**
+     * The vehicle is accepting new trips.
+     */
+    ONLINE = 'ONLINE',
+    /**
+     * Unknown vehicle state.
+     */
+    UNKNOWN_VEHICLE_STATE = 'UNKNOWN_VEHICLE_STATE',
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * The type of {@link google.maps.journeySharing.Vehicle}.
+   *
+   * Access by calling `const {VehicleType} = await
+   * google.maps.importLibrary("journeySharing")`. See
+   * https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  export enum VehicleType {
+    /**
+     * An automobile.
+     */
+    AUTO = 'AUTO',
+    /**
+     * Any vehicle that acts as a taxi (typically licensed or regulated).
+     */
+    TAXI = 'TAXI',
+    /**
+     * A vehicle with a large storage capacity.
+     */
+    TRUCK = 'TRUCK',
+    /**
+     * A motorcycle, moped, or other two-wheeled vehicle.
+     */
+    TWO_WHEELER = 'TWO_WHEELER',
+    /**
+     * Unknown vehicle type.
+     */
+    UNKNOWN = 'UNKNOWN',
+  }
+  /**
    * VehicleWaypoint type.
    */
   export interface VehicleWaypoint {
@@ -9817,6 +10346,53 @@ declare namespace google.maps.journeySharing {
      * waypoint.
      */
     path: google.maps.LatLngLiteral[]|null;
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * Parameters specific to marker customization functions that apply options to
+   * vehicle waypoint markers. Used by {@link
+   * google.maps.journeySharing.FleetEngineVehicleLocationProviderOptions.originMarkerCustomization}, {@link
+   * google.maps.journeySharing.FleetEngineVehicleLocationProviderOptions.destinationMarkerCustomization}
+   * and {@link
+   * google.maps.journeySharing.FleetEngineVehicleLocationProviderOptions.intermediateDestinationMarkerCustomization}
+   */
+  export interface VehicleWaypointMarkerCustomizationFunctionParams extends
+      google.maps.journeySharing.VehicleMarkerCustomizationFunctionParams {
+    /**
+     * The 0-based waypoint index associated with this marker. Use this index
+     * on {@link google.maps.journeySharing.Vehicle.waypoints} to retrieve
+     * information about the waypoint.
+     */
+    waypointIndex: number;
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * Waypoint types supported by {@link google.maps.journeySharing.Vehicle}.
+   *
+   * Access by calling `const {WaypointType} = await
+   * google.maps.importLibrary("journeySharing")`. See
+   * https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  export enum WaypointType {
+    /**
+     * Waypoints for dropping off riders.
+     */
+    DROP_OFF_WAYPOINT_TYPE = 'DROP_OFF_WAYPOINT_TYPE',
+    /**
+     * Waypoints for intermediate destinations in a multi-destination trip.
+     */
+    INTERMEDIATE_DESTINATION_WAYPOINT_TYPE =
+        'INTERMEDIATE_DESTINATION_WAYPOINT_TYPE',
+    /**
+     * Waypoints for picking up riders.
+     */
+    PICKUP_WAYPOINT_TYPE = 'PICKUP_WAYPOINT_TYPE',
+    /**
+     * Unknown waypoint type.
+     */
+    UNKNOWN_WAYPOINT_TYPE = 'UNKNOWN_WAYPOINT_TYPE',
   }
 }
 declare namespace google.maps.localContext {
