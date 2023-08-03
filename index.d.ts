@@ -4883,6 +4883,7 @@ declare namespace google.maps {
   export interface PlacesLibrary {
     AddressComponent: typeof google.maps.places.AddressComponent;
     Attribution: typeof google.maps.places.Attribution;
+    AuthorAttribution: typeof google.maps.places.AuthorAttribution;
     Autocomplete: typeof google.maps.places.Autocomplete;
     AutocompleteService: typeof google.maps.places.AutocompleteService;
     AutocompleteSessionToken:
@@ -4892,7 +4893,6 @@ declare namespace google.maps {
     OpeningHoursPeriod: typeof google.maps.places.OpeningHoursPeriod;
     OpeningHoursPoint: typeof google.maps.places.OpeningHoursPoint;
     Photo: typeof google.maps.places.Photo;
-    PhotoAttribution: typeof google.maps.places.PhotoAttribution;
     Place: typeof google.maps.places.Place;
     PlacesService: typeof google.maps.places.PlacesService;
     PlacesServiceStatus: typeof google.maps.places.PlacesServiceStatus;
@@ -8556,7 +8556,7 @@ declare namespace google.maps.journeySharing {
     /**
      * A filter query to apply when fetching vehicles. This filter is passed
      * directly to Fleet Engine. <br><br>See <a
-     * href="https://developers.google.com/maps/documentation/transportation-logistics/on-demand-rides-deliveries-solution/reference/fleet-engine/rpc/maps.fleetengine.v1#listvehiclesrequest">ListVehiclesRequest.filter</a>
+     * href="https://goo.gle/ListVehiclesRequest-filter">ListVehiclesRequest.filter</a>
      * for supported formats.<br><br>Note that valid filters for attributes must
      * have the &quot;attributes&quot; prefix. For example, <code>attributes.x =
      * &quot;y&quot;</code> or <code>attributes.&quot;x y&quot; =
@@ -11094,6 +11094,28 @@ declare namespace google.maps.places {
     providerURI: string|null;
   }
   /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   *
+   * Access by calling `const {AuthorAttribution} = await
+   * google.maps.importLibrary("places")`. See
+   * https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  export class AuthorAttribution {
+    /**
+     * Author&#39;s name for this result.
+     */
+    displayName: string;
+    /**
+     * Author&#39;s photo URI for this result. This may not always be available.
+     */
+    photoURI: string|null;
+    /**
+     * Author&#39;s profile URI for this result.
+     */
+    uri: string|null;
+  }
+  /**
    * A widget that provides Place predictions based on a user&#39;s text input.
    * It attaches to an input element of type <code>text</code>, and listens for
    * text entry in that field. The list of predictions is presented as a
@@ -11637,7 +11659,7 @@ declare namespace google.maps.places {
     /**
      * Attribution text to be displayed for this photo.
      */
-    attributions: google.maps.places.PhotoAttribution[];
+    authorAttributions: google.maps.places.AuthorAttribution[];
     /**
      * Returns the image URL corresponding to the specified options.
      */
@@ -11650,21 +11672,6 @@ declare namespace google.maps.places {
      * The width of the photo in pixels.
      */
     widthPx: number;
-  }
-  /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
-   *
-   * Access by calling `const {PhotoAttribution} = await
-   * google.maps.importLibrary("places")`. See
-   * https://developers.google.com/maps/documentation/javascript/libraries.
-   */
-  export class PhotoAttribution {
-    /**
-     * Attribution text to be displayed for this Photo result.
-     */
-    author: string;
-    authorURI: string|null;
   }
   /**
    * Defines photo-requesting options.
@@ -12931,17 +12938,9 @@ declare namespace google.maps.places {
    */
   export class Review {
     /**
-     * The name of the reviewer.
+     * The reviewer.
      */
-    author: string|null;
-    /**
-     * A URL to the reviwer&#39;s profile image.
-     */
-    authorPhotoURI: string|null;
-    /**
-     * A URL to the reviewer&#39;s profile.
-     */
-    authorURI: string|null;
+    authorAttribution: google.maps.places.AuthorAttribution|null;
     publishTime: Date|null;
     /**
      * The rating of this review, a number between 1.0 and 5.0 (inclusive).
