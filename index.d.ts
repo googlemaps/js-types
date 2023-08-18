@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-// Google Maps JS API Version: 3.53
+// Google Maps JS API Version: 3.54
 // tslint:disable:enforce-name-casing
 // tslint:disable:no-any
 // tslint:disable:interface-over-type-literal
