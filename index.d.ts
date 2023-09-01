@@ -937,6 +937,10 @@ declare namespace google.maps {
      */
     geocoded_waypoints?: google.maps.DirectionsGeocodedWaypoint[];
     /**
+     * The DirectionsRequest that yielded this result.
+     */
+    request: google.maps.DirectionsRequest;
+    /**
      * An array of <code>DirectionsRoute</code>s, each of which contains
      * information about the legs and steps of which it is composed. There will
      * only be one route unless the <code>DirectionsRequest</code> was made with
@@ -3507,13 +3511,24 @@ declare namespace google.maps {
      * https://developers.google.com/maps/documentation/javascript/libraries.
      */
     constructor();
+    /**
+     * The center latitude/longitude of the map.
+     */
     center: google.maps.LatLng|google.maps.LatLngLiteral|null;
     /**
      * A reference to the {@link google.maps.Map} that the MapElement uses
      * internally.
      */
     innerMap: google.maps.Map;
+    /**
+     * The Map ID of the map. See the <a
+     * href="https://developers.google.com/maps/documentation/get-map-id">Map ID
+     * documentation</a> for more information.
+     */
     mapId: string|null;
+    /**
+     * The zoom level of the map.
+     */
     zoom: number|null;
   }
   /**
