@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+// g3-format-clang
 // Google Maps JS API Version: 3.54
 // tslint:disable:enforce-name-casing
 // tslint:disable:no-any
@@ -12179,6 +12180,13 @@ declare namespace google.maps.places {
     static findPlaceFromQuery(
         this: any, request: google.maps.places.FindPlaceFromQueryRequest):
         Promise<{places: google.maps.places.Place[]}>;
+    /**
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     * Text query based place search.
+     */
+    static searchByText(
+        this: any, request: google.maps.places.SearchByTextRequest):
+        Promise<{places: google.maps.places.Place[]}>;
   }
   /**
    * Defines information about an aspect of the place that users have reviewed.
@@ -13277,6 +13285,124 @@ declare namespace google.maps.places {
      * towards, but not restricted to, queries targeting these bounds.
      */
     bounds?: google.maps.LatLngBounds|null|google.maps.LatLngBoundsLiteral;
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * RankBy enum for SearchByTextRequest.
+   *
+   * Access by calling `const {SearchByTextRankBy} = await
+   * google.maps.importLibrary("places")`. See
+   * https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  export enum SearchByTextRankBy {
+    /**
+     * Ranks results by distance.
+     */
+    DISTANCE = 'DISTANCE',
+    /**
+     * Ranks results by relevance.
+     */
+    RELEVANCE = 'RELEVANCE',
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   *
+   * Request interface for {@link google.maps.places.Place.searchByText}.
+   */
+  export interface SearchByTextRequest {
+    /**
+     * Fields to be included in the response, <a
+     * href="https://developers.google.com/maps/billing/understanding-cost-of-use#places-product">which
+     * will be billed for</a>. If <code>[&#39;ALL&#39;]</code> is passed in, all
+     * available fields will be returned and billed for (this is not recommended
+     * for production deployments). For a list of fields see {@link
+     * google.maps.places.PlaceResult}. Nested fields can be specified with
+     * dot-paths (for example, <code>"geometry.location"</code>).
+     */
+    fields: string[];
+    /**
+     * The requested place type. Full list of types supported: <a
+     * href="https://developers.google.com/maps/documentation/places/web-service/place-types">https://developers.google.com/maps/documentation/places/web-service/place-types</a>.
+     * Only one included type is supported. See {@link
+     * google.maps.places.SearchByTextRequest.useStrictTypeFiltering}
+     */
+    includedType?: string;
+    /**
+     * Used to restrict the search to places that are currently open.
+     * @defaultValue <code>false</code>
+     */
+    isOpenNow?: boolean;
+    /**
+     * Place details will be displayed with the preferred language if available.
+     * Will default to the browser&#39;s language preference. Current list of
+     * supported languages: <a
+     * href="https://developers.google.com/maps/faq#languagesupport">https://developers.google.com/maps/faq#languagesupport</a>.
+     */
+    language?: string;
+    /**
+     * The region to search. This location serves as a bias which means results
+     * around given location might be returned. Cannot be set along with
+     * locationRestriction.
+     */
+    locationBias?: google.maps.LatLng|google.maps.LatLngLiteral|
+        google.maps.LatLngBounds|google.maps.LatLngBoundsLiteral|
+        google.maps.CircleLiteral|google.maps.Circle;
+    /**
+     * The region to search. This location serves as a restriction which means
+     * results outside given location will not be returned. Cannot be set along
+     * with locationBias.
+     */
+    locationRestriction?: google.maps.LatLngBounds|
+        google.maps.LatLngBoundsLiteral;
+    /**
+     * Maximum number of results to return. It must be between 1 and 20,
+     * inclusively.
+     */
+    maxResultCount?: number;
+    /**
+     * Filter out results whose average user rating is strictly less than this
+     * limit. A valid value must be an float between 0 and 5 (inclusively) at a
+     * 0.5 cadence i.e. [0, 0.5, 1.0, ... , 5.0] inclusively. The input rating
+     * will be rounded up to the nearest 0.5(ceiling). For instance, a rating of
+     * 0.6 will eliminate all results with a less than 1.0 rating.
+     */
+    minRating?: number;
+    /**
+     * Used to restrict the search to places that are marked as certain price
+     * levels. Any combinations of price levels can be chosen. Defaults to all
+     * price levels.
+     */
+    priceLevels?: google.maps.places.PriceLevel[];
+    /**
+     * @deprecated Please use textQuery instead
+     */
+    query?: string;
+    /**
+     * How results will be ranked in the response.
+     * @defaultValue <code>SearchByTextRankBy.DISTANCE</code>
+     */
+    rankBy?: google.maps.places.SearchByTextRankBy;
+    /**
+     * The Unicode country/region code (CLDR) of the location where the request
+     * is coming from. This parameter is used to display the place details, like
+     * region-specific place name, if available. The parameter can affect
+     * results based on applicable law. For more information, see <a
+     * href="https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html">https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html</a>.
+     * Note that 3-digit region codes are not currently supported.
+     */
+    region?: string;
+    /**
+     * Required. The text query for textual search.
+     */
+    textQuery?: string;
+    /**
+     * Used to set strict type filtering for {@link
+     * google.maps.places.SearchByTextRequest.includedType}. If set to true,
+     * only results of the same type will be returned.
+     * @defaultValue <code>false</code>
+     */
+    useStrictTypeFiltering?: boolean;
   }
   /**
    * Contains structured information about the place&#39;s description, divided
