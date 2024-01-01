@@ -24,7 +24,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "eslint-plugin-jest": "^26.1.5",
+    "eslint-plugin-jest": "^27.6.1",
     "gts": "^3.1.0"
   }
 }
