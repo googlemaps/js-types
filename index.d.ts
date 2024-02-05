@@ -2602,6 +2602,7 @@ declare namespace google.maps {
     FleetEngineTripLocationProvider: typeof google.maps.journeySharing.FleetEngineTripLocationProvider;
     FleetEngineVehicleLocationProvider: typeof google.maps.journeySharing.FleetEngineVehicleLocationProvider;
     JourneySharingMapView: typeof google.maps.journeySharing.JourneySharingMapView;
+    Speed: typeof google.maps.journeySharing.Speed;
     TripType: typeof google.maps.journeySharing.TripType;
     VehicleNavigationStatus: typeof google.maps.journeySharing.VehicleNavigationStatus;
     VehicleState: typeof google.maps.journeySharing.VehicleState;
@@ -4420,6 +4421,10 @@ declare namespace google.maps {
      */
     PLACES_GATEWAY = 'PLACES_GATEWAY',
     /**
+     * Identifies the Get Place API within the Places API.
+     */
+    PLACES_GET_PLACE = 'PLACES_GET_PLACE',
+    /**
      * Identifies the LocalContextSearch API within the Places API.
      */
     PLACES_LOCAL_CONTEXT_SEARCH = 'PLACES_LOCAL_CONTEXT_SEARCH',
@@ -4427,6 +4432,10 @@ declare namespace google.maps {
      * Identifies the NearbySearch API within the Places API.
      */
     PLACES_NEARBY_SEARCH = 'PLACES_NEARBY_SEARCH',
+    /**
+     * Identifies the Search Text API within the Places API.
+     */
+    PLACES_SEARCH_TEXT = 'PLACES_SEARCH_TEXT',
     /**
      * Identifies the getPanorama method within the Streetview service.
      */
@@ -5124,6 +5133,7 @@ declare namespace google.maps {
     RankBy: typeof google.maps.places.RankBy;
     Review: typeof google.maps.places.Review;
     SearchBox: typeof google.maps.places.SearchBox;
+    SearchByTextRankPreference: typeof google.maps.places.SearchByTextRankPreference;
   }
   /**
    * Access by calling `const {Point} = await
@@ -8742,14 +8752,14 @@ declare namespace google.maps.journeySharing {
      * parameters object is set to <code>true</code>.) Additionally, this
      * function is invoked when the polyline&#39;s coordinates change, or when
      * the location provider receives data from Fleet Engine, regardless of
-     * whether the data corresponding to this marker have
+     * whether the data corresponding to this polyline have
      * changed.<br><br>See {@link
-     * google.maps.journeySharing.DeliveryVehicleMarkerCustomizationFunctionParams}
+     * google.maps.journeySharing.DeliveryVehiclePolylineCustomizationFunctionParams}
      * for a list of supplied parameters and their uses.</li></ul>
      */
     activePolylineCustomization?:
       | ((
-          a: google.maps.journeySharing.DeliveryVehicleMarkerCustomizationFunctionParams,
+          a: google.maps.journeySharing.DeliveryVehiclePolylineCustomizationFunctionParams,
         ) => void)
       | google.maps.PolylineOptions
       | null;
@@ -8840,14 +8850,14 @@ declare namespace google.maps.journeySharing {
      * parameter in the function parameters object is set to <code>true</code>.)
      * Additionally, this function is invoked when the polyline&#39;s
      * coordinates change, or when the location provider receives data from
-     * Fleet Engine, regardless of whether the data corresponding to this marker
-     * have changed.<br><br>See {@link
-     * google.maps.journeySharing.DeliveryVehicleMarkerCustomizationFunctionParams}
+     * Fleet Engine, regardless of whether the data corresponding to this
+     * polyline have changed.<br><br>See {@link
+     * google.maps.journeySharing.DeliveryVehiclePolylineCustomizationFunctionParams}
      * for a list of supplied parameters and their uses.</li></ul>
      */
     remainingPolylineCustomization?:
       | ((
-          a: google.maps.journeySharing.DeliveryVehicleMarkerCustomizationFunctionParams,
+          a: google.maps.journeySharing.DeliveryVehiclePolylineCustomizationFunctionParams,
         ) => void)
       | google.maps.PolylineOptions
       | null;
@@ -8882,13 +8892,13 @@ declare namespace google.maps.journeySharing {
      * object is set to <code>true</code>.) Additionally, this function is
      * invoked when the polyline&#39;s coordinates change, or when the location
      * provider receives data from Fleet Engine, regardless of whether the data
-     * corresponding to this marker have changed.<br><br>See {@link
-     * google.maps.journeySharing.DeliveryVehicleMarkerCustomizationFunctionParams}
+     * corresponding to this polyline have changed.<br><br>See {@link
+     * google.maps.journeySharing.DeliveryVehiclePolylineCustomizationFunctionParams}
      * for a list of supplied parameters and their uses.</li></ul>
      */
     takenPolylineCustomization?:
       | ((
-          a: google.maps.journeySharing.DeliveryVehicleMarkerCustomizationFunctionParams,
+          a: google.maps.journeySharing.DeliveryVehiclePolylineCustomizationFunctionParams,
         ) => void)
       | google.maps.PolylineOptions
       | null;
@@ -9163,10 +9173,10 @@ declare namespace google.maps.journeySharing {
      * parameters object is set to <code>true</code>.) Additionally, this
      * function is invoked when the polyline&#39;s coordinates change, or when
      * the location provider receives data from Fleet Engine, regardless of
-     * whether the data corresponding to this marker have
+     * whether the data corresponding to this polyline have
      * changed.<br><br>See {@link
-     * google.maps.journeySharing.ShipmentMarkerCustomizationFunctionParams} for
-     * a list of supplied parameters and their uses.</li></ul>
+     * google.maps.journeySharing.ShipmentPolylineCustomizationFunctionParams}
+     * for a list of supplied parameters and their uses.</li></ul>
      */
     activePolylineCustomization?:
       | ((
@@ -9256,10 +9266,10 @@ declare namespace google.maps.journeySharing {
      * parameter in the function parameters object is set to <code>true</code>.)
      * Additionally, this function is invoked when the polyline&#39;s
      * coordinates change, or when the location provider receives data from
-     * Fleet Engine, regardless of whether the data corresponding to this marker
-     * have changed.<br><br>See {@link
-     * google.maps.journeySharing.ShipmentMarkerCustomizationFunctionParams} for
-     * a list of supplied parameters and their uses.</li></ul>
+     * Fleet Engine, regardless of whether the data corresponding to this
+     * polyline have changed.<br><br>See {@link
+     * google.maps.journeySharing.ShipmentPolylineCustomizationFunctionParams}
+     * for a list of supplied parameters and their uses.</li></ul>
      */
     remainingPolylineCustomization?:
       | ((
@@ -9280,9 +9290,9 @@ declare namespace google.maps.journeySharing {
      * object is set to <code>true</code>.) Additionally, this function is
      * invoked when the polyline&#39;s coordinates change, or when the location
      * provider receives data from Fleet Engine, regardless of whether the data
-     * corresponding to this marker have changed.<br><br>See {@link
-     * google.maps.journeySharing.ShipmentMarkerCustomizationFunctionParams} for
-     * a list of supplied parameters and their uses.</li></ul>
+     * corresponding to this polyline have changed.<br><br>See {@link
+     * google.maps.journeySharing.ShipmentPolylineCustomizationFunctionParams}
+     * for a list of supplied parameters and their uses.</li></ul>
      */
     takenPolylineCustomization?:
       | ((
@@ -9358,6 +9368,30 @@ declare namespace google.maps.journeySharing {
      * to begin tracking.
      */
     tripId: string;
+    /**
+     * Polyline customization function that colors the active polyline according
+     * to its speed reading. Specify this function as the {@link
+     * google.maps.journeySharing.FleetEngineTripLocationProviderOptions.activePolylineCustomization}
+     * to render a traffic-aware polyline for the active polyline.
+     * @param params The parameters provided to the polyline customization
+     *     function.
+     */
+    static TRAFFIC_AWARE_ACTIVE_POLYLINE_CUSTOMIZATION_FUNCTION(
+      this: any,
+      params: google.maps.journeySharing.TripPolylineCustomizationFunctionParams,
+    ): void;
+    /**
+     * Polyline customization function that colors the remaining polyline
+     * according to its speed reading. Specify this function as the {@link
+     * google.maps.journeySharing.FleetEngineTripLocationProviderOptions.remainingPolylineCustomization}
+     * to render a traffic-aware polyline for the remaining polyline.
+     * @param params The parameters provided to the polyline customization
+     *     function.
+     */
+    static TRAFFIC_AWARE_REMAINING_POLYLINE_CUSTOMIZATION_FUNCTION(
+      this: any,
+      params: google.maps.journeySharing.TripPolylineCustomizationFunctionParams,
+    ): void;
   }
   /**
    * Options for trip location provider.
@@ -9376,14 +9410,14 @@ declare namespace google.maps.journeySharing {
      * parameters object is set to <code>true</code>.) Additionally, this
      * function is invoked when the polyline&#39;s coordinates change, or when
      * the location provider receives data from Fleet Engine, regardless of
-     * whether the data corresponding to this marker have
+     * whether the data corresponding to this polyline have
      * changed.<br><br>See {@link
-     * google.maps.journeySharing.TripMarkerCustomizationFunctionParams} for a
+     * google.maps.journeySharing.TripPolylineCustomizationFunctionParams} for a
      * list of supplied parameters and their uses.</li></ul>
      */
     activePolylineCustomization?:
       | ((
-          a: google.maps.journeySharing.TripMarkerCustomizationFunctionParams,
+          a: google.maps.journeySharing.TripPolylineCustomizationFunctionParams,
         ) => void)
       | google.maps.PolylineOptions
       | null;
@@ -9466,14 +9500,14 @@ declare namespace google.maps.journeySharing {
      * parameter in the function parameters object is set to <code>true</code>.)
      * Additionally, this function is invoked when the polyline&#39;s
      * coordinates change, or when the location provider receives data from
-     * Fleet Engine, regardless of whether the data corresponding to this marker
-     * have changed.<br><br>See {@link
-     * google.maps.journeySharing.TripMarkerCustomizationFunctionParams} for a
+     * Fleet Engine, regardless of whether the data corresponding to this
+     * polyline have changed.<br><br>See {@link
+     * google.maps.journeySharing.TripPolylineCustomizationFunctionParams} for a
      * list of supplied parameters and their uses.</li></ul>
      */
     remainingPolylineCustomization?:
       | ((
-          a: google.maps.journeySharing.TripMarkerCustomizationFunctionParams,
+          a: google.maps.journeySharing.TripPolylineCustomizationFunctionParams,
         ) => void)
       | google.maps.PolylineOptions
       | null;
@@ -9490,8 +9524,8 @@ declare namespace google.maps.journeySharing {
      * object is set to <code>true</code>.) Additionally, this function is
      * invoked when the polyline&#39;s coordinates change, or when the location
      * provider receives data from Fleet Engine, regardless of whether the data
-     * corresponding to this marker have changed.<br><br>See {@link
-     * google.maps.journeySharing.TripMarkerCustomizationFunctionParams} for a
+     * corresponding to this polyline have changed.<br><br>See {@link
+     * google.maps.journeySharing.TripPolylineCustomizationFunctionParams} for a
      * list of supplied parameters and their uses.</li></ul>
      */
     takenPolylineCustomization?:
@@ -9599,6 +9633,30 @@ declare namespace google.maps.journeySharing {
      * to track a vehicle.
      */
     vehicleId: string;
+    /**
+     * Polyline customization function that colors the active polyline according
+     * to its speed reading. Specify this function as the {@link
+     * google.maps.journeySharing.FleetEngineVehicleLocationProviderOptions.activePolylineCustomization}
+     * to render a traffic-aware polyline for the active polyline.
+     * @param params The parameters provided to the polyline customization
+     *     function.
+     */
+    static TRAFFIC_AWARE_ACTIVE_POLYLINE_CUSTOMIZATION_FUNCTION(
+      this: any,
+      params: google.maps.journeySharing.VehiclePolylineCustomizationFunctionParams,
+    ): void;
+    /**
+     * Polyline customization function that colors the remaining polyline
+     * according to its speed reading. Specify this function as the {@link
+     * google.maps.journeySharing.FleetEngineVehicleLocationProviderOptions.remainingPolylineCustomization}
+     * to render a traffic-aware polyline for the remaining polyline.
+     * @param params The parameters provided to the polyline customization
+     *     function.
+     */
+    static TRAFFIC_AWARE_REMAINING_POLYLINE_CUSTOMIZATION_FUNCTION(
+      this: any,
+      params: google.maps.journeySharing.VehiclePolylineCustomizationFunctionParams,
+    ): void;
   }
   /**
    * Available only in the v=beta channel: https://goo.gle/3oAthT3.
@@ -9619,14 +9677,14 @@ declare namespace google.maps.journeySharing {
      * parameters object is set to <code>true</code>.) Additionally, this
      * function is invoked when the polyline&#39;s coordinates change, or when
      * the location provider receives data from Fleet Engine, regardless of
-     * whether the data corresponding to this marker have
+     * whether the data corresponding to this polyline have
      * changed.<br><br>See {@link
-     * google.maps.journeySharing.VehicleMarkerCustomizationFunctionParams} for
-     * a list of supplied parameters and their uses.</li></ul>
+     * google.maps.journeySharing.VehiclePolylineCustomizationFunctionParams}
+     * for a list of supplied parameters and their uses.</li></ul>
      */
     activePolylineCustomization?:
       | ((
-          a: google.maps.journeySharing.VehicleMarkerCustomizationFunctionParams,
+          a: google.maps.journeySharing.VehiclePolylineCustomizationFunctionParams,
         ) => void)
       | google.maps.PolylineOptions
       | null;
@@ -9731,14 +9789,14 @@ declare namespace google.maps.journeySharing {
      * parameter in the function parameters object is set to <code>true</code>.)
      * Additionally, this function is invoked when the polyline&#39;s
      * coordinates change, or when the location provider receives data from
-     * Fleet Engine, regardless of whether the data corresponding to this marker
-     * have changed.<br><br>See {@link
-     * google.maps.journeySharing.VehicleMarkerCustomizationFunctionParams} for
-     * a list of supplied parameters and their uses.</li></ul>
+     * Fleet Engine, regardless of whether the data corresponding to this
+     * polyline have changed.<br><br>See {@link
+     * google.maps.journeySharing.VehiclePolylineCustomizationFunctionParams}
+     * for a list of supplied parameters and their uses.</li></ul>
      */
     remainingPolylineCustomization?:
       | ((
-          a: google.maps.journeySharing.VehicleMarkerCustomizationFunctionParams,
+          a: google.maps.journeySharing.VehiclePolylineCustomizationFunctionParams,
         ) => void)
       | google.maps.PolylineOptions
       | null;
@@ -9763,13 +9821,13 @@ declare namespace google.maps.journeySharing {
      * object is set to <code>true</code>.) Additionally, this function is
      * invoked when the polyline&#39;s coordinates change, or when the location
      * provider receives data from Fleet Engine, regardless of whether the data
-     * corresponding to this marker have changed.<br><br>See {@link
-     * google.maps.journeySharing.VehicleMarkerCustomizationFunctionParams} for
-     * a list of supplied parameters and their uses.</li></ul>
+     * corresponding to this polyline have changed.<br><br>See {@link
+     * google.maps.journeySharing.VehiclePolylineCustomizationFunctionParams}
+     * for a list of supplied parameters and their uses.</li></ul>
      */
     takenPolylineCustomization?:
       | ((
-          a: google.maps.journeySharing.VehicleMarkerCustomizationFunctionParams,
+          a: google.maps.journeySharing.VehiclePolylineCustomizationFunctionParams,
         ) => void)
       | google.maps.PolylineOptions
       | null;
@@ -10654,6 +10712,45 @@ declare namespace google.maps.journeySharing {
     taskTrackingInfo: google.maps.journeySharing.TaskTrackingInfo;
   }
   /**
+   * The classification of polyline speed based on traffic data.
+   *
+   * Access by calling `const {Speed} = await
+   * google.maps.importLibrary("journeySharing")`. See
+   * https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  export enum Speed {
+    /**
+     * Normal speed, no slowdown is detected.
+     */
+    NORMAL = 'NORMAL',
+    /**
+     * Slowdown detected, but no traffic jam formed.
+     */
+    SLOW = 'SLOW',
+    /**
+     * Traffic jam detected.
+     */
+    TRAFFIC_JAM = 'TRAFFIC_JAM',
+  }
+  /**
+   * Traffic density indicator on a contiguous path segment. The interval
+   * defines the starting and ending points of the segment via their indices.
+   */
+  export interface SpeedReadingInterval {
+    /**
+     * The zero-based index of the ending point of the interval in the path.
+     */
+    endPolylinePointIndex: number;
+    /**
+     * Traffic speed in this interval.
+     */
+    speed: google.maps.journeySharing.Speed;
+    /**
+     * The zero-based index of the starting point of the interval in the path.
+     */
+    startPolylinePointIndex: number;
+  }
+  /**
    * The details for a task returned by Fleet Engine.
    */
   export interface Task {
@@ -10981,7 +11078,23 @@ declare namespace google.maps.journeySharing {
     /**
      * The location of the waypoint.
      */
-    location: google.maps.LatLngLiteral | null;
+    location: google.maps.LatLng | null;
+    /**
+     * The path from the previous stop (or the vehicle&#39;s current location,
+     * if this stop is the first in the list of stops) to this stop.
+     */
+    path: google.maps.LatLng[] | null;
+    /**
+     * The list of traffic speeds along the path from the previous waypoint (or
+     * vehicle location) to the current waypoint. Each interval in the list
+     * describes the traffic on a contiguous segment on the path; the interval
+     * defines the starting and ending points of the segment via their indices.
+     * See the definition of {@link
+     * google.maps.journeySharing.SpeedReadingInterval} for more details.
+     */
+    speedReadingIntervals:
+      | google.maps.journeySharing.SpeedReadingInterval[]
+      | null;
     /**
      * The trip associated with this waypoint.
      */
@@ -11257,6 +11370,17 @@ declare namespace google.maps.journeySharing {
      * waypoint.
      */
     path: google.maps.LatLngLiteral[] | null;
+    /**
+     * The list of traffic speeds along the path from the previous waypoint (or
+     * vehicle location) to the current waypoint. Each interval in the list
+     * describes the traffic on a contiguous segment on the path; the interval
+     * defines the starting and ending points of the segment via their indices.
+     * See the definition of {@link
+     * google.maps.journeySharing.SpeedReadingInterval} for more details.
+     */
+    speedReadingIntervals:
+      | google.maps.journeySharing.SpeedReadingInterval[]
+      | null;
   }
   /**
    * Available only in the v=beta channel: https://goo.gle/3oAthT3.
@@ -12477,8 +12601,6 @@ declare namespace google.maps.places {
     country: string | string[] | null;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Options for fetching Place fields.
    */
   export interface FetchFieldsRequest {
@@ -12486,11 +12608,6 @@ declare namespace google.maps.places {
      * List of fields to be fetched.
      */
     fields: string[];
-    /**
-     * Unique reference used to bundle the details request with an autocomplete
-     * session.
-     */
-    sessionToken?: google.maps.places.AutocompleteSessionToken | null;
   }
   /**
    * A find place from text search request to be sent to {@link
@@ -12690,18 +12807,12 @@ declare namespace google.maps.places {
     maxWidth?: number | null;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
-   *
    * Access by calling `const {Place} = await
    * google.maps.importLibrary("places")`. See
    * https://developers.google.com/maps/documentation/javascript/libraries.
    */
   export class Place {
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     *
-     *
      * Access by calling `const {Place} = await
      * google.maps.importLibrary("places")`. See
      * https://developers.google.com/maps/documentation/javascript/libraries.
@@ -12735,8 +12846,17 @@ declare namespace google.maps.places {
      */
     displayName?: string | null;
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     * The editorial summary for this place. <code>null</code> if there is no
+     * editorial summary. <code>undefined</code> if this field has not yet been
+     * requested.
      */
+    editorialSummary?: string | null;
+    /**
+     * The language of the editorial summary for this place. <code>null</code>
+     * if there is no editorial summary. <code>undefined</code> if this field
+     * has not yet been requested.
+     */
+    editorialSummaryLanguageCode?: string | null;
     fetchFields(
       options: google.maps.places.FetchFieldsRequest,
     ): Promise<{place: google.maps.places.Place}>;
@@ -12785,14 +12905,6 @@ declare namespace google.maps.places {
      */
     hasTakeout?: boolean | null;
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     * Whether a place has a wheelchair accessible entrance. Returns
-     * &#39;true&#39; or &#39;false&#39; if the value is known. Returns
-     * &#39;null&#39; if the value is unknown. Returns &#39;undefined&#39; if
-     * this field has not yet been requested.
-     */
-    hasWheelchairAccessibleEntrance?: boolean | null;
-    /**
      * The default HEX color code for the place&#39;s category.
      */
     iconBackgroundColor?: string | null;
@@ -12830,6 +12942,10 @@ declare namespace google.maps.places {
      * regional convention</a>.
      */
     nationalPhoneNumber?: string | null;
+    /**
+     * @deprecated Use {@link google.maps.places.Place.regularOpeningHours}
+     *     instead.
+     */
     openingHours?: google.maps.places.OpeningHours | null;
     /**
      * Photos of this Place. The collection will contain up to ten {@link
@@ -12849,6 +12965,7 @@ declare namespace google.maps.places {
      * A rating, between 1.0 to 5.0, based on user reviews of this Place.
      */
     rating?: number | null;
+    regularOpeningHours?: google.maps.places.OpeningHours | null;
     /**
      * The requested language for this place.
      */
@@ -12948,31 +13065,6 @@ declare namespace google.maps.places {
      */
     websiteURI?: string | null;
     /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     * Searches for a place based on the given phone number. Returns an array
-     * due to rare cases where multiple places may share a phone number.
-     * @param request The request containing the phone number and requested
-     *     fields.
-     */
-    static findPlaceFromPhoneNumber(
-      this: any,
-      request: google.maps.places.FindPlaceFromPhoneNumberRequest,
-    ): Promise<{places: google.maps.places.Place[]}>;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     * Searches for a place based on the given text query. Returns an array due
-     * to cases where the query is mildly ambiguous, and more than one place
-     * gets returned. This method is <em>not</em> intended for searches where
-     * multiple results are expected.
-     * @param request The request containing the text query and requested
-     *     fields.
-     */
-    static findPlaceFromQuery(
-      this: any,
-      request: google.maps.places.FindPlaceFromQueryRequest,
-    ): Promise<{places: google.maps.places.Place[]}>;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * Text query based place search.
      */
     static searchByText(
@@ -13358,8 +13450,6 @@ declare namespace google.maps.places {
     time: string;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Options for constructing a Place.
    */
   export interface PlaceOptions {
@@ -14139,15 +14229,13 @@ declare namespace google.maps.places {
     bounds?: google.maps.LatLngBounds | null | google.maps.LatLngBoundsLiteral;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   * RankPreference enum for SearchByTextRequest.
    *
-   * RankBy enum for SearchByTextRequest.
-   *
-   * Access by calling `const {SearchByTextRankBy} = await
+   * Access by calling `const {SearchByTextRankPreference} = await
    * google.maps.importLibrary("places")`. See
    * https://developers.google.com/maps/documentation/javascript/libraries.
    */
-  export enum SearchByTextRankBy {
+  export enum SearchByTextRankPreference {
     /**
      * Ranks results by distance.
      */
@@ -14158,8 +14246,6 @@ declare namespace google.maps.places {
     RELEVANCE = 'RELEVANCE',
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-   *
    * Request interface for {@link google.maps.places.Place.searchByText}.
    */
   export interface SearchByTextRequest {
@@ -14236,10 +14322,15 @@ declare namespace google.maps.places {
      */
     query?: string;
     /**
-     * How results will be ranked in the response.
-     * @defaultValue <code>SearchByTextRankBy.DISTANCE</code>
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     * @deprecated Please use rankPreference instead.
      */
-    rankBy?: google.maps.places.SearchByTextRankBy;
+    rankBy?: google.maps.places.SearchByTextRankPreference;
+    /**
+     * How results will be ranked in the response.
+     * @defaultValue <code>SearchByTextRankPreference.DISTANCE</code>
+     */
+    rankPreference?: google.maps.places.SearchByTextRankPreference;
     /**
      * The Unicode country/region code (CLDR) of the location where the request
      * is coming from. This parameter is used to display the place details, like
