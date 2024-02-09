@@ -5114,6 +5114,7 @@ declare namespace google.maps {
     placeId: string;
   }
   export interface PlacesLibrary {
+    AccessibilityOptions: typeof google.maps.places.AccessibilityOptions;
     AddressComponent: typeof google.maps.places.AddressComponent;
     Attribution: typeof google.maps.places.Attribution;
     AuthorAttribution: typeof google.maps.places.AuthorAttribution;
@@ -12151,6 +12152,38 @@ declare namespace google.maps.marker {
 }
 declare namespace google.maps.places {
   /**
+   * Access by calling `const {AccessibilityOptions} = await
+   * google.maps.importLibrary("places")`. See
+   * https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  export class AccessibilityOptions {
+    /**
+     * Whether a place has a wheelchair accessible entrance. Returns
+     * &#39;true&#39; or &#39;false&#39; if the value is known. Returns
+     * &#39;null&#39; if the value is unknown.
+     */
+    hasWheelchairAccessibleEntrance: boolean | null;
+    /**
+     * Whether a place has wheelchair accessible parking. Returns &#39;true&#39;
+     * or
+     * &#39;false&#39; if the value is known. Returns &#39;null&#39; if the
+     * value is unknown.
+     */
+    hasWheelchairAccessibleParking: boolean | null;
+    /**
+     * Whether a place has a wheelchair accessible restroom. Returns
+     * &#39;true&#39; or &#39;false&#39; if the value is known. Returns
+     * &#39;null&#39; if the value is unknown.
+     */
+    hasWheelchairAccessibleRestroom: boolean | null;
+    /**
+     * Whether a place offers wheelchair accessible seating. Returns
+     * &#39;true&#39; or &#39;false&#39; if the value is known. Returns
+     * &#39;null&#39; if the value is unknown.
+     */
+    hasWheelchairAccessibleSeating: boolean | null;
+  }
+  /**
    * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    *
    *
@@ -12819,6 +12852,11 @@ declare namespace google.maps.places {
      */
     constructor(options: google.maps.places.PlaceOptions);
     /**
+     * Accessibility options of this Place. <code>undefined</code> if the
+     * accessibility options data have not been called for from the server.
+     */
+    accessibilityOptions?: google.maps.places.AccessibilityOptions | null;
+    /**
      * The collection of address components for this Place’s location. Empty
      * object if there is no known address data. <code>undefined</code> if the
      * address data has not been called for from the server.
@@ -13090,7 +13128,7 @@ declare namespace google.maps.places {
     type: string;
   }
   /**
-   * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    *
    * <ul>
    * <li>PlaceAutocompleteElement is an <code>HTMLElement</code> subclass which
@@ -13109,7 +13147,7 @@ declare namespace google.maps.places {
     implements google.maps.places.PlaceAutocompleteElementOptions
   {
     /**
-     * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      *
      * <ul>
      * <li>PlaceAutocompleteElement is an <code>HTMLElement</code> subclass
@@ -13131,10 +13169,6 @@ declare namespace google.maps.places {
      * country.
      */
     componentRestrictions: google.maps.places.ComponentRestrictions | null;
-    /**
-     * The input element to show autocompletions for.
-     */
-    inputElement: HTMLInputElement;
     /**
      * A soft boundary or hint to use when searching for places.
      */
@@ -13158,8 +13192,12 @@ declare namespace google.maps.places {
      * The name to be used for the input element. See <a
      * href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name</a>
      * for details. Follows the same behavior as the name attribute for inputs.
+     * Note that this is the name that will be used when a form is submitted.
+     * See <a
+     * href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form</a>
+     * for details.
      */
-    name: string;
+    name: string | null;
     /**
      * A language identifier for the language in which the results should be
      * returned, if possible. Results in the selected language may be given a
@@ -13190,7 +13228,7 @@ declare namespace google.maps.places {
     types: string[] | null;
   }
   /**
-   * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    *
    * Options for constructing a PlaceAutocompleteElement.
    */
@@ -13200,10 +13238,6 @@ declare namespace google.maps.places {
      * google.maps.places.PlaceAutocompleteElement.componentRestrictions}
      */
     componentRestrictions?: google.maps.places.ComponentRestrictions | null;
-    /**
-     * The input element to show autocompletions for.
-     */
-    inputElement: HTMLInputElement;
     /**
      * See {@link google.maps.places.PlaceAutocompleteElement.locationBias}
      */
