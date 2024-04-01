@@ -13266,13 +13266,8 @@ declare namespace google.maps.places {
   /**
    * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    *
-   * <ul>
-   * <li>PlaceAutocompleteElement is an <code>HTMLElement</code> subclass which
-   * provides a UI component for the Places Autocomplete API. After loading the
-   * <code>places</code> library, an input with autocomplete functionality can
-   * be created in HTML. For example: <pre><code>&lt;gmp-placeautocomplete
-   * &gt;&lt;/gmp-placeautocomplete&gt;</code></pre></li>
-   * </ul>
+   * PlaceAutocompleteElement is an <code>HTMLElement</code> subclass which
+   * provides a UI component for the Places Autocomplete API.
    *
    * Access by calling `const {PlaceAutocompleteElement} = await
    * google.maps.importLibrary("places")`. See
@@ -13285,14 +13280,8 @@ declare namespace google.maps.places {
     /**
      * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      *
-     * <ul>
-     * <li>PlaceAutocompleteElement is an <code>HTMLElement</code> subclass
-     * which provides a UI component for the Places Autocomplete API. After
-     * loading the <code>places</code> library, an input with autocomplete
-     * functionality can be created in HTML. For example:
-     * <pre><code>&lt;gmp-placeautocomplete
-     * &gt;&lt;/gmp-placeautocomplete&gt;</code></pre></li>
-     * </ul>
+     * PlaceAutocompleteElement is an <code>HTMLElement</code> subclass which
+     * provides a UI component for the Places Autocomplete API.
      *
      * Access by calling `const {PlaceAutocompleteElement} = await
      * google.maps.importLibrary("places")`. See
