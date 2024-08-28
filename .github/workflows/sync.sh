@@ -14,7 +14,7 @@ version=$(cat js-types/VERSION | cut -d '.' -f1-2)
 
 # Update the version number in dt's package.json using sed, in place
 # the .9999 is a requirement of DefinitelyTyped
-sed -i '' "s/\"version\": \"[^\"]*\"/\"version\": \"$version.9999\"/" dt/types/google.maps/package.json
+sed -i "s/\"version\": \"[^\"]*\"/\"version\": \"$version.9999\"/" dt/types/google.maps/package.json
 
 # Copy file from bazel output
 cp js-types/bazel-bin/definitelytyped.d.ts "${dt}/${index}"
