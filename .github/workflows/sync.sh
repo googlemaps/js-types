@@ -12,6 +12,9 @@ cd "${GITHUB_WORKSPACE}"
 # Copy file from bazel output
 cp js-types/bazel-bin/definitelytyped.d.ts "${dt}/${index}"
 
+# Copy package.json file
+cp js-types/package.json dt/types/google.maps/package.json
+
 cd "${dt}"
 
 # Run git diff on the tpyings
