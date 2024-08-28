@@ -9,11 +9,8 @@ tests="types/google.maps/google.maps-tests.ts"
 # Run from root of workspace
 cd "${GITHUB_WORKSPACE}"
 
-# Extract the version number from js-types/VERSION
-version=$(cat js-types/VERSION)
-
 # Extract the first two fields of the version number
-version=$(echo $version | cut -d '.' -f1-2)
+version=$(cat js-types/VERSION | cut -d '.' -f1-2)
 
 # Update the version number in dt's package.json using sed, in place
 # the .9999 is a requirement of DefinitelyTyped
