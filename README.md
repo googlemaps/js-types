@@ -1,5 +1,4 @@
 [![npm](https://img.shields.io/npm/v/@types/google.maps)][npm-pkg]
-![Release](https://github.com/googlemaps/js-types/workflows/Release/badge.svg)
 ![Stable](https://img.shields.io/badge/stability-stable-green)
 [![Tests/Build](https://github.com/googlemaps/js-types/actions/workflows/test.yml/badge.svg)](https://github.com/googlemaps/js-types/actions/workflows/test.yml)
 
