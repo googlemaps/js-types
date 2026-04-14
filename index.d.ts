@@ -259,7 +259,7 @@ declare namespace google.maps {
      * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * A collection of unique experience IDs to which to attribute Maps JS API calls. The returned value is a copy of the internal value that is stored in the <code>Settings</code> class singleton instance. Operations on <code>google.maps.Settings.getInstance().experienceIds</code> will therefore only modify the copy and not the internal value.<br/><br/>To update the internal value, set the property equal to the new value on the singleton instance (ex: <code>google.maps.Settings.getInstance().experienceIds = [experienceId];</code>).
      */
-    experienceIds: Iterable<string>;
+    get experienceIds(): Iterable<string>;
     /**
      * Set this property to a function that returns a promise which resolves to a Firebase App Check token result.
      */
@@ -1835,15 +1835,15 @@ declare namespace google.maps {
     /**
      * Returns the altitude.
      */
-    altitude: number;
+    get altitude(): number;
     /**
      * Returns the latitude.
      */
-    lat: number;
+    get lat(): number;
     /**
      * Returns the longitude.
      */
-    lng: number;
+    get lng(): number;
     /**
      * Comparison function.
      */
@@ -1884,17 +1884,17 @@ declare namespace google.maps {
      * Rotation about the z-axis (normal to the Earth&#39;s surface). A value of 0 (the default) equals North. A positive rotation is clockwise around the z-axis and specified in degrees from 0 to 360. Values above or below this range will be wrapped so that they fall within the range. For example, a value of -190 will be converted to 170. A value of 530 will be converted to 170 as well.
      * @defaultValue <code>0</code>
      */
-    heading: number;
+    get heading(): number;
     /**
      * Rotation about the y-axis. A positive rotation is clockwise around the y-axis and specified in degrees from 0 to 360. Values above or below this range will be wrapped so that they fall within the range. For example, a value of -190 will be converted to 170. A value of 530 will be converted to 170 as well.
      * @defaultValue <code>0</code>
      */
-    roll: number;
+    get roll(): number;
     /**
      * Rotation about the x-axis. A positive rotation is clockwise around the x-axis and specified in degrees from 0 to 360. Values above or below this range will be wrapped so that they fall within the range. For example, a value of -190 will be converted to 170. A value of 530 will be converted to 170 as well.
      * @defaultValue <code>0</code>
      */
-    tilt: number;
+    get tilt(): number;
     /**
      * Comparison function.
      */
@@ -1990,15 +1990,15 @@ declare namespace google.maps {
     /**
      * X-component of the three-dimensional vector.
      */
-    x: number;
+    get x(): number;
     /**
      * Y-component of the three-dimensional vector.
      */
-    y: number;
+    get y(): number;
     /**
      * Z-component of the three-dimensional vector.
      */
-    z: number;
+    get z(): number;
     /**
      * Comparison function.
      */
@@ -2190,7 +2190,7 @@ declare namespace google.maps {
     /**
      * Checks if the InfoWindow is open.
      */
-    isOpen: boolean;
+    get isOpen(): boolean;
     /**
      * Closes this InfoWindow by removing it from the DOM structure.
      */
@@ -8756,43 +8756,43 @@ declare namespace google.maps.places {
     /**
      * Unstructured address lines describing the lower levels of an address.
      */
-    addressLines: string[];
+    get addressLines(): string[];
     /**
      * The highest administrative subdivision which is used for postal addresses of a country or region.
      */
-    administrativeArea: string | null;
+    get administrativeArea(): string | null;
     /**
      * BCP-47 language code of the contents of this address. Examples: &quot;zh-Hant&quot;, &quot;ja&quot;, &quot;ja-Latn&quot;, &quot;en&quot;.
      */
-    languageCode: string | null;
+    get languageCode(): string | null;
     /**
      * Generally refers to the city/town portion of the address.
      */
-    locality: string | null;
+    get locality(): string | null;
     /**
      * The name of the organization at the address.
      */
-    organization: string | null;
+    get organization(): string | null;
     /**
      * Postal code of the address.
      */
-    postalCode: string | null;
+    get postalCode(): string | null;
     /**
      * The recipient at the address.
      */
-    recipients: string[];
+    get recipients(): string[];
     /**
      * CLDR region code of the country/region of the address. Example: &quot;CH&quot; for Switzerland. See <a href="https://cldr.unicode.org/">https://cldr.unicode.org/</a> and <a href="https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html">https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html</a> for details.
      */
-    regionCode: string;
+    get regionCode(): string;
     /**
      * Sorting code of the address.
      */
-    sortingCode: string | null;
+    get sortingCode(): string | null;
     /**
      * Sublocality of the address such as neighborhoods, boroughs, or districts.
      */
-    sublocality: string | null;
+    get sublocality(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -8858,11 +8858,11 @@ declare namespace google.maps.places {
     /**
      * A plus code with a 1/8000th of a degree by 1/8000th of a degree area where the first four characters (the area code) are dropped and replaced with a locality description. For example, &quot;9G8F+5W Zurich, Switzerland&quot;.
      */
-    compoundCode: string | null;
+    get compoundCode(): string | null;
     /**
      * A plus code with a 1/8000th of a degree by 1/8000th of a degree area. For example, &quot;8FVC9G8F+5W&quot;.
      */
-    globalCode: string | null;
+    get globalCode(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9170,19 +9170,19 @@ declare namespace google.maps.places {
     /**
      * Whether a place has a wheelchair accessible entrance. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    hasWheelchairAccessibleEntrance: boolean | null;
+    get hasWheelchairAccessibleEntrance(): boolean | null;
     /**
      * Whether a place has wheelchair accessible parking. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    hasWheelchairAccessibleParking: boolean | null;
+    get hasWheelchairAccessibleParking(): boolean | null;
     /**
      * Whether a place has a wheelchair accessible restroom. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    hasWheelchairAccessibleRestroom: boolean | null;
+    get hasWheelchairAccessibleRestroom(): boolean | null;
     /**
      * Whether a place offers wheelchair accessible seating. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    hasWheelchairAccessibleSeating: boolean | null;
+    get hasWheelchairAccessibleSeating(): boolean | null;
   }
   /**
    * Address component for the Place&#39;s location.
@@ -9192,15 +9192,15 @@ declare namespace google.maps.places {
     /**
      * The full text of the address component.
      */
-    longText: string | null;
+    get longText(): string | null;
     /**
      * The abbreviated, short text of the given address component.
      */
-    shortText: string | null;
+    get shortText(): string | null;
     /**
      * An array of strings denoting the type of this address component. A list of valid types can be found <a href="https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingAddressTypes">here</a>.
      */
-    types: string[];
+    get types(): string[];
     toJSON(key?: string): unknown;
   }
   /**
@@ -9211,11 +9211,11 @@ declare namespace google.maps.places {
     /**
      * Name of the Place&#39;s data provider.
      */
-    provider: string | null;
+    get provider(): string | null;
     /**
      * URI to the Place&#39;s data provider.
      */
-    providerURI: string | null;
+    get providerURI(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9226,15 +9226,15 @@ declare namespace google.maps.places {
     /**
      * The details of the consumer alert message.
      */
-    details: google.maps.places.ConsumerAlertDetails | null;
+    get details(): google.maps.places.ConsumerAlertDetails | null;
     /**
      * The language code of the consumer alert message.
      */
-    languageCode: string | null;
+    get languageCode(): string | null;
     /**
      * The overview of the consumer alert message.
      */
-    overview: string | null;
+    get overview(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9245,19 +9245,19 @@ declare namespace google.maps.places {
     /**
      * The title to show for a link to provide more information.
      */
-    aboutLinkTitle: string | null;
+    get aboutLinkTitle(): string | null;
     /**
      * The URI for a link to provide more information.
      */
-    aboutLinkURI: string | null;
+    get aboutLinkURI(): string | null;
     /**
      * The description of the consumer alert message.
      */
-    description: string | null;
+    get description(): string | null;
     /**
      * The title to show together with the detailed description.
      */
-    title: string | null;
+    get title(): string | null;
   }
   /**
    * ContentBlock describes the content of a summary and where it came from.
@@ -9267,15 +9267,15 @@ declare namespace google.maps.places {
     /**
      * Content related to the topic.
      */
-    content: string | null;
+    get content(): string | null;
     /**
      * Language code of the content.
      */
-    contentLanguageCode: string | null;
+    get contentLanguageCode(): string | null;
     /**
      * A list of {@link google.maps.places.Place}s referenced. When first retrieved, each Place only contains a place ID in the <code>id</code> field.
      */
-    referencedPlaces: google.maps.places.Place[];
+    get referencedPlaces(): google.maps.places.Place[];
     toJSON(key?: string): unknown;
   }
   /**
@@ -9286,31 +9286,31 @@ declare namespace google.maps.places {
     /**
      * A summary of the nearby coffee options.
      */
-    coffee: google.maps.places.ContentBlock | null;
+    get coffee(): google.maps.places.ContentBlock | null;
     /**
      * The text for the disclosure relating to this summary.
      */
-    disclosureText: string | null;
+    get disclosureText(): string | null;
     /**
      * The language code of the disclosure text.
      */
-    disclosureTextLanguageCode: string | null;
+    get disclosureTextLanguageCode(): string | null;
     /**
      * A URI to report a problem with the summary.
      */
-    flagContentURI: string | null;
+    get flagContentURI(): string | null;
     /**
      * An overview of the available amenities.
      */
-    overview: google.maps.places.ContentBlock | null;
+    get overview(): google.maps.places.ContentBlock | null;
     /**
      * A summary of the nearby restaurants.
      */
-    restaurant: google.maps.places.ContentBlock | null;
+    get restaurant(): google.maps.places.ContentBlock | null;
     /**
      * A summary of nearby stores.
      */
-    store: google.maps.places.ContentBlock | null;
+    get store(): google.maps.places.ContentBlock | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9321,11 +9321,11 @@ declare namespace google.maps.places {
     /**
      * A list of EV charging connector aggregations that contain connectors of the same type and same charge rate.
      */
-    connectorAggregations: google.maps.places.ConnectorAggregation[];
+    get connectorAggregations(): google.maps.places.ConnectorAggregation[];
     /**
      * Number of connectors at this station. Because some ports can have multiple connectors but only be able to charge one car at a time, the number of connectors may be greater than the total number of cars which can charge simultaneously.
      */
-    connectorCount: number;
+    get connectorCount(): number;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9336,27 +9336,27 @@ declare namespace google.maps.places {
     /**
      * The time when the connector availability information in this aggregation was last updated.
      */
-    availabilityLastUpdateTime: Date | null;
+    get availabilityLastUpdateTime(): Date | null;
     /**
      * Number of connectors in this aggregation that are currently available.
      */
-    availableCount: number | null;
+    get availableCount(): number | null;
     /**
      * Number of connectors in this aggregation.
      */
-    count: number;
+    get count(): number;
     /**
      * The static max charging rate in kw of each connector of the aggregation.
      */
-    maxChargeRateKw: number;
+    get maxChargeRateKw(): number;
     /**
      * Number of connectors in this aggregation that are currently out of service.
      */
-    outOfServiceCount: number | null;
+    get outOfServiceCount(): number | null;
     /**
      * The connector type of this aggregation.
      */
-    type: google.maps.places.EVConnectorTypeString | null;
+    get type(): google.maps.places.EVConnectorTypeString | null;
   }
   /**
    * A representation of an amount of money with its currency type.
@@ -9366,15 +9366,15 @@ declare namespace google.maps.places {
     /**
      * The three-letter currency code, defined in ISO 4217.
      */
-    currencyCode: string;
+    get currencyCode(): string;
     /**
      * Number of nano (10^-9) units of the amount.
      */
-    nanos: number;
+    get nanos(): number;
     /**
      * The whole units of the amount. For example, if {@link google.maps.places.Money.currencyCode} is &quot;USD&quot;, then 1 unit is 1 US dollar.
      */
-    units: number;
+    get units(): number;
     /**
      * Returns a human-readable representation of the amount of money with its currency symbol.
      */
@@ -9389,7 +9389,7 @@ declare namespace google.maps.places {
     /**
      * A list of fuel prices for each type of fuel this station has, one entry per fuel type.
      */
-    fuelPrices: google.maps.places.FuelPrice[];
+    get fuelPrices(): google.maps.places.FuelPrice[];
     toJSON(key?: string): unknown;
   }
   /**
@@ -9400,15 +9400,15 @@ declare namespace google.maps.places {
     /**
      * The price of the fuel.
      */
-    price: google.maps.places.Money | null;
+    get price(): google.maps.places.Money | null;
     /**
      * The type of fuel.
      */
-    type: google.maps.places.FuelTypeString | null;
+    get type(): google.maps.places.FuelTypeString | null;
     /**
      * The time the fuel price was last updated.
      */
-    updateTime: Date | null;
+    get updateTime(): Date | null;
   }
   /**
    * Types of fuel.
@@ -9506,23 +9506,23 @@ declare namespace google.maps.places {
     /**
      * The text for the disclosure relating to this summary.
      */
-    disclosureText: string | null;
+    get disclosureText(): string | null;
     /**
      * The language code of the disclosure text.
      */
-    disclosureTextLanguageCode: string | null;
+    get disclosureTextLanguageCode(): string | null;
     /**
      * A URI to report a problem with the summary.
      */
-    flagContentURI: string | null;
+    get flagContentURI(): string | null;
     /**
      * The overview of the place.
      */
-    overview: string | null;
+    get overview(): string | null;
     /**
      * The language code of the overview.
      */
-    overviewLanguageCode: string | null;
+    get overviewLanguageCode(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9533,23 +9533,23 @@ declare namespace google.maps.places {
     /**
      * A link to show the directions to the place on Google Maps. The link only populates the destination location and uses the default travel mode <code>DRIVE</code>.
      */
-    directionsURI: string | null;
+    get directionsURI(): string | null;
     /**
      * A link to show the photos for the place on Google Maps.
      */
-    photosURI: string | null;
+    get photosURI(): string | null;
     /**
      * A link to show the place on Google Maps.
      */
-    placeURI: string | null;
+    get placeURI(): string | null;
     /**
      * A link to show the reviews for the place on Google Maps.
      */
-    reviewsURI: string | null;
+    get reviewsURI(): string | null;
     /**
      * A link to write a review for the place on Google Maps.
      */
-    writeAReviewURI: string | null;
+    get writeAReviewURI(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9560,23 +9560,23 @@ declare namespace google.maps.places {
     /**
      * A detailed description of the neighborhood.
      */
-    description: google.maps.places.ContentBlock | null;
+    get description(): google.maps.places.ContentBlock | null;
     /**
      * The text for the disclosure relating to this summary.
      */
-    disclosureText: string | null;
+    get disclosureText(): string | null;
     /**
      * The language code of the disclosure text.
      */
-    disclosureTextLanguageCode: string | null;
+    get disclosureTextLanguageCode(): string | null;
     /**
      * A URI to report a problem with the summary.
      */
-    flagContentURI: string | null;
+    get flagContentURI(): string | null;
     /**
      * An overview of the neighborhood.
      */
-    overview: google.maps.places.ContentBlock | null;
+    get overview(): google.maps.places.ContentBlock | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9587,15 +9587,15 @@ declare namespace google.maps.places {
     /**
      * The day of the week, as a number in the range [0, 6], starting on Sunday. For example, 2 means Tuesday.
      */
-    day: number;
+    get day(): number;
     /**
      * The hour of the OpeningHoursPoint.time as a number, in the range [0, 23]. This will be reported in the Place’s time zone.
      */
-    hour: number;
+    get hour(): number;
     /**
      * The minute of the OpeningHoursPoint.time as a number, in the range [0, 59]. This will be reported in the Place’s time zone.
      */
-    minute: number;
+    get minute(): number;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9606,11 +9606,11 @@ declare namespace google.maps.places {
     /**
      * The closing time for the Place.
      */
-    close: google.maps.places.OpeningHoursPoint | null;
+    get close(): google.maps.places.OpeningHoursPoint | null;
     /**
      * The opening time for the Place.
      */
-    open: google.maps.places.OpeningHoursPoint;
+    get open(): google.maps.places.OpeningHoursPoint;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9621,15 +9621,15 @@ declare namespace google.maps.places {
     /**
      * Opening periods covering each day of the week, starting from Sunday, in chronological order. Does not include days where the Place is not open.
      */
-    periods: google.maps.places.OpeningHoursPeriod[];
+    get periods(): google.maps.places.OpeningHoursPeriod[];
     /**
      * An array of dates representing special days that fall within the current period. Special days impact the business hours of a place, e.g. Christmas day or one off closures. Set for currentOpeningHours and currentSecondaryOpeningHours if there are exceptional hours.
      */
-    specialDays: Date[];
+    get specialDays(): Date[];
     /**
      * An array of seven strings representing the formatted opening hours for each day of the week. The Places Service will format and localize the opening hours appropriately for the current language. The ordering of the elements in this array depends on the language. Some languages start the week on Monday, while others start on Sunday.
      */
-    weekdayDescriptions: string[];
+    get weekdayDescriptions(): string[];
     toJSON(key?: string): unknown;
   }
   /**
@@ -9639,31 +9639,31 @@ declare namespace google.maps.places {
     /**
      * Whether a place offers free garage parking. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    hasFreeGarageParking: boolean | null;
+    get hasFreeGarageParking(): boolean | null;
     /**
      * Whether a place offers free parking lots. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    hasFreeParkingLot: boolean | null;
+    get hasFreeParkingLot(): boolean | null;
     /**
      * Whether a place offers free street parking. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    hasFreeStreetParking: boolean | null;
+    get hasFreeStreetParking(): boolean | null;
     /**
      * Whether a place offers paid garage parking. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    hasPaidGarageParking: boolean | null;
+    get hasPaidGarageParking(): boolean | null;
     /**
      * Whether a place offers paid parking lots. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    hasPaidParkingLot: boolean | null;
+    get hasPaidParkingLot(): boolean | null;
     /**
      * Whether a place offers paid street parking. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    hasPaidStreetParking: boolean | null;
+    get hasPaidStreetParking(): boolean | null;
     /**
      * Whether a place offers valet parking. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    hasValetParking: boolean | null;
+    get hasValetParking(): boolean | null;
   }
   /**
    * Access by calling `const {PaymentOptions} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
@@ -9672,19 +9672,19 @@ declare namespace google.maps.places {
     /**
      * Whether a place only accepts payment via cash. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    acceptsCashOnly: boolean | null;
+    get acceptsCashOnly(): boolean | null;
     /**
      * Whether a place accepts payment via credit card. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    acceptsCreditCards: boolean | null;
+    get acceptsCreditCards(): boolean | null;
     /**
      * Whether a place accepts payment via debit card. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    acceptsDebitCards: boolean | null;
+    get acceptsDebitCards(): boolean | null;
     /**
      * Whether a place accepts payment via NFC. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown.
      */
-    acceptsNFC: boolean | null;
+    get acceptsNFC(): boolean | null;
   }
   /**
    * Information about the author of user-generated content.
@@ -9694,15 +9694,15 @@ declare namespace google.maps.places {
     /**
      * Author&#39;s name for this result.
      */
-    displayName: string;
+    get displayName(): string;
     /**
      * Author&#39;s photo URI for this result. This may not always be available.
      */
-    photoURI: string | null;
+    get photoURI(): string | null;
     /**
      * Author&#39;s profile URI for this result.
      */
-    uri: string | null;
+    get uri(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9713,23 +9713,23 @@ declare namespace google.maps.places {
     /**
      * Attribution text to be displayed for this photo.
      */
-    authorAttributions: google.maps.places.AuthorAttribution[];
+    get authorAttributions(): google.maps.places.AuthorAttribution[];
     /**
      * A link where user can flag a problem with the photo.
      */
-    flagContentURI: string | null;
+    get flagContentURI(): string | null;
     /**
      * A link to show the photo on Google Maps.
      */
-    googleMapsURI: string | null;
+    get googleMapsURI(): string | null;
     /**
      * The height of the photo in pixels.
      */
-    heightPx: number;
+    get heightPx(): number;
     /**
      * The width of the photo in pixels.
      */
-    widthPx: number;
+    get widthPx(): number;
     /**
      * Returns the image URL corresponding to the specified options.
      */
@@ -9744,11 +9744,11 @@ declare namespace google.maps.places {
     /**
      * The upper end of the price range (inclusive). Price should be lower than this amount.
      */
-    endPrice: google.maps.places.Money | null;
+    get endPrice(): google.maps.places.Money | null;
     /**
      * The low end of the price range (inclusive). Price should be at or above this amount.
      */
-    startPrice: google.maps.places.Money;
+    get startPrice(): google.maps.places.Money;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9759,49 +9759,49 @@ declare namespace google.maps.places {
     /**
      * The reviewer.
      */
-    authorAttribution: google.maps.places.AuthorAttribution | null;
+    get authorAttribution(): google.maps.places.AuthorAttribution | null;
     /**
      * A link where user can flag a problem with the review.
      */
-    flagContentURI: string | null;
+    get flagContentURI(): string | null;
     /**
      * A link to show the review on Google Maps.
      */
-    googleMapsURI: string | null;
+    get googleMapsURI(): string | null;
     /**
      * The review text in its original language.
      */
-    originalText: string | null;
+    get originalText(): string | null;
     /**
      * An IETF language code indicating the original language of the review.
      */
-    originalTextLanguageCode: string | null;
+    get originalTextLanguageCode(): string | null;
 
-    publishTime: Date | null;
+    get publishTime(): Date | null;
     /**
      * The rating of this review, a number between 1.0 and 5.0 (inclusive).
      */
-    rating: number | null;
+    get rating(): number | null;
     /**
      * A string of formatted recent time, expressing the review time relative to the current time in a form appropriate for the language and country. For example `&quot;a month ago&quot;&#39;.
      */
-    relativePublishTimeDescription: string | null;
+    get relativePublishTimeDescription(): string | null;
     /**
      * The localized text of the review.
      */
-    text: string | null;
+    get text(): string | null;
     /**
      * An IETF language code indicating the localized language of the review.
      */
-    textLanguageCode: string | null;
+    get textLanguageCode(): string | null;
     /**
      * The month of the date when the review author visited the place. This field is 0-based; 0 is January, and 11 is December.
      */
-    visitDateMonth: number | null;
+    get visitDateMonth(): number | null;
     /**
      * The year of the date when the review author visited the place.
      */
-    visitDateYear: number | null;
+    get visitDateYear(): number | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9812,27 +9812,27 @@ declare namespace google.maps.places {
     /**
      * The text for the disclosure relating to this summary.
      */
-    disclosureText: string | null;
+    get disclosureText(): string | null;
     /**
      * The language code of the disclosure text.
      */
-    disclosureTextLanguageCode: string | null;
+    get disclosureTextLanguageCode(): string | null;
     /**
      * A URI to report a problem with the summary.
      */
-    flagContentURI: string | null;
+    get flagContentURI(): string | null;
     /**
      * A URI to show reviews of this place on Google Maps.
      */
-    reviewsURI: string | null;
+    get reviewsURI(): string | null;
     /**
      * The summary of user reviews.
      */
-    text: string | null;
+    get text(): string | null;
     /**
      * The language code of the summary of user reviews.
      */
-    textLanguageCode: string | null;
+    get textLanguageCode(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9843,7 +9843,7 @@ declare namespace google.maps.places {
     /**
      * The type of secondary opening hours. This refers to what the secondary hours apply to like takeout, delivery, or pickup. See <a href="https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places#secondaryhourstype">SecondaryHoursType</a> for a list of valid values.
      */
-    type: string | null;
+    get type(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -9873,12 +9873,22 @@ declare namespace google.maps.places {
      * Whether to enable or disable the media lightbox, in cases where both options are supported.
      * @defaultValue <code>false</code>
      */
-    lightboxPreferred?: boolean | null;
+    get lightboxPreferred(): boolean;
+    /**
+     * Whether to enable or disable the media lightbox, in cases where both options are supported.
+     * @defaultValue <code>false</code>
+     */
+    set lightboxPreferred(value: boolean | null | undefined);
     /**
      * The preferred media size in cases where multiple sizes are supported, such as the vertical {@link google.maps.places.PlaceSearchElement}. The vertical <code>PlaceSearchElement</code> will use <code>MediaSize.SMALL</code> by default if this is not specified.
      * @defaultValue <code>null</code>
      */
-    preferredSize?: google.maps.places.MediaSizeString | null;
+    get preferredSize(): google.maps.places.MediaSizeString | null;
+    /**
+     * The preferred media size in cases where multiple sizes are supported, such as the vertical {@link google.maps.places.PlaceSearchElement}. The vertical <code>PlaceSearchElement</code> will use <code>MediaSize.SMALL</code> by default if this is not specified.
+     * @defaultValue <code>null</code>
+     */
+    set preferredSize(value: google.maps.places.MediaSizeString | null | undefined);
     addEventListener<K extends keyof PlaceMediaElementEventMap>(type: K, listener: (this: PlaceMediaElement, ev: PlaceMediaElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -10129,12 +10139,22 @@ declare namespace google.maps.places {
      * The color of the Google Maps attribution in dark mode.
      * @defaultValue <code>AttributionColor.WHITE</code>
      */
-    darkSchemeColor?: google.maps.places.AttributionColorString | null;
+    get darkSchemeColor(): google.maps.places.AttributionColorString;
+    /**
+     * The color of the Google Maps attribution in dark mode.
+     * @defaultValue <code>AttributionColor.WHITE</code>
+     */
+    set darkSchemeColor(value: google.maps.places.AttributionColorString | null | undefined);
     /**
      * The color of the Google Maps attribution in light mode.
      * @defaultValue <code>AttributionColor.GRAY</code>
      */
-    lightSchemeColor?: google.maps.places.AttributionColorString | null;
+    get lightSchemeColor(): google.maps.places.AttributionColorString;
+    /**
+     * The color of the Google Maps attribution in light mode.
+     * @defaultValue <code>AttributionColor.GRAY</code>
+     */
+    set lightSchemeColor(value: google.maps.places.AttributionColorString | null | undefined);
     addEventListener<K extends keyof PlaceAttributionElementEventMap>(type: K, listener: (this: PlaceAttributionElement, ev: PlaceAttributionElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -10219,7 +10239,12 @@ declare namespace google.maps.places {
      * The location to render details for in the Place Details element. Normalizes to a <code>LatLngAltitude</code>.
      * @defaultValue <code>null</code>
      */
-    location?: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
+    get location(): google.maps.LatLngAltitude | null;
+    /**
+     * The location to render details for in the Place Details element. Normalizes to a <code>LatLngAltitude</code>.
+     * @defaultValue <code>null</code>
+     */
+    set location(value: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null | undefined);
     addEventListener<K extends keyof PlaceDetailsLocationRequestElementEventMap>(type: K, listener: (this: PlaceDetailsLocationRequestElement, ev: PlaceDetailsLocationRequestElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -10479,109 +10504,109 @@ declare namespace google.maps.places {
     /**
      * Accessibility options of this Place. <code>undefined</code> if the accessibility options data have not been called for from the server.
      */
-    accessibilityOptions?: google.maps.places.AccessibilityOptions | null;
+    get accessibilityOptions(): google.maps.places.AccessibilityOptions | null | undefined;
     /**
      * The collection of address components for this Place’s location. Empty object if there is no known address data. <code>undefined</code> if the address data has not been called for from the server.
      */
-    addressComponents?: google.maps.places.AddressComponent[];
+    get addressComponents(): google.maps.places.AddressComponent[] | undefined;
     /**
      * The representation of the Place’s address in the <a href="http://microformats.org/wiki/adr">adr microformat</a>.
      */
-    adrFormatAddress?: string | null;
+    get adrFormatAddress(): string | null | undefined;
 
-    allowsDogs?: boolean | null;
+    get allowsDogs(): boolean | null | undefined;
     /**
      * Data providers that must be shown for the Place.
      */
-    attributions?: google.maps.places.Attribution[];
+    get attributions(): google.maps.places.Attribution[] | undefined;
     /**
      * The location&#39;s operational status. <code>null</code> if there is no known status. <code>undefined</code> if the status data has not been loaded from the server.
      */
-    businessStatus?: google.maps.places.BusinessStatusString | null;
+    get businessStatus(): google.maps.places.BusinessStatusString | null | undefined;
     /**
      * The consumer alert for this place.
      */
-    consumerAlert?: google.maps.places.ConsumerAlert | null;
+    get consumerAlert(): google.maps.places.ConsumerAlert | null | undefined;
     /**
      * The hours of operation for the next seven days (including today). This includes exceptional hours like holidays and irregular closures.
      */
-    currentOpeningHours?: google.maps.places.OpeningHours | null;
+    get currentOpeningHours(): google.maps.places.OpeningHours | null | undefined;
     /**
      * The current secondary hours of this place which includes exceptional hours like holidays and irregular closures for the next seven days. Secondary hours are different from a place&#39;s main hours. For example, a restaurant can specify drive through hours or delivery hours as its secondary hours.
      */
-    currentSecondaryOpeningHours?: google.maps.places.SecondaryOpeningHours[];
+    get currentSecondaryOpeningHours(): google.maps.places.SecondaryOpeningHours[] | undefined;
     /**
      * The location&#39;s display name. <code>null</code> if there is no name. <code>undefined</code> if the name data has not been loaded from the server.
      */
-    displayName?: string | null;
+    get displayName(): string | null | undefined;
     /**
      * The language of the location&#39;s display name. <code>null</code> if there is no name. <code>undefined</code> if the name data has not been loaded from the server.
      */
-    displayNameLanguageCode?: string | null;
+    get displayNameLanguageCode(): string | null | undefined;
     /**
      * The editorial summary for this place. <code>null</code> if there is no editorial summary. <code>undefined</code> if this field has not yet been requested.
      */
-    editorialSummary?: string | null;
+    get editorialSummary(): string | null | undefined;
     /**
      * The language of the editorial summary for this place. <code>null</code> if there is no editorial summary. <code>undefined</code> if this field has not yet been requested.
      */
-    editorialSummaryLanguageCode?: string | null;
+    get editorialSummaryLanguageCode(): string | null | undefined;
     /**
      * The EVChargeAmenitySummary for this place.
      */
-    evChargeAmenitySummary?: google.maps.places.EVChargeAmenitySummary | null;
+    get evChargeAmenitySummary(): google.maps.places.EVChargeAmenitySummary | null | undefined;
     /**
      * EV Charge options provided by the place. <code>undefined</code> if the EV charge options have not been called for from the server.
      */
-    evChargeOptions?: google.maps.places.EVChargeOptions | null;
+    get evChargeOptions(): google.maps.places.EVChargeOptions | null | undefined;
     /**
      * The location’s full address.
      */
-    formattedAddress?: string | null;
+    get formattedAddress(): string | null | undefined;
     /**
      * Fuel options provided by the place. <code>undefined</code> if the fuel options have not been called for from the server.
      */
-    fuelOptions?: google.maps.places.FuelOptions | null;
+    get fuelOptions(): google.maps.places.FuelOptions | null | undefined;
     /**
      * The GenerativeSummary for this place.
      */
-    generativeSummary?: google.maps.places.GenerativeSummary | null;
+    get generativeSummary(): google.maps.places.GenerativeSummary | null | undefined;
     /**
      * Links to trigger different Google Maps actions.
      */
-    googleMapsLinks?: google.maps.places.GoogleMapsLinks | null;
+    get googleMapsLinks(): google.maps.places.GoogleMapsLinks | null | undefined;
     /**
      * URL of the official Google page for this place. This is the Google-owned page that contains the best available information about the Place.
      */
-    googleMapsURI?: string | null;
+    get googleMapsURI(): string | null | undefined;
     /**
      * Whether a place has curbside pickup. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown. Returns &#39;undefined&#39; if this field has not yet been requested.
      */
-    hasCurbsidePickup?: boolean | null;
+    get hasCurbsidePickup(): boolean | null | undefined;
     /**
      * Whether a place has delivery. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown. Returns &#39;undefined&#39; if this field has not yet been requested.
      */
-    hasDelivery?: boolean | null;
+    get hasDelivery(): boolean | null | undefined;
     /**
      * Whether a place has dine in. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown. Returns &#39;undefined&#39; if this field has not yet been requested.
      */
-    hasDineIn?: boolean | null;
+    get hasDineIn(): boolean | null | undefined;
 
-    hasLiveMusic?: boolean | null;
+    get hasLiveMusic(): boolean | null | undefined;
 
-    hasMenuForChildren?: boolean | null;
+    get hasMenuForChildren(): boolean | null | undefined;
 
-    hasOutdoorSeating?: boolean | null;
+    get hasOutdoorSeating(): boolean | null | undefined;
 
-    hasRestroom?: boolean | null;
+    get hasRestroom(): boolean | null | undefined;
     /**
      * Whether a place has takeout. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown. Returns &#39;undefined&#39; if this field has not yet been requested.
      */
-    hasTakeout?: boolean | null;
+    get hasTakeout(): boolean | null | undefined;
     /**
      * The default HEX color code for the place&#39;s category.
      */
-    iconBackgroundColor?: string | null;
+    get iconBackgroundColor(): string | null | undefined;
     /**
      * The unique place id.
      */
@@ -10589,77 +10614,77 @@ declare namespace google.maps.places {
     /**
      * The Place’s phone number in international format. International format includes the country code, and is prefixed with the plus (+) sign.
      */
-    internationalPhoneNumber?: string | null;
+    get internationalPhoneNumber(): string | null | undefined;
 
-    isGoodForChildren?: boolean | null;
+    get isGoodForChildren(): boolean | null | undefined;
 
-    isGoodForGroups?: boolean | null;
+    get isGoodForGroups(): boolean | null | undefined;
 
-    isGoodForWatchingSports?: boolean | null;
+    get isGoodForWatchingSports(): boolean | null | undefined;
     /**
      * Whether a place is reservable. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown. Returns &#39;undefined&#39; if this field has not yet been requested.
      */
-    isReservable?: boolean | null;
+    get isReservable(): boolean | null | undefined;
     /**
      * The Place’s position.
      */
-    location?: google.maps.LatLng | null;
+    get location(): google.maps.LatLng | null | undefined;
     /**
      * The Place’s phone number, formatted according to the <a href="http://en.wikipedia.org/wiki/Local_conventions_for_writing_telephone_numbers">number&#39;s regional convention</a>.
      */
-    nationalPhoneNumber?: string | null;
+    get nationalPhoneNumber(): string | null | undefined;
     /**
      * The NeighborhoodSummary for this place.
      */
-    neighborhoodSummary?: google.maps.places.NeighborhoodSummary | null;
+    get neighborhoodSummary(): google.maps.places.NeighborhoodSummary | null | undefined;
     /**
      * Options of parking provided by the place. <code>undefined</code> if the parking options data have not been called for from the server.
      */
-    parkingOptions?: google.maps.places.ParkingOptions | null;
+    get parkingOptions(): google.maps.places.ParkingOptions | null | undefined;
     /**
      * Payment options provided by the place. <code>undefined</code> if the payment options data have not been called for from the server.
      */
-    paymentOptions?: google.maps.places.PaymentOptions | null;
+    get paymentOptions(): google.maps.places.PaymentOptions | null | undefined;
     /**
      * Photos of this Place. The collection will contain up to ten {@link google.maps.places.Photo} objects.
      */
-    photos?: google.maps.places.Photo[];
+    get photos(): google.maps.places.Photo[] | undefined;
 
-    plusCode?: google.maps.places.PlusCode | null;
+    get plusCode(): google.maps.places.PlusCode | null | undefined;
 
-    postalAddress?: google.maps.places.PostalAddress | null;
+    get postalAddress(): google.maps.places.PostalAddress | null | undefined;
     /**
      * The price level of the Place. This property can return any of the following values <ul style="list-style-type: none;"> <li><code>Free</code></li> <li><code>Inexpensive</code></li> <li><code>Moderate</code></li> <li><code>Expensive</code></li> <li><code>Very Expensive</code></li> </ul>
      */
-    priceLevel?: google.maps.places.PriceLevelString | null;
+    get priceLevel(): google.maps.places.PriceLevelString | null | undefined;
     /**
      * The price range for this Place. <code>endPrice</code> could be unset, which indicates a range without upper bound (e.g. &quot;More than $100&quot;).
      */
-    priceRange?: google.maps.places.PriceRange | null;
+    get priceRange(): google.maps.places.PriceRange | null | undefined;
     /**
      * The location&#39;s primary type. <code>null</code> if there is no type. <code>undefined</code> if the type data has not been loaded from the server.
      */
-    primaryType?: string | null;
+    get primaryType(): string | null | undefined;
     /**
      * The location&#39;s primary type display name. <code>null</code> if there is no type. <code>undefined</code> if the type data has not been loaded from the server.
      */
-    primaryTypeDisplayName?: string | null;
+    get primaryTypeDisplayName(): string | null | undefined;
     /**
      * The language of the location&#39;s primary type display name. <code>null</code> if there is no type. <code>undefined</code> if the type data has not been loaded from the server.
      */
-    primaryTypeDisplayNameLanguageCode?: string | null;
+    get primaryTypeDisplayNameLanguageCode(): string | null | undefined;
     /**
      * A rating, between 1.0 to 5.0, based on user reviews of this Place.
      */
-    rating?: number | null;
+    get rating(): number | null | undefined;
     /**
      * The regular hours of operation for this place. This does not include exceptional hours like holidays.
      */
-    regularOpeningHours?: google.maps.places.OpeningHours | null;
+    get regularOpeningHours(): google.maps.places.OpeningHours | null | undefined;
     /**
      * The regular secondary hours of this place which excludes exceptional hours like holidays and irregular closures. Secondary hours are different from a place&#39;s main hours. For example, a restaurant can specify drive through hours or delivery hours as its secondary hours.
      */
-    regularSecondaryOpeningHours?: google.maps.places.SecondaryOpeningHours[];
+    get regularSecondaryOpeningHours(): google.maps.places.SecondaryOpeningHours[] | undefined;
     /**
      * The requested language for this place.
      */
@@ -10675,85 +10700,85 @@ declare namespace google.maps.places {
     /**
      * A list of reviews for this Place.
      */
-    reviews?: google.maps.places.Review[];
+    get reviews(): google.maps.places.Review[] | undefined;
     /**
      * The ReviewSummary for this place.
      */
-    reviewSummary?: google.maps.places.ReviewSummary | null;
+    get reviewSummary(): google.maps.places.ReviewSummary | null | undefined;
     /**
      * Whether a place serves beer. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown. Returns &#39;undefined&#39; if this field has not yet been requested.
      */
-    servesBeer?: boolean | null;
+    get servesBeer(): boolean | null | undefined;
     /**
      * Whether a place serves breakfast. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown. Returns &#39;undefined&#39; if this field has not yet been requested.
      */
-    servesBreakfast?: boolean | null;
+    get servesBreakfast(): boolean | null | undefined;
     /**
      * Whether a place serves brunch. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown. Returns &#39;undefined&#39; if this field has not yet been requested.
      */
-    servesBrunch?: boolean | null;
+    get servesBrunch(): boolean | null | undefined;
 
-    servesCocktails?: boolean | null;
+    get servesCocktails(): boolean | null | undefined;
 
-    servesCoffee?: boolean | null;
+    get servesCoffee(): boolean | null | undefined;
 
-    servesDessert?: boolean | null;
+    get servesDessert(): boolean | null | undefined;
     /**
      * Whether a place serves dinner. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown. Returns &#39;undefined&#39; if this field has not yet been requested.
      */
-    servesDinner?: boolean | null;
+    get servesDinner(): boolean | null | undefined;
     /**
      * Whether a place serves lunch. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown. Returns &#39;undefined&#39; if this field has not yet been requested.
      */
-    servesLunch?: boolean | null;
+    get servesLunch(): boolean | null | undefined;
     /**
      * Whether a place serves vegetarian food. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown. Returns &#39;undefined&#39; if this field has not yet been requested.
      */
-    servesVegetarianFood?: boolean | null;
+    get servesVegetarianFood(): boolean | null | undefined;
     /**
      * Whether a place serves wine. Returns &#39;true&#39; or &#39;false&#39; if the value is known. Returns &#39;null&#39; if the value is unknown. Returns &#39;undefined&#39; if this field has not yet been requested.
      */
-    servesWine?: boolean | null;
+    get servesWine(): boolean | null | undefined;
     /**
      * The location’s short address.
      */
-    shortFormattedAddress?: string | null;
+    get shortFormattedAddress(): string | null | undefined;
     /**
      * The list of sub-destinations for this place. Sub-destinations are specific places associated with a main place. These provide more specific destinations for users who are searching within a large or complex place, like an airport, national park, university, or stadium.
      */
-    subDestinations?: google.maps.places.Place[];
+    get subDestinations(): google.maps.places.Place[] | undefined;
     /**
      * URI to the svg image mask resource that can be used to represent a place’s category.
      */
-    svgIconMaskURI?: string | null;
+    get svgIconMaskURI(): string | null | undefined;
     /**
      * An array of <a href="https://developers.google.com/maps/documentation/places/web-service/supported_types">types for this Place</a> (for example, <code>[&quot;political&quot;, &quot;locality&quot;]</code> or <code>[&quot;restaurant&quot;, &quot;establishment&quot;]</code>).
      */
-    types?: string[];
+    get types(): string[] | undefined;
     /**
      * The number of user ratings which contributed to this Place’s {@link google.maps.places.Place.rating}.
      */
-    userRatingCount?: number | null;
+    get userRatingCount(): number | null | undefined;
     /**
      * The offset from UTC of the Place’s current timezone, in minutes. For example, Austrialian Eastern Standard Time (GMT+10) in daylight savings is 11 hours ahead of UTC, so the <code>utc_offset_minutes</code> will be <code>660</code>. For timezones behind UTC, the offset is negative. For example, the <code>utc_offset_minutes</code> is <code>-60</code> for Cape Verde.
      */
-    utcOffsetMinutes?: number | null;
+    get utcOffsetMinutes(): number | null | undefined;
     /**
      * The preferred viewport when displaying this Place on a map.
      */
-    viewport?: google.maps.LatLngBounds | null;
+    get viewport(): google.maps.LatLngBounds | null | undefined;
     /**
      * The authoritative website for this Place, such as a business&#39; homepage.
      */
-    websiteURI?: string | null;
+    get websiteURI(): string | null | undefined;
     /**
      * @deprecated Use {@link google.maps.places.Place.regularOpeningHours} instead.
      */
-    openingHours?: google.maps.places.OpeningHours | null;
+    get openingHours(): google.maps.places.OpeningHours | null | undefined;
     /**
      * @deprecated This field was accidentally documented, but has never actually been populated.
      */
-    hasWiFi?: boolean | null;
+    get hasWiFi(): boolean | null | undefined;
     /**
      * Text query based place search.
      */
@@ -10799,7 +10824,12 @@ declare namespace google.maps.places {
      * The place object, ID, or resource name to render details for in the Place Details Compact element. This property reflects to the attribute as a resource name.
      * @defaultValue <code>null</code>
      */
-    place: google.maps.places.Place | null;
+    get place(): google.maps.places.Place | null;
+    /**
+     * The place object, ID, or resource name to render details for in the Place Details Compact element. This property reflects to the attribute as a resource name.
+     * @defaultValue <code>null</code>
+     */
+    set place(value: google.maps.places.Place | string | null | undefined);
     addEventListener<K extends keyof PlaceDetailsPlaceRequestElementEventMap>(type: K, listener: (this: PlaceDetailsPlaceRequestElement, ev: PlaceDetailsPlaceRequestElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -10836,12 +10866,17 @@ declare namespace google.maps.places {
     /**
      * Read only. Place object containing the ID, location, and viewport of the currently rendered place.
      */
-    place?: google.maps.places.Place;
+    get place(): google.maps.places.Place | undefined;
     /**
      * If true, truncates the place name and address to fit on one line instead of wrapping.
      * @defaultValue <code>false</code>
      */
-    truncationPreferred: boolean;
+    get truncationPreferred(): boolean;
+    /**
+     * If true, truncates the place name and address to fit on one line instead of wrapping.
+     * @defaultValue <code>false</code>
+     */
+    set truncationPreferred(value: boolean | null | undefined);
     addEventListener<K extends keyof PlaceDetailsCompactElementEventMap>(type: K, listener: (this: PlaceDetailsCompactElement, ev: PlaceDetailsCompactElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -10867,7 +10902,7 @@ declare namespace google.maps.places {
     /**
      * Read only. Place object containing the ID, location, and viewport of the currently rendered place.
      */
-    place?: google.maps.places.Place;
+    get place(): google.maps.places.Place | undefined;
     addEventListener<K extends keyof PlaceDetailsElementEventMap>(type: K, listener: (this: PlaceDetailsElement, ev: PlaceDetailsElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -10975,37 +11010,72 @@ declare namespace google.maps.places {
      * Excluded primary place types.
      * @defaultValue <code>null</code>
      */
-    excludedPrimaryTypes?: string[] | null;
+    get excludedPrimaryTypes(): string[] | null;
+    /**
+     * Excluded primary place types.
+     * @defaultValue <code>null</code>
+     */
+    set excludedPrimaryTypes(value: string[] | null | undefined);
     /**
      * Excluded place types.
      * @defaultValue <code>null</code>
      */
-    excludedTypes?: string[] | null;
+    get excludedTypes(): string[] | null;
+    /**
+     * Excluded place types.
+     * @defaultValue <code>null</code>
+     */
+    set excludedTypes(value: string[] | null | undefined);
     /**
      * Included primary place type.
      * @defaultValue <code>null</code>
      */
-    includedPrimaryTypes?: string[] | null;
+    get includedPrimaryTypes(): string[] | null;
+    /**
+     * Included primary place type.
+     * @defaultValue <code>null</code>
+     */
+    set includedPrimaryTypes(value: string[] | null | undefined);
     /**
      * Included place type.
      * @defaultValue <code>null</code>
      */
-    includedTypes?: string[] | null;
+    get includedTypes(): string[] | null;
+    /**
+     * Included place type.
+     * @defaultValue <code>null</code>
+     */
+    set includedTypes(value: string[] | null | undefined);
     /**
      * The region to search. Normalizes to a <code>Circle</code>.
      * @defaultValue <code>null</code>
      */
-    locationRestriction?: google.maps.Circle | google.maps.CircleLiteral | null;
+    get locationRestriction(): google.maps.Circle | null;
+    /**
+     * The region to search. Normalizes to a <code>Circle</code>.
+     * @defaultValue <code>null</code>
+     */
+    set locationRestriction(value: google.maps.Circle | google.maps.CircleLiteral | null | undefined);
     /**
      * Maximum number of results to return.
      * @defaultValue <code>null</code>
      */
-    maxResultCount?: number | null;
+    get maxResultCount(): number | null;
+    /**
+     * Maximum number of results to return.
+     * @defaultValue <code>null</code>
+     */
+    set maxResultCount(value: number | null | undefined);
     /**
      * How results will be ranked in the response.
      * @defaultValue <code>null</code>
      */
-    rankPreference?: google.maps.places.SearchNearbyRankPreferenceString | null;
+    get rankPreference(): google.maps.places.SearchNearbyRankPreferenceString | null;
+    /**
+     * How results will be ranked in the response.
+     * @defaultValue <code>null</code>
+     */
+    set rankPreference(value: google.maps.places.SearchNearbyRankPreferenceString | null | undefined);
     addEventListener<K extends keyof PlaceNearbySearchRequestElementEventMap>(type: K, listener: (this: PlaceNearbySearchRequestElement, ev: PlaceNearbySearchRequestElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -11078,62 +11148,122 @@ declare namespace google.maps.places {
      * The list of preferred EV connector types.
      * @defaultValue <code>null</code>
      */
-    evConnectorTypes?: google.maps.places.EVConnectorTypeString[] | null;
+    get evConnectorTypes(): google.maps.places.EVConnectorTypeString[] | null;
+    /**
+     * The list of preferred EV connector types.
+     * @defaultValue <code>null</code>
+     */
+    set evConnectorTypes(value: google.maps.places.EVConnectorTypeString[] | null | undefined);
     /**
      * Minimum required charging rate in kilowatts.
      * @defaultValue <code>null</code>
      */
-    evMinimumChargingRateKw?: number | null;
+    get evMinimumChargingRateKw(): number | null;
+    /**
+     * Minimum required charging rate in kilowatts.
+     * @defaultValue <code>null</code>
+     */
+    set evMinimumChargingRateKw(value: number | null | undefined);
     /**
      * The requested place type.
      * @defaultValue <code>null</code>
      */
-    includedType?: string | null;
+    get includedType(): string | null;
+    /**
+     * The requested place type.
+     * @defaultValue <code>null</code>
+     */
+    set includedType(value: string | null | undefined);
     /**
      * Used to restrict the search to places that are currently open.
      * @defaultValue <code>null</code>
      */
-    isOpenNow?: boolean | null;
+    get isOpenNow(): boolean | null;
     /**
-     * Location bias for the search. Normalizes to a <code>LatLngAltitude | LatLngBounds | Circle | string</code>.
+     * Used to restrict the search to places that are currently open.
      * @defaultValue <code>null</code>
      */
-    locationBias?: google.maps.places.LocationBias | null;
+    set isOpenNow(value: boolean | null | undefined);
+    /**
+     * Location bias for the search.
+     * @defaultValue <code>null</code>
+     */
+    get locationBias(): google.maps.LatLngAltitude | google.maps.LatLngBounds | google.maps.Circle | string | null;
+    /**
+     * Location bias for the search.
+     * @defaultValue <code>null</code>
+     */
+    set locationBias(value: google.maps.places.LocationBias | null | undefined);
     /**
      * Location restriction for the search. Normalizes to a <code>LatLngBounds</code>.
      * @defaultValue <code>null</code>
      */
-    locationRestriction?: google.maps.LatLngBounds | google.maps.LatLngBoundsLiteral | null;
+    get locationRestriction(): google.maps.LatLngBounds | null;
+    /**
+     * Location restriction for the search. Normalizes to a <code>LatLngBounds</code>.
+     * @defaultValue <code>null</code>
+     */
+    set locationRestriction(value: google.maps.LatLngBounds | google.maps.LatLngBoundsLiteral | null | undefined);
     /**
      * Maximum number of results to return.
      * @defaultValue <code>null</code>
      */
-    maxResultCount?: number | null;
+    get maxResultCount(): number | null;
+    /**
+     * Maximum number of results to return.
+     * @defaultValue <code>null</code>
+     */
+    set maxResultCount(value: number | null | undefined);
     /**
      * Filter out results whose average user rating is strictly less than this limit.
      * @defaultValue <code>null</code>
      */
-    minRating?: number | null;
+    get minRating(): number | null;
+    /**
+     * Filter out results whose average user rating is strictly less than this limit.
+     * @defaultValue <code>null</code>
+     */
+    set minRating(value: number | null | undefined);
     /**
      * Used to restrict the search to places that are marked as certain price levels.
      * @defaultValue <code>null</code>
      */
-    priceLevels?: google.maps.places.PriceLevelString[] | null;
+    get priceLevels(): google.maps.places.PriceLevelString[] | null;
+    /**
+     * Used to restrict the search to places that are marked as certain price levels.
+     * @defaultValue <code>null</code>
+     */
+    set priceLevels(value: google.maps.places.PriceLevelString[] | null | undefined);
     /**
      * How results will be ranked in the response.
      * @defaultValue <code>null</code>
      */
-    rankPreference?: google.maps.places.SearchByTextRankPreferenceString | null;
+    get rankPreference(): google.maps.places.SearchByTextRankPreferenceString | null;
+    /**
+     * How results will be ranked in the response.
+     * @defaultValue <code>null</code>
+     */
+    set rankPreference(value: google.maps.places.SearchByTextRankPreferenceString | null | undefined);
     /**
      * The text query for textual search.
      * @defaultValue <code>null</code>
      */
-    textQuery?: string | null;
+    get textQuery(): string | null;
+    /**
+     * The text query for textual search.
+     * @defaultValue <code>null</code>
+     */
+    set textQuery(value: string | null | undefined);
     /**
      * Used to set strict type filtering for &#39;includedType&#39;.
      * @defaultValue <code>null</code>
      */
-    useStrictTypeFiltering?: boolean | null;
+    get useStrictTypeFiltering(): boolean | null;
+    /**
+     * Used to set strict type filtering for &#39;includedType&#39;.
+     * @defaultValue <code>null</code>
+     */
+    set useStrictTypeFiltering(value: boolean | null | undefined);
     addEventListener<K extends keyof PlaceTextSearchRequestElementEventMap>(type: K, listener: (this: PlaceTextSearchRequestElement, ev: PlaceTextSearchRequestElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -11147,7 +11277,7 @@ declare namespace google.maps.places {
     /**
      * The selected place.
      */
-    place: google.maps.places.Place;
+    get place(): google.maps.places.Place;
   }
   /**
    * Displays the results of a place search in a list. Append a {@link google.maps.places.PlaceTextSearchRequestElement} or {@link google.maps.places.PlaceNearbySearchRequestElement} to specify the request to render results for. Append a {@link google.maps.places.PlaceContentConfigElement}, {@link google.maps.places.PlaceStandardContentElement}, or {@link google.maps.places.PlaceAllContentElement} to specify which content to render. <br><br> Example: <pre><code> &lt;gmp-place-search&gt;<br> &nbsp;&nbsp;&lt;gmp-place-text-search-request<br> &nbsp;&nbsp;&nbsp;&nbsp;text-query="<var>QUERY</var>"<br> &nbsp;&nbsp;&gt;&lt;/gmp-place-text-search-request&gt;<br> &nbsp;&nbsp;&lt;gmp-place-content-config&gt;<br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;gmp-place-media lightbox-preferred&gt;&lt;/gmp-place-media&gt;<br> &nbsp;&nbsp;&lt;/gmp-place-content-config&gt;<br> &lt;/gmp-place-search&gt; </code></pre> <br> To use the Place Search Element, enable the <a href="https://console.cloud.google.com/marketplace/product/google/placewidgets.googleapis.com" >Places UI Kit API</a> for your project in the Google Cloud console.
@@ -11163,26 +11293,46 @@ declare namespace google.maps.places {
      * The position of the attribution logo and legal disclosure button.
      * @defaultValue <code>PlaceSearchAttributionPosition.TOP</code>
      */
-    attributionPosition?: google.maps.places.PlaceSearchAttributionPositionString | null;
+    get attributionPosition(): google.maps.places.PlaceSearchAttributionPositionString;
+    /**
+     * The position of the attribution logo and legal disclosure button.
+     * @defaultValue <code>PlaceSearchAttributionPosition.TOP</code>
+     */
+    set attributionPosition(value: google.maps.places.PlaceSearchAttributionPositionString | null | undefined);
     /**
      * The orientation variant (vertical or horizontal) of the element.
      * @defaultValue <code>PlaceSearchOrientation.VERTICAL</code>
      */
-    orientation?: google.maps.places.PlaceSearchOrientationString | null;
+    get orientation(): google.maps.places.PlaceSearchOrientationString;
+    /**
+     * The orientation variant (vertical or horizontal) of the element.
+     * @defaultValue <code>PlaceSearchOrientation.VERTICAL</code>
+     */
+    set orientation(value: google.maps.places.PlaceSearchOrientationString | null | undefined);
     /**
      * Read only. Array of <code>Place</code> objects containing the IDs, locations, and viewports of the currently rendered places.
      */
-    places: google.maps.places.Place[];
+    get places(): google.maps.places.Place[];
     /**
      * Whether or not the list items are selectable. If true, the list items will be buttons that dispatch the <code>gmp-select</code> event when clicked. Accessible keyboard navigation and selection is also supported.
      * @defaultValue <code>false</code>
      */
-    selectable?: boolean | null;
+    get selectable(): boolean;
+    /**
+     * Whether or not the list items are selectable. If true, the list items will be buttons that dispatch the <code>gmp-select</code> event when clicked. Accessible keyboard navigation and selection is also supported.
+     * @defaultValue <code>false</code>
+     */
+    set selectable(value: boolean | null | undefined);
     /**
      * If true, truncates certain lines of content to fit on one line instead of wrapping.
      * @defaultValue <code>false</code>
      */
-    truncationPreferred?: boolean | null;
+    get truncationPreferred(): boolean;
+    /**
+     * If true, truncates certain lines of content to fit on one line instead of wrapping.
+     * @defaultValue <code>false</code>
+     */
+    set truncationPreferred(value: boolean | null | undefined);
     addEventListener<K extends keyof PlaceSearchElementEventMap>(type: K, listener: (this: PlaceSearchElement, ev: PlaceSearchElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -11244,7 +11394,7 @@ declare namespace google.maps.places {
     /**
      * Contains the human-readable name for the returned result. For establishment results, this is usually the business name and address. <br/><br/> If a {@link google.maps.places.AutocompleteRequest.sessionToken} was provided in the AutocompleteRequest used to fetch this AutocompleteSuggestion, the same token will automatically be included when calling {@link google.maps.places.Place.fetchFields} for the first time on the {@link google.maps.places.Place} returned by a call to {@link google.maps.places.PlacePrediction.toPlace}.
      */
-    placePrediction: google.maps.places.PlacePrediction | null;
+    get placePrediction(): google.maps.places.PlacePrediction | null;
     /**
      * Fetches a list of AutocompleteSuggestions. <br/><br/> If a {@link google.maps.places.AutocompleteRequest.sessionToken} is provided in the request, then that session token will automatically be included when calling {@link google.maps.places.Place.fetchFields} for the first time, on each {@link google.maps.places.Place} returned by {@link google.maps.places.PlacePrediction.toPlace} on the resulting {@link google.maps.places.PlacePrediction}s.
      */
@@ -11258,27 +11408,27 @@ declare namespace google.maps.places {
     /**
      * The length of the geodesic in meters from <code>origin</code> if <code>origin</code> is specified.
      */
-    distanceMeters: number | null;
+    get distanceMeters(): number | null;
     /**
      * Represents the name of the Place.
      */
-    mainText: google.maps.places.FormattableText | null;
+    get mainText(): google.maps.places.FormattableText | null;
     /**
      * The unique identifier of the suggested Place. This identifier can be used in other APIs that accept Place IDs.
      */
-    placeId: string;
+    get placeId(): string;
     /**
      * Represents additional disambiguating features (such as a city or region) to further identify the Place.
      */
-    secondaryText: google.maps.places.FormattableText | null;
+    get secondaryText(): google.maps.places.FormattableText | null;
     /**
      * Contains the human-readable name for the returned result. For establishment results, this is usually the business name and address. <br/><br/> <code>text</code> is recommended for developers who wish to show a single UI element. Developers who wish to show two separate, but related, UI elements may want to use {@link google.maps.places.PlacePrediction.mainText} and {@link google.maps.places.PlacePrediction.secondaryText} instead.
      */
-    text: google.maps.places.FormattableText;
+    get text(): google.maps.places.FormattableText;
     /**
      * List of types that apply to this Place from Table A or Table B in <a href="https://developers.google.com/maps/documentation/places/web-service/place-types">https://developers.google.com/maps/documentation/places/web-service/place-types</a>.
      */
-    types: string[];
+    get types(): string[];
     /**
      * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * Sends an Address Validation request associated with this autocomplete session (internally populating the request with the autocomplete session token). No place information from the PlacePrediction is included automatically - this is a convenience method to help with autocomplete session management.
@@ -11297,11 +11447,11 @@ declare namespace google.maps.places {
     /**
      * Zero-based offset of the last Unicode character of the substring (exclusive).
      */
-    endOffset: number;
+    get endOffset(): number;
     /**
      * Zero-based offset of the first Unicode character of the substring (inclusive).
      */
-    startOffset: number;
+    get startOffset(): number;
   }
   /**
    * Text representing a Place prediction. The text may be used as is or formatted.
@@ -11311,11 +11461,11 @@ declare namespace google.maps.places {
     /**
      * A list of string ranges identifying where the input request matched in {@link google.maps.places.FormattableText.text}. The ranges can be used to format specific parts of <code>text</code>. The substrings may not be exact matches of {@link google.maps.places.AutocompleteRequest.input} if the matching was determined by criteria other than string matching (for example, spell corrections or transliterations). These values are Unicode character offsets of {@link google.maps.places.FormattableText.text}. The ranges are guaranteed to be ordered in increasing offset values.
      */
-    matches: google.maps.places.StringRange[];
+    get matches(): google.maps.places.StringRange[];
     /**
      * Text that may be used as is or formatted with {@link google.maps.places.FormattableText.matches}.
      */
-    text: string;
+    get text(): string;
   }
   /**
    * BasicPlaceAutocompleteElement is an <code>HTMLElement</code> subclass which provides a UI component for the Places Autocomplete API.
@@ -11350,7 +11500,11 @@ declare namespace google.maps.places {
     /**
      * The origin from which to calculate distance. If not specified, distance is not calculated. The altitude, if given, is not used in the calculation.
      */
-    origin?: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
+    get origin(): google.maps.LatLngAltitude | null;
+    /**
+     * The origin from which to calculate distance. If not specified, distance is not calculated. The altitude, if given, is not used in the calculation.
+     */
+    set origin(value: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null | undefined);
     /**
      * A language identifier for the language in which the results should be returned, if possible. Results in the selected language may be given a higher ranking, but suggestions are not restricted to this language. See the <a href="https://developers.google.com/maps/faq#languagesupport">list of supported languages</a>.
      */
@@ -11362,7 +11516,11 @@ declare namespace google.maps.places {
     /**
      * The unit system used to display distances. If not specified, the unit system is determined by requestedRegion.
      */
-    unitSystem?: google.maps.UnitSystem | null;
+    get unitSystem(): google.maps.UnitSystem | null;
+    /**
+     * The unit system used to display distances. If not specified, the unit system is determined by requestedRegion.
+     */
+    set unitSystem(value: google.maps.UnitSystem | null | undefined);
     addEventListener<K extends keyof BasicPlaceAutocompleteElementEventMap>(type: K, listener: (this: BasicPlaceAutocompleteElement, ev: BasicPlaceAutocompleteElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -11440,11 +11598,19 @@ declare namespace google.maps.places {
     /**
      * The layout.
      */
-    layout?: google.maps.places.PlaceContextualListLayoutString | null;
+    get layout(): google.maps.places.PlaceContextualListLayoutString;
+    /**
+     * The layout.
+     */
+    set layout(value: google.maps.places.PlaceContextualListLayoutString | null | undefined);
     /**
      * Whether the map is hidden.
      */
-    mapHidden?: boolean | null;
+    get mapHidden(): boolean;
+    /**
+     * Whether the map is hidden.
+     */
+    set mapHidden(value: boolean | null | undefined);
     addEventListener<K extends keyof PlaceContextualListConfigElementEventMap>(type: K, listener: (this: PlaceContextualListConfigElement, ev: PlaceContextualListConfigElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -11474,7 +11640,11 @@ declare namespace google.maps.places {
     /**
      * The context token.
      */
-    contextToken?: string | null;
+    get contextToken(): string | undefined;
+    /**
+     * The context token.
+     */
+    set contextToken(value: string | null | undefined);
     addEventListener<K extends keyof PlaceContextualElementEventMap>(type: K, listener: (this: PlaceContextualElement, ev: PlaceContextualElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -11488,7 +11658,7 @@ declare namespace google.maps.places {
     /**
      * Convert this to a {@link google.maps.places.Place} by calling {@link google.maps.places.PlacePrediction.toPlace}.
      */
-    placePrediction: google.maps.places.PlacePrediction;
+    get placePrediction(): google.maps.places.PlacePrediction;
   }
   /**
    * PlaceAutocompleteElement is an <code>HTMLElement</code> subclass which provides a UI component for the Places Autocomplete API. <br/><br/> PlaceAutocompleteElement automatically uses {@link google.maps.places.AutocompleteSessionToken}s internally to group the query and selection phases of a user&#39;s autocomplete search. <br/><br/> The first call to {@link google.maps.places.Place.fetchFields} on a {@link google.maps.places.Place} returned by {@link google.maps.places.PlacePrediction.toPlace} will automatically include the session token used to fetch the <code>PlacePrediction</code>. <br/><br/> See <a href="https://developers.google.com/maps/documentation/places/web-service/place-session-tokens">https://developers.google.com/maps/documentation/places/web-service/place-session-tokens</a> for more details on how sessions work.
@@ -11523,11 +11693,19 @@ declare namespace google.maps.places {
     /**
      * The origin from which to calculate distance. If not specified, distance is not calculated. The altitude, if given, is not used in the calculation.
      */
-    origin?: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
+    get origin(): google.maps.LatLngAltitude | null;
+    /**
+     * The origin from which to calculate distance. If not specified, distance is not calculated. The altitude, if given, is not used in the calculation.
+     */
+    set origin(value: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null | undefined);
     /**
      * The placeholder text to display in the input element.
      */
-    placeholder: string;
+    get placeholder(): string;
+    /**
+     * The placeholder text to display in the input element.
+     */
+    set placeholder(value: string | null);
     /**
      * A language identifier for the language in which the results should be returned, if possible. Results in the selected language may be given a higher ranking, but suggestions are not restricted to this language. See the <a href="https://developers.google.com/maps/faq#languagesupport">list of supported languages</a>.
      */
@@ -11539,11 +11717,19 @@ declare namespace google.maps.places {
     /**
      * The unit system used to display distances. If not specified, the unit system is determined by requestedRegion.
      */
-    unitSystem?: google.maps.UnitSystem | null;
+    get unitSystem(): google.maps.UnitSystem | null;
+    /**
+     * The unit system used to display distances. If not specified, the unit system is determined by requestedRegion.
+     */
+    set unitSystem(value: google.maps.UnitSystem | null | undefined);
     /**
      * The value of the input element.
      */
-    value: string;
+    get value(): string;
+    /**
+     * The value of the input element.
+     */
+    set value(value: string | null);
     addEventListener<K extends keyof PlaceAutocompleteElementEventMap>(type: K, listener: (this: PlaceAutocompleteElement, ev: PlaceAutocompleteElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -11589,35 +11775,35 @@ declare namespace google.maps.addressValidation {
     /**
      * The component name text. For example, &quot;5th Avenue&quot; for a street name or &quot;1253&quot; for a street number,
      */
-    componentName: string | null;
+    get componentName(): string | null;
     /**
      * The BCP-47 language code. This will not be present if the component name is not associated with a language, such as a street number.
      */
-    componentNameLanguageCode: string | null;
+    get componentNameLanguageCode(): string | null;
     /**
      * The type of the address component. See <a href="https://developers.google.com/places/web-service/supported_types#table2">Table 2: Additional types returned by the Places service</a> for a list of possible types.
      */
-    componentType: string | null;
+    get componentType(): string | null;
     /**
      * Indicates the level of certainty that the component is correct.
      */
-    confirmationLevel: google.maps.addressValidation.ConfirmationLevelString | null;
+    get confirmationLevel(): google.maps.addressValidation.ConfirmationLevelString | null;
     /**
      * If true, this component was not part of the input, but was inferred for the address location. Including this component is recommended for a complete address.
      */
-    inferred: boolean;
+    get inferred(): boolean;
     /**
      * Indicates the name of the component was replaced with a completely different one. For example, replacing a wrong postal code being with one that is correct for the address. This is not a cosmetic change; the input component has been changed to a different one.
      */
-    replaced: boolean;
+    get replaced(): boolean;
     /**
      * Indicates a correction to a misspelling in the component name. The API does not always flag changes from one spelling variant to another, such as &quot;centre&quot; to &quot;center&quot;.
      */
-    spellCorrected: boolean;
+    get spellCorrected(): boolean;
     /**
      * If true, this component is not expected to be present in a postal address for the given region. It has been retained only because it was part of the input.
      */
-    unexpected: boolean;
+    get unexpected(): boolean;
   }
   /**
    * The different possible values indicating the level of certainty that the component is correct.
@@ -11641,27 +11827,27 @@ declare namespace google.maps.addressValidation {
     /**
      * The individual address components of the formatted and corrected address, along with validation information. This provides information on the validation status of the individual components.
      */
-    components: google.maps.addressValidation.AddressComponent[];
+    get components(): google.maps.addressValidation.AddressComponent[];
     /**
      * The post-processed address, formatted as a single-line address following the address-formatting rules of the region where the address is located.
      */
-    formattedAddress: string | null;
+    get formattedAddress(): string | null;
     /**
      * The types of components that were expected to be present in a correctly formatted mailing address but were not found in the input AND could not be inferred. Components of this type are not present in <code>formatted_address</code>, <code>postal_address</code>, or <code>address_components</code>. An example might be <code>[&#39;street_number&#39;, &#39;route&#39;]</code> for an input like &quot;Boulder, Colorado, 80301, USA&quot;. The list of possible types can be found <a href="https://developers.google.com/maps/documentation/geocoding/requests-geocoding#Types">here</a>.
      */
-    missingComponentTypes: string[];
+    get missingComponentTypes(): string[];
     /**
      * The post-processed address represented as a postal address.
      */
-    postalAddress: google.maps.places.PostalAddress | null;
+    get postalAddress(): google.maps.places.PostalAddress | null;
     /**
      * The types of the components that are present in the <code>address_components</code> but could not be confirmed to be correct. This field is provided for the sake of convenience: its contents are equivalent to iterating through the <code>address_components</code> to find the types of all the components where the {@link google.maps.addressValidation.AddressComponent.confirmationLevel} is not {@link google.maps.addressValidation.ConfirmationLevel.CONFIRMED} or the {@link google.maps.addressValidation.AddressComponent.inferred} flag is not set to <code>true</code>. The list of possible types can be found <a href="https://developers.google.com/maps/documentation/geocoding/requests-geocoding#Types">here</a>.
      */
-    unconfirmedComponentTypes: string[];
+    get unconfirmedComponentTypes(): string[];
     /**
      * Any tokens in the input that could not be resolved. This might be an input that was not recognized as a valid part of an address (for example in an input like &quot;123235253253 Main St, San Francisco, CA, 94105&quot;, the unresolved tokens may look like <code>[&quot;123235253253&quot;]</code> since that does not look like a valid street number.
      */
-    unresolvedTokens: string[];
+    get unresolvedTokens(): string[];
     toJSON(key?: string): unknown;
   }
   /**
@@ -11670,11 +11856,11 @@ declare namespace google.maps.addressValidation {
    */
   export class AddressMetadata {
 
-    business: boolean;
+    get business(): boolean;
 
-    poBox: boolean;
+    get poBox(): boolean;
 
-    residential: boolean;
+    get residential(): boolean;
     toJSON(key?: string): unknown;
   }
   /**
@@ -11710,27 +11896,27 @@ declare namespace google.maps.addressValidation {
     /**
      * The bounds of the geocoded place.
      */
-    bounds: google.maps.LatLngBounds | null;
+    get bounds(): google.maps.LatLngBounds | null;
     /**
      * The size of the geocoded place, in meters. This is another measure of the coarseness of the geocoded location, but in physical size rather than in semantic meaning.
      */
-    featureSizeMeters: number | null;
+    get featureSizeMeters(): number | null;
     /**
      * The geocoded location of the input.
      */
-    location: google.maps.LatLngAltitude | null;
+    get location(): google.maps.LatLngAltitude | null;
     /**
      * The Place ID of the geocoded place. Using Place is preferred over using addresses, latitude/longitude coordinates, or plus codes. Using coordinates for routing or calculating driving directions will always result in the point being snapped to the road nearest to those coordinates. This may not be a road that will quickly or safely lead to the destination and may not be near an access point to the property. Additionally, when a location is reverse geocoded, there is no guarantee that the returned address will match the original.
      */
-    placeId: string | null;
+    get placeId(): string | null;
     /**
      * The type(s) of place that the input geocoded to. For example, <code>[&#39;locality&#39;, &#39;political&#39;]</code>. The full list of types can be found in the <a href="https://developers.google.com/maps/documentation/geocoding/requests-geocoding#Types">Geocoding API documentation</a>.
      */
-    placeTypes: string[];
+    get placeTypes(): string[];
     /**
      * The plus code corresponding to the <code>location</code>.
      */
-    plusCode: google.maps.places.PlusCode | null;
+    get plusCode(): google.maps.places.PlusCode | null;
     /**
      * Returns a Place representation of this Geocode. To get full place details, a call to place.fetchFields() should be made.
      */
@@ -11745,39 +11931,39 @@ declare namespace google.maps.addressValidation {
     /**
      * The city name.
      */
-    city: string | null;
+    get city(): string | null;
     /**
      * The address line containing the city, state, and zip code.
      */
-    cityStateZipAddressLine: string | null;
+    get cityStateZipAddressLine(): string | null;
     /**
      * The name of the firm.
      */
-    firm: string | null;
+    get firm(): string | null;
     /**
      * The first line of the address.
      */
-    firstAddressLine: string | null;
+    get firstAddressLine(): string | null;
     /**
      * The second line of the address.
      */
-    secondAddressLine: string | null;
+    get secondAddressLine(): string | null;
     /**
      * The 2-letter state code.
      */
-    state: string | null;
+    get state(): string | null;
     /**
      * The Puerto Rican urbanization name.
      */
-    urbanization: string | null;
+    get urbanization(): string | null;
     /**
      * The Postal code, e.g. &quot;10009&quot;.
      */
-    zipCode: string | null;
+    get zipCode(): string | null;
     /**
      * The 4-digit postal code extension, e.g. &quot;5023&quot;.
      */
-    zipCodeExtension: string | null;
+    get zipCodeExtension(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -11788,151 +11974,151 @@ declare namespace google.maps.addressValidation {
     /**
      * Abbreviated city.
      */
-    abbreviatedCity: string | null;
+    get abbreviatedCity(): string | null;
     /**
      * Type of the address record that matches the input address.
      */
-    addressRecordType: string | null;
+    get addressRecordType(): string | null;
     /**
      * The carrier route code. A four character code consisting of a one letter prefix and a three digit route designator.
      */
-    carrierRoute: string | null;
+    get carrierRoute(): string | null;
     /**
      * Carrier route rate sort indicator.
      */
-    carrierRouteIndicator: string | null;
+    get carrierRouteIndicator(): string | null;
     /**
      * Indicator that the request has been CASS processed.
      */
-    cassProcessed: boolean;
+    get cassProcessed(): boolean;
     /**
      * County name.
      */
-    county: string | null;
+    get county(): string | null;
     /**
      * The delivery point check digit. This number is added to the end of the delivery_point_barcode for mechanically scanned mail. Adding all the digits of the delivery_point_barcode, delivery_point_check_digit, postal code, and ZIP+4 together should yield a number divisible by 10.
      */
-    deliveryPointCheckDigit: string | null;
+    get deliveryPointCheckDigit(): string | null;
     /**
      * The 2-digit delivery point code.
      */
-    deliveryPointCode: string | null;
+    get deliveryPointCode(): string | null;
     /**
      * Indicates if the address is a CMRA (Commercial Mail Receiving Agency)--a private business receiving mail for clients. Returns a single character.
      */
-    dpvCMRA: string | null;
+    get dpvCMRA(): string | null;
     /**
      * The possible values for DPV confirmation. Returns a single character or returns no value.
      */
-    dpvConfirmation: string | null;
+    get dpvConfirmation(): string | null;
     /**
      * Flag indicates addresses where USPS cannot knock on a door to deliver mail. Returns a single character.
      */
-    dpvDoorNotAccessible: string | null;
+    get dpvDoorNotAccessible(): string | null;
     /**
      * Flag indicates mail is delivered to a single receptable at a site. Returns a single character.
      */
-    dpvDrop: string | null;
+    get dpvDrop(): string | null;
     /**
      * Indicates that more than one DPV return code is valid for the address. Returns a single character.
      */
-    dpvEnhancedDeliveryCode: string | null;
+    get dpvEnhancedDeliveryCode(): string | null;
     /**
      * The footnotes from delivery point validation. Multiple footnotes may be strung together in the same string.
      */
-    dpvFootnote: string | null;
+    get dpvFootnote(): string | null;
     /**
      * Flag indicates mail delivery is not performed every day of the week. Returns a single character.
      */
-    dpvNonDeliveryDays: string | null;
+    get dpvNonDeliveryDays(): string | null;
     /**
      * Integer identifying non-delivery days. It can be interrogated using bit flags: 0x40 – Sunday is a non-delivery day 0x20 – Monday is a non-delivery day 0x10 – Tuesday is a non-delivery day 0x08 – Wednesday is a non-delivery day 0x04 – Thursday is a non-delivery day 0x02 – Friday is a non-delivery day 0x01 – Saturday is a non-delivery day
      */
-    dpvNonDeliveryDaysValues: number | null;
+    get dpvNonDeliveryDaysValues(): number | null;
     /**
      * Flag indicates door is accessible, but package will not be left due to security concerns. Returns a single character.
      */
-    dpvNoSecureLocation: string | null;
+    get dpvNoSecureLocation(): string | null;
     /**
      * Indicates whether the address is a no stat address or an active address. No stat addresses are ones which are not continuously occupied or addresses that the USPS does not service. Returns a single character.
      */
-    dpvNoStat: string | null;
+    get dpvNoStat(): string | null;
     /**
      * Indicates the NoStat type. Returns a reason code as int.
      */
-    dpvNoStatReasonCode: number | null;
+    get dpvNoStatReasonCode(): number | null;
     /**
      * Indicates the address was matched to PBSA record. Returns a single character.
      */
-    dpvPBSA: string | null;
+    get dpvPBSA(): string | null;
     /**
      * Indicates that mail is not delivered to the street address. Returns a single character.
      */
-    dpvThrowback: string | null;
+    get dpvThrowback(): string | null;
     /**
      * Indicates whether the address is vacant. Returns a single character.
      */
-    dpvVacant: string | null;
+    get dpvVacant(): string | null;
     /**
      * eLOT Ascending/Descending Flag (A/D).
      */
-    elotFlag: string | null;
+    get elotFlag(): string | null;
     /**
      * Enhanced Line of Travel (eLOT) number.
      */
-    elotNumber: string | null;
+    get elotNumber(): string | null;
     /**
      * Error message for USPS data retrieval. This is populated when USPS processing is suspended because of the detection of artificially created addresses.
      */
-    errorMessage: string | null;
+    get errorMessage(): string | null;
     /**
      * FIPS county code.
      */
-    fipsCountyCode: string | null;
+    get fipsCountyCode(): string | null;
     /**
      * Indicator that a default address was found, but more specific addresses exist.
      */
-    hasDefaultAddress: boolean;
+    get hasDefaultAddress(): boolean;
     /**
      * The delivery address is matchable, but the EWS file indicates that an exact match will be available soon.
      */
-    hasNoEWSMatch: boolean;
+    get hasNoEWSMatch(): boolean;
     /**
      * LACSLink indicator.
      */
-    lacsLinkIndicator: string | null;
+    get lacsLinkIndicator(): string | null;
     /**
      * LACSLink return code.
      */
-    lacsLinkReturnCode: string | null;
+    get lacsLinkReturnCode(): string | null;
     /**
      * PMB (Private Mail Box) unit designator.
      */
-    pmbDesignator: string | null;
+    get pmbDesignator(): string | null;
     /**
      * PMB (Private Mail Box) number.
      */
-    pmbNumber: string | null;
+    get pmbNumber(): string | null;
     /**
      * PO Box only postal code.
      */
-    poBoxOnlyPostalCode: boolean;
+    get poBoxOnlyPostalCode(): boolean;
     /**
      * Main post office city.
      */
-    postOfficeCity: string | null;
+    get postOfficeCity(): string | null;
     /**
      * Main post office state.
      */
-    postOfficeState: string | null;
+    get postOfficeState(): string | null;
     /**
      * USPS standardized address.
      */
-    standardizedAddress: google.maps.addressValidation.USPSAddress | null;
+    get standardizedAddress(): google.maps.addressValidation.USPSAddress | null;
     /**
      * Footnotes from matching a street or highrise record to suite information. If business name match is found, the secondary number is returned.
      */
-    suiteLinkFootnote: string | null;
+    get suiteLinkFootnote(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -11943,36 +12129,36 @@ declare namespace google.maps.addressValidation {
     /**
      * The address is considered complete if there are no unresolved tokens, no unexpected or missing address components. If unset, indicates that the value is <code>false</code>. See {@link google.maps.addressValidation.Address.missingComponentTypes}, {@link google.maps.addressValidation.Address.unresolvedTokens} or {@link google.maps.addressValidation.AddressComponent.unexpected} fields for more details.
      */
-    addressComplete: boolean;
+    get addressComplete(): boolean;
     /**
      * Information about the granularity of the {@link google.maps.addressValidation.Geocode}. This can be understood as the semantic meaning of how coarse or fine the geocoded location is.
      */
-    geocodeGranularity: google.maps.addressValidation.GranularityString | null;
+    get geocodeGranularity(): google.maps.addressValidation.GranularityString | null;
     /**
      * At least one address component was inferred (i.e. added) that wasn&#39;t in the input, see {@link google.maps.addressValidation.AddressComponent} for details.
      */
-    hasInferredComponents: boolean;
+    get hasInferredComponents(): boolean;
     /**
      * At least one address component was replaced - see {@link google.maps.addressValidation.AddressComponent} for details.
      */
-    hasReplacedComponents: boolean | null;
+    get hasReplacedComponents(): boolean | null;
     /**
      * At least one address component cannot be categorized or validated, see {@link google.maps.addressValidation.AddressComponent} for details.
      */
-    hasUnconfirmedComponents: boolean;
+    get hasUnconfirmedComponents(): boolean;
     /**
      * The granularity of the <strong>input</strong> address. This is the result of parsing the input address and does not give any validation signals. For validation signals, refer to <code>validationGranularity</code>.
      */
-    inputGranularity: google.maps.addressValidation.GranularityString | null;
+    get inputGranularity(): google.maps.addressValidation.GranularityString | null;
     /**
      * Available only in the v=beta channel: https://goo.gle/3oAthT3.
      * A possible next action to take based on other fields in the API response. See {@link google.maps.addressValidation.PossibleNextAction} for details.
      */
-    possibleNextAction: google.maps.addressValidation.PossibleNextActionString | null;
+    get possibleNextAction(): google.maps.addressValidation.PossibleNextActionString | null;
     /**
      * The granularity level that the API can fully <strong>validate</strong> the address to. For example, a <code>validationGranularity</code> of <code>PREMISE</code> indicates all address components at the level of <code>PREMISE</code> and broader can be validated.
      */
-    validationGranularity: google.maps.addressValidation.GranularityString | null;
+    get validationGranularity(): google.maps.addressValidation.GranularityString | null;
   }
   /**
    * The various granularities that an address or a geocode can have. When used to indicate granularity for an <em>address</em>, these values indicate with how fine a granularity the address identifies a mailing destination. For example, an address such as &quot;123 Main Street, Redwood City, CA, 94061&quot; identifies a <code>PREMISE</code> while something like &quot;Redwood City, CA, 94061&quot; identifies a <code>LOCALITY</code>. However, if we are unable to find a geocode for &quot;123 Main Street&quot; in Redwood City, the geocode returned might be of <code>LOCALITY</code> granularity even though the address is more granular.
@@ -12039,27 +12225,27 @@ declare namespace google.maps.addressValidation {
     /**
      * Information about the address itself as opposed to the geocode.
      */
-    address: google.maps.addressValidation.Address | null;
+    get address(): google.maps.addressValidation.Address | null;
     /**
      * Information about the location and place that the address geocoded to.
      */
-    geocode: google.maps.addressValidation.Geocode | null;
+    get geocode(): google.maps.addressValidation.Geocode | null;
     /**
      * Other information relevant to deliverability. <code>metadata</code> is not guaranteed to be fully populated for every address sent to the Address Validation API.
      */
-    metadata: google.maps.addressValidation.AddressMetadata | null;
+    get metadata(): google.maps.addressValidation.AddressMetadata | null;
     /**
      * The UUID that identifies this response. If the address needs to be re-validated, this UUID <em>must</em> accompany the new request.
      */
-    responseId: string | null;
+    get responseId(): string | null;
     /**
      * Extra deliverability flags provided by USPS. Only provided in region <code>US</code> and <code>PR</code>.
      */
-    uspsData: google.maps.addressValidation.USPSData | null;
+    get uspsData(): google.maps.addressValidation.USPSData | null;
     /**
      * Overall verdict flags
      */
-    verdict: google.maps.addressValidation.Verdict | null;
+    get verdict(): google.maps.addressValidation.Verdict | null;
     /**
      * Validates an address. See <a href="https://developers.google.com/maps/documentation/javascript/address-validation/validate-address">https://developers.google.com/maps/documentation/javascript/address-validation/validate-address</a>.
      */
@@ -12097,7 +12283,12 @@ declare namespace google.maps.airQuality {
      * The location to render the air quality meter for. Normalizes to a <code>LatLngAltitude</code>.
      * @defaultValue <code>null</code>
      */
-    location?: google.maps.LatLngLiteral | google.maps.LatLng | google.maps.LatLngAltitudeLiteral | google.maps.LatLngAltitude | null;
+    get location(): google.maps.LatLngAltitude | null;
+    /**
+     * The location to render the air quality meter for. Normalizes to a <code>LatLngAltitude</code>.
+     * @defaultValue <code>null</code>
+     */
+    set location(value: google.maps.LatLngLiteral | google.maps.LatLng | google.maps.LatLngAltitudeLiteral | google.maps.LatLngAltitude | null | undefined);
     /**
      * An override for the language to request from the <a href="https://developers.google.com/maps/documentation/air-quality/overview">Air Quality API</a>. See the <a href="https://developers.google.com/maps/faq#languagesupport">list of supported languages</a>.
      * @defaultValue <code>null</code>
@@ -12159,23 +12350,23 @@ declare namespace google.maps.marker {
      */
     constructor(options?: google.maps.marker.PinElementOptions);
     /**
-     * See {@link google.maps.marker.PinElementOptions.background}.
+     * The background color of the pin shape. See {@link google.maps.marker.PinElementOptions.background}.
      */
     background?: string | null;
     /**
-     * See {@link google.maps.marker.PinElementOptions.borderColor}.
+     * The border color of the pin shape. See {@link google.maps.marker.PinElementOptions.borderColor}.
      */
     borderColor?: string | null;
     /**
-     * See {@link google.maps.marker.PinElementOptions.glyphColor}.
+     * The color of the pin glyph. See {@link google.maps.marker.PinElementOptions.glyphColor}.
      */
     glyphColor?: string | null;
     /**
-     * See {@link google.maps.marker.PinElementOptions.glyphSrc}.
+     * The source of the glyph image to be displayed in the pin. See {@link google.maps.marker.PinElementOptions.glyphSrc}.
      */
     glyphSrc?: URL | string | null;
     /**
-     * See {@link google.maps.marker.PinElementOptions.glyphText}.
+     * The text displayed in the pin. See {@link google.maps.marker.PinElementOptions.glyphText}.
      */
     glyphText?: string | null;
     /**
@@ -12186,7 +12377,7 @@ declare namespace google.maps.marker {
      * This field is read-only. The DOM Element backing the view.
      * @deprecated Use the PinElement directly.
      */
-    element: HTMLElement;
+    get element(): HTMLElement;
     /**
      * See {@link google.maps.marker.PinElementOptions.glyph}.
      * @deprecated Use {@link google.maps.marker.PinElementOptions.glyphText} or {@link google.maps.marker.PinElementOptions.glyphSrc} instead.
@@ -12301,7 +12492,7 @@ declare namespace google.maps.marker {
      * This field is read-only. The DOM Element backing the view.
      * @deprecated Use the AdvancedMarkerElement directly.
      */
-    element: HTMLElement;
+    get element(): HTMLElement;
     /**
      * See {@link google.maps.marker.AdvancedMarkerElementOptions.content}.
      * @deprecated Use <a href="https://developer.mozilla.org/docs/Web/API/Element/children">.children</a> instead.
@@ -12372,11 +12563,19 @@ declare namespace google.maps.maps3d {
     /**
      * The center of the circle.
      */
-    center?: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral | null;
+    get center(): google.maps.LatLngAltitude | null;
+    /**
+     * The center of the circle.
+     */
+    set center(value: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral | null | undefined);
     /**
      * The radius of the circle in meters.
      */
-    radius?: number | null;
+    get radius(): number | null;
+    /**
+     * The radius of the circle in meters.
+     */
+    set radius(value: number | null | undefined);
     addEventListener<K extends keyof CirclePathElementEventMap>(type: K, listener: (this: CirclePathElement, ev: CirclePathElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -12429,11 +12628,19 @@ declare namespace google.maps.maps3d {
     /**
      * The ordered sequence of coordinates that designates a closed loop. These paths define Exclusion Holes within the polygon&#39;s main path, which is the Flattening Zone. Areas within an innerPath are exempt from flattening.
      */
-    innerPaths?: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral>> | null;
+    get innerPaths(): google.maps.LatLngAltitude[][] | null;
+    /**
+     * The ordered sequence of coordinates that designates a closed loop. These paths define Exclusion Holes within the polygon&#39;s main path, which is the Flattening Zone. Areas within an innerPath are exempt from flattening.
+     */
+    set innerPaths(value: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral>> | null | undefined);
     /**
      * The ordered sequence of coordinates that designates a closed loop. This loop defines the Flattening Zone.
      */
-    path?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null;
+    get path(): google.maps.LatLngAltitude[] | null;
+    /**
+     * The ordered sequence of coordinates that designates a closed loop. This loop defines the Flattening Zone.
+     */
+    set path(value: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null | undefined);
     addEventListener<K extends keyof FlattenerElementEventMap>(type: K, listener: (this: FlattenerElement, ev: FlattenerElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -12447,6 +12654,11 @@ declare namespace google.maps.maps3d {
      * See {@link google.maps.maps3d.Marker3DElement.altitudeMode}.
      */
     altitudeMode?: google.maps.maps3d.AltitudeModeString | null;
+    /**
+     * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+     * See {@link google.maps.maps3d.Marker3DElement.autofitsCamera}.
+     */
+    autofitsCamera?: boolean | null;
     /**
      * See {@link google.maps.maps3d.Marker3DElement.collisionBehavior}.
      */
@@ -12494,49 +12706,96 @@ declare namespace google.maps.maps3d {
      * Specifies how the altitude component of the position is interpreted.
      * @defaultValue {@link google.maps.maps3d.AltitudeMode.CLAMP_TO_GROUND}
      */
-    altitudeMode?: google.maps.maps3d.AltitudeModeString | null;
+    get altitudeMode(): google.maps.maps3d.AltitudeModeString;
+    /**
+     * Specifies how the altitude component of the position is interpreted.
+     * @defaultValue {@link google.maps.maps3d.AltitudeMode.CLAMP_TO_GROUND}
+     */
+    set altitudeMode(value: google.maps.maps3d.AltitudeModeString | null | undefined);
     /**
      * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
      * If provided, the specified marker will be made visible within the map viewport, alongside any other elements that have opted in.
      * @defaultValue <code>false</code>
      */
-    autofitsCamera?: boolean | null;
+    get autofitsCamera(): boolean;
+    /**
+     * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+     * If provided, the specified marker will be made visible within the map viewport, alongside any other elements that have opted in.
+     * @defaultValue <code>false</code>
+     */
+    set autofitsCamera(value: boolean | null | undefined);
     /**
      * An enumeration specifying how a Marker3DElement should behave when it collides with another Marker3DElement or with the basemap labels.
      * @defaultValue {@link google.maps.CollisionBehavior.REQUIRED}
      */
-    collisionBehavior?: google.maps.CollisionBehaviorString | null;
+    get collisionBehavior(): google.maps.CollisionBehaviorString;
+    /**
+     * An enumeration specifying how a Marker3DElement should behave when it collides with another Marker3DElement or with the basemap labels.
+     * @defaultValue {@link google.maps.CollisionBehavior.REQUIRED}
+     */
+    set collisionBehavior(value: google.maps.CollisionBehaviorString | null | undefined);
     /**
      * The collision priority used for collision detection.
      */
-    collisionPriority?: number | null;
+    get collisionPriority(): number | null;
+    /**
+     * The collision priority used for collision detection.
+     */
+    set collisionPriority(value: number | null | undefined);
     /**
      * Specifies whether this marker should be drawn or not when it&#39;s occluded. The marker can be occluded by map geometry (e.g. buildings).
      * @defaultValue <code>false</code>
      */
-    drawsWhenOccluded?: boolean | null;
+    get drawsWhenOccluded(): boolean;
+    /**
+     * Specifies whether this marker should be drawn or not when it&#39;s occluded. The marker can be occluded by map geometry (e.g. buildings).
+     * @defaultValue <code>false</code>
+     */
+    set drawsWhenOccluded(value: boolean | null | undefined);
     /**
      * Specifies whether to connect the marker to the ground. To extrude a marker, the <code>altitudeMode</code> must be either <code>RELATIVE_TO_GROUND</code> or <code>ABSOLUTE</code>.
      * @defaultValue <code>false</code>
      */
-    extruded?: boolean | null;
+    get extruded(): boolean;
+    /**
+     * Specifies whether to connect the marker to the ground. To extrude a marker, the <code>altitudeMode</code> must be either <code>RELATIVE_TO_GROUND</code> or <code>ABSOLUTE</code>.
+     * @defaultValue <code>false</code>
+     */
+    set extruded(value: boolean | null | undefined);
     /**
      * Text to be displayed by this marker.
      */
-    label?: string | null;
+    get label(): string | null;
+    /**
+     * Text to be displayed by this marker.
+     */
+    set label(value: string | null | undefined);
     /**
      * The location of the tip of the marker. Altitude is ignored in certain modes and thus optional.
      */
-    position?: google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
+    get position(): google.maps.LatLngAltitude | null;
+    /**
+     * The location of the tip of the marker. Altitude is ignored in certain modes and thus optional.
+     */
+    set position(value: google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null | undefined);
     /**
      * Specifies whether this marker should preserve its size or not regardless of distance from camera. By default, the marker is scaled based on distance from camera/tilt.
      * @defaultValue <code>false</code>
      */
-    sizePreserved?: boolean | null;
+    get sizePreserved(): boolean;
+    /**
+     * Specifies whether this marker should preserve its size or not regardless of distance from camera. By default, the marker is scaled based on distance from camera/tilt.
+     * @defaultValue <code>false</code>
+     */
+    set sizePreserved(value: boolean | null | undefined);
     /**
      * The zIndex compared to other markers.
      */
-    zIndex?: number | null;
+    get zIndex(): number | null;
+    /**
+     * The zIndex compared to other markers.
+     */
+    set zIndex(value: number | null | undefined);
     addEventListener<K extends keyof Marker3DElementEventMap>(type: K, listener: (this: Marker3DElement, ev: Marker3DElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -12575,7 +12834,11 @@ declare namespace google.maps.maps3d {
     /**
      * When set, the popover element will be open on this marker&#39;s click.
      */
-    gmpPopoverTargetElement?: google.maps.maps3d.PopoverElement | null;
+    get gmpPopoverTargetElement(): google.maps.maps3d.PopoverElement | null;
+    /**
+     * When set, the popover element will be open on this marker&#39;s click.
+     */
+    set gmpPopoverTargetElement(value: google.maps.maps3d.PopoverElement | null | undefined);
     /**
      * Rollover text. If provided, an accessibility text (e.g. for use with screen readers) will be added to the <code>Marker3DInteractiveElement</code> with the provided value.
      */
@@ -12646,30 +12909,58 @@ declare namespace google.maps.maps3d {
      * Specifies how the altitude component of the position is interpreted.
      * @defaultValue {@link google.maps.maps3d.AltitudeMode.CLAMP_TO_GROUND}
      */
-    altitudeMode?: google.maps.maps3d.AltitudeModeString | null;
+    get altitudeMode(): google.maps.maps3d.AltitudeModeString;
+    /**
+     * Specifies how the altitude component of the position is interpreted.
+     * @defaultValue {@link google.maps.maps3d.AltitudeMode.CLAMP_TO_GROUND}
+     */
+    set altitudeMode(value: google.maps.maps3d.AltitudeModeString | null | undefined);
     /**
      * A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage">CSS length-percentage</a> value which is used to offset the anchor point from the top left corner of the marker. This is useful when using a visual which has an anchor point that is different from the typical bottom center point of the default marker.
      * @defaultValue -50%
      */
-    anchorLeft?: string | null;
+    get anchorLeft(): string;
+    /**
+     * A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage">CSS length-percentage</a> value which is used to offset the anchor point from the top left corner of the marker. This is useful when using a visual which has an anchor point that is different from the typical bottom center point of the default marker.
+     * @defaultValue -50%
+     */
+    set anchorLeft(value: string | null | undefined);
     /**
      * A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage">CSS length-percentage</a> value which is used to offset the anchor point from the top left corner of the marker. This is useful when using a visual which has an anchor point that is different from the typical bottom center point of the default marker.
      * @defaultValue -100%
      */
-    anchorTop?: string | null;
+    get anchorTop(): string;
+    /**
+     * A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage">CSS length-percentage</a> value which is used to offset the anchor point from the top left corner of the marker. This is useful when using a visual which has an anchor point that is different from the typical bottom center point of the default marker.
+     * @defaultValue -100%
+     */
+    set anchorTop(value: string | null | undefined);
     /**
      * An enumeration specifying how a MarkerElement should behave when it collides with another <code>MarkerElement</code>, <code>Marker3DElement</code>, or with the basemap labels.
      * @defaultValue {@link google.maps.CollisionBehavior.REQUIRED}
      */
-    collisionBehavior?: google.maps.CollisionBehaviorString | null;
+    get collisionBehavior(): google.maps.CollisionBehaviorString;
+    /**
+     * An enumeration specifying how a MarkerElement should behave when it collides with another <code>MarkerElement</code>, <code>Marker3DElement</code>, or with the basemap labels.
+     * @defaultValue {@link google.maps.CollisionBehavior.REQUIRED}
+     */
+    set collisionBehavior(value: google.maps.CollisionBehaviorString | null | undefined);
     /**
      * A number which is used to help determine relative priority between {@link google.maps.CollisionBehavior.OPTIONAL_AND_HIDES_LOWER_PRIORITY} markers (including {@link google.maps.maps3d.Marker3DElement} ). A higher <code>collisionPriority</code> value indicates higher priority.
      */
-    collisionPriority?: number | null;
+    get collisionPriority(): number | null;
+    /**
+     * A number which is used to help determine relative priority between {@link google.maps.CollisionBehavior.OPTIONAL_AND_HIDES_LOWER_PRIORITY} markers (including {@link google.maps.maps3d.Marker3DElement} ). A higher <code>collisionPriority</code> value indicates higher priority.
+     */
+    set collisionPriority(value: number | null | undefined);
     /**
      * The location of the tip of the marker. Altitude is ignored in certain modes and thus optional.
      */
-    position?: google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
+    get position(): google.maps.LatLngAltitude | null;
+    /**
+     * The location of the tip of the marker. Altitude is ignored in certain modes and thus optional.
+     */
+    set position(value: google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null | undefined);
     /**
      * Rollover text. If provided, an accessibility text (e.g. for use with screen readers) will be added to the <code>MarkerElement</code> with the provided value.
      */
@@ -12692,7 +12983,11 @@ declare namespace google.maps.maps3d {
     /**
      * When set, the popover element will be open on this marker&#39;s click.
      */
-    gmpPopoverTargetElement?: google.maps.maps3d.PopoverElement | null;
+    get gmpPopoverTargetElement(): google.maps.maps3d.PopoverElement | null;
+    /**
+     * When set, the popover element will be open on this marker&#39;s click.
+     */
+    set gmpPopoverTargetElement(value: google.maps.maps3d.PopoverElement | null | undefined);
     addEventListener<K extends keyof MarkerInteractiveElementEventMap>(type: K, listener: (this: MarkerInteractiveElement, ev: MarkerInteractiveElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -12747,24 +13042,46 @@ declare namespace google.maps.maps3d {
      * Specifies how altitude in the position is interpreted.
      * @defaultValue {@link google.maps.maps3d.AltitudeMode.CLAMP_TO_GROUND}
      */
-    altitudeMode?: google.maps.maps3d.AltitudeModeString | null;
+    get altitudeMode(): google.maps.maps3d.AltitudeModeString;
+    /**
+     * Specifies how altitude in the position is interpreted.
+     * @defaultValue {@link google.maps.maps3d.AltitudeMode.CLAMP_TO_GROUND}
+     */
+    set altitudeMode(value: google.maps.maps3d.AltitudeModeString | null | undefined);
     /**
      * Describes rotation of a 3D model&#39;s coordinate system to position the model on the 3D Map. <br /><br /> Rotations are applied to the model in the following order: roll, tilt and then heading.
      */
-    orientation?: google.maps.Orientation3D | google.maps.Orientation3DLiteral | null;
+    get orientation(): google.maps.Orientation3D | null;
+    /**
+     * Describes rotation of a 3D model&#39;s coordinate system to position the model on the 3D Map. <br /><br /> Rotations are applied to the model in the following order: roll, tilt and then heading.
+     */
+    set orientation(value: google.maps.Orientation3D | google.maps.Orientation3DLiteral | null | undefined);
     /**
      * Sets the <code>Model3DElement</code>&#39;s position. Altitude is ignored in certain modes and thus optional.
      */
-    position?: google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
+    get position(): google.maps.LatLngAltitude | null;
+    /**
+     * Sets the <code>Model3DElement</code>&#39;s position. Altitude is ignored in certain modes and thus optional.
+     */
+    set position(value: google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null | undefined);
     /**
      * Scales the model along the x, y, and z axes in the model&#39;s coordinate space.
      * @defaultValue <code>1</code>
      */
-    scale?: number | google.maps.Vector3D | google.maps.Vector3DLiteral | null;
+    get scale(): google.maps.Vector3D | null;
+    /**
+     * Scales the model along the x, y, and z axes in the model&#39;s coordinate space.
+     * @defaultValue <code>1</code>
+     */
+    set scale(value: number | google.maps.Vector3D | google.maps.Vector3DLiteral | null | undefined);
     /**
      * Specifies the url of the 3D model. At this time, only models in the <code>.glb</code> format are supported. <br /><br /> Any relative HTTP urls will be resolved to their corresponding absolute ones. <br /><br /> Please note that If you&#39;re hosting your <code>.glb</code> model files on a different website or server than your main application, make sure to set up the correct CORS HTTP headers. This allows your application to securely access the model files from the other domain.
      */
-    src?: string | URL | null;
+    get src(): URL | null;
+    /**
+     * Specifies the url of the 3D model. At this time, only models in the <code>.glb</code> format are supported. <br /><br /> Any relative HTTP urls will be resolved to their corresponding absolute ones. <br /><br /> Please note that If you&#39;re hosting your <code>.glb</code> model files on a different website or server than your main application, make sure to set up the correct CORS HTTP headers. This allows your application to securely access the model files from the other domain.
+     */
+    set src(value: string | URL | null | undefined);
     addEventListener<K extends keyof Model3DElementEventMap>(type: K, listener: (this: Model3DElement, ev: Model3DElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -12820,9 +13137,17 @@ declare namespace google.maps.maps3d {
      */
     innerCoordinates?: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral> | Iterable<google.maps.LatLngLiteral>> | null;
     /**
+     * See {@link google.maps.maps3d.Polygon3DElement.innerPaths}.
+     */
+    innerPaths?: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral> | Iterable<google.maps.LatLngLiteral>> | null;
+    /**
      * See {@link google.maps.maps3d.Polygon3DElement.outerCoordinates}.
      */
     outerCoordinates?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null;
+    /**
+     * See {@link google.maps.maps3d.Polygon3DElement.path}.
+     */
+    path?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null;
     /**
      * See {@link google.maps.maps3d.Polygon3DElement.strokeColor}.
      */
@@ -12850,46 +13175,90 @@ declare namespace google.maps.maps3d {
      * Specifies how altitude components in the coordinates are interpreted.
      * @defaultValue {@link google.maps.maps3d.AltitudeMode.CLAMP_TO_GROUND}
      */
-    altitudeMode?: google.maps.maps3d.AltitudeModeString | null;
+    get altitudeMode(): google.maps.maps3d.AltitudeModeString;
+    /**
+     * Specifies how altitude components in the coordinates are interpreted.
+     * @defaultValue {@link google.maps.maps3d.AltitudeMode.CLAMP_TO_GROUND}
+     */
+    set altitudeMode(value: google.maps.maps3d.AltitudeModeString | null | undefined);
     /**
      * Specifies whether parts of the polygon which could be occluded are drawn or not. Polygons can be occluded by map geometry (e.g. buildings).
      * @defaultValue <code>false</code>
      */
-    drawsOccludedSegments?: boolean | null;
+    get drawsOccludedSegments(): boolean;
+    /**
+     * Specifies whether parts of the polygon which could be occluded are drawn or not. Polygons can be occluded by map geometry (e.g. buildings).
+     * @defaultValue <code>false</code>
+     */
+    set drawsOccludedSegments(value: boolean | null | undefined);
     /**
      * Specifies whether to connect the polygon to the ground. To extrude a polygon, the <code>altitudeMode</code> must be either <code>RELATIVE_TO_GROUND</code> or <code>ABSOLUTE</code>.
      * @defaultValue <code>false</code>
      */
-    extruded?: boolean | null;
+    get extruded(): boolean;
+    /**
+     * Specifies whether to connect the polygon to the ground. To extrude a polygon, the <code>altitudeMode</code> must be either <code>RELATIVE_TO_GROUND</code> or <code>ABSOLUTE</code>.
+     * @defaultValue <code>false</code>
+     */
+    set extruded(value: boolean | null | undefined);
     /**
      * The fill color. All CSS3 colors are supported.
      */
-    fillColor?: string | null;
+    get fillColor(): string | null;
+    /**
+     * The fill color. All CSS3 colors are supported.
+     */
+    set fillColor(value: string | null | undefined);
     /**
      * When <code>true</code>, edges of the polygon are interpreted as geodesic and will follow the curvature of the Earth. When <code>false</code>, edges of the polygon are rendered as straight lines in screen space.
      * @defaultValue <code>false</code>
      */
-    geodesic?: boolean | null;
+    get geodesic(): boolean;
+    /**
+     * When <code>true</code>, edges of the polygon are interpreted as geodesic and will follow the curvature of the Earth. When <code>false</code>, edges of the polygon are rendered as straight lines in screen space.
+     * @defaultValue <code>false</code>
+     */
+    set geodesic(value: boolean | null | undefined);
     /**
      * The ordered sequence of coordinates that designates a closed loop. Unlike polylines, a polygon may consist of one or more paths, which create multiple cut-outs inside the polygon.
      */
-    innerPaths?: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral>> | null;
+    get innerPaths(): google.maps.LatLngAltitude[][] | null;
+    /**
+     * The ordered sequence of coordinates that designates a closed loop. Unlike polylines, a polygon may consist of one or more paths, which create multiple cut-outs inside the polygon.
+     */
+    set innerPaths(value: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral>> | null | undefined);
     /**
      * The ordered sequence of coordinates that designates a closed loop. Altitude is ignored in certain modes and thus optional.
      */
-    path?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null;
+    get path(): google.maps.LatLngAltitude[] | null;
+    /**
+     * The ordered sequence of coordinates that designates a closed loop. Altitude is ignored in certain modes and thus optional.
+     */
+    set path(value: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null | undefined);
     /**
      * The stroke color. All CSS3 colors are supported.
      */
-    strokeColor?: string | null;
+    get strokeColor(): string | null;
+    /**
+     * The stroke color. All CSS3 colors are supported.
+     */
+    set strokeColor(value: string | null | undefined);
     /**
      * The stroke width in pixels.
      */
-    strokeWidth?: number | null;
+    get strokeWidth(): number | null;
+    /**
+     * The stroke width in pixels.
+     */
+    set strokeWidth(value: number | null | undefined);
     /**
      * The zIndex compared to other polys.
      */
-    zIndex?: number | null;
+    get zIndex(): number | null;
+    /**
+     * The zIndex compared to other polys.
+     */
+    set zIndex(value: number | null | undefined);
     /**
      * The ordered sequence of coordinates that designates a closed loop. Altitude is ignored in certain modes and thus optional.
      * @deprecated Use <code>path</code> instead. This property will be removed in a future release.
@@ -12935,6 +13304,11 @@ declare namespace google.maps.maps3d {
      */
     altitudeMode?: google.maps.maps3d.AltitudeModeString | null;
     /**
+     * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+     * See {@link google.maps.maps3d.Polyline3DElement.autofitsCamera}.
+     */
+    autofitsCamera?: boolean | null;
+    /**
      * See {@link google.maps.maps3d.Polyline3DElement.coordinates}.
      */
     coordinates?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null;
@@ -12958,6 +13332,10 @@ declare namespace google.maps.maps3d {
      * See {@link google.maps.maps3d.Polyline3DElement.outerWidth}.
      */
     outerWidth?: number | null;
+    /**
+     * See {@link google.maps.maps3d.Polyline3DElement.path}.
+     */
+    path?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null;
     /**
      * See {@link google.maps.maps3d.Polyline3DElement.strokeColor}.
      */
@@ -12985,52 +13363,102 @@ declare namespace google.maps.maps3d {
      * Specifies how altitude components in the coordinates are interpreted.
      * @defaultValue {@link google.maps.maps3d.AltitudeMode.CLAMP_TO_GROUND}
      */
-    altitudeMode?: google.maps.maps3d.AltitudeModeString | null;
+    get altitudeMode(): google.maps.maps3d.AltitudeModeString;
+    /**
+     * Specifies how altitude components in the coordinates are interpreted.
+     * @defaultValue {@link google.maps.maps3d.AltitudeMode.CLAMP_TO_GROUND}
+     */
+    set altitudeMode(value: google.maps.maps3d.AltitudeModeString | null | undefined);
     /**
      * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
      * If provided, the specified polyline will be made visible within the map viewport, alongside any other elements that have opted in.
      * @defaultValue <code>false</code>
      */
-    autofitsCamera?: boolean | null;
+    get autofitsCamera(): boolean;
+    /**
+     * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+     * If provided, the specified polyline will be made visible within the map viewport, alongside any other elements that have opted in.
+     * @defaultValue <code>false</code>
+     */
+    set autofitsCamera(value: boolean | null | undefined);
     /**
      * Specifies whether parts of the polyline which could be occluded are drawn or not. Polylines can be occluded by map geometry (e.g. buildings).
      * @defaultValue <code>false</code>
      */
-    drawsOccludedSegments?: boolean | null;
+    get drawsOccludedSegments(): boolean;
+    /**
+     * Specifies whether parts of the polyline which could be occluded are drawn or not. Polylines can be occluded by map geometry (e.g. buildings).
+     * @defaultValue <code>false</code>
+     */
+    set drawsOccludedSegments(value: boolean | null | undefined);
     /**
      * Specifies whether to connect the polyline to the ground. To extrude a polyline, the <code>altitudeMode</code> must be either <code>RELATIVE_TO_GROUND</code> or <code>ABSOLUTE</code>.
      * @defaultValue <code>false</code>
      */
-    extruded?: boolean | null;
+    get extruded(): boolean;
+    /**
+     * Specifies whether to connect the polyline to the ground. To extrude a polyline, the <code>altitudeMode</code> must be either <code>RELATIVE_TO_GROUND</code> or <code>ABSOLUTE</code>.
+     * @defaultValue <code>false</code>
+     */
+    set extruded(value: boolean | null | undefined);
     /**
      * When <code>true</code>, edges of the polyline are interpreted as geodesic and will follow the curvature of the Earth. When <code>false</code>, edges of the polyline are rendered as straight lines in screen space.
      * @defaultValue <code>false</code>
      */
-    geodesic?: boolean | null;
+    get geodesic(): boolean;
+    /**
+     * When <code>true</code>, edges of the polyline are interpreted as geodesic and will follow the curvature of the Earth. When <code>false</code>, edges of the polyline are rendered as straight lines in screen space.
+     * @defaultValue <code>false</code>
+     */
+    set geodesic(value: boolean | null | undefined);
     /**
      * The outer color. All CSS3 colors are supported.
      */
-    outerColor?: string | null;
+    get outerColor(): string | null;
+    /**
+     * The outer color. All CSS3 colors are supported.
+     */
+    set outerColor(value: string | null | undefined);
     /**
      * The outer width is between <code>0.0</code> and <code>1.0</code>. This is a percentage of the <code>strokeWidth</code>.
      */
-    outerWidth?: number | null;
+    get outerWidth(): number | null;
+    /**
+     * The outer width is between <code>0.0</code> and <code>1.0</code>. This is a percentage of the <code>strokeWidth</code>.
+     */
+    set outerWidth(value: number | null | undefined);
     /**
      * The ordered sequence of coordinates of the Polyline. Altitude is ignored in certain modes and thus optional.
      */
-    path?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null;
+    get path(): google.maps.LatLngAltitude[] | null;
+    /**
+     * The ordered sequence of coordinates of the Polyline. Altitude is ignored in certain modes and thus optional.
+     */
+    set path(value: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null | undefined);
     /**
      * The stroke color. All CSS3 colors are supported.
      */
-    strokeColor?: string | null;
+    get strokeColor(): string | null;
+    /**
+     * The stroke color. All CSS3 colors are supported.
+     */
+    set strokeColor(value: string | null | undefined);
     /**
      * The stroke width in pixels.
      */
-    strokeWidth?: number | null;
+    get strokeWidth(): number | null;
+    /**
+     * The stroke width in pixels.
+     */
+    set strokeWidth(value: number | null | undefined);
     /**
      * The zIndex compared to other polys.
      */
-    zIndex?: number | null;
+    get zIndex(): number | null;
+    /**
+     * The zIndex compared to other polys.
+     */
+    set zIndex(value: number | null | undefined);
     /**
      * The ordered sequence of coordinates of the Polyline. Altitude is ignored in certain modes and thus optional.
      * @deprecated Use <code>path</code> instead. This property will be removed in a future release.
@@ -13182,11 +13610,11 @@ declare namespace google.maps.maps3d {
     /**
      * See {@link google.maps.maps3d.Map3DElement.cameraPosition}.
      */
-    cameraPosition?: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
+    cameraPosition?: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral | null;
     /**
      * See {@link google.maps.maps3d.Map3DElement.center}.
      */
-    center?: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
+    center?: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral | null;
     /**
      * See {@link google.maps.maps3d.Map3DElement.defaultUIHidden}.
      */
@@ -13304,97 +13732,193 @@ declare namespace google.maps.maps3d {
      * The animation to use for automatic camera fitting.
      * @defaultValue <code>none</code>
      */
-    autofitsCameraAnimation?: google.maps.maps3d.AutofitsCameraAnimationString | null;
+    get autofitsCameraAnimation(): google.maps.maps3d.AutofitsCameraAnimationString | null;
+    /**
+     * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+     * The animation to use for automatic camera fitting.
+     * @defaultValue <code>none</code>
+     */
+    set autofitsCameraAnimation(value: google.maps.maps3d.AutofitsCameraAnimationString | null | undefined);
     /**
      * When set, restricts the position of the camera within the specified lat/lng bounds. Note that objects outside the bounds are still rendered. Bounds can restrict both longitude and latitude, or can restrict either latitude or longitude only. For latitude-only bounds use west and east longitudes of <code>-180</code> and <code>180</code>, respectively. For longitude-only bounds use north and south latitudes of <code>90</code> and <code>-90</code>, respectively.
      */
-    bounds?: google.maps.LatLngBounds | google.maps.LatLngBoundsLiteral | null;
+    get bounds(): google.maps.LatLngBounds | null;
+    /**
+     * When set, restricts the position of the camera within the specified lat/lng bounds. Note that objects outside the bounds are still rendered. Bounds can restrict both longitude and latitude, or can restrict either latitude or longitude only. For latitude-only bounds use west and east longitudes of <code>-180</code> and <code>180</code>, respectively. For longitude-only bounds use north and south latitudes of <code>90</code> and <code>-90</code>, respectively.
+     */
+    set bounds(value: google.maps.LatLngBounds | google.maps.LatLngBoundsLiteral | null | undefined);
     /**
      * The position of the camera given as a LatLngAltitude. Will be derived if omitted. If <code>center</code> is omitted but <code>cameraPosition</code> is specified, <code>center</code> will derive from <code>cameraPosition.</code> If both are updated in the same run loop, <code>cameraPosition</code> will be favored. The fields <code>cameraPosition</code> and <code>center</code> can be one-to-one-derived from each other in context of the given shared heading, range, roll, and tilt.
      */
-    cameraPosition?: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
+    get cameraPosition(): google.maps.LatLngAltitude | null;
+    /**
+     * The position of the camera given as a LatLngAltitude. Will be derived if omitted. If <code>center</code> is omitted but <code>cameraPosition</code> is specified, <code>center</code> will derive from <code>cameraPosition.</code> If both are updated in the same run loop, <code>cameraPosition</code> will be favored. The fields <code>cameraPosition</code> and <code>center</code> can be one-to-one-derived from each other in context of the given shared heading, range, roll, and tilt.
+     */
+    set cameraPosition(value: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral | null | undefined);
     /**
      * The center of the map given as a LatLngAltitude, where altitude is in meters above the mean sea level. Note that this is not necessarily where the camera is located, as the <code>range</code> field affects the camera&#39;s distance from the map center. If not set, defaults to <code>{lat: 0, lng: 0, altitude: 63170000}</code>. 63170000 meters is a maximum allowed altitude (Earth radius multiplied by 10).
      */
-    center?: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
+    get center(): google.maps.LatLngAltitude | null;
+    /**
+     * The center of the map given as a LatLngAltitude, where altitude is in meters above the mean sea level. Note that this is not necessarily where the camera is located, as the <code>range</code> field affects the camera&#39;s distance from the map center. If not set, defaults to <code>{lat: 0, lng: 0, altitude: 63170000}</code>. 63170000 meters is a maximum allowed altitude (Earth radius multiplied by 10).
+     */
+    set center(value: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral | null | undefined);
     /**
      * When <code>true</code>, all default UI buttons are hidden.
      * @defaultValue <code>false</code>
      */
-    defaultUIHidden?: boolean | null;
+    get defaultUIHidden(): boolean;
+    /**
+     * When <code>true</code>, all default UI buttons are hidden.
+     * @defaultValue <code>false</code>
+     */
+    set defaultUIHidden(value: boolean | null | undefined);
     /**
      * If provided, an accessibility description (e.g. for use with screen readers) will be added to the map with the provided value.
      */
-    description?: string | null;
+    get description(): string | null;
+    /**
+     * If provided, an accessibility description (e.g. for use with screen readers) will be added to the map with the provided value.
+     */
+    set description(value: string | null | undefined);
     /**
      * Specifies the vertical field of view in degrees. Valid values range from 5.0 to 80.0. Higher values increase the visible area but may introduce perspective distortion. Default: 35.0.
      */
-    fov?: number | null;
+    get fov(): number | null;
+    /**
+     * Specifies the vertical field of view in degrees. Valid values range from 5.0 to 80.0. Higher values increase the visible area but may introduce perspective distortion. Default: 35.0.
+     */
+    set fov(value: number | null | undefined);
     /**
      * Controls cooperative gesture handling. When set to <code>COOPERATIVE</code>, modifier keys or two-finger gestures are required to scroll the map. When set to <code>GREEDY</code>, the host page cannot be scrolled from user events on the map element. When set to <code>AUTO</code>, the gesture handling is determined by the scrollability of the host page.
      * @defaultValue {@link google.maps.maps3d.GestureHandling.GREEDY}
      */
-    gestureHandling?: google.maps.maps3d.GestureHandlingString | null;
+    get gestureHandling(): google.maps.maps3d.GestureHandlingString;
+    /**
+     * Controls cooperative gesture handling. When set to <code>COOPERATIVE</code>, modifier keys or two-finger gestures are required to scroll the map. When set to <code>GREEDY</code>, the host page cannot be scrolled from user events on the map element. When set to <code>AUTO</code>, the gesture handling is determined by the scrollability of the host page.
+     * @defaultValue {@link google.maps.maps3d.GestureHandling.GREEDY}
+     */
+    set gestureHandling(value: google.maps.maps3d.GestureHandlingString | null | undefined);
     /**
      * The compass heading of the map, in degrees, where due north is zero. When there is no tilt, any roll will be interpreted as heading.
      */
-    heading?: number | null;
+    get heading(): number | null;
+    /**
+     * The compass heading of the map, in degrees, where due north is zero. When there is no tilt, any roll will be interpreted as heading.
+     */
+    set heading(value: number | null | undefined);
     /**
      * Adds a usage attribution ID to the initializer, which helps Google understand which libraries and samples are helpful to developers, such as usage of a marker clustering library. To opt out of sending the usage attribution ID, it is safe to delete this property. Only unique values will be sent. Changes to this value after instantiation may be ignored.
      */
-    internalUsageAttributionIds?: Iterable<string> | null;
+    get internalUsageAttributionIds(): string[] | null;
+    /**
+     * Adds a usage attribution ID to the initializer, which helps Google understand which libraries and samples are helpful to developers, such as usage of a marker clustering library. To opt out of sending the usage attribution ID, it is safe to delete this property. Only unique values will be sent. Changes to this value after instantiation may be ignored.
+     */
+    set internalUsageAttributionIds(value: Iterable<string> | null | undefined);
     /**
      * Language in which to attempt to render the base map&#39;s language. Will default to the language requested by the developer when loading the Maps JS API.
      */
-    language?: string | null;
+    get language(): string | null;
+    /**
+     * Language in which to attempt to render the base map&#39;s language. Will default to the language requested by the developer when loading the Maps JS API.
+     */
+    set language(value: string | null | undefined);
     /**
      * Specifies a map ID which will be used to fetch cloud-based map style for the map.
      */
-    mapId?: string | null;
+    get mapId(): string | null;
+    /**
+     * Specifies a map ID which will be used to fetch cloud-based map style for the map.
+     */
+    set mapId(value: string | null | undefined);
     /**
      * The maximum altitude above the ground which will be displayed on the map. A valid value is between <code>0</code> and <code>63170000</code> meters (Earth radius multiplied by 10).
      */
-    maxAltitude?: number | null;
+    get maxAltitude(): number | null;
+    /**
+     * The maximum altitude above the ground which will be displayed on the map. A valid value is between <code>0</code> and <code>63170000</code> meters (Earth radius multiplied by 10).
+     */
+    set maxAltitude(value: number | null | undefined);
     /**
      * The maximum angle of heading (rotation) of the map. A valid value is between <code>0</code> and <code>360</code> degrees. <code>minHeading</code> and <code>maxHeading</code> represent an interval of &lt;= <code>360</code> degrees in which heading gestures will be allowed. <code>minHeading = 180</code> and <code>maxHeading = 90</code> will allow heading in <code>[0, 90]</code> and heading in <code>[180, 360]</code>. <code>minHeading = 90</code> and <code>maxHeading = 180</code> will allow heading in <code>[90, 180]</code>.
      */
-    maxHeading?: number | null;
+    get maxHeading(): number | null;
+    /**
+     * The maximum angle of heading (rotation) of the map. A valid value is between <code>0</code> and <code>360</code> degrees. <code>minHeading</code> and <code>maxHeading</code> represent an interval of &lt;= <code>360</code> degrees in which heading gestures will be allowed. <code>minHeading = 180</code> and <code>maxHeading = 90</code> will allow heading in <code>[0, 90]</code> and heading in <code>[180, 360]</code>. <code>minHeading = 90</code> and <code>maxHeading = 180</code> will allow heading in <code>[90, 180]</code>.
+     */
+    set maxHeading(value: number | null | undefined);
     /**
      * The maximum angle of incidence of the map. A valid value is between <code>0</code> and <code>90</code> degrees.
      */
-    maxTilt?: number | null;
+    get maxTilt(): number | null;
+    /**
+     * The maximum angle of incidence of the map. A valid value is between <code>0</code> and <code>90</code> degrees.
+     */
+    set maxTilt(value: number | null | undefined);
     /**
      * The minimum altitude above the ground which will be displayed on the map. A valid value is between <code>0</code> and <code>63170000</code> meters (Earth radius multiplied by 10).
      */
-    minAltitude?: number | null;
+    get minAltitude(): number | null;
+    /**
+     * The minimum altitude above the ground which will be displayed on the map. A valid value is between <code>0</code> and <code>63170000</code> meters (Earth radius multiplied by 10).
+     */
+    set minAltitude(value: number | null | undefined);
     /**
      * The minimum angle of heading (rotation) of the map. A valid value is between <code>0</code> and <code>360</code> degrees. <code>minHeading</code> and <code>maxHeading</code> represent an interval of &lt;= <code>360</code> degrees in which heading gestures will be allowed. <code>minHeading = 180</code> and <code>maxHeading = 90</code> will allow heading in <code>[0, 90]</code> and heading in <code>[180, 360]</code>. <code>minHeading = 90</code> and <code>maxHeading = 180</code> will allow heading in <code>[90, 180]</code>.
      */
-    minHeading?: number | null;
+    get minHeading(): number | null;
+    /**
+     * The minimum angle of heading (rotation) of the map. A valid value is between <code>0</code> and <code>360</code> degrees. <code>minHeading</code> and <code>maxHeading</code> represent an interval of &lt;= <code>360</code> degrees in which heading gestures will be allowed. <code>minHeading = 180</code> and <code>maxHeading = 90</code> will allow heading in <code>[0, 90]</code> and heading in <code>[180, 360]</code>. <code>minHeading = 90</code> and <code>maxHeading = 180</code> will allow heading in <code>[90, 180]</code>.
+     */
+    set minHeading(value: number | null | undefined);
     /**
      * The minimum angle of incidence of the map. A valid value is between <code>0</code> and <code>90</code> degrees.
      */
-    minTilt?: number | null;
+    get minTilt(): number | null;
+    /**
+     * The minimum angle of incidence of the map. A valid value is between <code>0</code> and <code>90</code> degrees.
+     */
+    set minTilt(value: number | null | undefined);
     /**
      * Specifies a mode the map should be rendered in. If not set, the map won&#39;t be rendered.
      */
-    mode?: google.maps.maps3d.MapModeString | null;
+    get mode(): google.maps.maps3d.MapModeString | null;
+    /**
+     * Specifies a mode the map should be rendered in. If not set, the map won&#39;t be rendered.
+     */
+    set mode(value: google.maps.maps3d.MapModeString | null | undefined);
     /**
      * The distance from camera to the center of the map, in meters.
      */
-    range?: number | null;
+    get range(): number | null;
+    /**
+     * The distance from camera to the center of the map, in meters.
+     */
+    set range(value: number | null | undefined);
     /**
      * Region with which to attempt to render the base map&#39;s POIs. Will default to the region requested by the developer when loading the Maps JS API.
      */
-    region?: string | null;
+    get region(): string | null;
+    /**
+     * Region with which to attempt to render the base map&#39;s POIs. Will default to the region requested by the developer when loading the Maps JS API.
+     */
+    set region(value: string | null | undefined);
     /**
      * The roll of the camera around the view vector in degrees. To resolve ambiguities, when there is no tilt, any roll will be interpreted as heading.
      */
-    roll?: number | null;
+    get roll(): number | null;
+    /**
+     * The roll of the camera around the view vector in degrees. To resolve ambiguities, when there is no tilt, any roll will be interpreted as heading.
+     */
+    set roll(value: number | null | undefined);
     /**
      * The tilt of the camera&#39;s view vector in degrees. A view vector looking directly down at the earth would have a tilt of zero degrees. A view vector pointing away from the earth would have a tilt of <code>180</code> degrees.
      */
-    tilt?: number | null;
+    get tilt(): number | null;
+    /**
+     * The tilt of the camera&#39;s view vector in degrees. A view vector looking directly down at the earth would have a tilt of zero degrees. A view vector pointing away from the earth would have a tilt of <code>180</code> degrees.
+     */
+    set tilt(value: number | null | undefined);
     /**
      * When <code>true</code>, all default UI buttons are disabled. Does not disable the keyboard and gesture controls.
      * @defaultValue <code>false</code>
@@ -13469,26 +13993,50 @@ declare namespace google.maps.maps3d {
      * Specifies how the altitude component of the position is interpreted.
      * @defaultValue {@link google.maps.maps3d.AltitudeMode.CLAMP_TO_GROUND}
      */
-    altitudeMode?: google.maps.maps3d.AltitudeModeString | null;
+    get altitudeMode(): google.maps.maps3d.AltitudeModeString;
+    /**
+     * Specifies how the altitude component of the position is interpreted.
+     * @defaultValue {@link google.maps.maps3d.AltitudeMode.CLAMP_TO_GROUND}
+     */
+    set altitudeMode(value: google.maps.maps3d.AltitudeModeString | null | undefined);
     /**
      * If set to true, disables panning the map to make the popover fully visible when it opens.
      * @defaultValue <code>false</code>
      */
-    autoPanDisabled?: boolean | null;
+    get autoPanDisabled(): boolean;
+    /**
+     * If set to true, disables panning the map to make the popover fully visible when it opens.
+     * @defaultValue <code>false</code>
+     */
+    set autoPanDisabled(value: boolean | null | undefined);
     /**
      * Specifies whether this popover should be &quot;light dismissed&quot; or not. The &quot;light dismiss&quot; behavior is similar to setting the <code>popover=&quot;auto&quot;</code> attribute which is part of the browser <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/popover">Popover API</a>.
      * @defaultValue <code>false</code>
      */
-    lightDismissDisabled?: boolean | null;
+    get lightDismissDisabled(): boolean;
+    /**
+     * Specifies whether this popover should be &quot;light dismissed&quot; or not. The &quot;light dismiss&quot; behavior is similar to setting the <code>popover=&quot;auto&quot;</code> attribute which is part of the browser <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/popover">Popover API</a>.
+     * @defaultValue <code>false</code>
+     */
+    set lightDismissDisabled(value: boolean | null | undefined);
     /**
      * Specifies whether this popover should be open or not.
      * @defaultValue <code>false</code>
      */
-    open?: boolean | null;
+    get open(): boolean;
+    /**
+     * Specifies whether this popover should be open or not.
+     * @defaultValue <code>false</code>
+     */
+    set open(value: boolean | null | undefined);
     /**
      * The position at which to display this popover. If the popover is anchored to an interactive marker, the marker&#39;s position will be used instead.
      */
-    positionAnchor?: google.maps.LatLngLiteral | google.maps.LatLngAltitudeLiteral | google.maps.maps3d.Marker3DInteractiveElement | google.maps.maps3d.MarkerInteractiveElement | string | null;
+    get positionAnchor(): google.maps.LatLngAltitude | google.maps.maps3d.Marker3DInteractiveElement | google.maps.maps3d.MarkerInteractiveElement | null;
+    /**
+     * The position at which to display this popover. If the popover is anchored to an interactive marker, the marker&#39;s position will be used instead.
+     */
+    set positionAnchor(value: google.maps.LatLngLiteral | google.maps.LatLngAltitudeLiteral | google.maps.maps3d.Marker3DInteractiveElement | google.maps.maps3d.MarkerInteractiveElement | string | null | undefined);
     addEventListener<K extends keyof PopoverElementEventMap>(type: K, listener: (this: PopoverElement, ev: PopoverElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
   }
@@ -13525,15 +14073,15 @@ declare namespace google.maps.routes {
     /**
      * The ending index of this interval in the polyline.
      */
-    endPolylinePointIndex?: number | null;
+    get endPolylinePointIndex(): number | null | undefined;
     /**
      * Traffic speed in this interval.
      */
-    speed?: google.maps.routes.SpeedString | null;
+    get speed(): google.maps.routes.SpeedString | null | undefined;
     /**
      * The starting index of this interval in the polyline.
      */
-    startPolylinePointIndex?: number | null;
+    get startPolylinePointIndex(): number | null | undefined;
   }
   /**
    * Encapsulates toll information on a {@link google.maps.routes.Route} or {@link google.maps.routes.RouteLeg}.
@@ -13543,7 +14091,7 @@ declare namespace google.maps.routes {
     /**
      * The monetary amount of tolls for the corresponding {@link google.maps.routes.Route} or {@link google.maps.routes.RouteLeg}. This list contains an amount for each currency that is expected to be charged by toll stations. Typically this list will contain only one item for routes with tolls in one currency. For international trips, this list may contain multiple items to reflect tolls in different currencies. This field may be an empty array if tolls are expected but the estimated price is unknown.
      */
-    estimatedPrices?: google.maps.places.Money[] | null;
+    get estimatedPrices(): google.maps.places.Money[] | null | undefined;
     toJSON(key?: string): unknown;
   }
   /**
@@ -13670,7 +14218,7 @@ declare namespace google.maps.routes {
     /**
      * The compass heading associated with the direction of the flow of traffic. Heading values can be numbers from 0 to 360, where 0 specifies a heading of due North, 90 specifies a heading of due East, and so on. You can use this field only for <code>DRIVING</code> and <code>TWO_WHEELER</code> {@link google.maps.routes.ComputeRoutesRequest.travelMode}.
      */
-    heading?: number | null;
+    get heading(): number | null | undefined;
     /**
      * Converts to a plain object.
      */
@@ -13947,11 +14495,11 @@ declare namespace google.maps.routes {
     /**
      * The reason why fallback response was used instead of the original response. This field is only populated when the fallback mode is triggered and the fallback response is returned.
      */
-    reason?: google.maps.routes.FallbackReasonString | null;
+    get reason(): google.maps.routes.FallbackReasonString | null | undefined;
     /**
      * Routing mode used for the response. If fallback was triggered, the mode may be different from routing preference set in the original client request.
      */
-    routingMode?: google.maps.routes.FallbackRoutingModeString | null;
+    get routingMode(): google.maps.routes.FallbackRoutingModeString | null | undefined;
     toJSON(key?: string): unknown;
   }
   /**
@@ -13962,23 +14510,23 @@ declare namespace google.maps.routes {
     /**
      * Indicates the status code resulting from the geocoding operation.
      */
-    geocoderStatus: google.maps.RPCStatusString | null;
+    get geocoderStatus(): google.maps.RPCStatusString | null;
     /**
      * The index of the corresponding intermediate waypoint in the request. Only populated if the corresponding waypoint is an intermediate waypoint.
      */
-    intermediateWaypointRequestIndex: number | null;
+    get intermediateWaypointRequestIndex(): number | null;
     /**
      * Indicates that the geocoder did not return an exact match for the original request, though it was able to match part of the requested address. You may wish to examine the original request for misspellings and/or an incomplete address.
      */
-    partialMatch: boolean;
+    get partialMatch(): boolean;
     /**
      * The place ID for this result.
      */
-    placeId: string;
+    get placeId(): string;
     /**
      * The type(s) of the result, in the form of zero or more type tags. See <a href="https://developers.google.com/maps/documentation/geocoding/requests-geocoding#Types">https://developers.google.com/maps/documentation/geocoding/requests-geocoding#Types</a> for supported types.
      */
-    types: string[];
+    get types(): string[];
     toJSON(key?: string): unknown;
   }
   /**
@@ -13989,15 +14537,15 @@ declare namespace google.maps.routes {
     /**
      * The geocoded waypoint for the destination.
      */
-    destination?: google.maps.routes.GeocodedWaypoint | null;
+    get destination(): google.maps.routes.GeocodedWaypoint | null | undefined;
     /**
      * A list of intermediate geocoded waypoints each containing an index field that corresponds to the zero-based position of the waypoint in the order they were specified in the request.
      */
-    intermediates?: google.maps.routes.GeocodedWaypoint[];
+    get intermediates(): google.maps.routes.GeocodedWaypoint[] | undefined;
     /**
      * The geocoded waypoint for the origin.
      */
-    origin?: google.maps.routes.GeocodedWaypoint | null;
+    get origin(): google.maps.routes.GeocodedWaypoint | null | undefined;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14008,23 +14556,23 @@ declare namespace google.maps.routes {
     /**
      * Instructions for navigating this multi-modal segment.
      */
-    instructions: string | null;
+    get instructions(): string | null;
     /**
      * The navigation maneuver to perform at this step. See <a href="https://developers.google.com/maps/documentation/routes/reference/rest/v2/TopLevel/computeRoutes#maneuver">Maneuver</a> for a list of possible values.
      */
-    maneuver: string | null;
+    get maneuver(): string | null;
     /**
      * The corresponding {@link google.maps.routes.RouteLegStep} index that is the end of a multi-modal segment.
      */
-    stepEndIndex: number;
+    get stepEndIndex(): number;
     /**
      * The corresponding {@link google.maps.routes.RouteLegStep} index that is the start of a multi-modal segment.
      */
-    stepStartIndex: number;
+    get stepStartIndex(): number;
     /**
      * The travel mode used for this multi-modal segment.
      */
-    travelMode: google.maps.TravelModeString | null;
+    get travelMode(): google.maps.TravelModeString | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14051,15 +14599,15 @@ declare namespace google.maps.routes {
     /**
      * The end index of this road feature in the polyline.
      */
-    endIndex: number | null;
+    get endIndex(): number | null;
     /**
      * Denotes whether the road feature exists along the polyline.
      */
-    presence: google.maps.routes.RoadFeatureStateString | null;
+    get presence(): google.maps.routes.RoadFeatureStateString | null;
     /**
      * The start index of this road feature in the polyline.
      */
-    startIndex: number | null;
+    get startIndex(): number | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14070,11 +14618,11 @@ declare namespace google.maps.routes {
     /**
      * Flyover details along the polyline.
      */
-    flyoverInfo: google.maps.routes.PolylineDetailInfo[];
+    get flyoverInfo(): google.maps.routes.PolylineDetailInfo[];
     /**
      * Narrow road details along the polyline.
      */
-    narrowRoadInfo: google.maps.routes.PolylineDetailInfo[];
+    get narrowRoadInfo(): google.maps.routes.PolylineDetailInfo[];
     toJSON(key?: string): unknown;
   }
   /**
@@ -14109,27 +14657,27 @@ declare namespace google.maps.routes {
     /**
      * Travel distance of the route leg in text form.
      */
-    distance: string | null;
+    get distance(): string | null;
     /**
      * The distance text&#39;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. <br><br> For more information, see <a href="http://www.unicode.org/reports/tr35/#Unicode_locale_identifier">http://www.unicode.org/reports/tr35/#Unicode_locale_identifier</a>.
      */
-    distanceLanguage: string | null;
+    get distanceLanguage(): string | null;
     /**
      * Duration, represented in text form and localized to the region of the query. Takes traffic conditions into consideration.
      */
-    duration: string | null;
+    get duration(): string | null;
     /**
      * The duration text&#39;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. <br><br> For more information, see <a href="http://www.unicode.org/reports/tr35/#Unicode_locale_identifier">http://www.unicode.org/reports/tr35/#Unicode_locale_identifier</a>.
      */
-    durationLanguage: string | null;
+    get durationLanguage(): string | null;
     /**
      * Duration without taking traffic conditions into consideration, represented in text form.
      */
-    staticDuration: string | null;
+    get staticDuration(): string | null;
     /**
      * The static duration text&#39;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;.
      */
-    staticDurationLanguage: string | null;
+    get staticDurationLanguage(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14140,19 +14688,19 @@ declare namespace google.maps.routes {
     /**
      * Travel distance of the route leg step in text form.
      */
-    distance: string | null;
+    get distance(): string | null;
     /**
      * The distance text&#39;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. <br><br> For more information, see <a href="http://www.unicode.org/reports/tr35/#Unicode_locale_identifier">http://www.unicode.org/reports/tr35/#Unicode_locale_identifier</a>.
      */
-    distanceLanguage: string | null;
+    get distanceLanguage(): string | null;
     /**
      * Duration without taking traffic conditions into consideration, represented in text form.
      */
-    staticDuration: string | null;
+    get staticDuration(): string | null;
     /**
      * The static duration text&#39;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. <br><br> For more information, see <a href="http://www.unicode.org/reports/tr35/#Unicode_locale_identifier">http://www.unicode.org/reports/tr35/#Unicode_locale_identifier</a>.
      */
-    staticDurationLanguage: string | null;
+    get staticDurationLanguage(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14163,15 +14711,15 @@ declare namespace google.maps.routes {
     /**
      * The name of this transit agency.
      */
-    name: string | null;
+    get name(): string | null;
     /**
      * The transit agency&#39;s locale-specific formatted phone number.
      */
-    phoneNumber: string | null;
+    get phoneNumber(): string | null;
     /**
      * The transit agency&#39;s URL.
      */
-    url: URL | null;
+    get url(): URL | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14182,23 +14730,23 @@ declare namespace google.maps.routes {
     /**
      * The URL for an icon associated with this vehicle type.
      */
-    iconURL: URL | null;
+    get iconURL(): URL | null;
     /**
      * The URL for the icon associated with this vehicle type, based on the local transport signage.
      */
-    localIconURL: URL | null;
+    get localIconURL(): URL | null;
     /**
      * The name of this vehicle, capitalized.
      */
-    name: string | null;
+    get name(): string | null;
     /**
      * The vehicle name text&#39;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. <br><br> For more information see: <a href="https://www.unicode.org/reports/tr35/#Unicode_locale_identifier">https://www.unicode.org/reports/tr35/#Unicode_locale_identifier</a>.
      */
-    nameLanguage: string | null;
+    get nameLanguage(): string | null;
     /**
      * The type of vehicle used. <br><br> See <a href="https://developers.google.com/maps/documentation/routes/reference/rpc/google.maps.routing.v2#transitvehicletype">https://developers.google.com/maps/documentation/routes/reference/rpc/google.maps.routing.v2#transitvehicletype</a> for a list of possible values.
      */
-    vehicleType: string | null;
+    get vehicleType(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14209,35 +14757,35 @@ declare namespace google.maps.routes {
     /**
      * The transit agency (or agencies) that operates this transit line.
      */
-    agencies: google.maps.routes.TransitAgency[];
+    get agencies(): google.maps.routes.TransitAgency[];
     /**
      * The color commonly used in signage for this line. Represented in hexadecimal.
      */
-    color: string | null;
+    get color(): string | null;
     /**
      * The URL for the icon associated with this line.
      */
-    iconURL: URL | null;
+    get iconURL(): URL | null;
     /**
      * The full name of this transit line, For example, &quot;8 Avenue Local&quot;.
      */
-    name: string | null;
+    get name(): string | null;
     /**
      * The short name of this transit line. This name will normally be a line number, such as &quot;M7&quot; or &quot;355&quot;.
      */
-    shortName: string | null;
+    get shortName(): string | null;
     /**
      * The color commonly used in text on signage for this line. Represented in hexadecimal.
      */
-    textColor: string | null;
+    get textColor(): string | null;
     /**
      * The URL for this transit line as provided by the transit agency.
      */
-    url: URL | null;
+    get url(): URL | null;
     /**
      * The type of vehicle that operates on this transit line.
      */
-    vehicle: google.maps.routes.TransitVehicle | null;
+    get vehicle(): google.maps.routes.TransitVehicle | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14248,11 +14796,11 @@ declare namespace google.maps.routes {
     /**
      * The location of the stop expressed in latitude/longitude coordinates and an optional heading.
      */
-    location: google.maps.routes.DirectionalLocation | null;
+    get location(): google.maps.routes.DirectionalLocation | null;
     /**
      * The name of the transit stop.
      */
-    name: string | null;
+    get name(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14263,39 +14811,39 @@ declare namespace google.maps.routes {
     /**
      * Information about the arrival stop for the step.
      */
-    arrivalStop: google.maps.routes.TransitStop | null;
+    get arrivalStop(): google.maps.routes.TransitStop | null;
     /**
      * The estimated time of arrival for the step.
      */
-    arrivalTime: Date | null;
+    get arrivalTime(): Date | null;
     /**
      * Information about the departure stop for the step.
      */
-    departureStop: google.maps.routes.TransitStop | null;
+    get departureStop(): google.maps.routes.TransitStop | null;
     /**
      * The estimated time of departure for the step.
      */
-    departureTime: Date | null;
+    get departureTime(): Date | null;
     /**
      * Specifies the direction in which to travel on this line as marked on the vehicle or at the departure stop. The direction is often the terminus station.
      */
-    headsign: string | null;
+    get headsign(): string | null;
     /**
      * Specifies the expected time in milliseconds between departures from the same stop at this time. For example, with a headway value of 600,000, you would expect a ten minute wait if you should miss your bus. <br><br> Note: If the headway exceeds 2^53 milliseconds, then this value is <code>Number.POSITIVE_INFINITY</code>.
      */
-    headwayMillis: number | null;
+    get headwayMillis(): number | null;
     /**
      * The number of stops from the departure to the arrival stop. This count includes the arrival stop, but excludes the departure stop. For example, if your route leaves from Stop A, passes through stops B and C, and arrives at stop D, <code>stopCount</code> will be 3.
      */
-    stopCount: number;
+    get stopCount(): number;
     /**
      * Information about the transit line used in the step.
      */
-    transitLine: google.maps.routes.TransitLine | null;
+    get transitLine(): google.maps.routes.TransitLine | null;
     /**
      * The text that appears in schedules and sign boards to identify a transit trip to passengers. The text uniquely identifies a trip within a service day. For example, &quot;538&quot; is the <code>tripShortText</code> of the Amtrak train that leaves San Jose, CA at 15:10 on weekdays to Sacramento, CA.
      */
-    tripShortText: string | null;
+    get tripShortText(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14306,43 +14854,43 @@ declare namespace google.maps.routes {
     /**
      * The travel distance of this step, in meters.
      */
-    distanceMeters: number;
+    get distanceMeters(): number;
     /**
      * The end location of this step.
      */
-    endLocation: google.maps.routes.DirectionalLocation | null;
+    get endLocation(): google.maps.routes.DirectionalLocation | null;
     /**
      * Instructions for navigating this step.
      */
-    instructions: string | null;
+    get instructions(): string | null;
     /**
      * Text representations of properties of the <code>RouteLegStep</code>.
      */
-    localizedValues: google.maps.routes.RouteLegStepLocalizedValues | null;
+    get localizedValues(): google.maps.routes.RouteLegStepLocalizedValues | null;
     /**
      * The navigation maneuver to perform at this step. See <a href="https://developers.google.com/maps/documentation/routes/reference/rest/v2/TopLevel/computeRoutes#maneuver">Maneuver</a> for a list of possible values.
      */
-    maneuver: string | null;
+    get maneuver(): string | null;
     /**
      * The list of {@link google.maps.LatLngAltitude}s of the route leg step, which can be used to draw a route leg step polyline. Granularity of the path can be controlled by setting {@link google.maps.routes.ComputeRoutesRequest.polylineQuality}. The <code>&quot;path&quot;</code> field must be requested in {@link google.maps.routes.ComputeRoutesRequest.fields} in order for this field to be populated.
      */
-    path: google.maps.LatLngAltitude[];
+    get path(): google.maps.LatLngAltitude[];
     /**
      * The start location of this step.
      */
-    startLocation: google.maps.routes.DirectionalLocation | null;
+    get startLocation(): google.maps.routes.DirectionalLocation | null;
     /**
      * The duration of traveling through this step without taking traffic conditions into consideration. <br><br> Note: If the duration exceeds 2^53 milliseconds, then this value is <code>Number.POSITIVE_INFINITY</code>.
      */
-    staticDurationMillis: number | null;
+    get staticDurationMillis(): number | null;
     /**
      * Details pertaining to this step if the travel mode is <code>TRANSIT</code>.
      */
-    transitDetails: google.maps.routes.TransitDetails | null;
+    get transitDetails(): google.maps.routes.TransitDetails | null;
     /**
      * The travel mode used for this step.
      */
-    travelMode: google.maps.TravelModeString | null;
+    get travelMode(): google.maps.TravelModeString | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14353,11 +14901,11 @@ declare namespace google.maps.routes {
     /**
      * Speed reading intervals detailing traffic density. Applicable in case of <code>TRAFFIC_AWARE</code> and <code>TRAFFIC_AWARE_OPTIMAL</code> {@link google.maps.routes.ComputeRoutesRequest.routingPreference}. The intervals cover the entire polyline of the {@link google.maps.routes.RouteLeg} without overlap. The start point of a specified interval is the same as the end point of the preceding interval. <br><br> Example: <br> <pre> <code>polyline: A ---- B ---- C ---- D ---- E ---- F ---- G<br> speedReadingIntervals: [A,C), [C,D), [D,G) </code> </pre>
      */
-    speedReadingIntervals?: google.maps.routes.SpeedReadingInterval[];
+    get speedReadingIntervals(): google.maps.routes.SpeedReadingInterval[] | undefined;
     /**
      * Contains information about tolls on the specific {@link google.maps.routes.RouteLeg}. This field is only populated if tolls are expected on the {@link google.maps.routes.RouteLeg}. If this field is set but {@link google.maps.routes.TollInfo.estimatedPrices} is not populated, then the route leg contains tolls but the estimated price is unknown. If this field is empty, then there are no tolls on the {@link google.maps.routes.RouteLeg}.
      */
-    tollInfo: google.maps.routes.TollInfo | null;
+    get tollInfo(): google.maps.routes.TollInfo | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14368,7 +14916,7 @@ declare namespace google.maps.routes {
     /**
      * Summarized information about different multi-modal segments of the {@link google.maps.routes.RouteLeg.steps}.
      */
-    multiModalSegments: google.maps.routes.MultiModalSegment[];
+    get multiModalSegments(): google.maps.routes.MultiModalSegment[];
     toJSON(key?: string): unknown;
   }
   /**
@@ -14379,47 +14927,47 @@ declare namespace google.maps.routes {
     /**
      * The travel distance of the route leg, in meters.
      */
-    distanceMeters: number;
+    get distanceMeters(): number;
     /**
      * The length of time needed to navigate the route leg in milliseconds. If you set {@link google.maps.routes.ComputeRoutesRequest.routingPreference} to <code>TRAFFIC_UNAWARE</code>, then this value is the same as <code>staticDurationMillis</code>. If you set {@link google.maps.routes.ComputeRoutesRequest.routingPreference} to either <code>TRAFFIC_AWARE</code> or <code>TRAFFIC_AWARE_OPTIMAL</code>, then this value is calculated taking traffic conditions into account. <br><br> Note: If the duration exceeds 2^53 milliseconds, then this value is <code>Number.POSITIVE_INFINITY</code>.
      */
-    durationMillis: number | null;
+    get durationMillis(): number | null;
     /**
      * The end location of this leg. This location might be different from {@link google.maps.routes.ComputeRoutesRequest.destination}. For example, when {@link google.maps.routes.ComputeRoutesRequest.destination} is not near a road, this is a point on the road.
      */
-    endLocation: google.maps.routes.DirectionalLocation | null;
+    get endLocation(): google.maps.routes.DirectionalLocation | null;
     /**
      * Text representations of properties of the <code>RouteLeg</code>.
      */
-    localizedValues: google.maps.routes.RouteLegLocalizedValues | null;
+    get localizedValues(): google.maps.routes.RouteLegLocalizedValues | null;
     /**
      * The list of {@link google.maps.LatLngAltitude}s of the route leg, which can be used to draw a route leg polyline. Granularity of the path can be controlled by setting {@link google.maps.routes.ComputeRoutesRequest.polylineQuality}.
      */
-    path: google.maps.LatLngAltitude[];
+    get path(): google.maps.LatLngAltitude[];
     /**
      * Groupings of sections of the route leg path with their corresponding speed reading. For this field to be populated, {@link google.maps.routes.ComputeRoutesRequest.routingPreference} must be set to <code>TRAFFIC_AWARE</code> or <code>TRAFFIC_AWARE_OPTIMAL</code> and {@link google.maps.routes.ComputeRoutesRequest.extraComputations} must include <code>TRAFFIC_ON_POLYLINE</code>.
      */
-    speedPaths: google.maps.routes.SpeedPath[];
+    get speedPaths(): google.maps.routes.SpeedPath[];
     /**
      * The start location of this leg. This location might be different from {@link google.maps.routes.ComputeRoutesRequest.origin}. For example, when {@link google.maps.routes.ComputeRoutesRequest.origin} is not near a road, this is a point on the road.
      */
-    startLocation: google.maps.routes.DirectionalLocation | null;
+    get startLocation(): google.maps.routes.DirectionalLocation | null;
     /**
      * The duration of traveling through the leg without taking traffic conditions into consideration. <br><br> Note: If the duration exceeds 2^53 milliseconds, then this value is <code>Number.POSITIVE_INFINITY</code>.
      */
-    staticDurationMillis: number | null;
+    get staticDurationMillis(): number | null;
     /**
      * An array of steps denoting segments within this leg. Each step represents one navigation instruction.
      */
-    steps: google.maps.routes.RouteLegStep[];
+    get steps(): google.maps.routes.RouteLegStep[];
     /**
      * Overview information about the steps in this <code>RouteLeg</code>. This field is only populated for <code>TRANSIT</code> routes.
      */
-    stepsOverview: google.maps.routes.StepsOverview | null;
+    get stepsOverview(): google.maps.routes.StepsOverview | null;
     /**
      * Contains the additional information that the user should be informed about, such as possible traffic zone restrictions, on a route leg.
      */
-    travelAdvisory: google.maps.routes.RouteLegTravelAdvisory | null;
+    get travelAdvisory(): google.maps.routes.RouteLegTravelAdvisory | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14430,35 +14978,35 @@ declare namespace google.maps.routes {
     /**
      * Travel distance of the route represented in text form.
      */
-    distance: string | null;
+    get distance(): string | null;
     /**
      * The distance text&#39;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. <br><br> For more information, see <a href="http://www.unicode.org/reports/tr35/#Unicode_locale_identifier">http://www.unicode.org/reports/tr35/#Unicode_locale_identifier</a>.
      */
-    distanceLanguage: string | null;
+    get distanceLanguage(): string | null;
     /**
      * Duration, represented in text form and localized to the region of the query. Takes traffic conditions into consideration. Note: If you did not request traffic information, this value is the same value as <code>staticDuration</code>.
      */
-    duration: string | null;
+    get duration(): string | null;
     /**
      * The duration text&#39;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. <br><br> For more information, see <a href="http://www.unicode.org/reports/tr35/#Unicode_locale_identifier">http://www.unicode.org/reports/tr35/#Unicode_locale_identifier</a>.
      */
-    durationLanguage: string | null;
+    get durationLanguage(): string | null;
     /**
      * Duration without taking traffic conditions into consideration, represented in text form.
      */
-    staticDuration: string | null;
+    get staticDuration(): string | null;
     /**
      * The static duration text&#39;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;.
      */
-    staticDurationLanguage: string | null;
+    get staticDurationLanguage(): string | null;
     /**
      * Transit fare represented in text form.
      */
-    transitFare: string | null;
+    get transitFare(): string | null;
     /**
      * The transit fare text&#39;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;.
      */
-    transitFareLanguage: string | null;
+    get transitFareLanguage(): string | null;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14469,23 +15017,23 @@ declare namespace google.maps.routes {
     /**
      * The predicted fuel consumption in microliters. <br><br> Note: If the fuel consumption exceeds 2^53 microliters, then this value is <code>Number.POSITIVE_INFINITY</code>.
      */
-    fuelConsumptionMicroliters?: number;
+    get fuelConsumptionMicroliters(): number | undefined;
     /**
      * The {@link google.maps.routes.Route} may have restrictions that are not suitable for the requested travel mode or route modifiers.
      */
-    routeRestrictionsPartiallyIgnored?: boolean | null;
+    get routeRestrictionsPartiallyIgnored(): boolean | null | undefined;
     /**
      * Speed reading intervals detailing traffic density. Applicable in case of <code>TRAFFIC_AWARE</code> and <code>TRAFFIC_AWARE_OPTIMAL</code> {@link google.maps.routes.ComputeRoutesRequest.routingPreference}. The intervals cover the entire polyline of the {@link google.maps.routes.Route} without overlap. The start point of a specified interval is the same as the end point of the preceding interval. <br><br> Example: <br> <pre> <code>polyline: A ---- B ---- C ---- D ---- E ---- F ---- G<br> speedReadingIntervals: [A,C), [C,D), [D,G) </code> </pre>
      */
-    speedReadingIntervals?: google.maps.routes.SpeedReadingInterval[];
+    get speedReadingIntervals(): google.maps.routes.SpeedReadingInterval[] | undefined;
     /**
      * Contains information about tolls on the {@link google.maps.routes.Route}. This field is only populated if tolls are expected on the {@link google.maps.routes.Route}. If this field is set but {@link google.maps.routes.TollInfo.estimatedPrices} is not populated, then the route contains tolls but the estimated price is unknown. If this field is empty, then there are no tolls on the {@link google.maps.routes.Route}.
      */
-    tollInfo?: google.maps.routes.TollInfo | null;
+    get tollInfo(): google.maps.routes.TollInfo | null | undefined;
     /**
      * If present, contains the total fare or ticket costs of this {@link google.maps.routes.Route}. This property is only returned for <code>TRANSIT</code> {@link google.maps.routes.ComputeRoutesRequest.travelMode} and only for routes where fare information is available for all transit steps.
      */
-    transitFare?: google.maps.places.Money | null;
+    get transitFare(): google.maps.places.Money | null | undefined;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14522,63 +15070,63 @@ declare namespace google.maps.routes {
     /**
      * A description of the route.
      */
-    description?: string | null;
+    get description(): string | null | undefined;
     /**
      * The travel distance of the route, in meters.
      */
-    distanceMeters?: number;
+    get distanceMeters(): number | undefined;
     /**
      * The length of time needed to navigate the route in milliseconds. If you set {@link google.maps.routes.ComputeRoutesRequest.routingPreference} to <code>TRAFFIC_UNAWARE</code>, then this value is the same as {@link google.maps.routes.Route.staticDurationMillis}. If you set {@link google.maps.routes.ComputeRoutesRequest.routingPreference} to either <code>TRAFFIC_AWARE</code> or <code>TRAFFIC_AWARE_OPTIMAL</code>, then this value is calculated taking traffic conditions into account. <br><br> Note: If the duration exceeds 2^53 milliseconds, then this value is <code>Number.POSITIVE_INFINITY</code>.
      */
-    durationMillis?: number | null;
+    get durationMillis(): number | null | undefined;
     /**
      * A collection of legs (path segments between waypoints) that make up the route. Each leg corresponds to the trip between two non-<code>via</code> waypoints. <br><br> For example: <ul> <li>A route with no intermediate waypoints has only one leg.</li> <li> A route that includes one non-<code>via</code> intermediate waypoint has two legs. </li> <li> A route that includes one <code>via</code> intermediate waypoint has one leg. </li> </ul> The order of the legs matches the order of waypoints from <code>origin</code> to <code>intermediates</code> to <code>destination</code>.
      */
-    legs?: google.maps.routes.RouteLeg[];
+    get legs(): google.maps.routes.RouteLeg[] | undefined;
     /**
      * Text representations of properties of the {@link google.maps.routes.Route}.
      */
-    localizedValues?: google.maps.routes.RouteLocalizedValues | null;
+    get localizedValues(): google.maps.routes.RouteLocalizedValues | null | undefined;
     /**
      * If you set {@link google.maps.routes.ComputeRoutesRequest.optimizeWaypointOrder} to <code>true</code>, this field contains the optimized ordering of intermediate waypoints. Otherwise, this field is empty. The index starts with 0 for the first intermediate waypoint provided in the input. <br><br> For example, if you give an input of: <ul> <li>Origin: LA</li> <li>Intermediate waypoints: Dallas, Bangor, Phoenix</li> <li>Destination: New York</li> </ul> and the optimized intermediate waypoint order is Phoenix, Dallas, Bangor, then this field will be <code>[2, 0, 1]</code>.
      */
-    optimizedIntermediateWaypointIndices?: number[];
+    get optimizedIntermediateWaypointIndices(): number[] | undefined;
     /**
      * The list of {@link google.maps.LatLngAltitude}s of the route, which can be used to draw a route polyline. Granularity of the path can be controlled by setting {@link google.maps.routes.ComputeRoutesRequest.polylineQuality}.
      */
-    path?: google.maps.LatLngAltitude[];
+    get path(): google.maps.LatLngAltitude[] | undefined;
     /**
      * Contains information about details along the path.
      */
-    polylineDetails?: google.maps.routes.PolylineDetails | null;
+    get polylineDetails(): google.maps.routes.PolylineDetails | null | undefined;
     /**
      * Labels for the route that are useful to identify specific properties of to compare against others.
      */
-    routeLabels?: google.maps.routes.RouteLabelString[];
+    get routeLabels(): google.maps.routes.RouteLabelString[] | undefined;
     /**
      * An opaque token that can be passed to Navigation SDK to reconstruct the route during navigation, and, in the event of rerouting, honor the original intention when the route was created. Treat this token as an opaque blob. Don&#39;t compare its value across requests as its value may change even if the service returns the exact same route. <br><br> Note: <code>routeToken</code> is only available for requests that have set {@link google.maps.routes.ComputeRoutesRequest.routingPreference} to <code>TRAFFIC_AWARE</code> or <code>TRAFFIC_AWARE_OPTIMAL</code>. It is not supported for requests that have <code>via</code> waypoints.
      */
-    routeToken?: string | null;
+    get routeToken(): string | null | undefined;
     /**
      * Groupings of sections of the route path with their corresponding speed reading. For this field to be populated, {@link google.maps.routes.ComputeRoutesRequest.routingPreference} must be set to <code>TRAFFIC_AWARE</code> or <code>TRAFFIC_AWARE_OPTIMAL</code> and {@link google.maps.routes.ComputeRoutesRequest.extraComputations} must include <code>TRAFFIC_ON_POLYLINE</code>.
      */
-    speedPaths?: google.maps.routes.SpeedPath[];
+    get speedPaths(): google.maps.routes.SpeedPath[] | undefined;
     /**
      * The duration of traveling through the route without taking traffic conditions into consideration. <br><br> Note: If the duration exceeds 2^53 milliseconds, then this value is <code>Number.POSITIVE_INFINITY</code>.
      */
-    staticDurationMillis?: number | null;
+    get staticDurationMillis(): number | null | undefined;
     /**
      * Additional information about the route.
      */
-    travelAdvisory?: google.maps.routes.RouteTravelAdvisory | null;
+    get travelAdvisory(): google.maps.routes.RouteTravelAdvisory | null | undefined;
     /**
      * The viewport bounding box of the route.
      */
-    viewport?: google.maps.LatLngBounds | null;
+    get viewport(): google.maps.LatLngBounds | null | undefined;
     /**
      * An array of warnings to show when displaying the route.
      */
-    warnings?: string[];
+    get warnings(): string[] | undefined;
     /**
      * Returns the primary route along with optional alternate routes, given a set of terminal and intermediate waypoints. <br><br> Note: This method requires that you specify a response field mask in the request by setting the {@link google.maps.routes.ComputeRoutesRequest.fields} property. The value is a list of field paths. <br><br> For example: <ul> <li> Field mask of all available fields: <code>fields: [&#39;*&#39;]</code></li> <li> Field mask of Route-level duration, distance, and path: <code>fields: [&#39;durationMillis&#39;, &#39;distanceMeters&#39;, &#39;path&#39;]</code></li> </ul> <br> Use of the wildcard response field mask <code>fields: [&#39;*&#39;]</code> is discouraged because: <ul> <li>Selecting only the fields that you need helps our server save computation cycles, allowing us to return the result to you with a lower latency.</li> <li>Selecting only the fields that you need in your production job ensures stable latency performance. We might add more response fields in the future, and those new fields might require extra computation time. If you select all fields, or if you select all fields at the top level, then you might experience performance degradation because any new field we add will be automatically included in the response.</li> <li>Selecting only the fields that you need results in a smaller response size, and thus a faster load over the network.</li> </ul>
      */
@@ -14758,35 +15306,35 @@ declare namespace google.maps.routes {
     /**
      * Travel distance of the route matrix item in text form.
      */
-    distance?: string | null;
+    get distance(): string | null | undefined;
     /**
      * The distance text&#39;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. <br><br> For more information, see <a href="http://www.unicode.org/reports/tr35/#Unicode_locale_identifier">http://www.unicode.org/reports/tr35/#Unicode_locale_identifier</a>.
      */
-    distanceLanguage?: string | null;
+    get distanceLanguage(): string | null | undefined;
     /**
      * Duration, represented in text form and localized to the region of the query. Takes traffic conditions into consideration. <br><br> Note: If you did not request traffic information, this value is the same value as {@link google.maps.routes.RouteMatrixItemLocalizedValues.staticDuration}.
      */
-    duration?: string | null;
+    get duration(): string | null | undefined;
     /**
      * The duration text&#39;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. <br><br> For more information, see <a href="http://www.unicode.org/reports/tr35/#Unicode_locale_identifier">http://www.unicode.org/reports/tr35/#Unicode_locale_identifier</a>.
      */
-    durationLanguage?: string | null;
+    get durationLanguage(): string | null | undefined;
     /**
      * Duration without taking traffic conditions into consideration, represented in text form.
      */
-    staticDuration?: string | null;
+    get staticDuration(): string | null | undefined;
     /**
      * The static duration text&#39;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;.
      */
-    staticDurationLanguage?: string | null;
+    get staticDurationLanguage(): string | null | undefined;
     /**
      * Transit fare, represented in text form.
      */
-    transitFare?: string | null;
+    get transitFare(): string | null | undefined;
     /**
      * The transit fare text&#39;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. <br><br> For more information, see <a href="http://www.unicode.org/reports/tr35/#Unicode_locale_identifier">http://www.unicode.org/reports/tr35/#Unicode_locale_identifier</a>.
      */
-    transitFareLanguage?: string | null;
+    get transitFareLanguage(): string | null | undefined;
     toJSON(key?: string): unknown;
   }
   /**
@@ -14797,7 +15345,7 @@ declare namespace google.maps.routes {
     /**
      * The rows of the matrix. Each row corresponds to an origin and contains an array of {@link google.maps.routes.RouteMatrixItem}s, each representing a route to a destination.
      */
-    rows: google.maps.routes.RouteMatrixRow[];
+    get rows(): google.maps.routes.RouteMatrixRow[];
     /**
      * Takes in a list of origins and destinations and returns a matrix containing route information for each combination of origin and destination. <br><br> Note: This method requires that you specify a response field mask in the request by setting the {@link google.maps.routes.ComputeRouteMatrixRequest.fields} property. The value is a list of field paths. <br><br> For example: <ul> <li> Field mask of all available fields: <code>fields: [&#39;*&#39;]</code></li> <li> Field mask of Route-level duration and distance: <code>fields: [&#39;durationMillis&#39;, &#39;distanceMeters&#39;]</code></li> </ul> <br> Use of the wildcard response field mask <code>fields: [&#39;*&#39;]</code> is discouraged because: <ul> <li>Selecting only the fields that you need helps our server save computation cycles, allowing us to return the result to you with a lower latency.</li> <li>Selecting only the fields that you need in your production job ensures stable latency performance. We might add more response fields in the future, and those new fields might require extra computation time. If you select all fields, or if you select all fields at the top level, then you might experience performance degradation because any new field we add will be automatically included in the response.</li> <li>Selecting only the fields that you need results in a smaller response size, and thus a faster load over the network.</li> </ul>
      */
@@ -14812,7 +15360,7 @@ declare namespace google.maps.routes {
     /**
      * The route information for each destination.
      */
-    items: google.maps.routes.RouteMatrixItem[];
+    get items(): google.maps.routes.RouteMatrixItem[];
     toJSON(key?: string): unknown;
   }
   /**
@@ -14823,35 +15371,35 @@ declare namespace google.maps.routes {
     /**
      * Indicates whether the route was found or not.
      */
-    condition?: google.maps.routes.RouteMatrixItemConditionString | null;
+    get condition(): google.maps.routes.RouteMatrixItemConditionString | null | undefined;
     /**
      * The travel distance of the route in meters.
      */
-    distanceMeters?: number;
+    get distanceMeters(): number | undefined;
     /**
      * The length of time needed to navigate the route in milliseconds. If you set {@link google.maps.routes.ComputeRouteMatrixRequest.routingPreference} to <code>TRAFFIC_UNAWARE</code>, then this value is the same as {@link google.maps.routes.RouteMatrixItem.staticDurationMillis}. If you set {@link google.maps.routes.ComputeRouteMatrixRequest.routingPreference} to either <code>TRAFFIC_AWARE</code> or <code>TRAFFIC_AWARE_OPTIMAL</code>, then this value is calculated taking traffic conditions into account. <br><br> Note: If the duration exceeds 2^53 milliseconds, then this value is <code>Number.POSITIVE_INFINITY</code>.
      */
-    durationMillis?: number | null;
+    get durationMillis(): number | null | undefined;
     /**
      * Error that occurred during the computation of the route.
      */
-    error?: google.maps.routes.RouteMatrixItemError | null;
+    get error(): google.maps.routes.RouteMatrixItemError | null | undefined;
     /**
      * In some cases when the server is not able to compute the route with the given preferences for this particular origin/destination pair, it may fall back to using a different mode of computation. When a fallback is used, this field contains detailed information about the fallback response. Otherwise this field is unset.
      */
-    fallbackInfo?: google.maps.routes.FallbackInfo | null;
+    get fallbackInfo(): google.maps.routes.FallbackInfo | null | undefined;
     /**
      * Text representations of properties of the {@link google.maps.routes.RouteMatrixItem}.
      */
-    localizedValues?: google.maps.routes.RouteMatrixItemLocalizedValues | null;
+    get localizedValues(): google.maps.routes.RouteMatrixItemLocalizedValues | null | undefined;
     /**
      * The duration of traveling through the route without taking traffic conditions into consideration. <br><br> Note: If the duration exceeds 2^53 milliseconds, then this value is <code>Number.POSITIVE_INFINITY</code>.
      */
-    staticDurationMillis?: number | null;
+    get staticDurationMillis(): number | null | undefined;
     /**
      * Additional information about the route.
      */
-    travelAdvisory?: google.maps.routes.RouteTravelAdvisory | null;
+    get travelAdvisory(): google.maps.routes.RouteTravelAdvisory | null | undefined;
   }
 }
 
