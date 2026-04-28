@@ -10,7 +10,8 @@ See [@types/google.maps](https://www.npmjs.com/package/@types/google.maps).
 This package includes an automatically generated index.d.ts for the Google Maps
 Platform JavaScript API.
 
-> **Note**: To report an issue with these types, please open a support ticket at https://issuetracker.google.com/savedsearches/558438. 
+> **Note**: To report an issue with these types, please [open a ticket](https://b.corp.google.com/issues/new?component=188853&template=788207)
+> on the Maps JavaScript API [Issue Tracker](https://issuetracker.google.com/issues?q=componentid:188853%20status:open). 
 
 Any changes made to the types in this repository will be overwritten with the next weekly release.
 
