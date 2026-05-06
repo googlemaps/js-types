@@ -426,9 +426,9 @@ declare namespace google.maps {
      */
     constructor(latOrLatLngOrLatLngLiteral: number | google.maps.LatLngLiteral | google.maps.LatLng, lngOrNoClampNoWrap?: number | boolean | null, noClampNoWrap?: boolean);
     /**
-     * Comparison function.
+     * Comparison function for two LatLngs. Returns true if the coordinates are within 1e-9 of each other and false otherwise.
      */
-    equals(other: google.maps.LatLng | null): boolean;
+    equals(other: google.maps.LatLng | google.maps.LatLngLiteral | null | undefined): boolean;
     /**
      * Returns the latitude in degrees.
      */
@@ -1845,9 +1845,9 @@ declare namespace google.maps {
      */
     get lng(): number;
     /**
-     * Comparison function.
+     * Comparison function for two LatLngAltitudes. Returns true if the coordinates are within 1e-9 of each other and false otherwise.
      */
-    equals(other: google.maps.LatLngAltitude | null): boolean;
+    equals(other: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null): boolean;
     /**
      * Converts to a plain object.
      */
@@ -2281,8 +2281,8 @@ declare namespace google.maps {
     setOpacity(opacity: number): void;
   }
   /**
-   * A <code>KmlLayer</code> adds geographic markup to the map from a KML, KMZ or GeoRSS file that is hosted on a publicly accessible web server. A <code>KmlFeatureData</code> object is provided for each feature when clicked.
    * Access by calling `const {KmlLayer} = await google.maps.importLibrary("maps");`. See https://developers.google.com/maps/documentation/javascript/libraries.
+   * @deprecated As of version 3.65, google.maps.KmlLayer is deprecated. For alternative methods of displaying KML data on the map, see <a href="https://developers.devsite.corp.google.com/maps/deprecations#kml_layer_deprecated_as_of_april_30_2026">https://developers.devsite.corp.google.com/maps/deprecations#kml_layer_deprecated_as_of_april_30_2026</a>
    */
   export class KmlLayer extends google.maps.MVCObject {
     /**
@@ -13289,6 +13289,11 @@ declare namespace google.maps.maps3d {
      */
     anchorTop?: string | null;
     /**
+     * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+     * See {@link google.maps.maps3d.MarkerElement.autofitsCamera}.
+     */
+    autofitsCamera?: boolean | null;
+    /**
      * See {@link google.maps.maps3d.MarkerElement.collisionBehavior}.
      */
     collisionBehavior?: google.maps.CollisionBehaviorString | null;
@@ -13345,6 +13350,12 @@ declare namespace google.maps.maps3d {
      * @defaultValue -100%
      */
     set anchorTop(value: string | null | undefined);
+    /**
+     * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+     * If provided, the specified marker will be made visible within the map viewport, alongside any other elements that have opted in.
+     * @defaultValue <code>false</code>
+     */
+    autofitsCamera?: boolean | null;
     /**
      * An enumeration specifying how a MarkerElement should behave when it collides with another <code>MarkerElement</code>, <code>Marker3DElement</code>, or with the basemap labels.
      * @defaultValue {@link google.maps.CollisionBehavior.REQUIRED}
@@ -13527,6 +13538,11 @@ declare namespace google.maps.maps3d {
      */
     altitudeMode?: google.maps.maps3d.AltitudeModeString | null;
     /**
+     * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+     * See {@link google.maps.maps3d.Polygon3DElement.autofitsCamera}.
+     */
+    autofitsCamera?: boolean | null;
+    /**
      * See {@link google.maps.maps3d.Polygon3DElement.drawsOccludedSegments}.
      */
     drawsOccludedSegments?: boolean | null;
@@ -13591,6 +13607,18 @@ declare namespace google.maps.maps3d {
      * @defaultValue {@link google.maps.maps3d.AltitudeMode.CLAMP_TO_GROUND}
      */
     set altitudeMode(value: google.maps.maps3d.AltitudeModeString | null | undefined);
+    /**
+     * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+     * If provided, the specified polygon will be made visible within the map viewport, alongside any other elements that have opted in.
+     * @defaultValue <code>false</code>
+     */
+    get autofitsCamera(): boolean;
+    /**
+     * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
+     * If provided, the specified polygon will be made visible within the map viewport, alongside any other elements that have opted in.
+     * @defaultValue <code>false</code>
+     */
+    set autofitsCamera(value: boolean | null | undefined);
     /**
      * Specifies whether parts of the polygon which could be occluded are drawn or not. Polygons can be occluded by map geometry (e.g. buildings).
      * @defaultValue <code>false</code>
