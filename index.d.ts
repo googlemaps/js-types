@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-// Google Maps JS API Version: 3.64
+// Google Maps JS API Version: 3.65
 // tslint:disable:enforce-name-casing
 // tslint:disable:no-any
 // tslint:disable:interface-over-type-literal
@@ -5936,6 +5936,8 @@ declare namespace google.maps {
 
     Attribution: typeof google.maps.places.Attribution;
 
+    AttributionColor: typeof google.maps.places.AttributionColor;
+
     AuthorAttribution: typeof google.maps.places.AuthorAttribution;
 
     Autocomplete: typeof google.maps.places.Autocomplete;
@@ -5945,6 +5947,8 @@ declare namespace google.maps {
     AutocompleteSessionToken: typeof google.maps.places.AutocompleteSessionToken;
 
     AutocompleteSuggestion: typeof google.maps.places.AutocompleteSuggestion;
+
+    BasicPlaceAutocompleteElement: typeof google.maps.places.BasicPlaceAutocompleteElement;
 
     BusinessStatus: typeof google.maps.places.BusinessStatus;
 
@@ -5978,6 +5982,8 @@ declare namespace google.maps {
 
     Landmark: typeof google.maps.places.Landmark;
 
+    MediaSize: typeof google.maps.places.MediaSize;
+
     Money: typeof google.maps.places.Money;
 
     NeighborhoodSummary: typeof google.maps.places.NeighborhoodSummary;
@@ -5996,17 +6002,83 @@ declare namespace google.maps {
 
     Place: typeof google.maps.places.Place;
 
+    PlaceAccessibleEntranceIconElement: typeof google.maps.places.PlaceAccessibleEntranceIconElement;
+
+    PlaceAddressElement: typeof google.maps.places.PlaceAddressElement;
+
+    PlaceAllContentElement: typeof google.maps.places.PlaceAllContentElement;
+
+    PlaceAttributionElement: typeof google.maps.places.PlaceAttributionElement;
+
+    PlaceAutocompleteElement: typeof google.maps.places.PlaceAutocompleteElement;
+
+    PlaceContentConfigElement: typeof google.maps.places.PlaceContentConfigElement;
+
     PlaceContextualElement: typeof google.maps.places.PlaceContextualElement;
 
     PlaceContextualListConfigElement: typeof google.maps.places.PlaceContextualListConfigElement;
 
     PlaceContextualListLayout: typeof google.maps.places.PlaceContextualListLayout;
 
+    PlaceDetailsCompactElement: typeof google.maps.places.PlaceDetailsCompactElement;
+
+    PlaceDetailsElement: typeof google.maps.places.PlaceDetailsElement;
+
+    PlaceDetailsLocationRequestElement: typeof google.maps.places.PlaceDetailsLocationRequestElement;
+
+    PlaceDetailsOrientation: typeof google.maps.places.PlaceDetailsOrientation;
+
+    PlaceDetailsPlaceRequestElement: typeof google.maps.places.PlaceDetailsPlaceRequestElement;
+
+    PlaceFeatureListElement: typeof google.maps.places.PlaceFeatureListElement;
+
+    PlaceMediaElement: typeof google.maps.places.PlaceMediaElement;
+
+    PlaceNearbySearchRequestElement: typeof google.maps.places.PlaceNearbySearchRequestElement;
+
+    PlaceOpeningHoursElement: typeof google.maps.places.PlaceOpeningHoursElement;
+
+    PlaceOpenNowStatusElement: typeof google.maps.places.PlaceOpenNowStatusElement;
+
+    PlacePhoneNumberElement: typeof google.maps.places.PlacePhoneNumberElement;
+
+    PlacePlusCodeElement: typeof google.maps.places.PlacePlusCodeElement;
+
     PlacePrediction: typeof google.maps.places.PlacePrediction;
+
+    PlacePredictionSelectEvent: typeof google.maps.places.PlacePredictionSelectEvent;
+
+    PlacePriceElement: typeof google.maps.places.PlacePriceElement;
+
+    PlaceRatingElement: typeof google.maps.places.PlaceRatingElement;
+
+    PlaceReviewsElement: typeof google.maps.places.PlaceReviewsElement;
+
+    PlaceReviewSummaryElement: typeof google.maps.places.PlaceReviewSummaryElement;
+
+    PlaceSearchAttributionPosition: typeof google.maps.places.PlaceSearchAttributionPosition;
+
+    PlaceSearchElement: typeof google.maps.places.PlaceSearchElement;
+
+    PlaceSearchOrientation: typeof google.maps.places.PlaceSearchOrientation;
+
+    PlaceSelectEvent: typeof google.maps.places.PlaceSelectEvent;
 
     PlacesService: typeof google.maps.places.PlacesService;
 
     PlacesServiceStatus: typeof google.maps.places.PlacesServiceStatus;
+
+    PlaceStandardContentElement: typeof google.maps.places.PlaceStandardContentElement;
+
+    PlaceSummaryElement: typeof google.maps.places.PlaceSummaryElement;
+
+    PlaceTextSearchRequestElement: typeof google.maps.places.PlaceTextSearchRequestElement;
+
+    PlaceTypeElement: typeof google.maps.places.PlaceTypeElement;
+
+    PlaceTypeSpecificHighlightsElement: typeof google.maps.places.PlaceTypeSpecificHighlightsElement;
+
+    PlaceWebsiteElement: typeof google.maps.places.PlaceWebsiteElement;
 
     PlusCode: typeof google.maps.places.PlusCode;
 
@@ -11750,6 +11822,10 @@ declare namespace google.maps.places {
      * Text that may be used as is or formatted with {@link google.maps.places.FormattableText.matches}.
      */
     get text(): string;
+    /**
+     * Returns {@link google.maps.places.FormattableText.text}.
+     */
+    toString(): string;
   }
   /**
    * BasicPlaceAutocompleteElement is an <code>HTMLElement</code> subclass which provides a UI component for the Places Autocomplete API.
@@ -15917,79 +15993,15 @@ declare namespace google.maps.routes {
 
 declare namespace google.maps.visualization {
   /**
-   * This object defines the properties that can be set on a <code>HeatmapLayer</code> object.
-   */
-  export interface HeatmapLayerOptions {
-    /**
-     * The data points to display. Required.
-     */
-    data?: google.maps.MVCArray<google.maps.LatLng | google.maps.visualization.WeightedLocation> | (google.maps.LatLng | google.maps.visualization.WeightedLocation)[] | null;
-    /**
-     * Specifies whether heatmaps dissipate on zoom. By default, the radius of influence of a data point is specified by the radius option only. When dissipating is disabled, the radius option is interpreted as a radius at zoom level 0.
-     */
-    dissipating?: boolean | null;
-    /**
-     * The color gradient of the heatmap, specified as an array of CSS color strings. All CSS3 colors are supported except for extended named colors.
-     */
-    gradient?: string[] | null;
-    /**
-     * The map on which to display the layer.
-     */
-    map?: google.maps.Map | null;
-    /**
-     * The maximum intensity of the heatmap. By default, heatmap colors are dynamically scaled according to the greatest concentration of points at any particular pixel on the map. This property allows you to specify a fixed maximum.
-     */
-    maxIntensity?: number | null;
-    /**
-     * The opacity of the heatmap, expressed as a number between 0 and 1.
-     * @defaultValue <code>0.6</code>
-     */
-    opacity?: number | null;
-    /**
-     * The radius of influence for each data point, in pixels.
-     */
-    radius?: number | null;
-  }
-  /**
-   * A data point entry for a heatmap. This is a geographical data point with a weight attribute.
-   */
-  export interface WeightedLocation {
-    /**
-     * The location of the data point.
-     */
-    location: google.maps.LatLng;
-    /**
-     * The weighting value of the data point.
-     */
-    weight: number;
-  }
-  /**
    * A layer that provides a client-side rendered heatmap, depicting the intensity of data at geographical points.
    * Access by calling `const {HeatmapLayer} = await google.maps.importLibrary("visualization");`. See https://developers.google.com/maps/documentation/javascript/libraries.
-   * @deprecated The Heatmap Layer functionality in the Maps JavaScript API is no longer supported. This API was deprecated in May 2025 and will be made unavailable in a later version of the Maps JavaScript API, releasing in May 2026. For more info, see <a href="https://developers.google.com/maps/deprecations">https://developers.google.com/maps/deprecations</a>).
+   * @deprecated The Heatmap Layer functionality in the Maps JavaScript API is no longer available in the Maps JavaScript API as of version 3.65. For more info, see <a href="https://developers.google.com/maps/deprecations">https://developers.google.com/maps/deprecations</a>.
    */
-  export class HeatmapLayer extends google.maps.MVCObject {
+  export class HeatmapLayer {
     /**
-     * Creates a new instance of <code>HeatmapLayer</code>.
-     * @param opts
+     * Creates a new instance of <code>HeatmapLayer</code>. the layer.
      */
-    constructor(opts?: google.maps.visualization.HeatmapLayerOptions | null);
-    /**
-     * Returns the data points currently displayed by this heatmap.
-     */
-    getData(): google.maps.MVCArray<google.maps.LatLng | google.maps.visualization.WeightedLocation>;
-
-    getMap(): google.maps.Map | undefined;
-    /**
-     * Sets the data points to be displayed by this heatmap.
-     */
-    setData(data: google.maps.MVCArray<google.maps.LatLng | google.maps.visualization.WeightedLocation> | (google.maps.LatLng | google.maps.visualization.WeightedLocation)[]): void;
-    /**
-     * Renders the heatmap on the specified map. If map is set to <code>null</code>, the heatmap will be removed.
-     */
-    setMap(map: google.maps.Map | null): void;
-
-    setOptions(options: google.maps.visualization.HeatmapLayerOptions | null): void;
+    constructor();
   }
 }
 
