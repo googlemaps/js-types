@@ -4240,6 +4240,10 @@ declare namespace google.maps {
     PlaceLinkElement: typeof google.maps.places.PlaceLinkElement;
 
     PlaceMediaElement: typeof google.maps.places.PlaceMediaElement;
+    /**
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     */
+    PlaceNameElement: typeof google.maps.places.PlaceNameElement;
 
     PlaceNearbySearchRequestElement: typeof google.maps.places.PlaceNearbySearchRequestElement;
 
@@ -13885,6 +13889,25 @@ declare namespace google.maps.places {
     preferredSize?: google.maps.places.MediaSizeString | null;
   }
   /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   * Displays the name of a place within a place details element.
+   * Access by calling `const {PlaceNameElement} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  export class PlaceNameElement extends HTMLElement implements google.maps.places.PlaceNameElementOptions {
+    addEventListener<K extends keyof PlaceNameElementEventMap>(type: K, listener: (this: PlaceNameElement, ev: PlaceNameElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof PlaceNameElementEventMap>(type: K, listener: (this: PlaceNameElement, ev: PlaceNameElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+  }
+  export interface PlaceNameElementEventMap extends HTMLElementEventMap {
+  }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   * Options for <code>PlaceNameElement</code>.
+   */
+  export interface PlaceNameElementOptions {
+  }
+  /**
    * Configures a {@link google.maps.places.PlaceSearchElement} to load results based on a nearby search request. The <code>locationRestriction</code> property is required for the search element to load. Any other configured properties will be ignored if <code>locationRestriction</code> is not set. Append this element as a child of a {@link google.maps.places.PlaceSearchElement} to load results. For example: <pre><code> &lt;gmp-place-search&gt;<br> &nbsp;&nbsp;&lt;gmp-place-nearby-search-request<br> &nbsp;&nbsp;&nbsp;&nbsp;location-restriction="<var>RADIUS</var>@<var>LAT</var>,<var>LNG</var>"<br> &nbsp;&nbsp;&gt;&lt;/gmp-place-nearby-search-request&gt;<br> &nbsp;&nbsp;&lt;gmp-place-content-config&gt;<br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;gmp-place-media lightbox-preferred&gt;&lt;/gmp-place-media&gt;<br> &nbsp;&nbsp;&lt;/gmp-place-content-config&gt;<br> &lt;/gmp-place-search&gt; </code></pre>
    * Access by calling `const {PlaceNearbySearchRequestElement} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
    */
@@ -17635,6 +17658,7 @@ declare namespace google.maps {
     "gmp-place-feature-list": google.maps.places.PlaceFeatureListElementEventMap;
     "gmp-place-link": google.maps.places.PlaceLinkElementEventMap;
     "gmp-place-media": google.maps.places.PlaceMediaElementEventMap;
+    "gmp-place-name": google.maps.places.PlaceNameElementEventMap;
     "gmp-place-nearby-search-request": google.maps.places.PlaceNearbySearchRequestElementEventMap;
     "gmp-place-open-now-status": google.maps.places.PlaceOpenNowStatusElementEventMap;
     "gmp-place-opening-hours": google.maps.places.PlaceOpeningHoursElementEventMap;
@@ -17695,6 +17719,7 @@ declare namespace google.maps {
     "gmp-place-feature-list": google.maps.places.PlaceFeatureListElementOptions;
     "gmp-place-link": google.maps.places.PlaceLinkElementOptions;
     "gmp-place-media": google.maps.places.PlaceMediaElementOptions;
+    "gmp-place-name": google.maps.places.PlaceNameElementOptions;
     "gmp-place-nearby-search-request": google.maps.places.PlaceNearbySearchRequestElementOptions;
     "gmp-place-open-now-status": google.maps.places.PlaceOpenNowStatusElementOptions;
     "gmp-place-opening-hours": google.maps.places.PlaceOpeningHoursElementOptions;
@@ -17755,6 +17780,7 @@ declare namespace google.maps {
     "gmp-place-feature-list": google.maps.places.PlaceFeatureListElement;
     "gmp-place-link": google.maps.places.PlaceLinkElement;
     "gmp-place-media": google.maps.places.PlaceMediaElement;
+    "gmp-place-name": google.maps.places.PlaceNameElement;
     "gmp-place-nearby-search-request": google.maps.places.PlaceNearbySearchRequestElement;
     "gmp-place-open-now-status": google.maps.places.PlaceOpenNowStatusElement;
     "gmp-place-opening-hours": google.maps.places.PlaceOpeningHoursElement;
