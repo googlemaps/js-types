@@ -3131,6 +3131,8 @@ declare namespace google.maps {
 
     LocationClickEvent: typeof google.maps.maps3d.LocationClickEvent;
 
+    LocationPointerEvent: typeof google.maps.maps3d.LocationPointerEvent;
+
     Map3DElement: typeof google.maps.maps3d.Map3DElement;
 
     MapMode: typeof google.maps.maps3d.MapMode;
@@ -3158,6 +3160,10 @@ declare namespace google.maps {
     Polyline3DInteractiveElement: typeof google.maps.maps3d.Polyline3DInteractiveElement;
 
     PopoverElement: typeof google.maps.maps3d.PopoverElement;
+    /**
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     */
+    QualityMode: typeof google.maps.maps3d.QualityMode;
 
     SteadyChangeEvent: typeof google.maps.maps3d.SteadyChangeEvent;
   }
@@ -9258,7 +9264,7 @@ declare namespace google.maps.maps3d {
     /**
      * The center of the circle.
      */
-    set center(value: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral | null | undefined);
+    set center(value: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null | undefined);
     /**
      * The radius of the circle in meters.
      */
@@ -9282,7 +9288,7 @@ declare namespace google.maps.maps3d {
     /**
      * See {@link google.maps.maps3d.CirclePathElement.center}.
      */
-    center?: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral | null;
+    center?: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
     /**
      * See {@link google.maps.maps3d.CirclePathElement.radius}.
      */
@@ -9305,7 +9311,7 @@ declare namespace google.maps.maps3d {
     /**
      * The ordered sequence of coordinates that designates a closed loop. These paths define Exclusion Holes within the polygon&#39;s main path, which is the Flattening Zone. Areas within an innerPath are exempt from flattening.
      */
-    set innerPaths(value: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral>> | null | undefined);
+    set innerPaths(value: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLng | google.maps.LatLngLiteral>> | null | undefined);
     /**
      * The ordered sequence of coordinates that designates a closed loop. This loop defines the Flattening Zone.
      */
@@ -9313,7 +9319,7 @@ declare namespace google.maps.maps3d {
     /**
      * The ordered sequence of coordinates that designates a closed loop. This loop defines the Flattening Zone.
      */
-    set path(value: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null | undefined);
+    set path(value: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLng | google.maps.LatLngLiteral> | null | undefined);
     addEventListener<K extends keyof FlattenerElementEventMap>(type: K, listener: (this: FlattenerElement, ev: FlattenerElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof FlattenerElementEventMap>(type: K, listener: (this: FlattenerElement, ev: FlattenerElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -9328,11 +9334,11 @@ declare namespace google.maps.maps3d {
     /**
      * See {@link google.maps.maps3d.FlattenerElement.innerPaths}.
      */
-    innerPaths?: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral>> | null;
+    innerPaths?: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLng | google.maps.LatLngLiteral>> | null;
     /**
      * See {@link google.maps.maps3d.FlattenerElement.path}.
      */
-    path?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null;
+    path?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLng | google.maps.LatLngLiteral> | null;
   }
   /**
    * Customization options for the FlyCameraAround Animation.
@@ -9450,6 +9456,16 @@ declare namespace google.maps.maps3d {
     position: google.maps.LatLngAltitude | null;
   }
   /**
+   * This event is created when a pointer interaction occurs on an interactive Map3DElement.
+   * Access by calling `const {LocationPointerEvent} = await google.maps.importLibrary("maps3d");`. See https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  export class LocationPointerEvent extends Event {
+    /**
+     * The latitude/longitude/altitude that was below the cursor when the event occurred. Please note, that at coarser levels, less accurate data will be returned. Also, sea floor elevation may be returned for the altitude value when clicking at the water surface from higher camera positions. This event bubbles up through the DOM tree.
+     */
+    position: google.maps.LatLngAltitude | null;
+  }
+  /**
    * Map3DElement is an HTML interface for the 3D Map view. Note that the <code>mode</code> must be set for the 3D Map to start rendering.
    * Access by calling `const {Map3DElement} = await google.maps.importLibrary("maps3d");`. See https://developers.google.com/maps/documentation/javascript/libraries.
    */
@@ -9488,11 +9504,11 @@ declare namespace google.maps.maps3d {
      */
     set cameraPosition(value: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral | null | undefined);
     /**
-     * The center of the map given as a LatLngAltitude, where altitude is in meters above the mean sea level. Note that this is not necessarily where the camera is located, as the <code>range</code> field affects the camera&#39;s distance from the map center. If not set, defaults to <code>{lat: 0, lng: 0, altitude: 63170000}</code>. 63170000 meters is a maximum allowed altitude (Earth radius multiplied by 10).
+     * The center of the map given as a LatLngAltitude, where altitude is in meters above the mean sea level. Note that this is not necessarily where the camera is located, as the <code>range</code> field affects the camera&#39;s distance from the map center. If not set, defaults to <code>{lat: 0, lng: 0, altitude: 63710000}</code>. 63710000 meters is a maximum allowed altitude (Earth radius multiplied by 10).
      */
     get center(): google.maps.LatLngAltitude | null;
     /**
-     * The center of the map given as a LatLngAltitude, where altitude is in meters above the mean sea level. Note that this is not necessarily where the camera is located, as the <code>range</code> field affects the camera&#39;s distance from the map center. If not set, defaults to <code>{lat: 0, lng: 0, altitude: 63170000}</code>. 63170000 meters is a maximum allowed altitude (Earth radius multiplied by 10).
+     * The center of the map given as a LatLngAltitude, where altitude is in meters above the mean sea level. Note that this is not necessarily where the camera is located, as the <code>range</code> field affects the camera&#39;s distance from the map center. If not set, defaults to <code>{lat: 0, lng: 0, altitude: 63710000}</code>. 63710000 meters is a maximum allowed altitude (Earth radius multiplied by 10).
      */
     set center(value: google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral | null | undefined);
     /**
@@ -9564,11 +9580,11 @@ declare namespace google.maps.maps3d {
      */
     set mapId(value: string | null | undefined);
     /**
-     * The maximum altitude above the ground which will be displayed on the map. A valid value is between <code>0</code> and <code>63170000</code> meters (Earth radius multiplied by 10).
+     * The maximum altitude above the ground which will be displayed on the map. A valid value is between <code>0</code> and <code>63710000</code> meters (Earth radius multiplied by 10).
      */
     get maxAltitude(): number | null;
     /**
-     * The maximum altitude above the ground which will be displayed on the map. A valid value is between <code>0</code> and <code>63170000</code> meters (Earth radius multiplied by 10).
+     * The maximum altitude above the ground which will be displayed on the map. A valid value is between <code>0</code> and <code>63710000</code> meters (Earth radius multiplied by 10).
      */
     set maxAltitude(value: number | null | undefined);
     /**
@@ -9580,6 +9596,16 @@ declare namespace google.maps.maps3d {
      */
     set maxHeading(value: number | null | undefined);
     /**
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     * The maximum amount of memory, in megabytes, the map may use for rendering. Lower values reduce memory usage at the cost of visual detail; higher values allow more detail to be kept in memory. Valid values range from 64 to 2048. If not set, a limit is chosen automatically based on the device and the size of the map. Must be set before the map is initialized; changes made afterwards are ignored.
+     */
+    get maxMemoryMegabytes(): number | null;
+    /**
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     * The maximum amount of memory, in megabytes, the map may use for rendering. Lower values reduce memory usage at the cost of visual detail; higher values allow more detail to be kept in memory. Valid values range from 64 to 2048. If not set, a limit is chosen automatically based on the device and the size of the map. Must be set before the map is initialized; changes made afterwards are ignored.
+     */
+    set maxMemoryMegabytes(value: number | null | undefined);
+    /**
      * The maximum angle of incidence of the map. A valid value is between <code>0</code> and <code>90</code> degrees.
      */
     get maxTilt(): number | null;
@@ -9588,11 +9614,11 @@ declare namespace google.maps.maps3d {
      */
     set maxTilt(value: number | null | undefined);
     /**
-     * The minimum altitude above the ground which will be displayed on the map. A valid value is between <code>0</code> and <code>63170000</code> meters (Earth radius multiplied by 10).
+     * The minimum altitude above the ground which will be displayed on the map. A valid value is between <code>0</code> and <code>63710000</code> meters (Earth radius multiplied by 10).
      */
     get minAltitude(): number | null;
     /**
-     * The minimum altitude above the ground which will be displayed on the map. A valid value is between <code>0</code> and <code>63170000</code> meters (Earth radius multiplied by 10).
+     * The minimum altitude above the ground which will be displayed on the map. A valid value is between <code>0</code> and <code>63710000</code> meters (Earth radius multiplied by 10).
      */
     set minAltitude(value: number | null | undefined);
     /**
@@ -9619,6 +9645,18 @@ declare namespace google.maps.maps3d {
      * Specifies a mode the map should be rendered in. If not set, the map won&#39;t be rendered.
      */
     set mode(value: google.maps.maps3d.MapModeString | null | undefined);
+    /**
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     * Specifies the rendering quality of the map. Set to {@link google.maps.maps3d.QualityMode.PERFORMANCE} to render with reduced visual detail, which lowers memory usage.
+     * @defaultValue {@link google.maps.maps3d.QualityMode.FIDELITY}
+     */
+    get qualityMode(): google.maps.maps3d.QualityModeString | null;
+    /**
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     * Specifies the rendering quality of the map. Set to {@link google.maps.maps3d.QualityMode.PERFORMANCE} to render with reduced visual detail, which lowers memory usage.
+     * @defaultValue {@link google.maps.maps3d.QualityMode.FIDELITY}
+     */
+    set qualityMode(value: google.maps.maps3d.QualityModeString | null | undefined);
     /**
      * The distance from camera to the center of the map, in meters.
      */
@@ -9750,6 +9788,11 @@ declare namespace google.maps.maps3d {
      */
     maxHeading?: number | null;
     /**
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     * See {@link google.maps.maps3d.Map3DElement.maxMemoryMegabytes}.
+     */
+    maxMemoryMegabytes?: number | null;
+    /**
      * See {@link google.maps.maps3d.Map3DElement.maxTilt}.
      */
     maxTilt?: number | null;
@@ -9769,6 +9812,11 @@ declare namespace google.maps.maps3d {
      * See {@link google.maps.maps3d.Map3DElement.mode}.
      */
     mode?: google.maps.maps3d.MapModeString | null;
+    /**
+     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+     * See {@link google.maps.maps3d.Map3DElement.qualityMode}.
+     */
+    qualityMode?: google.maps.maps3d.QualityModeString | null;
     /**
      * See {@link google.maps.maps3d.Map3DElement.range}.
      */
@@ -9897,7 +9945,7 @@ declare namespace google.maps.maps3d {
     /**
      * The location of the tip of the marker. Altitude is ignored in certain modes and thus optional.
      */
-    set position(value: google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null | undefined);
+    set position(value: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null | undefined);
     /**
      * Specifies whether this marker should preserve its size or not regardless of distance from camera. By default, the marker is scaled based on distance from camera/tilt.
      * @defaultValue <code>false</code>
@@ -9959,7 +10007,7 @@ declare namespace google.maps.maps3d {
     /**
      * See {@link google.maps.maps3d.Marker3DElement.position}.
      */
-    position?: google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
+    position?: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
     /**
      * See {@link google.maps.maps3d.Marker3DElement.sizePreserved}.
      */
@@ -9998,6 +10046,9 @@ declare namespace google.maps.maps3d {
   }
   export interface Marker3DInteractiveElementEventMap extends google.maps.maps3d.Marker3DElementEventMap {
     "gmp-click": google.maps.maps3d.LocationClickEvent;
+    "gmp-pointermove": google.maps.maps3d.LocationPointerEvent;
+    "gmp-pointerout": google.maps.maps3d.LocationPointerEvent;
+    "gmp-pointerover": google.maps.maps3d.LocationPointerEvent;
   }
   /**
    * Marker3DInteractiveElementOptions object used to define the properties that can be set on a Marker3DInteractiveElement.
@@ -10083,7 +10134,7 @@ declare namespace google.maps.maps3d {
     /**
      * The location of the tip of the marker. Altitude is ignored in certain modes and thus optional.
      */
-    set position(value: google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null | undefined);
+    set position(value: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null | undefined);
     /**
      * Rollover text. If provided, an accessibility text (e.g. for use with screen readers) will be added to the <code>MarkerElement</code> with the provided value.
      */
@@ -10127,7 +10178,7 @@ declare namespace google.maps.maps3d {
     /**
      * See {@link google.maps.maps3d.MarkerElement.position}.
      */
-    position?: google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
+    position?: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
     /**
      * See {@link google.maps.maps3d.MarkerElement.title}.
      */
@@ -10203,7 +10254,7 @@ declare namespace google.maps.maps3d {
     /**
      * Sets the <code>Model3DElement</code>&#39;s position. Altitude is ignored in certain modes and thus optional.
      */
-    set position(value: google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null | undefined);
+    set position(value: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null | undefined);
     /**
      * Scales the model along the x, y, and z axes in the model&#39;s coordinate space.
      * @defaultValue <code>1</code>
@@ -10244,7 +10295,7 @@ declare namespace google.maps.maps3d {
     /**
      * See {@link google.maps.maps3d.Model3DElement.position}.
      */
-    position?: google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
+    position?: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | null;
     /**
      * See {@link google.maps.maps3d.Model3DElement.scale}.
      */
@@ -10271,6 +10322,9 @@ declare namespace google.maps.maps3d {
   }
   export interface Model3DInteractiveElementEventMap extends google.maps.maps3d.Model3DElementEventMap {
     "gmp-click": google.maps.maps3d.LocationClickEvent;
+    "gmp-pointermove": google.maps.maps3d.LocationPointerEvent;
+    "gmp-pointerout": google.maps.maps3d.LocationPointerEvent;
+    "gmp-pointerover": google.maps.maps3d.LocationPointerEvent;
   }
   /**
    * Model3DInteractiveElementOptions object used to define the properties that can be set on a Model3DInteractiveElement.
@@ -10368,7 +10422,7 @@ declare namespace google.maps.maps3d {
     /**
      * The ordered sequence of coordinates that designates a closed loop. Unlike polylines, a polygon may consist of one or more paths, which create multiple cut-outs inside the polygon.
      */
-    set innerPaths(value: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral>> | null | undefined);
+    set innerPaths(value: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLng | google.maps.LatLngLiteral>> | null | undefined);
     /**
      * The ordered sequence of coordinates that designates a closed loop. Altitude is ignored in certain modes and thus optional.
      */
@@ -10376,7 +10430,7 @@ declare namespace google.maps.maps3d {
     /**
      * The ordered sequence of coordinates that designates a closed loop. Altitude is ignored in certain modes and thus optional.
      */
-    set path(value: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null | undefined);
+    set path(value: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLng | google.maps.LatLngLiteral> | null | undefined);
     /**
      * The stroke color. All CSS3 colors are supported.
      */
@@ -10405,12 +10459,12 @@ declare namespace google.maps.maps3d {
      * The ordered sequence of coordinates that designates a closed loop. Altitude is ignored in certain modes and thus optional.
      * @deprecated Use <code>path</code> instead. This property will be removed in a future release.
      */
-    outerCoordinates?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null;
+    outerCoordinates?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLng | google.maps.LatLngLiteral> | null;
     /**
      * The ordered sequence of coordinates that designates a closed loop. Unlike polylines, a polygon may consist of one or more paths, which create multiple cut-outs inside the polygon.
      * @deprecated Use <code>innerPaths</code> instead. This property will be removed in a future release.
      */
-    innerCoordinates?: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral>> | null;
+    innerCoordinates?: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLng | google.maps.LatLngLiteral>> | null;
     addEventListener<K extends keyof Polygon3DElementEventMap>(type: K, listener: (this: Polygon3DElement, ev: Polygon3DElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof Polygon3DElementEventMap>(type: K, listener: (this: Polygon3DElement, ev: Polygon3DElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -10450,19 +10504,19 @@ declare namespace google.maps.maps3d {
     /**
      * See {@link google.maps.maps3d.Polygon3DElement.innerCoordinates}.
      */
-    innerCoordinates?: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral> | Iterable<google.maps.LatLngLiteral>> | null;
+    innerCoordinates?: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral> | Iterable<google.maps.LatLng | google.maps.LatLngLiteral>> | null;
     /**
      * See {@link google.maps.maps3d.Polygon3DElement.innerPaths}.
      */
-    innerPaths?: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral> | Iterable<google.maps.LatLngLiteral>> | null;
+    innerPaths?: Iterable<Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral> | Iterable<google.maps.LatLng | google.maps.LatLngLiteral>> | null;
     /**
      * See {@link google.maps.maps3d.Polygon3DElement.outerCoordinates}.
      */
-    outerCoordinates?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null;
+    outerCoordinates?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLng | google.maps.LatLngLiteral> | null;
     /**
      * See {@link google.maps.maps3d.Polygon3DElement.path}.
      */
-    path?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null;
+    path?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLng | google.maps.LatLngLiteral> | null;
     /**
      * See {@link google.maps.maps3d.Polygon3DElement.strokeColor}.
      */
@@ -10493,6 +10547,9 @@ declare namespace google.maps.maps3d {
   }
   export interface Polygon3DInteractiveElementEventMap extends google.maps.maps3d.Polygon3DElementEventMap {
     "gmp-click": google.maps.maps3d.LocationClickEvent;
+    "gmp-pointermove": google.maps.maps3d.LocationPointerEvent;
+    "gmp-pointerout": google.maps.maps3d.LocationPointerEvent;
+    "gmp-pointerover": google.maps.maps3d.LocationPointerEvent;
   }
   /**
    * Polygon3DInteractiveElementOptions object used to define the properties that can be set on a Polygon3DInteractiveElement.
@@ -10584,7 +10641,7 @@ declare namespace google.maps.maps3d {
     /**
      * The ordered sequence of coordinates of the Polyline. Altitude is ignored in certain modes and thus optional.
      */
-    set path(value: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null | undefined);
+    set path(value: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLng | google.maps.LatLngLiteral> | null | undefined);
     /**
      * The stroke color. All CSS3 colors are supported.
      */
@@ -10613,7 +10670,7 @@ declare namespace google.maps.maps3d {
      * The ordered sequence of coordinates of the Polyline. Altitude is ignored in certain modes and thus optional.
      * @deprecated Use <code>path</code> instead. This property will be removed in a future release.
      */
-    coordinates?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null;
+    coordinates?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLng | google.maps.LatLngLiteral> | null;
     addEventListener<K extends keyof Polyline3DElementEventMap>(type: K, listener: (this: Polyline3DElement, ev: Polyline3DElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof Polyline3DElementEventMap>(type: K, listener: (this: Polyline3DElement, ev: Polyline3DElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -10637,7 +10694,7 @@ declare namespace google.maps.maps3d {
     /**
      * See {@link google.maps.maps3d.Polyline3DElement.coordinates}.
      */
-    coordinates?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null;
+    coordinates?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLng | google.maps.LatLngLiteral> | null;
     /**
      * See {@link google.maps.maps3d.Polyline3DElement.drawsOccludedSegments}.
      */
@@ -10661,7 +10718,7 @@ declare namespace google.maps.maps3d {
     /**
      * See {@link google.maps.maps3d.Polyline3DElement.path}.
      */
-    path?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLngLiteral> | null;
+    path?: Iterable<google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.LatLng | google.maps.LatLngLiteral> | null;
     /**
      * See {@link google.maps.maps3d.Polyline3DElement.strokeColor}.
      */
@@ -10692,6 +10749,9 @@ declare namespace google.maps.maps3d {
   }
   export interface Polyline3DInteractiveElementEventMap extends google.maps.maps3d.Polyline3DElementEventMap {
     "gmp-click": google.maps.maps3d.LocationClickEvent;
+    "gmp-pointermove": google.maps.maps3d.LocationPointerEvent;
+    "gmp-pointerout": google.maps.maps3d.LocationPointerEvent;
+    "gmp-pointerover": google.maps.maps3d.LocationPointerEvent;
   }
   /**
    * Polyline3DInteractiveElementOptions object used to define the properties that can be set on a Polyline3DInteractiveElement.
@@ -10755,7 +10815,7 @@ declare namespace google.maps.maps3d {
     /**
      * The position at which to display this popover. If the popover is anchored to an interactive marker, the marker&#39;s position will be used instead.
      */
-    set positionAnchor(value: google.maps.LatLngLiteral | google.maps.LatLngAltitudeLiteral | google.maps.maps3d.Marker3DInteractiveElement | google.maps.maps3d.MarkerInteractiveElement | string | null | undefined);
+    set positionAnchor(value: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | google.maps.maps3d.Marker3DInteractiveElement | google.maps.maps3d.MarkerInteractiveElement | string | null | undefined);
     addEventListener<K extends keyof PopoverElementEventMap>(type: K, listener: (this: PopoverElement, ev: PopoverElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof PopoverElementEventMap>(type: K, listener: (this: PopoverElement, ev: PopoverElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -10786,8 +10846,25 @@ declare namespace google.maps.maps3d {
     /**
      * See {@link google.maps.maps3d.PopoverElement.positionAnchor}.
      */
-    positionAnchor?: google.maps.LatLngLiteral | google.maps.LatLngAltitudeLiteral | string | google.maps.maps3d.Marker3DInteractiveElement | google.maps.maps3d.MarkerInteractiveElement | null;
+    positionAnchor?: google.maps.LatLng | google.maps.LatLngLiteral | google.maps.LatLngAltitude | google.maps.LatLngAltitudeLiteral | string | google.maps.maps3d.Marker3DInteractiveElement | google.maps.maps3d.MarkerInteractiveElement | null;
   }
+  /**
+   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
+   * Specifies the rendering quality of the 3D map.
+   *
+   * Access by calling `const {QualityMode} = await google.maps.importLibrary("maps3d");`. See https://developers.google.com/maps/documentation/javascript/libraries.
+   */
+  export enum QualityMode {
+    /**
+     * Renders the map with standard visual detail.
+     */
+    FIDELITY = 'FIDELITY',
+    /**
+     * Renders the map with reduced visual detail to lower memory usage. Useful on memory-constrained devices or when the map shares the page with other memory-intensive content.
+     */
+    PERFORMANCE = 'PERFORMANCE',
+  }
+  export type QualityModeString = `${google.maps.maps3d.QualityMode}`;
   /**
    * This event is created from monitoring a steady state of <code>Map3DElement</code>. This event bubbles up through the DOM tree.
    * Access by calling `const {SteadyChangeEvent} = await google.maps.importLibrary("maps3d");`. See https://developers.google.com/maps/documentation/javascript/libraries.
@@ -16587,7 +16664,7 @@ declare namespace google.maps.routes {
     createWaypointAdvancedMarkers(options?: google.maps.marker.AdvancedMarkerElementOptions | ((arg0: google.maps.marker.AdvancedMarkerElementOptions, arg1: google.maps.routes.WaypointMarkerDetails) => google.maps.marker.AdvancedMarkerElementOptions)): Promise<google.maps.marker.AdvancedMarkerElement[]>;
     /**
      * Available only in the v=alpha channel: https://goo.gle/js-alpha-channel.
-     * Creates markers for the route&#39;s origin and destination. Markers have default styling applied unless a customOverride function is specified. Intermediate waypoints are not currently supported. <br><br> Created markers have their {@link google.maps.CollisionBehavior} set to {@link google.maps.CollisionBehavior.REQUIRED_AND_HIDES_OPTIONAL} by default.
+     * Creates markers for the route&#39;s origin and destination. Markers have default styling applied unless a customOverride function is specified. Intermediate waypoints are not currently supported. <br><br> Created markers have their {@link google.maps.CollisionBehavior} set to {@link google.maps.CollisionBehavior.REQUIRED_AND_HIDES_OPTIONAL} by default. Created markers have a localized <code>title</code> (&quot;Origin&quot; or &quot;Destination&quot;) by default, which can be overridden in <code>forEach</code>. For <code>Marker3DElement</code> and <code>Marker3DInteractiveElement</code> markers, <code>sizePreserved</code> is set to <code>true</code> by default, which can also be overridden in <code>forEach</code>.
      */
     createWaypointMarkers<T extends google.maps.maps3d.MarkerElement | google.maps.maps3d.Marker3DElement | google.maps.maps3d.MarkerInteractiveElement | google.maps.maps3d.Marker3DInteractiveElement>(options?: google.maps.routes.CreateWaypointMarkersOptions<T>): Promise<T[]>;
     /**
