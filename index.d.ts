@@ -4110,37 +4110,23 @@ declare namespace google.maps {
   export interface PlacesLibrary {
 
     AccessibilityOptions: typeof google.maps.places.AccessibilityOptions;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     */
+
     ActionButtonPosition: typeof google.maps.places.ActionButtonPosition;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     */
+
     ActionLinkType: typeof google.maps.places.ActionLinkType;
 
     AddressComponent: typeof google.maps.places.AddressComponent;
 
     AddressDescriptor: typeof google.maps.places.AddressDescriptor;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     */
+
     AdvancedPlaceDetailsCompactElement: typeof google.maps.places.AdvancedPlaceDetailsCompactElement;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     */
+
     AdvancedPlaceDetailsElement: typeof google.maps.places.AdvancedPlaceDetailsElement;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     */
+
     AdvancedPlaceItemElement: typeof google.maps.places.AdvancedPlaceItemElement;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     */
+
     AdvancedPlaceListElement: typeof google.maps.places.AdvancedPlaceListElement;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     */
+
     AdvancedPlaceSearchElement: typeof google.maps.places.AdvancedPlaceSearchElement;
 
     Area: typeof google.maps.places.Area;
@@ -4214,9 +4200,7 @@ declare namespace google.maps {
     Place: typeof google.maps.places.Place;
 
     PlaceAccessibleEntranceIconElement: typeof google.maps.places.PlaceAccessibleEntranceIconElement;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     */
+
     PlaceActionEvent: typeof google.maps.places.PlaceActionEvent;
 
     PlaceAddressElement: typeof google.maps.places.PlaceAddressElement;
@@ -4226,9 +4210,7 @@ declare namespace google.maps {
     PlaceAttributionElement: typeof google.maps.places.PlaceAttributionElement;
 
     PlaceAutocompleteElement: typeof google.maps.places.PlaceAutocompleteElement;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     */
+
     PlaceButtonElement: typeof google.maps.places.PlaceButtonElement;
 
     PlaceContentConfigElement: typeof google.maps.places.PlaceContentConfigElement;
@@ -4250,19 +4232,13 @@ declare namespace google.maps {
     PlaceDetailsPlaceRequestElement: typeof google.maps.places.PlaceDetailsPlaceRequestElement;
 
     PlaceFeatureListElement: typeof google.maps.places.PlaceFeatureListElement;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     */
+
     PlaceItemElement: typeof google.maps.places.PlaceItemElement;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     */
+
     PlaceLinkElement: typeof google.maps.places.PlaceLinkElement;
 
     PlaceMediaElement: typeof google.maps.places.PlaceMediaElement;
-    /**
-     * Available only in the v=beta channel: https://goo.gle/3oAthT3.
-     */
+
     PlaceNameElement: typeof google.maps.places.PlaceNameElement;
 
     PlaceNearbySearchRequestElement: typeof google.maps.places.PlaceNearbySearchRequestElement;
@@ -7483,9 +7459,9 @@ declare namespace google.maps.geometry.encoding {
 
 declare namespace google.maps.geometry.poly {
   /**
-   * Computes whether the given point lies inside the specified polygon.
+   * Computes whether the given point lies inside the specified polygon or circle. Passing a <code>Circle</code> requires <code>center</code> to be set and <code>radius</code> to be set to a non-negative value.
    */
-  export function containsLocation(point: google.maps.LatLng | google.maps.LatLngLiteral, polygon: google.maps.Polygon): boolean;
+  export function containsLocation(point: google.maps.LatLng | google.maps.LatLngLiteral, polygon: google.maps.Polygon | google.maps.Circle | google.maps.CircleLiteral): boolean;
   /**
    * Computes whether the given point lies on or near to a polyline, or the edge of a polygon, within a specified tolerance. Returns <code>true</code> when the difference between the latitude and longitude of the supplied point, and the closest point on the edge, is less than the tolerance. The tolerance defaults to 10<sup>-9</sup> degrees.
    */
@@ -11152,7 +11128,6 @@ declare namespace google.maps.places {
     get hasWheelchairAccessibleSeating(): boolean | null;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * The slotted position of the control in the place details widget.
    *
    * Access by calling `const {ActionButtonPosition} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
@@ -11169,7 +11144,6 @@ declare namespace google.maps.places {
   }
   export type ActionButtonPositionString = `${google.maps.places.ActionButtonPosition}`;
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * The action taken by a {@link google.maps.places.PlaceLinkElement} when clicked. Determines the icon, label and href destination.
    *
    * Access by calling `const {ActionLinkType} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
@@ -11238,7 +11212,6 @@ declare namespace google.maps.places {
     toJSON(key?: string): unknown;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Displays details for a place in a compact layout. Append a {@link google.maps.places.PlaceDetailsPlaceRequestElement} or {@link google.maps.places.PlaceDetailsLocationRequestElement} to specify the place to be rendered. Append a {@link google.maps.places.PlaceStandardContentElement}, {@link google.maps.places.PlaceAllContentElement} or specify specific content children to configure the content to render. <br><br> To use this element, enable the <a href="https://console.cloud.google.com/marketplace/product/google/placewidgets.googleapis.com" >Places UI Kit API</a> for your project in the Google Cloud console.
    * Access by calling `const {AdvancedPlaceDetailsCompactElement} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
    */
@@ -11268,7 +11241,6 @@ declare namespace google.maps.places {
   export interface AdvancedPlaceDetailsCompactElementEventMap extends google.maps.places.PlaceDetailsCompactElementEventMap {
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Options for <code>AdvancedPlaceDetailsCompactElement</code>.
    */
   export interface AdvancedPlaceDetailsCompactElementOptions extends google.maps.places.PlaceDetailsCompactElementOptions {
@@ -11278,7 +11250,6 @@ declare namespace google.maps.places {
     internalUsageAttributionIds?: Iterable<string> | null;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Displays details for a place in a full layout. Append either a {@link google.maps.places.PlaceDetailsPlaceRequestElement} or {@link google.maps.places.PlaceDetailsLocationRequestElement} to specify the place to be rendered. Append a {@link google.maps.places.PlaceStandardContentElement}, {@link google.maps.places.PlaceAllContentElement} or place details elements directly to configure the content to render. <br><br> Example: <pre><code> &lt;gmp-advanced-place-details&gt;<br> &nbsp;&nbsp;&lt;gmp-place-details-place-request<br> &nbsp;&nbsp;&nbsp;&nbsp;place="<var>PLACE_ID</var>"<br> &nbsp;&nbsp;&gt;&lt;/gmp-place-details-place-request&gt;<br> &nbsp;&nbsp;&lt;gmp-place-standard-content&gt;<br> &nbsp;&nbsp;&lt;/gmp-place-standard-content&gt;<br> &lt;/gmp-advanced-place-details&gt; </code></pre> <br> To use this element, enable the <a href="https://console.cloud.google.com/marketplace/product/google/placewidgets.googleapis.com" >Places UI Kit API</a> for your project in the Google Cloud console.
    * Access by calling `const {AdvancedPlaceDetailsElement} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
    */
@@ -11308,7 +11279,6 @@ declare namespace google.maps.places {
   export interface AdvancedPlaceDetailsElementEventMap extends google.maps.places.PlaceDetailsElementEventMap {
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Options for <code>AdvancedPlaceDetailsElement</code>.
    */
   export interface AdvancedPlaceDetailsElementOptions extends google.maps.places.PlaceDetailsElementOptions {
@@ -11318,7 +11288,6 @@ declare namespace google.maps.places {
     internalUsageAttributionIds?: Iterable<string> | null;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Public web component wrapper (<code>&lt;gmp-advanced-place-item&gt;</code>) for advanced place list items. The <code>&lt;gmp-advanced-place-item&gt;</code> custom element renders an individual rich place result card inside an advanced search or collection container, such as <code>&lt;gmp-advanced-place-search&gt;</code> or <code>&lt;gmp-advanced-place-list&gt;</code>. Each <code>&lt;gmp-advanced-place-item&gt;</code> presents rich place details, media collages, editorial summaries, and interactive action buttons composed of child visual components from the Places UI Kit.
    * Access by calling `const {AdvancedPlaceItemElement} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
    */
@@ -11331,13 +11300,11 @@ declare namespace google.maps.places {
   export interface AdvancedPlaceItemElementEventMap extends google.maps.places.PlaceItemElementEventMap {
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Options for <code>AdvancedPlaceItemElement</code>.
    */
   export interface AdvancedPlaceItemElementOptions extends google.maps.places.PlaceItemElementOptions {
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Displays the results of a place search in a list. Append one or more {@link google.maps.places.PlaceDetailsPlaceRequestElement} or set the <code>places</code> property to specify the places to display. Append a {@link google.maps.places.PlaceStandardContentElement} or {@link google.maps.places.PlaceAllContentElement} to specify which content to render. <br><br> Example: <pre><code> &lt;gmp-advanced-place-list&gt;<br> &nbsp;&nbsp;&lt;gmp-place-details-place-request<br> &nbsp;&nbsp;&nbsp;&nbsp;place="<var>PLACE_ID</var>"<br> &nbsp;&nbsp;&lt;/gmp-place-details-place-request&gt;<br> &nbsp;&nbsp;&lt;template slot="details-item"&gt;<br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;gmp-place-media lightbox-preferred&gt;&lt;/gmp-place-media&gt;<br> &nbsp;&nbsp;&lt;/template&gt;<br> &lt;/gmp-advanced-place-list&gt; </code></pre> <br> To use the Advanced Place List Element, enable the <a href="https://console.cloud.google.com/marketplace/product/google/placewidgets.googleapis.com" >Places UI Kit API</a> for your project in the Google Cloud console.
    * Access by calling `const {AdvancedPlaceListElement} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
    */
@@ -11414,7 +11381,6 @@ declare namespace google.maps.places {
     "gmp-select": google.maps.places.PlaceSelectEvent;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Options for <code>AdvancedPlaceListElement</code>.
    */
   export interface AdvancedPlaceListElementOptions {
@@ -11444,7 +11410,6 @@ declare namespace google.maps.places {
     truncationPreferred?: boolean | null;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Displays the results of an advanced place search in a list. Append a {@link google.maps.places.PlaceTextSearchRequestElement} or {@link google.maps.places.PlaceNearbySearchRequestElement} to specify the request to render results for. Append a {@link google.maps.places.PlaceStandardContentElement}, {@link google.maps.places.PlaceAllContentElement}, or a <code>&lt;template slot=&quot;details-item&quot;&gt;</code> to specify which content to render. <br><br> Example: <pre><code> &lt;gmp-advanced-place-search&gt;<br> &nbsp;&nbsp;&lt;gmp-place-text-search-request<br> &nbsp;&nbsp;&nbsp;&nbsp;text-query="<var>QUERY</var>"<br> &nbsp;&nbsp;&gt;&lt;/gmp-place-text-search-request&gt;<br> &nbsp;&nbsp;&lt;template slot="details-item"&gt;<br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;gmp-place-media lightbox-preferred&gt;&lt;/gmp-place-media&gt;<br> &nbsp;&nbsp;&lt;/template&gt;<br> &lt;/gmp-advanced-place-search&gt; </code></pre> <br> To use the Advanced Place Search Element, enable the <a href="https://console.cloud.google.com/marketplace/product/google/placewidgets.googleapis.com" >Places UI Kit API</a> for your project in the Google Cloud console.
    * Access by calling `const {AdvancedPlaceSearchElement} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
    */
@@ -11513,7 +11478,6 @@ declare namespace google.maps.places {
     "gmp-select": google.maps.places.PlaceSelectEvent;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Options for <code>AdvancedPlaceSearchElement</code>.
    */
   export interface AdvancedPlaceSearchElementOptions extends google.maps.places.PlaceSearchElementOptions {
@@ -13206,7 +13170,6 @@ declare namespace google.maps.places {
   export interface PlaceAccessibleEntranceIconElementOptions {
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * The event fired when the action button is clicked.
    * Access by calling `const {PlaceActionEvent} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
    */
@@ -13505,7 +13468,6 @@ declare namespace google.maps.places {
     value?: string | null;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Displays a button slotted into either the <code>action-main</code> slot or the <code>action-corner</code> slot. <code>PlaceButtonElement</code> has no default behavior. Attach an event listener to the element to define its behavior. By default the button will be shown in the <code>action-main</code> slot.
    * Access by calling `const {PlaceButtonElement} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
    */
@@ -13529,7 +13491,6 @@ declare namespace google.maps.places {
     "gmp-click": google.maps.places.PlaceActionEvent;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Options for <code>PlaceButtonElement</code>.
    */
   export interface PlaceButtonElementOptions {
@@ -13545,6 +13506,7 @@ declare namespace google.maps.places {
   /**
    * Configures a {@link google.maps.places.PlaceDetailsCompactElement}, {@link google.maps.places.PlaceDetailsElement} or {@link google.maps.places.PlaceSearchElement} to show a custom set of content. Append this element as a child to use it. <br> <br> For {@link google.maps.places.PlaceDetailsCompactElement}, {@link google.maps.places.PlaceDetailsElement} or {@link google.maps.places.PlaceSearchElement}, append any of the following elements to the {@link google.maps.places.PlaceContentConfigElement} to show the corresponding content: <br> {@link google.maps.places.PlaceAddressElement}, {@link google.maps.places.PlaceAccessibleEntranceIconElement}, {@link google.maps.places.PlaceAttributionElement} {@link google.maps.places.PlaceMediaElement}, {@link google.maps.places.PlaceOpenNowStatusElement}, {@link google.maps.places.PlacePriceElement}, {@link google.maps.places.PlaceRatingElement}, {@link google.maps.places.PlaceTypeElement}. <br> <br> Specific to {@link google.maps.places.PlaceDetailsElement}, you may also append any of the following elements: <br> {@link google.maps.places.PlaceFeatureListElement} {@link google.maps.places.PlaceOpeningHoursElement}, {@link google.maps.places.PlacePhoneNumberElement}, {@link google.maps.places.PlacePlusCodeElement}, {@link google.maps.places.PlaceReviewSummaryElement}, {@link google.maps.places.PlaceReviewsElement}, {@link google.maps.places.PlaceSummaryElement}, {@link google.maps.places.PlaceTypeSpecificHighlightsElement}, {@link google.maps.places.PlaceWebsiteElement}. <br> <br> The order of the children does not matter; the element renders content in a standard order which is not customizable. Example: <pre><code> &lt;gmp-place-details&gt;<br> &nbsp;&nbsp;&lt;gmp-place-content-config&gt;<br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;gmp-place-media lightbox-preferred&gt;&lt;/gmp-place-media&gt;<br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;gmp-place-address&gt;&lt;/gmp-place-address&gt;<br> &nbsp;&nbsp;&lt;/gmp-place-content-config&gt;<br> &lt;/gmp-place-details&gt; </code></pre>
    * Access by calling `const {PlaceContentConfigElement} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
+   * @deprecated Append content elements or preset elements ({@link google.maps.places.PlaceAllContentElement}, {@link google.maps.places.PlaceStandardContentElement}) directly to {@link google.maps.places.PlaceDetailsElement} or {@link google.maps.places.PlaceDetailsCompactElement}, or inside a <code>&lt;template slot=&quot;details-item&quot;&gt;</code> child element in {@link google.maps.places.PlaceSearchElement}. At this time, PlaceContentConfigElement is not scheduled to be discontinued. At least 12 months notice will be given before support is discontinued. Please see <a href="https://developers.google.com/maps/deprecations">https://developers.google.com/maps/deprecations</a> for additional details.
    */
   export class PlaceContentConfigElement extends HTMLElement implements google.maps.places.PlaceContentConfigElementOptions {
     /**
@@ -13561,6 +13523,7 @@ declare namespace google.maps.places {
   }
   /**
    * Options for <code>PlaceContentConfigElement</code>.
+   * @deprecated Append content elements or preset elements ({@link google.maps.places.PlaceAllContentElement}, {@link google.maps.places.PlaceStandardContentElement}) directly to {@link google.maps.places.PlaceDetailsElement} or {@link google.maps.places.PlaceDetailsCompactElement}, or inside a <code>&lt;template slot=&quot;details-item&quot;&gt;</code> child element in {@link google.maps.places.PlaceSearchElement}. At this time, PlaceContentConfigElement is not scheduled to be discontinued. At least 12 months notice will be given before support is discontinued. Please see <a href="https://developers.google.com/maps/deprecations">https://developers.google.com/maps/deprecations</a> for additional details.
    */
   export interface PlaceContentConfigElementOptions {
   }
@@ -13914,7 +13877,6 @@ declare namespace google.maps.places {
     viewport?: google.maps.LatLngBounds;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Public web component wrapper (<code>&lt;gmp-place-item&gt;</code>) for place list items. The <code>&lt;gmp-place-item&gt;</code> custom element renders an individual place result card inside <code>&lt;gmp-place-search&gt;</code>. Each <code>&lt;gmp-place-item&gt;</code> displays place information composed of child visual components from the Places UI Kit.
    * Access by calling `const {PlaceItemElement} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
    */
@@ -13927,13 +13889,11 @@ declare namespace google.maps.places {
   export interface PlaceItemElementEventMap extends HTMLElementEventMap {
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Options for <code>PlaceItemElement</code>.
    */
   export interface PlaceItemElementOptions {
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Displays a link slotted into either the <code>action-main</code> slot or the <code>action-corner</code> slot. By default the link will be shown in the <code>action-main</code> slot. Use the <code>action</code> attribute to specify the behavior of the link. Several action types are available to use listed in {@link google.maps.places.ActionLinkType}. For a custom link, specify the <code>custom</code> action type and set the <code>href</code> and <code>label</code> attributes.
    * Access by calling `const {PlaceLinkElement} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
    */
@@ -13981,7 +13941,6 @@ declare namespace google.maps.places {
     "gmp-click": google.maps.places.PlaceActionEvent;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Options for <code>PlaceLinkElement</code>.
    */
   export interface PlaceLinkElementOptions {
@@ -14057,7 +14016,6 @@ declare namespace google.maps.places {
     preferredSize?: google.maps.places.MediaSizeString | null;
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Displays the name of a place within a place details element.
    * Access by calling `const {PlaceNameElement} = await google.maps.importLibrary("places");`. See https://developers.google.com/maps/documentation/javascript/libraries.
    */
@@ -14070,7 +14028,6 @@ declare namespace google.maps.places {
   export interface PlaceNameElementEventMap extends HTMLElementEventMap {
   }
   /**
-   * Available only in the v=beta channel: https://goo.gle/3oAthT3.
    * Options for <code>PlaceNameElement</code>.
    */
   export interface PlaceNameElementOptions {
@@ -14435,7 +14392,7 @@ declare namespace google.maps.places {
    */
   export enum PlacePinIcon {
     /**
-     * Shows no icon, only the slotted content. Falls back to <code>TYPE</code> if there&#39;s no slotted content.
+     * Shows no icon, only the slotted content.
      */
     NONE = 'NONE',
     /**
